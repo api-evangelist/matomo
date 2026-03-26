@@ -1,0 +1,31 @@
+aid: matomo
+name: Matomo
+description: >-
+  Matomo is an open source web analytics platform that provides detailed website and application usage analytics with full data ownership.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API Analysis
+  - Web Analytics
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: matomo:matomo
+    name: Matomo
+    description: >-
+      Matomo is an open source web analytics platform that provides detailed website and application usage analytics with full data ownership.
+    humanURL: https://matomo.org
+    tags:
+      - API Analysis
+    properties:
+      - type: Documentation
+        url: https://developer.matomo.org
+common:
+  - type: Website
+    url: https://matomo.org
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
