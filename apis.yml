@@ -10,11 +10,11 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Analytics
-  - Web Analytics
+  - Data Ownership
   - Open Source
   - Privacy
-  - Data Ownership
   - Self-Hosted
+  - Web Analytics
 url: >-
   https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -33,9 +33,9 @@ apis:
     humanURL: https://developer.matomo.org/api-reference/reporting-api
     tags:
       - Analytics
-      - Reporting
-      - Metrics
       - Dashboards
+      - Metrics
+      - Reporting
     properties:
       - type: Documentation
         url: https://developer.matomo.org/api-reference/reporting-api
@@ -53,9 +53,9 @@ apis:
     humanURL: https://developer.matomo.org/api-reference/tracking-api
     tags:
       - Analytics
-      - Tracking
       - Events
       - Server-Side
+      - Tracking
     properties:
       - type: Documentation
         url: https://developer.matomo.org/api-reference/tracking-api
@@ -70,9 +70,9 @@ apis:
     humanURL: https://developer.matomo.org/api-reference/reporting-api#Live
     tags:
       - Analytics
+      - Live Data
       - Real-Time
       - Visitors
-      - Live Data
     properties:
       - type: Documentation
         url: https://developer.matomo.org/api-reference/reporting-api#Live
@@ -87,8 +87,8 @@ apis:
     humanURL: https://developer.matomo.org/api-reference/reporting-api#Goals
     tags:
       - Analytics
-      - Goals
       - Conversions
+      - Goals
       - Revenue
     properties:
       - type: Documentation
@@ -104,8 +104,8 @@ apis:
     humanURL: https://developer.matomo.org/api-reference/reporting-api-segmentation
     tags:
       - Analytics
-      - Segmentation
       - Filters
+      - Segmentation
       - Visitors
     properties:
       - type: Documentation
