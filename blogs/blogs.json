@@ -1,0 +1,13 @@
+{
+  "repo": "matomo",
+  "feeds": [
+    {
+      "source": "https://matomo.org/blog",
+      "feed_url": "https://matomo.org/blog/feed/",
+      "saved": 10,
+      "title": "Official Matomo Blog - Analytics Platform - Matomo"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:31:08Z"
+}
