@@ -145,6 +145,10 @@ common:
     url: https://matomo.org/terms
   - type: PrivacyPolicy
     url: https://matomo.org/privacy-policy
+  - type: Integrations
+    url: https://matomo.org/guide/tracking-data/integrations/
+integrations:
+  - name: Analytics Platform – Matomo
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
