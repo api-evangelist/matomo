@@ -127,7 +127,7 @@ common:
     url: https://github.com/matomo-org/matomo
   - type: Login
     url: https://matomo.org/login
-  - type: Signup
+  - type: SignUp
     url: https://matomo.org/start-free-analytics-trial
   - type: Support
     url: https://matomo.org/support
@@ -137,7 +137,7 @@ common:
     url: https://plugins.matomo.org
   - type: SelfHosted
     url: https://matomo.org/matomo-on-premise
-  - type: Changelog
+  - type: ChangeLog
     url: https://matomo.org/changelog
   - type: SDKs
     url: https://developer.matomo.org/api-reference/tracking-api-clients
