@@ -111,6 +111,8 @@ apis:
       - type: Documentation
         url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/matomo
   - type: Website
     url: https://matomo.org
   - type: Documentation
