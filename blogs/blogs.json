@@ -2,12 +2,20 @@
   "repo": "matomo",
   "feeds": [
     {
-      "source": "https://matomo.org/blog",
+      "source": "https://matomo.org/blog/feed/",
       "feed_url": "https://matomo.org/blog/feed/",
-      "title": "Official Matomo Blog - Analytics Platform - Matomo",
-      "saved": 5
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://developer.matomo.org/guides/getting-started-part-1",
+      "feed_url": "https://developer.matomo.org/guides/getting-started-part-1",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 16,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 19,
+  "fetched": "2026-06-01T23:35:02Z"
 }

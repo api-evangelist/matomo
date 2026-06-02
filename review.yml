@@ -1,0 +1,74 @@
+aid: matomo
+name: Matomo
+reviewDate: '2026-05-30'
+scope: Streaming and webhook surface assessment
+reviewer: Kin Lane / API Evangelist
+summary: >-
+  Investigation of whether Matomo exposes a streaming or webhook surface
+  beyond its Reporting and Tracking HTTP APIs. The Tracking API was modeled
+  as a separate OpenAPI document. No publicly documented webhook surface
+  was confirmed for the CustomAlerts plugin.
+findings:
+  - area: Reporting API
+    status: HTTP request/response only
+    notes: >-
+      All Reporting API methods are dispatched through `/index.php` with
+      `module=API&method=Module.Method`. No streaming, long-poll, or
+      server-sent event surface is documented at
+      https://developer.matomo.org/api-reference/reporting-api.
+    spec: openapi/matomo-openapi.yml
+  - area: Tracking API
+    status: One-way ingest, HTTP only
+    notes: >-
+      The Tracking API at `/matomo.php` accepts GET and POST. POST also
+      accepts a JSON `requests` array for Bulk Tracking (many events in
+      one HTTP call). This is ingest, not egress — Matomo does not push
+      tracking data outward. Modeled as a standalone OpenAPI spec.
+    spec: openapi/matomo-tracking-openapi.yml
+    source: https://developer.matomo.org/api-reference/tracking-api
+  - area: Live API
+    status: Pull-based, no push
+    notes: >-
+      `Live.getLastVisitsDetails`, `Live.getCounters`, and related methods
+      provide near-real-time data but require polling. No WebSocket, SSE,
+      or webhook channel is documented.
+    source: https://developer.matomo.org/api-reference/reporting-api#Live
+  - area: CustomAlerts plugin
+    status: No public webhook surface confirmed
+    notes: >-
+      The CustomAlerts plugin page at https://plugins.matomo.org/CustomAlerts
+      and the upstream repository
+      https://github.com/matomo-org/plugin-CustomAlerts publicly describe
+      only Email, SMS, and Slack notification channels. The plugin's
+      Notifier.php and notification handler set, as documented publicly,
+      do not include a generic HTTP POST / webhook / callback URL
+      notifier. No public documentation, README, or plugin marketplace
+      copy advertises a webhook payload schema.
+    publicChannels:
+      - Email
+      - SMS
+      - Slack
+    sources:
+      - https://plugins.matomo.org/CustomAlerts
+      - https://github.com/matomo-org/plugin-CustomAlerts
+    recommendation: >-
+      Do not publish an OpenAPI / AsyncAPI spec for a CustomAlerts webhook
+      until a webhook delivery channel is confirmed in Matomo source or
+      documentation. If a customer or internal plugin adds an HTTP
+      notifier, model it then.
+  - area: Other notification surfaces
+    status: Not investigated in depth
+    notes: >-
+      Matomo's broader plugin marketplace may include third-party plugins
+      that expose webhook delivery (for example community-built alerting
+      or integration plugins). Those are not part of the Matomo core
+      surface and were out of scope for this review.
+conclusion: >-
+  Matomo's public API surface is request/response HTTP only. The
+  Reporting API and Tracking API are documented and now both modeled as
+  OpenAPI specs. The premise that CustomAlerts posts via webhooks could
+  not be substantiated from public documentation; only Email, SMS, and
+  Slack channels are advertised. No webhook spec was generated.
+artifacts:
+  - openapi/matomo-openapi.yml
+  - openapi/matomo-tracking-openapi.yml

@@ -18,7 +18,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/apis.yml
 created: '2026-03-26'
-modified: '2026-04-28'
+modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
   - aid: matomo:reporting-api
@@ -41,6 +41,9 @@ apis:
         url: https://developer.matomo.org/api-reference/reporting-api
       - type: GettingStarted
         url: https://developer.matomo.org/api-reference/reporting-api-introduction
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/openapi/matomo-openapi.yml
   - aid: matomo:tracking-api
     name: Matomo Tracking API
     description: >-
@@ -59,6 +62,9 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.matomo.org/api-reference/tracking-api
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/openapi/matomo-tracking-openapi.yml
   - aid: matomo:live-api
     name: Matomo Live API
     description: >-
