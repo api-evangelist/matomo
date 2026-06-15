@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Matomo Tracking API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Submit a single tracking request (querystring)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://{matomo_host}/matomo.php",
+        "params": [
+          {
+            "name": "idsite",
+            "value": "",
+            "type": "query",
+            "description": "ID of the website being tracked."
+          },
+          {
+            "name": "rec",
+            "value": "",
+            "type": "query",
+            "description": "Must be set to 1 to record the request."
+          },
+          {
+            "name": "action_name",
+            "value": "",
+            "type": "query",
+            "description": "Title of the action being tracked (page title)."
+          },
+          {
+            "name": "url",
+            "value": "",
+            "type": "query",
+            "description": "Full URL for the current action."
+          },
+          {
+            "name": "_id",
+            "value": "",
+            "type": "query",
+            "description": "16 character unique visitor ID (hex)."
+          },
+          {
+            "name": "rand",
+            "value": "",
+            "type": "query",
+            "description": "Random value to avoid intermediary caching."
+          },
+          {
+            "name": "apiv",
+            "value": "",
+            "type": "query",
+            "description": "API version, currently 1."
+          },
+          {
+            "name": "urlref",
+            "value": "",
+            "type": "query",
+            "description": "Full HTTP Referrer URL."
+          },
+          {
+            "name": "res",
+            "value": "",
+            "type": "query",
+            "description": "Screen resolution, e.g. 1280x1024."
+          },
+          {
+            "name": "cookie",
+            "value": "",
+            "type": "query",
+            "description": "Whether the visitor's browser supports cookies."
+          },
+          {
+            "name": "ua",
+            "value": "",
+            "type": "query",
+            "description": "Override the User-Agent HTTP header."
+          },
+          {
+            "name": "uadata",
+            "value": "",
+            "type": "query",
+            "description": "JSON-encoded Client Hints."
+          },
+          {
+            "name": "lang",
+            "value": "",
+            "type": "query",
+            "description": "Accept-Language HTTP header override."
+          },
+          {
+            "name": "uid",
+            "value": "",
+            "type": "query",
+            "description": "User ID string for the logged-in user."
+          },
+          {
+            "name": "cid",
+            "value": "",
+            "type": "query",
+            "description": "16 character visitor ID override (requires token_auth)."
+          },
+          {
+            "name": "new_visit",
+            "value": "",
+            "type": "query",
+            "description": "Force a new visit to be created for this action."
+          },
+          {
+            "name": "link",
+            "value": "",
+            "type": "query",
+            "description": "External URL clicked by the user (outlink)."
+          },
+          {
+            "name": "download",
+            "value": "",
+            "type": "query",
+            "description": "URL of a downloaded file."
+          },
+          {
+            "name": "search",
+            "value": "",
+            "type": "query",
+            "description": "Site search query."
+          },
+          {
+            "name": "search_cat",
+            "value": "",
+            "type": "query",
+            "description": "Specified search category."
+          },
+          {
+            "name": "search_count",
+            "value": "",
+            "type": "query",
+            "description": "Number of search results displayed."
+          },
+          {
+            "name": "pv_id",
+            "value": "",
+            "type": "query",
+            "description": "6 character unique ID for the pageview."
+          },
+          {
+            "name": "idgoal",
+            "value": "",
+            "type": "query",
+            "description": "Goal ID for conversion tracking."
+          },
+          {
+            "name": "revenue",
+            "value": "",
+            "type": "query",
+            "description": "Monetary value generated as revenue."
+          },
+          {
+            "name": "ec_id",
+            "value": "",
+            "type": "query",
+            "description": "Unique String identifier for the ecommerce order."
+          },
+          {
+            "name": "e_c",
+            "value": "",
+            "type": "query",
+            "description": "Event category."
+          },
+          {
+            "name": "e_a",
+            "value": "",
+            "type": "query",
+            "description": "Event action."
+          },
+          {
+            "name": "e_n",
+            "value": "",
+            "type": "query",
+            "description": "Event name."
+          },
+          {
+            "name": "e_v",
+            "value": "",
+            "type": "query",
+            "description": "Event numeric value."
+          },
+          {
+            "name": "c_n",
+            "value": "",
+            "type": "query",
+            "description": "Name of the content block."
+          },
+          {
+            "name": "c_p",
+            "value": "",
+            "type": "query",
+            "description": "Actual content piece (text or media URL)."
+          },
+          {
+            "name": "c_t",
+            "value": "",
+            "type": "query",
+            "description": "Target of the content interaction (URL)."
+          },
+          {
+            "name": "c_i",
+            "value": "",
+            "type": "query",
+            "description": "Type of content interaction (e.g. click)."
+          },
+          {
+            "name": "ec_items",
+            "value": "",
+            "type": "query",
+            "description": "JSON-encoded array of ecommerce line items."
+          },
+          {
+            "name": "ec_st",
+            "value": "",
+            "type": "query",
+            "description": "Sub-total of the order, excluding shipping."
+          },
+          {
+            "name": "ec_tx",
+            "value": "",
+            "type": "query",
+            "description": "Tax amount of the order."
+          },
+          {
+            "name": "ec_sh",
+            "value": "",
+            "type": "query",
+            "description": "Shipping cost of the order."
+          },
+          {
+            "name": "ec_dt",
+            "value": "",
+            "type": "query",
+            "description": "Discount offered on the order."
+          },
+          {
+            "name": "token_auth",
+            "value": "",
+            "type": "query",
+            "description": "Auth token. Required for parameters that override server-side\nvalues (cip, cdt > 24h, country/region/city/lat/long, cid).\n"
+          },
+          {
+            "name": "cip",
+            "value": "",
+            "type": "query",
+            "description": "Override the visitor IP (requires token_auth)."
+          },
+          {
+            "name": "cdt",
+            "value": "",
+            "type": "query",
+            "description": "Override datetime of the request (UTC, requires token_auth if older than 24h)."
+          },
+          {
+            "name": "country",
+            "value": "",
+            "type": "query",
+            "description": "Override visitor country code (requires token_auth)."
+          },
+          {
+            "name": "region",
+            "value": "",
+            "type": "query",
+            "description": "Override visitor region code (requires token_auth)."
+          },
+          {
+            "name": "city",
+            "value": "",
+            "type": "query",
+            "description": "Override visitor city (requires token_auth)."
+          },
+          {
+            "name": "lat",
+            "value": "",
+            "type": "query",
+            "description": "Override visitor latitude (requires token_auth)."
+          },
+          {
+            "name": "long",
+            "value": "",
+            "type": "query",
+            "description": "Override visitor longitude (requires token_auth)."
+          },
+          {
+            "name": "send_image",
+            "value": "",
+            "type": "query",
+            "description": "If 0, return HTTP 204 instead of the 1x1 GIF."
+          },
+          {
+            "name": "ping",
+            "value": "",
+            "type": "query",
+            "description": "Heartbeat ping; updates total_time on an existing visit."
+          },
+          {
+            "name": "queuedtracking",
+            "value": "",
+            "type": "query",
+            "description": "Bypass the Queued Tracking plugin for this request."
+          },
+          {
+            "name": "bots",
+            "value": "",
+            "type": "query",
+            "description": "Set to 1 to record requests from known bots."
+          }
+        ]
+      },
+      "docs": "Records a single pageview, event, content interaction, search, or\necommerce action by passing tracking parameters in the URL\nquerystring. `idsite` and `rec=1` are required.\n"
+    },
+    {
+      "info": {
+        "name": "Submit a single tracking request or a bulk batch",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://{matomo_host}/matomo.php",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "POST may carry the same parameters as GET in a form-encoded body,\nor a JSON body containing a `requests` array for Bulk Tracking.\nBulk tracking can include hundreds of requests in one HTTP call;\nrequests should be sent in chronological order.\n"
+    }
+  ],
+  "bundled": true
+}
