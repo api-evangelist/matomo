@@ -135,11 +135,11 @@ common:
     url: https://github.com/matomo-org/matomo
   - type: Login
     url: https://matomo.org/login
-  - type: SignUp
+  - type: Signup
     url: https://matomo.org/start-free-analytics-trial
   - type: Support
     url: https://matomo.org/support
-  - type: Forum
+  - type: Forums
     url: https://forum.matomo.org
   - type: Marketplace
     url: https://plugins.matomo.org
