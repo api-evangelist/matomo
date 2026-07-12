@@ -1,0 +1,20 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/matomo-openapi.yml, openapi/matomo-tracking-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: TokenAuth
+  type: apiKey
+  in: query
+  parameter: token_auth
+  description: |-
+    Matomo auth token created in Administration > Personal > Security >
+    Auth tokens. May be passed as a query parameter or, preferably, in
+    the POST body.
+  sources:
+  - openapi/matomo-openapi.yml
+  - openapi/matomo-tracking-openapi.yml
