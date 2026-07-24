@@ -1,51 +1,63 @@
 openapi: 3.1.0
 info:
-  title: Matomo Reporting API
+  title: Matomo Reporting Index.php API
   version: v1
-  description: |
-    Programmatic access to Matomo analytics reports. All Reporting API calls
+  description: 'Programmatic access to Matomo analytics reports. All Reporting API calls
+
     are dispatched through a single `/index.php` entrypoint by supplying
+
     `module=API` and a `method=Module.MethodName` query parameter. The API
+
     exposes 200+ methods across modules like VisitsSummary, Actions,
+
     Referrers, UserCountry, DevicesDetection, and Goals.
+
+    '
   contact:
     name: Matomo Developer Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
 servers:
-  - url: https://{matomo_host}
-    description: Your Matomo instance (self-hosted or Matomo Cloud)
-    variables:
-      matomo_host:
-        default: demo.matomo.cloud
+- url: https://{matomo_host}
+  description: Your Matomo instance (self-hosted or Matomo Cloud)
+  variables:
+    matomo_host:
+      default: demo.matomo.cloud
 security:
-  - TokenAuth: []
+- TokenAuth: []
+tags:
+- name: Index.php
 paths:
   /index.php:
     get:
       summary: Invoke a Matomo Reporting API method
       operationId: callReportingApi
-      description: |
-        All Matomo Reporting API methods are invoked via this single
+      description: 'All Matomo Reporting API methods are invoked via this single
+
         endpoint by passing `module=API` and the `method` parameter
+
         (for example `VisitsSummary.get` or `Actions.getPageUrls`).
+
+        '
       parameters:
-        - $ref: '#/components/parameters/Module'
-        - $ref: '#/components/parameters/Method'
-        - $ref: '#/components/parameters/IdSite'
-        - $ref: '#/components/parameters/Period'
-        - $ref: '#/components/parameters/Date'
-        - $ref: '#/components/parameters/Format'
-        - $ref: '#/components/parameters/Segment'
-        - $ref: '#/components/parameters/TokenAuth'
+      - $ref: '#/components/parameters/Module'
+      - $ref: '#/components/parameters/Method'
+      - $ref: '#/components/parameters/IdSite'
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Date'
+      - $ref: '#/components/parameters/Format'
+      - $ref: '#/components/parameters/Segment'
+      - $ref: '#/components/parameters/TokenAuth'
       responses:
         '200':
           description: Report data in the requested format.
+      tags:
+      - Index.php
     post:
       summary: Invoke a Matomo Reporting API method (POST, recommended for token in body)
       operationId: callReportingApiPost
       parameters:
-        - $ref: '#/components/parameters/Module'
-        - $ref: '#/components/parameters/Method'
+      - $ref: '#/components/parameters/Module'
+      - $ref: '#/components/parameters/Method'
       requestBody:
         required: false
         content:
@@ -57,12 +69,23 @@ paths:
                   type: string
                 period:
                   type: string
-                  enum: [day, week, month, year, range]
+                  enum:
+                  - day
+                  - week
+                  - month
+                  - year
+                  - range
                 date:
                   type: string
                 format:
                   type: string
-                  enum: [xml, json, csv, tsv, html, rss]
+                  enum:
+                  - xml
+                  - json
+                  - csv
+                  - tsv
+                  - html
+                  - rss
                 segment:
                   type: string
                 token_auth:
@@ -72,31 +95,51 @@ paths:
                   type: array
                   items:
                     type: string
-                  description: |
-                    URL-encoded sub-requests when using
+                  description: 'URL-encoded sub-requests when using
+
                     `method=API.getBulkRequest`.
+
+                    '
       responses:
         '200':
           description: Report data in the requested format.
+      tags:
+      - Index.php
 components:
   parameters:
-    Module:
+    Segment:
       in: query
-      name: module
-      required: true
+      name: segment
+      required: false
       schema:
         type: string
-        enum: [API]
     Method:
       in: query
       name: method
       required: true
       schema:
         type: string
-      description: |
-        `Module.MethodName`, for example `VisitsSummary.get`,
+      description: '`Module.MethodName`, for example `VisitsSummary.get`,
+
         `Actions.getPageUrls`, `Referrers.getKeywords`,
+
         `UserCountry.getCountry`, `API.getBulkRequest`.
+
+        '
+    Format:
+      in: query
+      name: format
+      required: false
+      schema:
+        type: string
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        default: xml
     IdSite:
       in: query
       name: idSite
@@ -104,13 +147,6 @@ components:
       schema:
         type: string
       description: Site ID (or comma-separated list / `all`).
-    Period:
-      in: query
-      name: period
-      required: false
-      schema:
-        type: string
-        enum: [day, week, month, year, range]
     Date:
       in: query
       name: date
@@ -118,34 +154,44 @@ components:
       schema:
         type: string
       description: Date in YYYY-MM-DD or magic keywords (today, yesterday, lastWeek).
-    Format:
-      in: query
-      name: format
-      required: false
-      schema:
-        type: string
-        enum: [xml, json, csv, tsv, html, rss]
-        default: xml
-    Segment:
-      in: query
-      name: segment
-      required: false
-      schema:
-        type: string
     TokenAuth:
       in: query
       name: token_auth
       required: false
       schema:
         type: string
-      description: |
-        Matomo auth token. Prefer passing in POST body for security.
+      description: 'Matomo auth token. Prefer passing in POST body for security.
+
+        '
+    Module:
+      in: query
+      name: module
+      required: true
+      schema:
+        type: string
+        enum:
+        - API
+    Period:
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+        - range
   securitySchemes:
     TokenAuth:
       type: apiKey
       in: query
       name: token_auth
-      description: |
-        Matomo auth token created in Administration > Personal > Security >
+      description: 'Matomo auth token created in Administration > Personal > Security >
+
         Auth tokens. May be passed as a query parameter or, preferably, in
+
         the POST body.
+
+        '
