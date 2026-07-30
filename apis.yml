@@ -7,7 +7,20 @@ description: >-
   or cloud hosting options, ensuring complete control over analytics data and
   compliance with privacy regulations including GDPR.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/matomo.png
 tags:
   - Analytics
   - Data Ownership
@@ -21,101 +34,82 @@ created: '2026-03-26'
 modified: '2026-05-30'
 specificationVersion: '0.19'
 apis:
-  - aid: matomo:reporting-api
-    name: Matomo Reporting API
-    description: >-
-      The Matomo Reporting API provides programmatic access to all analytics
-      reports available in the Matomo interface. It exposes over 200 API
-      methods organized into modules such as VisitsSummary, Actions,
-      Referrers, UserCountry, DevicesDetection, Goals, and more. Each
-      module provides methods to retrieve metrics, dimensions, and
-      segmented data for building custom dashboards and reporting tools.
-    humanURL: https://developer.matomo.org/api-reference/reporting-api
-    tags:
-      - Analytics
-      - Dashboards
-      - Metrics
-      - Reporting
-    properties:
-      - type: Documentation
-        url: https://developer.matomo.org/api-reference/reporting-api
-      - type: GettingStarted
-        url: https://developer.matomo.org/api-reference/reporting-api-introduction
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/openapi/matomo-openapi.yml
-  - aid: matomo:tracking-api
-    name: Matomo Tracking API
-    description: >-
-      The Matomo Tracking API allows developers to send tracking data to Matomo
-      from any server-side application, mobile app, or IoT device via HTTP
-      requests. It supports recording pageviews, custom events, e-commerce
-      transactions, content interactions, site search queries, and custom
-      dimensions. The API also supports bulk tracking for sending multiple
-      events in a single request.
-    humanURL: https://developer.matomo.org/api-reference/tracking-api
-    tags:
-      - Analytics
-      - Events
-      - Server-Side
-      - Tracking
-    properties:
-      - type: Documentation
-        url: https://developer.matomo.org/api-reference/tracking-api
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/openapi/matomo-tracking-openapi.yml
-  - aid: matomo:live-api
-    name: Matomo Live API
-    description: >-
-      The Matomo Live API provides real-time access to visitor data including
-      the most recent visits, visitor profiles, and live counters showing
-      current visitors on the site. It enables developers to build real-time
-      dashboards, visitor activity feeds, and monitoring tools that display
-      up-to-the-minute analytics data.
-    humanURL: https://developer.matomo.org/api-reference/reporting-api#Live
-    tags:
-      - Analytics
-      - Live Data
-      - Real-Time
-      - Visitors
-    properties:
-      - type: Documentation
-        url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - aid: matomo:goals-api
-    name: Matomo Goals API
-    description: >-
-      The Matomo Goals API allows developers to manage and retrieve data about
-      conversion goals. It supports creating, updating, and deleting goals,
-      as well as retrieving goal conversion metrics, revenue data, and
-      conversion rates segmented by various dimensions such as referrer,
-      country, and device type.
-    humanURL: https://developer.matomo.org/api-reference/reporting-api#Goals
-    tags:
-      - Analytics
-      - Conversions
-      - Goals
-      - Revenue
-    properties:
-      - type: Documentation
-        url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - aid: matomo:segments-api
-    name: Matomo Segments API
-    description: >-
-      The Matomo Segments API enables developers to create and manage saved
-      segments for filtering analytics data. Segments allow filtering visits
-      and actions by any combination of visitor properties, behavior patterns,
-      and custom dimensions. Any Reporting API method can accept a segment
-      parameter to return data for a specific subset of visitors.
-    humanURL: https://developer.matomo.org/api-reference/reporting-api-segmentation
-    tags:
-      - Analytics
-      - Filters
-      - Segmentation
-      - Visitors
-    properties:
-      - type: Documentation
-        url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:live-api
+  name: Matomo Live API
+  description: >-
+    The Matomo Live API provides real-time access to visitor data including the most recent visits, visitor
+    profiles, and live counters showing current visitors on the site. It enables developers to build real-time
+    dashboards, visitor activity feeds, and monitoring tools that display up-to-the-minute analytics data.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api#Live
+  tags:
+  - Analytics
+  - Live Data
+  - Real-Time
+  - Visitors
+  properties:
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+- aid: matomo:goals-api
+  name: Matomo Goals API
+  description: >-
+    The Matomo Goals API allows developers to manage and retrieve data about conversion goals. It supports
+    creating, updating, and deleting goals, as well as retrieving goal conversion metrics, revenue data,
+    and conversion rates segmented by various dimensions such as referrer, country, and device type.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api#Goals
+  tags:
+  - Analytics
+  - Conversions
+  - Goals
+  - Revenue
+  properties:
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+- aid: matomo:segments-api
+  name: Matomo Segments API
+  description: >-
+    The Matomo Segments API enables developers to create and manage saved segments for filtering analytics
+    data. Segments allow filtering visits and actions by any combination of visitor properties, behavior
+    patterns, and custom dimensions. Any Reporting API method can accept a segment parameter to return
+    data for a specific subset of visitors.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api-segmentation
+  tags:
+  - Analytics
+  - Filters
+  - Segmentation
+  - Visitors
+  properties:
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-index-php-api
+  name: Matomo Index.php API
+  description: The Index.php API from Matomo — 1 operation(s) for index.php.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  tags:
+  - Index.php
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-index-php-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: GettingStarted
+    url: https://developer.matomo.org/api-reference/reporting-api-introduction
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/tracking-api
+- aid: matomo:matomo-matomo-php-api
+  name: Matomo Matomo.php API
+  description: The Matomo.php API from Matomo — 1 operation(s) for matomo.php.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  tags:
+  - Matomo.php
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-matomo-php-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: GettingStarted
+    url: https://developer.matomo.org/api-reference/reporting-api-introduction
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/tracking-api
 common:
   - type: AgenticAccess
     url: agentic-access/matomo-agentic-access.yml
