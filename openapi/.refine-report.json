@@ -1,0 +1,16 @@
+{
+  "provider": "matomo",
+  "sources": [
+    "matomo-index-php-api-openapi.yml",
+    "matomo-matomo-php-api-openapi.yml"
+  ],
+  "outputs": [
+    "matomo-index-php-api-openapi.yml",
+    "matomo-matomo-php-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
