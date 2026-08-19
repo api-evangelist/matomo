@@ -1,0 +1,84 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://matomo.org/demo/, https://demo.matomo.cloud,
+  https://plugins.matomo.org/VisitorGenerator,
+  https://developer.matomo.org/guides/tests
+docs: https://matomo.org/demo/
+summary: >-
+  Matomo publishes no test-mode / live-mode key separation, no magic test values and no
+  test clock — because the product is self-hosted software, not a hosted transaction
+  API. What it provides instead is a fully public, live, read-only DEMO INSTANCE that
+  anyone can query anonymously, plus a first-party fixture generator for populating a
+  local install.
+test_live_separation:
+  supported: false
+  note: >-
+    There are no test-vs-live key prefixes and no sandbox mode. A Matomo auth token is
+    a production credential against whichever instance issued it. The way to get a
+    non-production environment is to stand up a second Matomo instance.
+public_demo:
+  url: https://demo.matomo.cloud
+  landing: https://matomo.org/demo/
+  official: true
+  anonymous_read: true
+  auth_required: false
+  verified: '2026-08-13'
+  matomo_version_observed: 5.13.0-rc1
+  what_works_anonymously:
+    - description: Reporting API calls with no token
+      example: https://demo.matomo.cloud/index.php?module=API&method=API.getMatomoVersion&format=json
+      observed_status: 200
+    - description: Report metadata catalog
+      example: https://demo.matomo.cloud/index.php?module=API&method=API.getReportMetadata&idSite=1&format=json
+      observed_status: 200
+    - description: The generated OpenAPI documents themselves
+      example: https://demo.matomo.cloud/index.php?module=API&method=ApiReference.getOpenApiSpec&pluginName=VisitsSummary&format=json
+      observed_status: 200
+      note: This is the endpoint the 59 specs in openapi/ were harvested from.
+    - description: RFC 8414 OAuth authorization server metadata
+      example: https://demo.matomo.cloud/.well-known/oauth-authorization-server
+      observed_status: 200
+  what_is_gated:
+    - description: The MCP endpoint
+      example: https://demo.matomo.cloud/index.php?module=API&method=McpServer.mcp&format=mcp
+      observed_status: 401
+    - description: Writes and any method requiring more than view access
+      note: The demo grants anonymous VIEW access only; write methods return 401/403.
+  site_ids: 'idSite=1 is populated with real demo traffic.'
+  note: >-
+    The demo instance is the closest thing Matomo has to a sandbox and it is genuinely
+    useful — it is a real Matomo running real data that an integrator can develop
+    against without signing up for anything. It is NOT isolated test data the caller
+    controls, and it is read-only.
+free_trial:
+  url: https://matomo.org/start-free-analytics-trial/
+  credit_card_required: false
+  note: A Cloud trial gives a private, writable instance — the practical way to test writes.
+fixture_tooling:
+  - name: VisitorGenerator
+    type: matomo-plugin
+    url: https://plugins.matomo.org/VisitorGenerator
+    official: true
+    description: >-
+      First-party plugin that generates fake visits and actions into a Matomo instance
+      so reports have data to return. The Matomo equivalent of fixture seeding.
+    cli: ./console visitorgenerator:generate-visits
+  - name: Test fixtures
+    type: developer-tooling
+    url: https://developer.matomo.org/guides/tests
+    description: >-
+      Matomo's own PHPUnit/UI test framework ships fixtures (including an
+      "omnifixture" the McpServer plugin uses in CI) for standing up a populated
+      instance. Developer tooling, not a hosted sandbox.
+test_clock:
+  supported: false
+  note: >-
+    No time simulation. Date behaviour is exercised by passing historic `date` values
+    and magic keywords (today, yesterday, lastWeek, lastMonth, lastYear, lastX,
+    previousX) against real archived data.
+magic_values: []
+magic_values_note: >-
+  None published. Matomo is not a payments or messaging provider, so there are no test
+  cards, test numbers or simulator identifiers to capture. Recorded as an explicit
+  empty set rather than omitted.

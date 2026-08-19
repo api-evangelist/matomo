@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Matomo Reporting API for AbTesting plugin
+  version: 1.0.0
+extends: openapi/matomo-ab-testing-openapi.json
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/matomo-ab-testing-openapi.json
+  note: >-
+    Enhancements only. The extended document is the verbatim OpenAPI 3.1.0 that
+    Matomo's own ApiReference plugin generated and served from
+    https://demo.matomo.cloud/index.php?module=API&method=ApiReference.getOpenApiSpec&pluginName=AbTesting&format=json
+    It is never mutated in place.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: matomo
+      x-apievangelist-plugin: AbTesting
+      x-apievangelist-operations: 17
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-generator: Matomo ApiReference plugin (first-party OpenAPI generator)
+  - target: $.servers
+    update:
+      - url: https://{matomo_host}
+        description: >-
+          Your own Matomo instance. Matomo is self-hosted or Matomo Cloud, so the
+          API host is the customer's own deployment. The verbatim spec carries the
+          host of the instance it was generated on (Matomo's public demo, proxied
+          through InnoCraft, the company that operates Matomo Cloud).
+        variables:
+          matomo_host:
+            default: demo.matomo.cloud

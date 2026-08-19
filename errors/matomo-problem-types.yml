@@ -1,0 +1,110 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/matomo-*-openapi.json (59 first-party OpenAPI 3.1.0 documents generated
+  by Matomo's own ApiReference plugin), plus
+  https://developer.matomo.org/api-reference/reporting-api
+format: matomo-envelope
+format_note: >-
+  Matomo does NOT use RFC 9457 application/problem+json. Every Matomo Reporting API
+  error is returned in the provider's own generic envelope, and — critically — an
+  error can be returned with an HTTP 200 status when the request itself was well
+  formed at the transport layer. Agents must inspect the body, not only the status.
+envelope:
+  json:
+    schema: '#/components/schemas/Error'
+    required:
+      - result
+      - message
+    fields:
+      result: "Literal string `error` on failure, `success` on a generic success payload."
+      message: "Human-readable error message."
+      code: "Integer code, present on some errors."
+    example:
+      result: error
+      message: There was an error
+  xml:
+    schema: '#/components/schemas/ErrorXml'
+    note: XML is the DEFAULT response format; pass `format=json` to get the JSON envelope.
+  text_plain: "Error: There was an error."
+  text_html: "There was an error."
+content_types:
+  - text/plain
+  - text/html
+  - application/json
+  - application/xml
+problems:
+  - status: 400
+    name: BadRequest
+    title: Bad request (validation or missing parameters).
+    example_message: 'Error: There was an error.'
+    remediation: >-
+      Check `module`, `method`, `idSite`, `period` and `date` are present and valid.
+      Matomo rejects unknown or malformed `method=Module.Action` selectors here.
+    source: components/responses/BadRequest (all 59 specs)
+  - status: 401
+    name: Unauthorized
+    title: Authentication failed or missing token.
+    example_message: 'Error: You must be logged in to access this functionality.'
+    remediation: >-
+      Supply a Matomo auth token — as `token_auth` in the POST body (preferred), as a
+      `token_auth` query parameter, or as an `Authorization: Bearer <token_auth>` header.
+      The MCP endpoint answers 401 with `WWW-Authenticate: Bearer realm="mcp"`.
+    source: components/responses/Unauthorized (all 59 specs)
+  - status: 403
+    name: Forbidden
+    title: Authenticated but not allowed to access the resource.
+    example_message: 'Error: Not authorised.'
+    remediation: >-
+      The token's Matomo user lacks the required role (view / write / admin / superuser)
+      on the requested idSite. Also returned by the MCP endpoint when an `Origin` header
+      falls outside `[General] trusted_hosts` (DNS-rebinding protection).
+    source: components/responses/Forbidden (all 59 specs)
+  - status: 404
+    name: NotFound
+    title: Resource not found.
+    example_message: 'Error: The method is not available.'
+    remediation: >-
+      The API module or method does not exist on this instance. Matomo's API surface is
+      per-deployment — a method only exists if its plugin is installed and activated.
+      Call `API.getReportMetadata` or `ApiReference.getOpenApiSpec` to discover what
+      this instance actually exposes.
+    source: components/responses/NotFound (all 59 specs)
+  - status: 429
+    name: TooManyRequests
+    title: Rate limit exceeded.
+    example_message: 429 Too Many Requests
+    remediation: >-
+      Back off. Matomo Cloud publishes per-IP limits (2,000/10min or 350/1min for
+      non-tracking requests, 200/1min for Live, 500/5min for Transitions) and a
+      per-account cap of 8 simultaneous raw-data queries. Tracking endpoints are exempt.
+    source: https://matomo.org/faq/troubleshooting/matomo-cloud-api-usage-limits/
+    note: >-
+      Not declared in the generated OpenAPI documents — captured from the provider's
+      published Cloud limits FAQ. See rate-limits/matomo-rate-limits.yml.
+  - status: 500
+    name: ServerError
+    title: Unexpected server error.
+    example_message: 'Error: There was an error.'
+    remediation: Retry with backoff; check the Matomo instance error log.
+    source: components/responses/ServerError (all 59 specs)
+  - status: default
+    name: DefaultError
+    title: Default error response (any non-2xx).
+    source: components/responses/DefaultError (all 59 specs)
+mcp_errors:
+  transport: JSON-RPC 2.0 over HTTP
+  source: https://github.com/matomo-org/plugin-McpServer/blob/5.x-dev/docs/faq.md
+  codes:
+    - code: -32600
+      message: Authentication required.
+      http_status: 401
+      note: 'Accompanied by `WWW-Authenticate: Bearer realm="mcp"`. Observed live 2026-08-13.'
+    - message: >-
+        MCP endpoint requires a root API request: module=API&method=McpServer.mcp&format=mcp.
+        Nested API calls (including API.getBulkRequest) are not supported.
+      http_status: 400
+    - message: MCP endpoint is disabled. Please contact your Matomo administrator.
+    - message: >-
+        Authenticated MCP access has too high privilege level. Maximum of %s access
+        level is allowed.

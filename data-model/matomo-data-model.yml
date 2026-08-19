@@ -1,0 +1,230 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/matomo-*-openapi.json — 59 first-party OpenAPI 3.1.0 documents, 556
+  operations. Entities and relationships were derived from the id-reference parameters
+  that recur across operations, not from a published object reference.
+derivation_note: >-
+  Matomo's generated OpenAPI documents contain almost NO response schemas — every
+  successful response is declared as a description plus empty media-type entries, and
+  `components.schemas` holds only the generic success/error envelopes. There is
+  therefore no $ref graph to walk. What follows is derived instead from the identifier
+  PARAMETERS the operations require, which is the only structural evidence the contract
+  gives. Field-level shapes are not asserted because the provider does not publish them.
+root_entity:
+  name: Site
+  key: idSite
+  note: >-
+    Nearly everything in Matomo hangs off a site. 368 of 556 operations take idSite,
+    and almost every other entity is scoped to one. There is no account/organization
+    object above it in the API — the instance itself is the tenant boundary.
+entities:
+  - name: Site
+    key: idSite
+    api: openapi/matomo-sites-manager-openapi.json
+    operations: [SitesManager.getSiteFromId, SitesManager.getAllSites, SitesManager.addSite, SitesManager.updateSite, SitesManager.deleteSite]
+    note: A tracked website or app. Grouped optionally by a free-text site group.
+  - name: SiteGroup
+    key: group
+    api: openapi/matomo-sites-manager-openapi.json
+    operations: [SitesManager.getSitesGroups, SitesManager.getSitesFromGroup, SitesManager.renameGroup]
+  - name: User
+    key: login
+    api: openapi/matomo-users-manager-openapi.json
+    operations: [UsersManager.getUser, UsersManager.addUser, UsersManager.inviteUser, UsersManager.updateUser, UsersManager.deleteUser]
+  - name: Access
+    key: [login, idSite, access]
+    api: openapi/matomo-users-manager-openapi.json
+    operations: [UsersManager.setUserAccess, UsersManager.getUsersAccessFromSite, UsersManager.getSitesAccessFromUser]
+    note: >-
+      The join entity between User and Site carrying the role (noaccess / view / write /
+      admin) plus capabilities. This is the object the whole permission model turns on,
+      and the object an OAuth scope cannot narrow below.
+  - name: AuthToken
+    key: token_auth
+    api: openapi/matomo-users-manager-openapi.json
+    operations: [UsersManager.createAppSpecificTokenAuth]
+    note: Inherits its creating user's Access rows in full.
+  - name: OAuthClient
+    key: clientId
+    api: openapi/matomo-oauth2-openapi.json
+    operations: [OAuth2.getClients, OAuth2.getClient]
+  - name: Goal
+    key: idGoal
+    api: openapi/matomo-goals-openapi.json
+    operations: [Goals.getGoal, Goals.getGoals, Goals.addGoal, Goals.updateGoal, Goals.deleteGoal]
+  - name: Segment
+    key: idSegment
+    api: openapi/matomo-segment-editor-openapi.json
+    operations: [SegmentEditor.get, SegmentEditor.getAll, SegmentEditor.add, SegmentEditor.update, SegmentEditor.delete]
+    note: >-
+      A saved filter definition. Any Reporting API operation accepts a `segment`
+      parameter, so Segment cross-cuts the entire read surface — 193 operations take it.
+  - name: CustomDimension
+    key: idDimension
+    api: openapi/matomo-custom-dimensions-openapi.json
+    operations: [CustomDimensions.getCustomDimension, CustomDimensions.getConfiguredCustomDimensions, CustomDimensions.configureNewCustomDimension, CustomDimensions.configureExistingCustomDimension]
+  - name: Report
+    key: [module, action]
+    unique_key: reportUniqueId
+    api: openapi/matomo-api-openapi.json
+    operations: [API.getReportMetadata, API.getProcessedReport, API.getMetadata]
+    note: >-
+      Reports are not stored rows; they are a metadata-described catalog resolved at
+      runtime. Which reports exist depends on which plugins are activated.
+  - name: Subtable
+    key: idSubtable
+    parent: Report
+    note: >-
+      Hierarchical report rows. 44 operations take idSubtable, which makes drill-down a
+      first-class part of the read model.
+  - name: Annotation
+    key: idNote
+    api: openapi/matomo-annotations-openapi.json
+  - name: ScheduledReport
+    key: idReport
+    api: openapi/matomo-scheduled-reports-openapi.json
+  - name: Alert
+    key: idAlert
+    api: openapi/matomo-custom-alerts-openapi.json
+  - name: Container
+    key: idContainer
+    api: openapi/matomo-tag-manager-openapi.json
+    operations: [TagManager.getContainer, TagManager.getContainers, TagManager.addContainer, TagManager.updateContainer, TagManager.deleteContainer]
+  - name: ContainerVersion
+    key: idContainerVersion
+    api: openapi/matomo-tag-manager-openapi.json
+    operations: [TagManager.getContainerVersion, TagManager.createContainerVersion, TagManager.publishContainerVersion]
+  - name: Tag
+    key: idTag
+    api: openapi/matomo-tag-manager-openapi.json
+  - name: Trigger
+    key: idTrigger
+    api: openapi/matomo-tag-manager-openapi.json
+  - name: Variable
+    key: idVariable
+    api: openapi/matomo-tag-manager-openapi.json
+  - name: Funnel
+    key: idFunnel
+    api: openapi/matomo-funnels-openapi.json
+  - name: Form
+    key: idForm
+    api: openapi/matomo-form-analytics-openapi.json
+  - name: Heatmap / SessionRecording
+    key: idSiteHsr
+    api: openapi/matomo-heatmap-session-recording-openapi.json
+    note: 20 operations share the idSiteHsr key across both heatmaps and session recordings.
+  - name: Experiment
+    key: idExperiment
+    api: openapi/matomo-ab-testing-openapi.json
+  - name: CustomReport
+    key: idCustomReport
+    api: openapi/matomo-custom-reports-openapi.json
+relationships:
+  - from: Site
+    to: User
+    type: has_many
+    via: Access
+    note: Many-to-many through the Access join.
+  - from: Site
+    to: Goal
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Segment
+    type: has_many
+    via: idSite
+    note: A segment may also be global (idSite unset), applying to every site.
+  - from: Site
+    to: CustomDimension
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Container
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Funnel
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Form
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Experiment
+    type: has_many
+    via: idSite
+  - from: Site
+    to: CustomReport
+    type: has_many
+    via: idSite
+  - from: Site
+    to: Annotation
+    type: has_many
+    via: idSite
+  - from: Site
+    to: ScheduledReport
+    type: has_many
+    via: idSite
+  - from: Site
+    to: SiteGroup
+    type: belongs_to
+    via: group
+  - from: Container
+    to: ContainerVersion
+    type: has_many
+    via: idContainer
+  - from: ContainerVersion
+    to: Tag
+    type: has_many
+    via: idContainerVersion
+  - from: ContainerVersion
+    to: Trigger
+    type: has_many
+    via: idContainerVersion
+  - from: ContainerVersion
+    to: Variable
+    type: has_many
+    via: idContainerVersion
+  - from: Tag
+    to: Trigger
+    type: has_many
+    via: fireTriggerIds
+  - from: Funnel
+    to: Goal
+    type: belongs_to
+    via: idGoal
+    note: A funnel may be attached to a goal (Funnels.getGoalFunnel) or standalone.
+  - from: Report
+    to: Subtable
+    type: has_many
+    via: idSubtable
+  - from: User
+    to: AuthToken
+    type: has_many
+    via: login
+  - from: Segment
+    to: Report
+    type: filters
+    via: segment
+    note: >-
+      Not a foreign key — a segment definition is applied as a query parameter to any
+      report read. It is the single most cross-cutting relationship in the model.
+query_dimensions:
+  note: >-
+    Every report read is addressed by a four-part coordinate rather than a resource path.
+  fields:
+    - idSite
+    - period
+    - date
+    - segment
+  frequency:
+    idSite: 368
+    period: 205
+    date: 202
+    segment: 193
+id_prefixes: []
+id_prefixes_note: >-
+  Matomo uses bare auto-increment integers, not prefixed opaque identifiers. There is no
+  way to tell an idSite from an idGoal by looking at the value.

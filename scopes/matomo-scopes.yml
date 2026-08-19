@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: probed
+source: https://demo.matomo.cloud/.well-known/oauth-authorization-server
+docs: https://plugins.matomo.org/OAuth2
+raw: well-known/matomo-oauth-authorization-server.json
+note: >-
+  Read from the RFC 8414 Authorization Server Metadata document that Matomo core serves
+  when the first-party OAuth2 plugin is installed and enabled. Because Matomo is
+  self-hosted / Matomo Cloud, the issuer and endpoint URLs below are the CUSTOMER'S OWN
+  instance; the values captured here were probed against Matomo's public demo instance.
+  Scope DESCRIPTIONS are ours (the metadata document carries names only) and are
+  derived from Matomo's documented role model (view / write / admin).
+issuer: https://{matomo_host}
+schemes:
+  - name: OAuth2
+    type: oauth2
+    source: /.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://{matomo_host}/index.php?module=OAuth2&action=authorize
+        tokenUrl: https://{matomo_host}/index.php?module=OAuth2&action=token
+      - flow: clientCredentials
+        tokenUrl: https://{matomo_host}/index.php?module=OAuth2&action=token
+      - flow: refreshToken
+        tokenUrl: https://{matomo_host}/index.php?module=OAuth2&action=token
+    pkce:
+      supported: true
+      code_challenge_methods: [S256, plain]
+    token_endpoint_auth_methods:
+      - client_secret_basic
+      - client_secret_post
+    response_types: [code]
+scopes:
+  - scope: matomo:read
+    description: >-
+      Read access to Matomo reporting data and configuration the authenticated user can
+      already view.
+    flows: [authorizationCode, clientCredentials, refreshToken]
+    sources: ['/.well-known/oauth-authorization-server']
+  - scope: matomo:write
+    description: >-
+      Create and update access — the Matomo `write` role tier (segments, goals, tag
+      manager entities, and other configuration the user may change).
+    flows: [authorizationCode, clientCredentials, refreshToken]
+    sources: ['/.well-known/oauth-authorization-server']
+  - scope: matomo:admin
+    description: >-
+      Administrative access — the Matomo `admin` role tier (site management, user
+      management, instance settings).
+    flows: [authorizationCode, clientCredentials, refreshToken]
+    sources: ['/.well-known/oauth-authorization-server']
+token_lifetime:
+  access_token_seconds: 3600
+  source: https://matomo.org/faq/how-to/how-to-configure-the-matomo-mcp-server/
+  note: Default OAuth 2.0 client access-token lifetime as documented in the MCP setup FAQ.
+gaps:
+  - >-
+    No /.well-known/oauth-protected-resource (RFC 9728) is served, so an MCP client
+    cannot discover the authorization server from the protected resource.
+  - >-
+    Scopes are coarse (read / write / admin). There is no per-module or per-site scope,
+    so an OAuth grant cannot be narrowed below the Matomo user's own role.

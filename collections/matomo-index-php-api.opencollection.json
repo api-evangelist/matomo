@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Matomo Reporting Index.php API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "token_auth",
+      "value": "{{token_auth}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Index.php",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Invoke a Matomo Reporting API method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{matomo_host}/index.php",
+            "params": [
+              {
+                "name": "module",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "method",
+                "value": "",
+                "type": "query",
+                "description": "`Module.MethodName`, for example `VisitsSummary.get`,\n`Actions.getPageUrls`, `Referrers.getKeywords`,\n`UserCountry.getCountry`, `API.getBulkRequest`.\n"
+              },
+              {
+                "name": "idSite",
+                "value": "",
+                "type": "query",
+                "description": "Site ID (or comma-separated list / `all`)."
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date in YYYY-MM-DD or magic keywords (today, yesterday, lastWeek)."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "segment",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "token_auth",
+                "value": "",
+                "type": "query",
+                "description": "Matomo auth token. Prefer passing in POST body for security.\n"
+              }
+            ]
+          },
+          "docs": "All Matomo Reporting API methods are invoked via this single\nendpoint by passing `module=API` and the `method` parameter\n(for example `VisitsSummary.get` or `Actions.getPageUrls`).\n"
+        },
+        {
+          "info": {
+            "name": "Invoke a Matomo Reporting API method (POST, recommended for token in body)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{matomo_host}/index.php",
+            "params": [
+              {
+                "name": "module",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "method",
+                "value": "",
+                "type": "query",
+                "description": "`Module.MethodName`, for example `VisitsSummary.get`,\n`Actions.getPageUrls`, `Referrers.getKeywords`,\n`UserCountry.getCountry`, `API.getBulkRequest`.\n"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "idSite",
+                  "value": ""
+                },
+                {
+                  "name": "period",
+                  "value": ""
+                },
+                {
+                  "name": "date",
+                  "value": ""
+                },
+                {
+                  "name": "format",
+                  "value": ""
+                },
+                {
+                  "name": "segment",
+                  "value": ""
+                },
+                {
+                  "name": "token_auth",
+                  "value": ""
+                },
+                {
+                  "name": "urls",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Invoke a Matomo Reporting API method (POST, recommended for token in body)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

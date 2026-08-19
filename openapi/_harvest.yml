@@ -1,0 +1,266 @@
+generated: '2026-08-13'
+method: searched
+source: https://demo.matomo.cloud/index.php?module=API&method=ApiReference.getOpenApiSpec&pluginName={plugin}&format=json
+generator: Matomo ApiReference plugin (first-party) — https://github.com/matomo-org/plugin-ApiReference
+harvested: '2026-08-13'
+spec_version: OpenAPI 3.1.0
+document_count: 59
+operation_count: 556
+ownership: These specs are Matomo's own. They are not hand-written by API Evangelist and not third-party.
+  Matomo ships a first-party plugin, ApiReference, that generates an OpenAPI 3.1.0 document per installed
+  plugin and exposes it through the Reporting API method ApiReference.getOpenApiSpec. Every document self-identifies
+  as Matomo (info.title 'Matomo Reporting API for <Plugin> plugin') and declares Matomo's own MatomoToken
+  bearer security scheme. They were fetched unauthenticated from demo.matomo.cloud, Matomo's official
+  public demo instance, linked from https://matomo.org/demo/.
+servers_note: 'The verbatim servers[] entry reads https://demo-proxy.innocraft.cloud/ rather than a matomo.org
+  host. This is expected and correct, not a wrong-company contract: InnoCraft Ltd is the New Zealand company
+  that develops Matomo and operates Matomo Cloud, and demo.matomo.cloud is served through InnoCraft''s
+  cloud proxy. The value is also instance-specific by nature — Matomo is self-hosted or Matomo Cloud,
+  so the real API host is always the customer''s own deployment. The overlays in overlays/ record the
+  templated https://{matomo_host} form without mutating the harvested documents.'
+known_deviations:
+- Path keys carry a query string (/index.php?module=API&method=VisitsSummary.get), which OpenAPI does
+  not permit in a path template.
+- 'Some 200 responses serialize content media-type entries as empty arrays ("application/json": []) where
+  a Media Type Object is required. A PHP json_encode array/object artifact.'
+surface_is_per_deployment: This harvest reflects the plugins activated on Matomo's demo instance (Matomo
+  5.13.0-rc1, observed 2026-08-13), including premium Cloud plugins. A different Matomo deployment will
+  expose a different subset. Call ApiReference.getOpenApiSpec against the target instance to get its real
+  contract.
+documents:
+- plugin: SitesManager
+  file: matomo-sites-manager-openapi.json
+  operations: 53
+  title: Matomo Reporting API for SitesManager plugin
+- plugin: TagManager
+  file: matomo-tag-manager-openapi.json
+  operations: 47
+  title: Matomo Reporting API for TagManager plugin
+- plugin: UsersManager
+  file: matomo-users-manager-openapi.json
+  operations: 32
+  title: Matomo Reporting API for UsersManager plugin
+- plugin: CrashAnalytics
+  file: matomo-crash-analytics-openapi.json
+  operations: 31
+  title: Matomo Reporting API for CrashAnalytics plugin
+- plugin: HeatmapSessionRecording
+  file: matomo-heatmap-session-recording-openapi.json
+  operations: 31
+  title: Matomo Reporting API for HeatmapSessionRecording plugin
+- plugin: FormAnalytics
+  file: matomo-form-analytics-openapi.json
+  operations: 26
+  title: Matomo Reporting API for FormAnalytics plugin
+- plugin: Referrers
+  file: matomo-referrers-openapi.json
+  operations: 23
+  title: Matomo Reporting API for Referrers plugin
+- plugin: Funnels
+  file: matomo-funnels-openapi.json
+  operations: 19
+  title: Matomo Reporting API for Funnels plugin
+- plugin: Actions
+  file: matomo-actions-openapi.json
+  operations: 18
+  title: Matomo Reporting API for Actions plugin
+- plugin: API
+  file: matomo-api-openapi.json
+  operations: 17
+  title: Matomo Reporting API for API plugin
+- plugin: AbTesting
+  file: matomo-ab-testing-openapi.json
+  operations: 17
+  title: Matomo Reporting API for AbTesting plugin
+- plugin: MediaAnalytics
+  file: matomo-media-analytics-openapi.json
+  operations: 14
+  title: Matomo Reporting API for MediaAnalytics plugin
+- plugin: CustomReports
+  file: matomo-custom-reports-openapi.json
+  operations: 13
+  title: Matomo Reporting API for CustomReports plugin
+- plugin: MobileMessaging
+  file: matomo-mobile-messaging-openapi.json
+  operations: 12
+  title: Matomo Reporting API for MobileMessaging plugin
+- plugin: SearchEngineKeywordsPerformance
+  file: matomo-search-engine-keywords-performance-openapi.json
+  operations: 12
+  title: Matomo Reporting API for SearchEngineKeywordsPerformance plugin
+- plugin: Goals
+  file: matomo-goals-openapi.json
+  operations: 11
+  title: Matomo Reporting API for Goals plugin
+- plugin: MarketingCampaignsReporting
+  file: matomo-marketing-campaigns-reporting-openapi.json
+  operations: 11
+  title: Matomo Reporting API for MarketingCampaignsReporting plugin
+- plugin: VisitsSummary
+  file: matomo-visits-summary-openapi.json
+  operations: 10
+  title: Matomo Reporting API for VisitsSummary plugin
+- plugin: Events
+  file: matomo-events-openapi.json
+  operations: 9
+  title: Matomo Reporting API for Events plugin
+- plugin: LanguagesManager
+  file: matomo-languages-manager-openapi.json
+  operations: 9
+  title: Matomo Reporting API for LanguagesManager plugin
+- plugin: SegmentEditor
+  file: matomo-segment-editor-openapi.json
+  operations: 9
+  title: Matomo Reporting API for SegmentEditor plugin
+- plugin: DevicesDetection
+  file: matomo-devices-detection-openapi.json
+  operations: 8
+  title: Matomo Reporting API for DevicesDetection plugin
+- plugin: OAuth2
+  file: matomo-oauth2-openapi.json
+  operations: 8
+  title: Matomo Reporting API for OAuth2 plugin
+- plugin: UserCountry
+  file: matomo-user-country-openapi.json
+  operations: 8
+  title: Matomo Reporting API for UserCountry plugin
+- plugin: Annotations
+  file: matomo-annotations-openapi.json
+  operations: 7
+  title: Matomo Reporting API for Annotations plugin
+- plugin: CustomAlerts
+  file: matomo-custom-alerts-openapi.json
+  operations: 7
+  title: Matomo Reporting API for CustomAlerts plugin
+- plugin: AdvertisingConversionExport
+  file: matomo-advertising-conversion-export-openapi.json
+  operations: 6
+  title: Matomo Reporting API for AdvertisingConversionExport plugin
+- plugin: CustomDimensions
+  file: matomo-custom-dimensions-openapi.json
+  operations: 6
+  title: Matomo Reporting API for CustomDimensions plugin
+- plugin: Live
+  file: matomo-live-openapi.json
+  operations: 6
+  title: Matomo Reporting API for Live plugin
+- plugin: PrivacyManager
+  file: matomo-privacy-manager-openapi.json
+  operations: 6
+  title: Matomo Reporting API for PrivacyManager plugin
+- plugin: ScheduledReports
+  file: matomo-scheduled-reports-openapi.json
+  operations: 6
+  title: Matomo Reporting API for ScheduledReports plugin
+- plugin: Dashboard
+  file: matomo-dashboard-openapi.json
+  operations: 5
+  title: Matomo Reporting API for Dashboard plugin
+- plugin: Insights
+  file: matomo-insights-openapi.json
+  operations: 5
+  title: Matomo Reporting API for Insights plugin
+- plugin: Transitions
+  file: matomo-transitions-openapi.json
+  operations: 4
+  title: Matomo Reporting API for Transitions plugin
+- plugin: VisitorInterest
+  file: matomo-visitor-interest-openapi.json
+  operations: 4
+  title: Matomo Reporting API for VisitorInterest plugin
+- plugin: ActivityLog
+  file: matomo-activity-log-openapi.json
+  operations: 3
+  title: Matomo Reporting API for ActivityLog plugin
+- plugin: ApiReference
+  file: matomo-api-reference-openapi.json
+  operations: 3
+  title: Matomo Reporting API for ApiReference plugin
+- plugin: CoreAdminHome
+  file: matomo-core-admin-home-openapi.json
+  operations: 3
+  title: Matomo Reporting API for CoreAdminHome plugin
+- plugin: Feedback
+  file: matomo-feedback-openapi.json
+  operations: 3
+  title: Matomo Reporting API for Feedback plugin
+- plugin: MultiSites
+  file: matomo-multi-sites-openapi.json
+  operations: 3
+  title: Matomo Reporting API for MultiSites plugin
+- plugin: RollUpReporting
+  file: matomo-roll-up-reporting-openapi.json
+  operations: 3
+  title: Matomo Reporting API for RollUpReporting plugin
+- plugin: Tour
+  file: matomo-tour-openapi.json
+  operations: 3
+  title: Matomo Reporting API for Tour plugin
+- plugin: VisitTime
+  file: matomo-visit-time-openapi.json
+  operations: 3
+  title: Matomo Reporting API for VisitTime plugin
+- plugin: Cohorts
+  file: matomo-cohorts-openapi.json
+  operations: 2
+  title: Matomo Reporting API for Cohorts plugin
+- plugin: Contents
+  file: matomo-contents-openapi.json
+  operations: 2
+  title: Matomo Reporting API for Contents plugin
+- plugin: Marketplace
+  file: matomo-marketplace-openapi.json
+  operations: 2
+  title: Matomo Reporting API for Marketplace plugin
+- plugin: Overlay
+  file: matomo-overlay-openapi.json
+  operations: 2
+  title: Matomo Reporting API for Overlay plugin
+- plugin: Resolution
+  file: matomo-resolution-openapi.json
+  operations: 2
+  title: Matomo Reporting API for Resolution plugin
+- plugin: UserLanguage
+  file: matomo-user-language-openapi.json
+  operations: 2
+  title: Matomo Reporting API for UserLanguage plugin
+- plugin: Bandwidth
+  file: matomo-bandwidth-openapi.json
+  operations: 1
+  title: Matomo Reporting API for Bandwidth plugin
+- plugin: CustomJsTracker
+  file: matomo-custom-js-tracker-openapi.json
+  operations: 1
+  title: Matomo Reporting API for CustomJsTracker plugin
+- plugin: DevicePlugins
+  file: matomo-device-plugins-openapi.json
+  operations: 1
+  title: Matomo Reporting API for DevicePlugins plugin
+- plugin: ImageGraph
+  file: matomo-image-graph-openapi.json
+  operations: 1
+  title: Matomo Reporting API for ImageGraph plugin
+- plugin: Login
+  file: matomo-login-openapi.json
+  operations: 1
+  title: Matomo Reporting API for Login plugin
+- plugin: PagePerformance
+  file: matomo-page-performance-openapi.json
+  operations: 1
+  title: Matomo Reporting API for PagePerformance plugin
+- plugin: SEO
+  file: matomo-seo-openapi.json
+  operations: 1
+  title: Matomo Reporting API for SEO plugin
+- plugin: TwoFactorAuth
+  file: matomo-two-factor-auth-openapi.json
+  operations: 1
+  title: Matomo Reporting API for TwoFactorAuth plugin
+- plugin: UserId
+  file: matomo-user-id-openapi.json
+  operations: 1
+  title: Matomo Reporting API for UserId plugin
+- plugin: VisitFrequency
+  file: matomo-visit-frequency-openapi.json
+  operations: 1
+  title: Matomo Reporting API for VisitFrequency plugin

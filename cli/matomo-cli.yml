@@ -1,0 +1,80 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.matomo.org/guides/piwik-on-the-command-line
+docs: https://developer.matomo.org/guides/piwik-on-the-command-line
+name: Matomo Console
+binary: ./console
+official: true
+description: >-
+  Matomo ships a first-party command-line interface as part of the platform itself.
+  It is not a separately distributed client — `./console` lives in the root of every
+  Matomo installation and is run on the SERVER by the operator, not by an API consumer
+  on a laptop. It is built on the Symfony Console component, and the available command
+  set expands with whichever plugins are installed.
+distribution:
+  method: bundled
+  note: >-
+    Included in the Matomo download / Composer package; there is no npm, PyPI or
+    Homebrew formula. See packages/matomo-packages.yml.
+install:
+  - method: bundled-with-matomo
+    command: cd /path/to/matomo && ./console
+    note: Must be run as the same user that owns the Matomo files (commonly the web server user).
+usage: ./console <namespace>:<command> [options]
+discovery:
+  list_commands: ./console list
+  help: ./console help <command>
+  note: >-
+    The command surface is instance-specific because plugins register their own
+    commands. `./console list` is the authoritative catalog for a given deployment.
+command_groups:
+  - group: core
+    purpose: Platform maintenance and the archiving pipeline.
+    commands:
+      - name: core:archive
+        description: >-
+          Pre-process report archives. The single most important Matomo operation
+          command — Cloud runs it for you, self-hosters must cron it or reports are
+          computed on request.
+      - name: core:run-scheduled-tasks
+        description: >-
+          Run Matomo's scheduled tasks. Also the way to force-regenerate the OpenAPI
+          documents the ApiReference plugin produces.
+        example: ./console core:run-scheduled-tasks "Piwik\\Plugins\\ApiReference\\Tasks.generateConfiguredPluginSpecs"
+      - name: core:update
+        description: Apply database updates after a Matomo version upgrade.
+      - name: core:clear-caches
+        description: Clear Matomo's caches.
+      - name: core:invalidate-report-data
+        description: Mark archived report data as invalid so it is recomputed.
+  - group: plugin
+    purpose: Plugin lifecycle.
+    commands:
+      - name: plugin:activate
+        description: Activate an installed plugin (e.g. McpServer, ApiReference, OAuth2).
+      - name: plugin:deactivate
+        description: Deactivate a plugin.
+      - name: plugin:list
+        description: List installed plugins and their state.
+  - group: usercountry / customdimensions / scheduled-reports
+    purpose: Per-plugin operational commands registered by first-party plugins.
+    note: Exact membership varies by installation.
+  - group: development
+    purpose: Plugin authoring and testing.
+    commands:
+      - name: generate:plugin
+        description: Scaffold a new Matomo plugin.
+      - name: generate:api
+        description: Scaffold an API.php for a plugin — how new Reporting API methods come into existence.
+      - name: tests:run
+        description: Run Matomo's test suites.
+  - group: visitorgenerator
+    purpose: Fixture generation.
+    commands:
+      - name: visitorgenerator:generate-visits
+        description: Generate fake visits for testing. See sandbox/matomo-sandbox.yml.
+    note: Requires the VisitorGenerator plugin.
+relationship_to_api: >-
+  The console is an OPERATOR tool, not an API client. It does not wrap the Reporting
+  API; it drives the platform underneath it. An integrator consuming Matomo data uses
+  the HTTP API, an SDK, or the MCP server — not this CLI.

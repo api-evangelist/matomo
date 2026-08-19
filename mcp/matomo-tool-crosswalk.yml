@@ -1,0 +1,200 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  mcp/matomo-mcp.yml (tool list read from
+  https://github.com/matomo-org/plugin-McpServer/tree/5.x-dev/McpTools) bound to the
+  operationIds in openapi/matomo-*-openapi.json (the 59 first-party OpenAPI 3.1.0
+  documents Matomo's own ApiReference plugin generates)
+confidence_note: >-
+  The live MCP tools/list is auth-gated (HTTP 401, WWW-Authenticate: Bearer realm="mcp",
+  probed 2026-08-13), so bindings below are mapped from the plugin's published source
+  and Matomo's documented service gateways, not from an authenticated introspection.
+  Every operationId listed was verified verbatim in the saved spec files.
+surfaces:
+  openapi:
+    files: openapi/matomo-*-openapi.json
+    count: 59
+    operations: 556
+    gated: false
+    note: >-
+      Served unauthenticated from a live Matomo instance via
+      ApiReference.getOpenApiSpec. The surface is PER-DEPLOYMENT — a method exists only
+      if its plugin is installed and activated on that instance.
+  mcp:
+    url: https://{matomo_host}/index.php?module=API&method=McpServer.mcp&format=mcp
+    gated: true
+    gate: 'HTTP 401 + WWW-Authenticate: Bearer realm="mcp"'
+  graphql:
+    present: false
+coverage:
+  tools_named: 19
+  tools_bound: 19
+  mcp_only: 0
+  rest_ops_total: 556
+  rest_ops_with_a_tool: 14
+  note: >-
+    Every MCP tool binds to at least one real REST operation — the MCP server is a
+    curated, agent-shaped projection over the Reporting API, not a separate data plane.
+    The six raw-api tools are generic executors that can reach almost the whole REST
+    surface, which is why rest_only[] below is grouped by capability rather than listed
+    operation by operation.
+crosswalk:
+  - tool: matomo_site_list
+    category: sites
+    rest: [SitesManager.getSitesWithAtLeastViewAccess, SitesManager.getAllSites]
+    binding: rest
+    confidence: high
+    note: >-
+      Returns the sites the authenticated user can view, which is exactly
+      getSitesWithAtLeastViewAccess; getAllSites is the superuser equivalent. MCP adds
+      opaque-cursor pagination the REST operations do not have.
+  - tool: matomo_site_get
+    category: sites
+    rest: [SitesManager.getSiteFromId]
+    binding: rest
+    confidence: high
+  - tool: matomo_site_search
+    category: sites
+    rest: [SitesManager.getPatternMatchSites, SitesManager.getSitesIdFromSiteUrl]
+    binding: rest
+    confidence: medium
+    note: Fans out — name/domain hints map to pattern matching, URL hints to getSitesIdFromSiteUrl.
+  - tool: matomo_report_list
+    category: reports
+    rest: [API.getReportMetadata]
+    binding: rest
+    confidence: high
+    note: MCP adds a search filter over name/category/uniqueId that REST does not expose.
+  - tool: matomo_report_metadata
+    category: reports
+    rest: [API.getReportMetadata, API.getMetadata]
+    binding: rest
+    confidence: high
+    note: Resolves ONE report by reportUniqueId or module/action from the same metadata catalog.
+  - tool: matomo_report_processed
+    category: reports
+    rest: [API.getProcessedReport]
+    binding: rest
+    confidence: high
+    note: >-
+      The workhorse tool. Not idempotent — materializing a range aggregate can trigger
+      archiving, which is why the plugin computes readOnlyHint at runtime.
+  - tool: matomo_goal_list
+    category: goals
+    rest: [Goals.getGoals]
+    binding: rest
+    confidence: high
+  - tool: matomo_goal_get
+    category: goals
+    rest: [Goals.getGoal]
+    binding: rest
+    confidence: high
+  - tool: matomo_segment_list
+    category: segments
+    rest: [SegmentEditor.getAll]
+    binding: rest
+    confidence: high
+  - tool: matomo_segment_get
+    category: segments
+    rest: [SegmentEditor.get]
+    binding: rest
+    confidence: high
+    note: >-
+      MCP additionally resolves by exact name or exact definition; REST resolves by
+      idSegment only.
+  - tool: matomo_dimension_list
+    category: dimensions
+    rest: [CustomDimensions.getConfiguredCustomDimensions]
+    binding: rest
+    confidence: high
+  - tool: matomo_dimension_get
+    category: dimensions
+    rest: [CustomDimensions.getCustomDimension]
+    binding: rest
+    confidence: high
+  - tool: matomo_api_list
+    category: raw-api
+    rest: [API.getReportMetadata, ApiReference.getOpenApiSpec]
+    binding: rest
+    confidence: medium
+    note: >-
+      Generic method-discovery tool. Backed by Matomo's API proxy metadata, the same
+      source the ApiReference plugin renders. Hidden unless an administrator enables
+      partial or full raw API access.
+  - tool: matomo_api_get
+    category: raw-api
+    rest: [API.getReportMetadata, ApiReference.getOpenApiSpec]
+    binding: rest
+    confidence: medium
+    note: Single-method signature lookup. Same gate as matomo_api_list.
+  - tool: matomo_api_call_read
+    category: raw-api
+    rest: ['*']
+    binding: rest
+    confidence: medium
+    note: >-
+      Generic executor over any Matomo API method classified read-only. Reaches most of
+      the 556 operations. Disabled by default.
+  - tool: matomo_api_call_create
+    category: raw-api
+    rest: ['*']
+    binding: rest
+    confidence: medium
+    note: Generic executor over create-classified methods (e.g. SitesManager.addSite, Goals.addGoal). Disabled by default.
+  - tool: matomo_api_call_update
+    category: raw-api
+    rest: ['*']
+    binding: rest
+    confidence: medium
+    note: Generic executor over update-classified methods (e.g. SitesManager.updateSite, Goals.updateGoal). Disabled by default.
+  - tool: matomo_api_call_delete
+    category: raw-api
+    rest: ['*']
+    binding: rest
+    confidence: medium
+    note: Generic executor over delete-classified methods (e.g. SitesManager.deleteSite, Goals.deleteGoal). Disabled by default.
+  - tool: matomo_api_call_full
+    category: raw-api
+    rest: ['*']
+    binding: rest
+    confidence: medium
+    note: >-
+      Unrestricted executor for methods not safely covered by a CRUD-specific tool.
+      Requires Full API access; permanently restricted methods in RawApiMethodPolicy
+      stay blocked in every mode.
+mcp_only: []
+rest_only:
+  - capability: Tracking
+    note: >-
+      The Tracking API (/matomo.php) has no MCP tool at all. Agents can read analytics
+      through MCP but cannot write tracking events.
+    operations_note: See openapi/matomo-matomo-php-api-openapi.yml.
+  - capability: Tag management
+    spec: openapi/matomo-tag-manager-openapi.json
+    operations: 47
+    note: No dedicated MCP tool. Reachable only through the raw-api executors.
+  - capability: User and permission management
+    spec: openapi/matomo-users-manager-openapi.json
+    operations: 32
+    note: No dedicated MCP tool. Deliberate — user administration is not an agent surface.
+  - capability: Site configuration writes
+    spec: openapi/matomo-sites-manager-openapi.json
+    operations: 53
+    note: Only 4 of the 53 SitesManager operations have a dedicated MCP tool; all are reads.
+  - capability: Premium analytics products
+    specs:
+      - openapi/matomo-heatmap-session-recording-openapi.json
+      - openapi/matomo-form-analytics-openapi.json
+      - openapi/matomo-media-analytics-openapi.json
+      - openapi/matomo-ab-testing-openapi.json
+      - openapi/matomo-funnels-openapi.json
+      - openapi/matomo-crash-analytics-openapi.json
+      - openapi/matomo-custom-reports-openapi.json
+      - openapi/matomo-cohorts-openapi.json
+    note: >-
+      Reachable through matomo_report_processed (they publish reports through the same
+      metadata catalog) and through the raw-api executors, but no dedicated tools.
+  - capability: OAuth2 client administration
+    spec: openapi/matomo-oauth2-openapi.json
+    operations: 8
+    note: Superuser-only; intentionally not an agent surface.

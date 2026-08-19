@@ -1,0 +1,103 @@
+generated: '2026-08-13'
+method: probed
+source: live GET of each /.well-known/ path on every Matomo host in apis.yml
+probed: '2026-08-13'
+hosts_probed:
+  - matomo.org
+  - developer.matomo.org
+  - plugins.matomo.org
+  - demo.matomo.cloud
+note: >-
+  Matomo is self-hosted or Matomo Cloud, so the /.well-known/ surface is served by the
+  CUSTOMER'S OWN deployment, not by a vendor API host. demo.matomo.cloud is Matomo's
+  own public demo instance and is the representative deployment probed here. The
+  marketing/docs hosts (matomo.org, developer.matomo.org) serve no /.well-known/
+  documents at all.
+documents:
+  - host: demo.matomo.cloud
+    path: /.well-known/oauth-authorization-server
+    spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+    status: 200
+    content_type: application/json; charset=utf-8
+    file: matomo-oauth-authorization-server.json
+    note: >-
+      A REAL document, served by Matomo core (response carries the x-matomo-request-id
+      header) when the OAuth2 plugin is enabled. Declares scopes matomo:read,
+      matomo:write, matomo:admin. See scopes/matomo-scopes.yml.
+  - host: demo.matomo.cloud
+    path: /.well-known/security.txt
+    status: 404
+  - host: demo.matomo.cloud
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: demo.matomo.cloud
+    path: /.well-known/oauth-protected-resource
+    status: 404
+    note: >-
+      RFC 9728 protected-resource metadata is NOT served, so an MCP client cannot
+      discover the authorization server from the resource. Real gap.
+  - host: demo.matomo.cloud
+    path: /.well-known/api-catalog
+    status: 404
+  - host: demo.matomo.cloud
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: demo.matomo.cloud
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: demo.matomo.cloud
+    path: /.well-known/agent.json
+    status: 404
+  - host: matomo.org
+    path: /.well-known/security.txt
+    status: 404
+  - host: matomo.org
+    path: /.well-known/openid-configuration
+    status: 404
+  - host: matomo.org
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: matomo.org
+    path: /.well-known/api-catalog
+    status: 404
+  - host: matomo.org
+    path: /.well-known/ai-plugin.json
+    status: 404
+  - host: matomo.org
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: matomo.org
+    path: /.well-known/agent.json
+    status: 404
+  - host: developer.matomo.org
+    path: /.well-known/security.txt
+    status: 404
+  - host: developer.matomo.org
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: developer.matomo.org
+    path: /.well-known/api-catalog
+    status: 404
+  - host: developer.matomo.org
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: developer.matomo.org
+    path: /.well-known/agent.json
+    status: 404
+  - host: plugins.matomo.org
+    path: /.well-known/security.txt
+    status: 404
+  - host: plugins.matomo.org
+    path: /.well-known/oauth-authorization-server
+    status: 404
+  - host: plugins.matomo.org
+    path: /.well-known/agent-card.json
+    status: 404
+  - host: plugins.matomo.org
+    path: /.well-known/agent.json
+    status: 404
+summary:
+  hits: 1
+  misses: 24
+  security_txt: false
+  agent_card: false

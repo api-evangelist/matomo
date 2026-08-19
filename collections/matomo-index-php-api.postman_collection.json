@@ -1,0 +1,430 @@
+{
+  "item": [
+    {
+      "id": "7fd9610a-7fd2-4d7b-8f73-2736f6a85056",
+      "name": "Index.php",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cbe08b4-d82a-440e-afa9-173959de39d6",
+          "name": "Invoke a Matomo Reporting API method",
+          "request": {
+            "name": "Invoke a Matomo Reporting API method",
+            "description": {
+              "content": "All Matomo Reporting API methods are invoked via this single\nendpoint by passing `module=API` and the `method` parameter\n(for example `VisitsSummary.get` or `Actions.getPageUrls`).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "index.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "module",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "method",
+                  "value": "<string>",
+                  "description": "(Required) `Module.MethodName`, for example `VisitsSummary.get`,\n`Actions.getPageUrls`, `Referrers.getKeywords`,\n`UserCountry.getCountry`, `API.getBulkRequest`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "idSite",
+                  "value": "<string>",
+                  "description": "Site ID (or comma-separated list / `all`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Date in YYYY-MM-DD or magic keywords (today, yesterday, lastWeek)."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "disabled": false,
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "token_auth",
+                  "value": "<string>",
+                  "description": "Matomo auth token. Prefer passing in POST body for security.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{matomo_host}}",
+                  "key": "matomo_host"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23d51b07-193d-4662-abba-5984476b9969",
+              "name": "Report data in the requested format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_auth",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_auth",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{matomo_host}}",
+                      "key": "matomo_host"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0478b4c-457e-467a-87cf-e81477ea0f9d",
+          "name": "Invoke a Matomo Reporting API method (POST, recommended for token in body)",
+          "request": {
+            "name": "Invoke a Matomo Reporting API method (POST, recommended for token in body)",
+            "description": {},
+            "url": {
+              "path": [
+                "index.php"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "module",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "method",
+                  "value": "<string>",
+                  "description": "(Required) `Module.MethodName`, for example `VisitsSummary.get`,\n`Actions.getPageUrls`, `Referrers.getKeywords`,\n`UserCountry.getCountry`, `API.getBulkRequest`.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{matomo_host}}",
+                  "key": "matomo_host"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "idSite",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "token_auth",
+                  "value": "<string>",
+                  "description": "Auth token (recommended in POST body for security)."
+                },
+                {
+                  "disabled": false,
+                  "key": "urls",
+                  "value": "<string>",
+                  "description": "URL-encoded sub-requests when using\n`method=API.getBulkRequest`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "urls",
+                  "value": "<string>",
+                  "description": "URL-encoded sub-requests when using\n`method=API.getBulkRequest`.\n"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a3a0126c-22c1-465f-a3f1-866a82e710c5",
+              "name": "Report data in the requested format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "index.php"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "module",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "token_auth",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{matomo_host}}",
+                      "key": "matomo_host"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Auth token (recommended in POST body for security).",
+                        "type": "text/plain"
+                      },
+                      "key": "token_auth",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "URL-encoded sub-requests when using\n`method=API.getBulkRequest`.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "urls",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "URL-encoded sub-requests when using\n`method=API.getBulkRequest`.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "urls",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "demo.matomo.cloud",
+      "key": "matomo_host"
+    },
+    {
+      "type": "string",
+      "value": "https://{{matomo_host}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "token_auth"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bca4d248-1b99-441d-a205-a6134b714bf5",
+    "name": "Matomo Reporting Index.php API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to Matomo analytics reports. All Reporting API calls\nare dispatched through a single `/index.php` entrypoint by supplying\n`module=API` and a `method=Module.MethodName` query parameter. The API\nexposes 200+ methods across modules like VisitsSummary, Actions,\nReferrers, UserCountry, DevicesDetection, and Goals.\n\n\nContact Support:\n Name: Matomo Developer Documentation",
+      "type": "text/plain"
+    }
+  }
+}

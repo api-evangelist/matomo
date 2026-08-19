@@ -1,19 +1,2550 @@
-generated: '2026-07-15'
+generated: '2026-08-13'
 method: generated
-source: openapi/matomo-openapi.yml, openapi/matomo-tracking-openapi.yml
+source: openapi/matomo-ab-testing-openapi.json, openapi/matomo-actions-openapi.json, openapi/matomo-activity-log-openapi.json,
+  openapi/matomo-advertising-conversion-export-openapi.json, openapi/matomo-annotations-openapi.json,
+  openapi/matomo-api-openapi.json, openapi/matomo-api-reference-openapi.json, openapi/matomo-bandwidth-openapi.json,
+  openapi/matomo-cohorts-openapi.json, openapi/matomo-contents-openapi.json, openapi/matomo-core-admin-home-openapi.json,
+  openapi/matomo-crash-analytics-openapi.json, openapi/matomo-custom-alerts-openapi.json, openapi/matomo-custom-dimensions-openapi.json,
+  openapi/matomo-custom-js-tracker-openapi.json, openapi/matomo-custom-reports-openapi.json,
+  openapi/matomo-dashboard-openapi.json, openapi/matomo-device-plugins-openapi.json, openapi/matomo-devices-detection-openapi.json,
+  openapi/matomo-events-openapi.json, openapi/matomo-feedback-openapi.json, openapi/matomo-form-analytics-openapi.json,
+  openapi/matomo-funnels-openapi.json, openapi/matomo-goals-openapi.json, openapi/matomo-heatmap-session-recording-openapi.json,
+  openapi/matomo-image-graph-openapi.json, openapi/matomo-index-php-api-openapi.yml, openapi/matomo-insights-openapi.json,
+  openapi/matomo-languages-manager-openapi.json, openapi/matomo-live-openapi.json, openapi/matomo-login-openapi.json,
+  openapi/matomo-marketing-campaigns-reporting-openapi.json, openapi/matomo-marketplace-openapi.json,
+  openapi/matomo-matomo-php-api-openapi.yml, openapi/matomo-media-analytics-openapi.json, openapi/matomo-mobile-messaging-openapi.json,
+  openapi/matomo-multi-sites-openapi.json, openapi/matomo-oauth2-openapi.json, openapi/matomo-overlay-openapi.json,
+  openapi/matomo-page-performance-openapi.json, openapi/matomo-privacy-manager-openapi.json,
+  openapi/matomo-referrers-openapi.json, openapi/matomo-resolution-openapi.json, openapi/matomo-roll-up-reporting-openapi.json,
+  openapi/matomo-scheduled-reports-openapi.json, openapi/matomo-search-engine-keywords-performance-openapi.json,
+  openapi/matomo-segment-editor-openapi.json, openapi/matomo-seo-openapi.json, openapi/matomo-sites-manager-openapi.json,
+  openapi/matomo-tag-manager-openapi.json, openapi/matomo-tour-openapi.json, openapi/matomo-transitions-openapi.json,
+  openapi/matomo-two-factor-auth-openapi.json, openapi/matomo-user-country-openapi.json, openapi/matomo-user-id-openapi.json,
+  openapi/matomo-user-language-openapi.json, openapi/matomo-users-manager-openapi.json, openapi/matomo-visit-frequency-openapi.json,
+  openapi/matomo-visit-time-openapi.json, openapi/matomo-visitor-interest-openapi.json, openapi/matomo-visits-summary-openapi.json
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 4
+  operations: 560
   by_action_class:
-    connected: 2
+    connected: 558
     acting: 2
   by_consequence:
-    read: 2
+    read: 558
     write: 2
   human_in_the_loop_required: 0
 operations:
+- path: /index.php?module=API&method=AbTesting.getMetricsOverview
+  method: get
+  operationId: AbTesting.getMetricsOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getMetricDetails
+  method: get
+  operationId: AbTesting.getMetricDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.addExperiment
+  method: get
+  operationId: AbTesting.addExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.updateExperiment
+  method: get
+  operationId: AbTesting.updateExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.startExperiment
+  method: get
+  operationId: AbTesting.startExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.finishExperiment
+  method: get
+  operationId: AbTesting.finishExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.archiveExperiment
+  method: get
+  operationId: AbTesting.archiveExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getJsIncludeTemplate
+  method: get
+  operationId: AbTesting.getJsIncludeTemplate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getJsExperimentTemplate
+  method: get
+  operationId: AbTesting.getJsExperimentTemplate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getAllExperiments
+  method: get
+  operationId: AbTesting.getAllExperiments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getActiveExperiments
+  method: get
+  operationId: AbTesting.getActiveExperiments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getExperimentsByStatuses
+  method: get
+  operationId: AbTesting.getExperimentsByStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getExperiment
+  method: get
+  operationId: AbTesting.getExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.deleteExperiment
+  method: get
+  operationId: AbTesting.deleteExperiment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getAvailableStatuses
+  method: get
+  operationId: AbTesting.getAvailableStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getAvailableSuccessMetrics
+  method: get
+  operationId: AbTesting.getAvailableSuccessMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AbTesting.getAvailableTargetAttributes
+  method: get
+  operationId: AbTesting.getAvailableTargetAttributes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.get
+  method: get
+  operationId: Actions.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageUrls
+  method: get
+  operationId: Actions.getPageUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageUrlsFollowingSiteSearch
+  method: get
+  operationId: Actions.getPageUrlsFollowingSiteSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageTitlesFollowingSiteSearch
+  method: get
+  operationId: Actions.getPageTitlesFollowingSiteSearch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getEntryPageUrls
+  method: get
+  operationId: Actions.getEntryPageUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getExitPageUrls
+  method: get
+  operationId: Actions.getExitPageUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageUrl
+  method: get
+  operationId: Actions.getPageUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageTitles
+  method: get
+  operationId: Actions.getPageTitles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getEntryPageTitles
+  method: get
+  operationId: Actions.getEntryPageTitles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getExitPageTitles
+  method: get
+  operationId: Actions.getExitPageTitles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getPageTitle
+  method: get
+  operationId: Actions.getPageTitle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getDownloads
+  method: get
+  operationId: Actions.getDownloads
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getDownload
+  method: get
+  operationId: Actions.getDownload
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getOutlinks
+  method: get
+  operationId: Actions.getOutlinks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getOutlink
+  method: get
+  operationId: Actions.getOutlink
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getSiteSearchKeywords
+  method: get
+  operationId: Actions.getSiteSearchKeywords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getSiteSearchNoResultKeywords
+  method: get
+  operationId: Actions.getSiteSearchNoResultKeywords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Actions.getSiteSearchCategories
+  method: get
+  operationId: Actions.getSiteSearchCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ActivityLog.getEntries
+  method: get
+  operationId: ActivityLog.getEntries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ActivityLog.getEntryCount
+  method: get
+  operationId: ActivityLog.getEntryCount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ActivityLog.getAllActivityTypes
+  method: get
+  operationId: ActivityLog.getAllActivityTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.getConversionExports
+  method: get
+  operationId: AdvertisingConversionExport.getConversionExports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.getConversionExport
+  method: get
+  operationId: AdvertisingConversionExport.getConversionExport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.deleteConversionExport
+  method: get
+  operationId: AdvertisingConversionExport.deleteConversionExport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.addConversionExport
+  method: get
+  operationId: AdvertisingConversionExport.addConversionExport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.regenerateAccessToken
+  method: get
+  operationId: AdvertisingConversionExport.regenerateAccessToken
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=AdvertisingConversionExport.updateConversionExport
+  method: get
+  operationId: AdvertisingConversionExport.updateConversionExport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.add
+  method: get
+  operationId: Annotations.add
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.save
+  method: get
+  operationId: Annotations.save
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.delete
+  method: get
+  operationId: Annotations.delete
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.deleteAll
+  method: get
+  operationId: Annotations.deleteAll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.get
+  method: get
+  operationId: Annotations.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.getAll
+  method: get
+  operationId: Annotations.getAll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Annotations.getAnnotationCountForDates
+  method: get
+  operationId: Annotations.getAnnotationCountForDates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getMatomoVersion
+  method: get
+  operationId: API.getMatomoVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getPhpVersion
+  method: get
+  operationId: API.getPhpVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getIpFromHeader
+  method: get
+  operationId: API.getIpFromHeader
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getSegmentsMetadata
+  method: get
+  operationId: API.getSegmentsMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getMetadata
+  method: get
+  operationId: API.getMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getReportMetadata
+  method: get
+  operationId: API.getReportMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getProcessedReport
+  method: get
+  operationId: API.getProcessedReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getReportPagesMetadata
+  method: get
+  operationId: API.getReportPagesMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getWidgetMetadata
+  method: get
+  operationId: API.getWidgetMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.get
+  method: get
+  operationId: API.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getRowEvolution
+  method: get
+  operationId: API.getRowEvolution
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getBulkRequest
+  method: get
+  operationId: API.getBulkRequest
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.isPluginActivated
+  method: get
+  operationId: API.isPluginActivated
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getSuggestedValuesForSegment
+  method: get
+  operationId: API.getSuggestedValuesForSegment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getPagesComparisonsDisabledFor
+  method: get
+  operationId: API.getPagesComparisonsDisabledFor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getGlossaryReports
+  method: get
+  operationId: API.getGlossaryReports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=API.getGlossaryMetrics
+  method: get
+  operationId: API.getGlossaryMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ApiReference.getAllowedPlugins
+  method: get
+  operationId: ApiReference.getAllowedPlugins
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ApiReference.getAllowedPluginMetadata
+  method: get
+  operationId: ApiReference.getAllowedPluginMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ApiReference.getOpenApiSpec
+  method: get
+  operationId: ApiReference.getOpenApiSpec
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Bandwidth.get
+  method: get
+  operationId: Bandwidth.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Cohorts.getCohortsOverTime
+  method: get
+  operationId: Cohorts.getCohortsOverTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Cohorts.getCohorts
+  method: get
+  operationId: Cohorts.getCohorts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Contents.getContentNames
+  method: get
+  operationId: Contents.getContentNames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Contents.getContentPieces
+  method: get
+  operationId: Contents.getContentPieces
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CoreAdminHome.deleteAllTrackingFailures
+  method: get
+  operationId: CoreAdminHome.deleteAllTrackingFailures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CoreAdminHome.deleteTrackingFailure
+  method: get
+  operationId: CoreAdminHome.deleteTrackingFailure
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CoreAdminHome.getTrackingFailures
+  method: get
+  operationId: CoreAdminHome.getTrackingFailures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.mergeCrashes
+  method: get
+  operationId: CrashAnalytics.mergeCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.unmergeCrashGroup
+  method: get
+  operationId: CrashAnalytics.unmergeCrashGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashGroups
+  method: get
+  operationId: CrashAnalytics.getCrashGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashTypes
+  method: get
+  operationId: CrashAnalytics.getCrashTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.setIgnoreCrash
+  method: get
+  operationId: CrashAnalytics.setIgnoreCrash
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getIgnoredCrashes
+  method: get
+  operationId: CrashAnalytics.getIgnoredCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashSummary
+  method: get
+  operationId: CrashAnalytics.getCrashSummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashVisitContext
+  method: get
+  operationId: CrashAnalytics.getCrashVisitContext
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getAllCrashes
+  method: get
+  operationId: CrashAnalytics.getAllCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.get
+  method: get
+  operationId: CrashAnalytics.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getAllCrashMessages
+  method: get
+  operationId: CrashAnalytics.getAllCrashMessages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashMessages
+  method: get
+  operationId: CrashAnalytics.getCrashMessages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getUnidentifiedCrashMessages
+  method: get
+  operationId: CrashAnalytics.getUnidentifiedCrashMessages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getDisappearedCrashes
+  method: get
+  operationId: CrashAnalytics.getDisappearedCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getReappearedCrashes
+  method: get
+  operationId: CrashAnalytics.getReappearedCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getNewCrashes
+  method: get
+  operationId: CrashAnalytics.getNewCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesByPageUrl
+  method: get
+  operationId: CrashAnalytics.getCrashesByPageUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesForPageUrl
+  method: get
+  operationId: CrashAnalytics.getCrashesForPageUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesByPageTitle
+  method: get
+  operationId: CrashAnalytics.getCrashesByPageTitle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesForPageTitle
+  method: get
+  operationId: CrashAnalytics.getCrashesForPageTitle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesBySource
+  method: get
+  operationId: CrashAnalytics.getCrashesBySource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesForSource
+  method: get
+  operationId: CrashAnalytics.getCrashesForSource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesByCategory
+  method: get
+  operationId: CrashAnalytics.getCrashesByCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesForCategory
+  method: get
+  operationId: CrashAnalytics.getCrashesForCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesByFirstParty
+  method: get
+  operationId: CrashAnalytics.getCrashesByFirstParty
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getCrashesByThirdParty
+  method: get
+  operationId: CrashAnalytics.getCrashesByThirdParty
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getLastCrashesOverview
+  method: get
+  operationId: CrashAnalytics.getLastCrashesOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getLastTopCrashes
+  method: get
+  operationId: CrashAnalytics.getLastTopCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getLastNewCrashes
+  method: get
+  operationId: CrashAnalytics.getLastNewCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getLastReappearedCrashes
+  method: get
+  operationId: CrashAnalytics.getLastReappearedCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CrashAnalytics.getLastDisappearedCrashes
+  method: get
+  operationId: CrashAnalytics.getLastDisappearedCrashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.getValuesForAlertInPast
+  method: get
+  operationId: CustomAlerts.getValuesForAlertInPast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.getAlert
+  method: get
+  operationId: CustomAlerts.getAlert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.getAlerts
+  method: get
+  operationId: CustomAlerts.getAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.addAlert
+  method: get
+  operationId: CustomAlerts.addAlert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.editAlert
+  method: get
+  operationId: CustomAlerts.editAlert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.deleteAlert
+  method: get
+  operationId: CustomAlerts.deleteAlert
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomAlerts.getTriggeredAlerts
+  method: get
+  operationId: CustomAlerts.getTriggeredAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.getCustomDimension
+  method: get
+  operationId: CustomDimensions.getCustomDimension
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.configureNewCustomDimension
+  method: get
+  operationId: CustomDimensions.configureNewCustomDimension
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.configureExistingCustomDimension
+  method: get
+  operationId: CustomDimensions.configureExistingCustomDimension
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.getConfiguredCustomDimensions
+  method: get
+  operationId: CustomDimensions.getConfiguredCustomDimensions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.getAvailableScopes
+  method: get
+  operationId: CustomDimensions.getAvailableScopes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomDimensions.getAvailableExtractionDimensions
+  method: get
+  operationId: CustomDimensions.getAvailableExtractionDimensions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomJsTracker.doesIncludePluginTrackersAutomatically
+  method: get
+  operationId: CustomJsTracker.doesIncludePluginTrackersAutomatically
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.duplicateCustomReport
+  method: get
+  operationId: CustomReports.duplicateCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.addCustomReport
+  method: get
+  operationId: CustomReports.addCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.updateCustomReport
+  method: get
+  operationId: CustomReports.updateCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getConfiguredReports
+  method: get
+  operationId: CustomReports.getConfiguredReports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getConfiguredReport
+  method: get
+  operationId: CustomReports.getConfiguredReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.deleteCustomReport
+  method: get
+  operationId: CustomReports.deleteCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.pauseCustomReport
+  method: get
+  operationId: CustomReports.pauseCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.resumeCustomReport
+  method: get
+  operationId: CustomReports.resumeCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getAvailableCategories
+  method: get
+  operationId: CustomReports.getAvailableCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getAvailableReportTypes
+  method: get
+  operationId: CustomReports.getAvailableReportTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getAvailableDimensions
+  method: get
+  operationId: CustomReports.getAvailableDimensions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getAvailableMetrics
+  method: get
+  operationId: CustomReports.getAvailableMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=CustomReports.getCustomReport
+  method: get
+  operationId: CustomReports.getCustomReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Dashboard.getDashboards
+  method: get
+  operationId: Dashboard.getDashboards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Dashboard.createNewDashboardForUser
+  method: get
+  operationId: Dashboard.createNewDashboardForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Dashboard.removeDashboard
+  method: get
+  operationId: Dashboard.removeDashboard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Dashboard.copyDashboardToUser
+  method: get
+  operationId: Dashboard.copyDashboardToUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Dashboard.resetDashboardLayout
+  method: get
+  operationId: Dashboard.resetDashboardLayout
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicePlugins.getPlugin
+  method: get
+  operationId: DevicePlugins.getPlugin
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getType
+  method: get
+  operationId: DevicesDetection.getType
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getBrand
+  method: get
+  operationId: DevicesDetection.getBrand
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getModel
+  method: get
+  operationId: DevicesDetection.getModel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getOsFamilies
+  method: get
+  operationId: DevicesDetection.getOsFamilies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getOsVersions
+  method: get
+  operationId: DevicesDetection.getOsVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getBrowsers
+  method: get
+  operationId: DevicesDetection.getBrowsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getBrowserVersions
+  method: get
+  operationId: DevicesDetection.getBrowserVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=DevicesDetection.getBrowserEngines
+  method: get
+  operationId: DevicesDetection.getBrowserEngines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getCategory
+  method: get
+  operationId: Events.getCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getAction
+  method: get
+  operationId: Events.getAction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getName
+  method: get
+  operationId: Events.getName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getActionFromCategoryId
+  method: get
+  operationId: Events.getActionFromCategoryId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getNameFromCategoryId
+  method: get
+  operationId: Events.getNameFromCategoryId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getCategoryFromActionId
+  method: get
+  operationId: Events.getCategoryFromActionId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getNameFromActionId
+  method: get
+  operationId: Events.getNameFromActionId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getActionFromNameId
+  method: get
+  operationId: Events.getActionFromNameId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Events.getCategoryFromNameId
+  method: get
+  operationId: Events.getCategoryFromNameId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Feedback.sendFeedbackForFeature
+  method: get
+  operationId: Feedback.sendFeedbackForFeature
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Feedback.sendFeedbackForSurvey
+  method: get
+  operationId: Feedback.sendFeedbackForSurvey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Feedback.updateFeedbackReminderDate
+  method: get
+  operationId: Feedback.updateFeedbackReminderDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.addForm
+  method: get
+  operationId: FormAnalytics.addForm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.updateForm
+  method: get
+  operationId: FormAnalytics.updateForm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getForm
+  method: get
+  operationId: FormAnalytics.getForm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getForms
+  method: get
+  operationId: FormAnalytics.getForms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getFormsByStatuses
+  method: get
+  operationId: FormAnalytics.getFormsByStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.deleteForm
+  method: get
+  operationId: FormAnalytics.deleteForm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.archiveForm
+  method: get
+  operationId: FormAnalytics.archiveForm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.get
+  method: get
+  operationId: FormAnalytics.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getSummary
+  method: get
+  operationId: FormAnalytics.getSummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getEntryFields
+  method: get
+  operationId: FormAnalytics.getEntryFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getDropOffFields
+  method: get
+  operationId: FormAnalytics.getDropOffFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getPageUrls
+  method: get
+  operationId: FormAnalytics.getPageUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getFieldTimings
+  method: get
+  operationId: FormAnalytics.getFieldTimings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getFieldSize
+  method: get
+  operationId: FormAnalytics.getFieldSize
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getUneededFields
+  method: get
+  operationId: FormAnalytics.getUneededFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getMostUsedFields
+  method: get
+  operationId: FormAnalytics.getMostUsedFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getFieldCorrections
+  method: get
+  operationId: FormAnalytics.getFieldCorrections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.updateFormFieldDisplayName
+  method: get
+  operationId: FormAnalytics.updateFormFieldDisplayName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getCounters
+  method: get
+  operationId: FormAnalytics.getCounters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getCurrentMostPopularForms
+  method: get
+  operationId: FormAnalytics.getCurrentMostPopularForms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAutoCreationSettings
+  method: get
+  operationId: FormAnalytics.getAutoCreationSettings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAvailableStatuses
+  method: get
+  operationId: FormAnalytics.getAvailableStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAllGoals
+  method: get
+  operationId: FormAnalytics.getAllGoals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAvailableFormRules
+  method: get
+  operationId: FormAnalytics.getAvailableFormRules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAvailablePageRules
+  method: get
+  operationId: FormAnalytics.getAvailablePageRules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=FormAnalytics.getAvailableConversionRuleOptions
+  method: get
+  operationId: FormAnalytics.getAvailableConversionRuleOptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getMetrics
+  method: get
+  operationId: Funnels.getMetrics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelsSummary
+  method: get
+  operationId: Funnels.getFunnelsSummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelsSummaryTotals
+  method: get
+  operationId: Funnels.getFunnelsSummaryTotals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelFlow
+  method: get
+  operationId: Funnels.getFunnelFlow
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelFlowTable
+  method: get
+  operationId: Funnels.getFunnelFlowTable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelStepSubtable
+  method: get
+  operationId: Funnels.getFunnelStepSubtable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelEntries
+  method: get
+  operationId: Funnels.getFunnelEntries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnelExits
+  method: get
+  operationId: Funnels.getFunnelExits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getGoalFunnel
+  method: get
+  operationId: Funnels.getGoalFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getSalesFunnelForSite
+  method: get
+  operationId: Funnels.getSalesFunnelForSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getFunnel
+  method: get
+  operationId: Funnels.getFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getAllActivatedFunnelsForSite
+  method: get
+  operationId: Funnels.getAllActivatedFunnelsForSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.hasAnyActivatedFunnelForSite
+  method: get
+  operationId: Funnels.hasAnyActivatedFunnelForSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.deleteGoalFunnel
+  method: get
+  operationId: Funnels.deleteGoalFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.deleteNonGoalFunnel
+  method: get
+  operationId: Funnels.deleteNonGoalFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.setGoalFunnel
+  method: get
+  operationId: Funnels.setGoalFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.saveNonGoalFunnel
+  method: get
+  operationId: Funnels.saveNonGoalFunnel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.getAvailablePatternMatches
+  method: get
+  operationId: Funnels.getAvailablePatternMatches
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Funnels.testUrlMatchesSteps
+  method: get
+  operationId: Funnels.testUrlMatchesSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getGoal
+  method: get
+  operationId: Goals.getGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getGoals
+  method: get
+  operationId: Goals.getGoals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.addGoal
+  method: get
+  operationId: Goals.addGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.updateGoal
+  method: get
+  operationId: Goals.updateGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.deleteGoal
+  method: get
+  operationId: Goals.deleteGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getItemsSku
+  method: get
+  operationId: Goals.getItemsSku
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getItemsName
+  method: get
+  operationId: Goals.getItemsName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getItemsCategory
+  method: get
+  operationId: Goals.getItemsCategory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.get
+  method: get
+  operationId: Goals.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getDaysToConversion
+  method: get
+  operationId: Goals.getDaysToConversion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Goals.getVisitsUntilConversion
+  method: get
+  operationId: Goals.getVisitsUntilConversion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.addHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.addHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.duplicateHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.duplicateHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.updateHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.updateHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmapScreenshot
+  method: get
+  operationId: HeatmapSessionRecording.deleteHeatmapScreenshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.addSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.addSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.updateSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.updateSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.getHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.getSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.pauseHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.pauseHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.resumeHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.resumeHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.deleteHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.endHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.endHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.pauseSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.pauseSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.resumeSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.resumeSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.deleteSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.deleteSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.endSessionRecording
+  method: get
+  operationId: HeatmapSessionRecording.endSessionRecording
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getHeatmaps
+  method: get
+  operationId: HeatmapSessionRecording.getHeatmaps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getSessionRecordings
+  method: get
+  operationId: HeatmapSessionRecording.getSessionRecordings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getRecordedSessions
+  method: get
+  operationId: HeatmapSessionRecording.getRecordedSessions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getRecordedSession
+  method: get
+  operationId: HeatmapSessionRecording.getRecordedSession
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedSession
+  method: get
+  operationId: HeatmapSessionRecording.deleteRecordedSession
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedPageview
+  method: get
+  operationId: HeatmapSessionRecording.deleteRecordedPageview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmapMetadata
+  method: get
+  operationId: HeatmapSessionRecording.getRecordedHeatmapMetadata
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmap
+  method: get
+  operationId: HeatmapSessionRecording.getRecordedHeatmap
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.testUrlMatchPages
+  method: get
+  operationId: HeatmapSessionRecording.testUrlMatchPages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getAvailableStatuses
+  method: get
+  operationId: HeatmapSessionRecording.getAvailableStatuses
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getAvailableTargetPageRules
+  method: get
+  operationId: HeatmapSessionRecording.getAvailableTargetPageRules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getAvailableDeviceTypes
+  method: get
+  operationId: HeatmapSessionRecording.getAvailableDeviceTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getAvailableHeatmapTypes
+  method: get
+  operationId: HeatmapSessionRecording.getAvailableHeatmapTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getAvailableSessionRecordingSampleLimits
+  method: get
+  operationId: HeatmapSessionRecording.getAvailableSessionRecordingSampleLimits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=HeatmapSessionRecording.getEventTypes
+  method: get
+  operationId: HeatmapSessionRecording.getEventTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ImageGraph.get
+  method: get
+  operationId: ImageGraph.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /index.php
   method: get
   operationId: callReportingApi
@@ -40,6 +2571,346 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /index.php?module=API&method=Insights.canGenerateInsights
+  method: get
+  operationId: Insights.canGenerateInsights
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Insights.getInsightsOverview
+  method: get
+  operationId: Insights.getInsightsOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Insights.getMoversAndShakersOverview
+  method: get
+  operationId: Insights.getMoversAndShakersOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Insights.getMoversAndShakers
+  method: get
+  operationId: Insights.getMoversAndShakers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Insights.getInsights
+  method: get
+  operationId: Insights.getInsights
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.isLanguageAvailable
+  method: get
+  operationId: LanguagesManager.isLanguageAvailable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.getAvailableLanguages
+  method: get
+  operationId: LanguagesManager.getAvailableLanguages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.getAvailableLanguagesInfo
+  method: get
+  operationId: LanguagesManager.getAvailableLanguagesInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.getAvailableLanguageNames
+  method: get
+  operationId: LanguagesManager.getAvailableLanguageNames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.getTranslationsForLanguage
+  method: get
+  operationId: LanguagesManager.getTranslationsForLanguage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.getLanguageForUser
+  method: get
+  operationId: LanguagesManager.getLanguageForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.setLanguageForUser
+  method: get
+  operationId: LanguagesManager.setLanguageForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.uses12HourClockForUser
+  method: get
+  operationId: LanguagesManager.uses12HourClockForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=LanguagesManager.set12HourClockForUser
+  method: get
+  operationId: LanguagesManager.set12HourClockForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.getCounters
+  method: get
+  operationId: Live.getCounters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.isVisitorProfileEnabled
+  method: get
+  operationId: Live.isVisitorProfileEnabled
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.getLastVisitsDetails
+  method: get
+  operationId: Live.getLastVisitsDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.getVisitorProfile
+  method: get
+  operationId: Live.getVisitorProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.getMostRecentVisitorId
+  method: get
+  operationId: Live.getMostRecentVisitorId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Live.getMostRecentVisitsDateTime
+  method: get
+  operationId: Live.getMostRecentVisitsDateTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Login.unblockBruteForceIPs
+  method: get
+  operationId: Login.unblockBruteForceIPs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getId
+  method: get
+  operationId: MarketingCampaignsReporting.getId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getName
+  method: get
+  operationId: MarketingCampaignsReporting.getName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getKeywordContentFromNameId
+  method: get
+  operationId: MarketingCampaignsReporting.getKeywordContentFromNameId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getKeyword
+  method: get
+  operationId: MarketingCampaignsReporting.getKeyword
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getSource
+  method: get
+  operationId: MarketingCampaignsReporting.getSource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getMedium
+  method: get
+  operationId: MarketingCampaignsReporting.getMedium
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getContent
+  method: get
+  operationId: MarketingCampaignsReporting.getContent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getGroup
+  method: get
+  operationId: MarketingCampaignsReporting.getGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getPlacement
+  method: get
+  operationId: MarketingCampaignsReporting.getPlacement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getSourceMedium
+  method: get
+  operationId: MarketingCampaignsReporting.getSourceMedium
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MarketingCampaignsReporting.getNameFromSourceMediumId
+  method: get
+  operationId: MarketingCampaignsReporting.getNameFromSourceMediumId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Marketplace.deleteLicenseKey
+  method: get
+  operationId: Marketplace.deleteLicenseKey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Marketplace.saveLicenseKey
+  method: get
+  operationId: Marketplace.saveLicenseKey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /matomo.php
   method: get
   operationId: trackEventGet
@@ -66,3 +2937,2713 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /index.php?module=API&method=MediaAnalytics.get
+  method: get
+  operationId: MediaAnalytics.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getCurrentNumPlays
+  method: get
+  operationId: MediaAnalytics.getCurrentNumPlays
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getCurrentSumTimeSpent
+  method: get
+  operationId: MediaAnalytics.getCurrentSumTimeSpent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getCurrentMostPlays
+  method: get
+  operationId: MediaAnalytics.getCurrentMostPlays
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getVideoResources
+  method: get
+  operationId: MediaAnalytics.getVideoResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getAudioResources
+  method: get
+  operationId: MediaAnalytics.getAudioResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getVideoTitles
+  method: get
+  operationId: MediaAnalytics.getVideoTitles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getAudioTitles
+  method: get
+  operationId: MediaAnalytics.getAudioTitles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getGroupedVideoResources
+  method: get
+  operationId: MediaAnalytics.getGroupedVideoResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getGroupedAudioResources
+  method: get
+  operationId: MediaAnalytics.getGroupedAudioResources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getVideoHours
+  method: get
+  operationId: MediaAnalytics.getVideoHours
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getAudioHours
+  method: get
+  operationId: MediaAnalytics.getAudioHours
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getVideoResolutions
+  method: get
+  operationId: MediaAnalytics.getVideoResolutions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MediaAnalytics.getPlayers
+  method: get
+  operationId: MediaAnalytics.getPlayers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.areSMSAPICredentialProvided
+  method: get
+  operationId: MobileMessaging.areSMSAPICredentialProvided
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.getSMSProvider
+  method: get
+  operationId: MobileMessaging.getSMSProvider
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.setSMSAPICredential
+  method: get
+  operationId: MobileMessaging.setSMSAPICredential
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.addPhoneNumber
+  method: get
+  operationId: MobileMessaging.addPhoneNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.resendVerificationCode
+  method: get
+  operationId: MobileMessaging.resendVerificationCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.getCreditLeft
+  method: get
+  operationId: MobileMessaging.getCreditLeft
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.getPhoneNumbers
+  method: get
+  operationId: MobileMessaging.getPhoneNumbers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.removePhoneNumber
+  method: get
+  operationId: MobileMessaging.removePhoneNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.validatePhoneNumber
+  method: get
+  operationId: MobileMessaging.validatePhoneNumber
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.deleteSMSAPICredential
+  method: get
+  operationId: MobileMessaging.deleteSMSAPICredential
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.setDelegatedManagement
+  method: get
+  operationId: MobileMessaging.setDelegatedManagement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MobileMessaging.getDelegatedManagement
+  method: get
+  operationId: MobileMessaging.getDelegatedManagement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MultiSites.getAll
+  method: get
+  operationId: MultiSites.getAll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MultiSites.getOne
+  method: get
+  operationId: MultiSites.getOne
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=MultiSites.getAllWithGroups
+  method: get
+  operationId: MultiSites.getAllWithGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.getClients
+  method: get
+  operationId: OAuth2.getClients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.getClient
+  method: get
+  operationId: OAuth2.getClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.getScopes
+  method: get
+  operationId: OAuth2.getScopes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.createClient
+  method: get
+  operationId: OAuth2.createClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.updateClient
+  method: get
+  operationId: OAuth2.updateClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.rotateSecret
+  method: get
+  operationId: OAuth2.rotateSecret
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.setClientActive
+  method: get
+  operationId: OAuth2.setClientActive
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=OAuth2.deleteClient
+  method: get
+  operationId: OAuth2.deleteClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Overlay.getTranslations
+  method: get
+  operationId: Overlay.getTranslations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Overlay.getFollowingPages
+  method: get
+  operationId: Overlay.getFollowingPages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PagePerformance.get
+  method: get
+  operationId: PagePerformance.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.deleteDataSubjects
+  method: get
+  operationId: PrivacyManager.deleteDataSubjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.exportDataSubjects
+  method: get
+  operationId: PrivacyManager.exportDataSubjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.findDataSubjects
+  method: get
+  operationId: PrivacyManager.findDataSubjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.anonymizeSomeRawData
+  method: get
+  operationId: PrivacyManager.anonymizeSomeRawData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.getAvailableVisitColumnsToAnonymize
+  method: get
+  operationId: PrivacyManager.getAvailableVisitColumnsToAnonymize
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=PrivacyManager.getAvailableLinkVisitActionColumnsToAnonymize
+  method: get
+  operationId: PrivacyManager.getAvailableLinkVisitActionColumnsToAnonymize
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.get
+  method: get
+  operationId: Referrers.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getReferrerType
+  method: get
+  operationId: Referrers.getReferrerType
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getAll
+  method: get
+  operationId: Referrers.getAll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getKeywords
+  method: get
+  operationId: Referrers.getKeywords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getSearchEnginesFromKeywordId
+  method: get
+  operationId: Referrers.getSearchEnginesFromKeywordId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getSearchEngines
+  method: get
+  operationId: Referrers.getSearchEngines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getKeywordsFromSearchEngineId
+  method: get
+  operationId: Referrers.getKeywordsFromSearchEngineId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getCampaigns
+  method: get
+  operationId: Referrers.getCampaigns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getKeywordsFromCampaignId
+  method: get
+  operationId: Referrers.getKeywordsFromCampaignId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getWebsites
+  method: get
+  operationId: Referrers.getWebsites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getUrlsFromWebsiteId
+  method: get
+  operationId: Referrers.getUrlsFromWebsiteId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getSocials
+  method: get
+  operationId: Referrers.getSocials
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getAIAssistants
+  method: get
+  operationId: Referrers.getAIAssistants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getUrlsForSocial
+  method: get
+  operationId: Referrers.getUrlsForSocial
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getEntryPageUrlsForAIAssistant
+  method: get
+  operationId: Referrers.getEntryPageUrlsForAIAssistant
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getEntryPageTitlesForAIAssistant
+  method: get
+  operationId: Referrers.getEntryPageTitlesForAIAssistant
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctSearchEngines
+  method: get
+  operationId: Referrers.getNumberOfDistinctSearchEngines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctSocialNetworks
+  method: get
+  operationId: Referrers.getNumberOfDistinctSocialNetworks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctKeywords
+  method: get
+  operationId: Referrers.getNumberOfDistinctKeywords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctCampaigns
+  method: get
+  operationId: Referrers.getNumberOfDistinctCampaigns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctWebsites
+  method: get
+  operationId: Referrers.getNumberOfDistinctWebsites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctAIAssistants
+  method: get
+  operationId: Referrers.getNumberOfDistinctAIAssistants
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Referrers.getNumberOfDistinctWebsitesUrls
+  method: get
+  operationId: Referrers.getNumberOfDistinctWebsitesUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Resolution.getResolution
+  method: get
+  operationId: Resolution.getResolution
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Resolution.getConfiguration
+  method: get
+  operationId: Resolution.getConfiguration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=RollUpReporting.addRollUp
+  method: get
+  operationId: RollUpReporting.addRollUp
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=RollUpReporting.updateRollUp
+  method: get
+  operationId: RollUpReporting.updateRollUp
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=RollUpReporting.getRollUps
+  method: get
+  operationId: RollUpReporting.getRollUps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.addReport
+  method: get
+  operationId: ScheduledReports.addReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.updateReport
+  method: get
+  operationId: ScheduledReports.updateReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.deleteReport
+  method: get
+  operationId: ScheduledReports.deleteReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.getReports
+  method: get
+  operationId: ScheduledReports.getReports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.generateReport
+  method: get
+  operationId: ScheduledReports.generateReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=ScheduledReports.sendReport
+  method: get
+  operationId: ScheduledReports.sendReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywords
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywords
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsImported
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsImported
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogle
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsGoogle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsBing
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsBing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsYandex
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsYandex
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleWeb
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsGoogleWeb
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleImage
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsGoogleImage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleVideo
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsGoogleVideo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleNews
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getKeywordsGoogleNews
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingOverviewBing
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getCrawlingOverviewBing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingOverviewYandex
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getCrawlingOverviewYandex
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingErrorExamplesBing
+  method: get
+  operationId: SearchEngineKeywordsPerformance.getCrawlingErrorExamplesBing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.isUserCanAddNewSegment
+  method: get
+  operationId: SegmentEditor.isUserCanAddNewSegment
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.delete
+  method: get
+  operationId: SegmentEditor.delete
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.update
+  method: get
+  operationId: SegmentEditor.update
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.add
+  method: get
+  operationId: SegmentEditor.add
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.star
+  method: get
+  operationId: SegmentEditor.star
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.unstar
+  method: get
+  operationId: SegmentEditor.unstar
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.get
+  method: get
+  operationId: SegmentEditor.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.getAll
+  method: get
+  operationId: SegmentEditor.getAll
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SegmentEditor.getSegmentData
+  method: get
+  operationId: SegmentEditor.getSegmentData
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SEO.getRank
+  method: get
+  operationId: SEO.getRank
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getJavascriptTag
+  method: get
+  operationId: SitesManager.getJavascriptTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getImageTrackingCode
+  method: get
+  operationId: SitesManager.getImageTrackingCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesFromGroup
+  method: get
+  operationId: SitesManager.getSitesFromGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesGroups
+  method: get
+  operationId: SitesManager.getSitesGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSiteFromId
+  method: get
+  operationId: SitesManager.getSiteFromId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSiteUrlsFromId
+  method: get
+  operationId: SitesManager.getSiteUrlsFromId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getAllSites
+  method: get
+  operationId: SitesManager.getAllSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getAllSitesId
+  method: get
+  operationId: SitesManager.getAllSitesId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesWithAdminAccess
+  method: get
+  operationId: SitesManager.getSitesWithAdminAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesWithMinimumAccess
+  method: get
+  operationId: SitesManager.getSitesWithMinimumAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesWithViewAccess
+  method: get
+  operationId: SitesManager.getSitesWithViewAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesWithAtLeastViewAccess
+  method: get
+  operationId: SitesManager.getSitesWithAtLeastViewAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesIdWithAdminAccess
+  method: get
+  operationId: SitesManager.getSitesIdWithAdminAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesIdWithViewAccess
+  method: get
+  operationId: SitesManager.getSitesIdWithViewAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesIdWithWriteAccess
+  method: get
+  operationId: SitesManager.getSitesIdWithWriteAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesIdWithAtLeastViewAccess
+  method: get
+  operationId: SitesManager.getSitesIdWithAtLeastViewAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSitesIdFromSiteUrl
+  method: get
+  operationId: SitesManager.getSitesIdFromSiteUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.addSite
+  method: get
+  operationId: SitesManager.addSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSiteSettings
+  method: get
+  operationId: SitesManager.getSiteSettings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.deleteSite
+  method: get
+  operationId: SitesManager.deleteSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.addSiteAliasUrls
+  method: get
+  operationId: SitesManager.addSiteAliasUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setSiteAliasUrls
+  method: get
+  operationId: SitesManager.setSiteAliasUrls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getIpsForRange
+  method: get
+  operationId: SitesManager.getIpsForRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setGlobalExcludedIps
+  method: get
+  operationId: SitesManager.setGlobalExcludedIps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setGlobalSearchParameters
+  method: get
+  operationId: SitesManager.setGlobalSearchParameters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSearchKeywordParametersGlobal
+  method: get
+  operationId: SitesManager.getSearchKeywordParametersGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getSearchCategoryParametersGlobal
+  method: get
+  operationId: SitesManager.getSearchCategoryParametersGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedQueryParameters
+  method: get
+  operationId: SitesManager.getExcludedQueryParameters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedQueryParametersGlobal
+  method: get
+  operationId: SitesManager.getExcludedQueryParametersGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedUserAgentsGlobal
+  method: get
+  operationId: SitesManager.getExcludedUserAgentsGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setGlobalExcludedUserAgents
+  method: get
+  operationId: SitesManager.setGlobalExcludedUserAgents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedReferrers
+  method: get
+  operationId: SitesManager.getExcludedReferrers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedReferrersGlobal
+  method: get
+  operationId: SitesManager.getExcludedReferrersGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setGlobalExcludedReferrers
+  method: get
+  operationId: SitesManager.setGlobalExcludedReferrers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getKeepURLFragmentsGlobal
+  method: get
+  operationId: SitesManager.getKeepURLFragmentsGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setKeepURLFragmentsGlobal
+  method: get
+  operationId: SitesManager.setKeepURLFragmentsGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExcludedIpsGlobal
+  method: get
+  operationId: SitesManager.getExcludedIpsGlobal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getDefaultCurrency
+  method: get
+  operationId: SitesManager.getDefaultCurrency
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setDefaultCurrency
+  method: get
+  operationId: SitesManager.setDefaultCurrency
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getDefaultTimezone
+  method: get
+  operationId: SitesManager.getDefaultTimezone
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setDefaultTimezone
+  method: get
+  operationId: SitesManager.setDefaultTimezone
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.setGlobalQueryParamExclusion
+  method: get
+  operationId: SitesManager.setGlobalQueryParamExclusion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getExclusionTypeForQueryParams
+  method: get
+  operationId: SitesManager.getExclusionTypeForQueryParams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.updateSite
+  method: get
+  operationId: SitesManager.updateSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getCurrencyList
+  method: get
+  operationId: SitesManager.getCurrencyList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getCurrencySymbols
+  method: get
+  operationId: SitesManager.getCurrencySymbols
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.isTimezoneSupportEnabled
+  method: get
+  operationId: SitesManager.isTimezoneSupportEnabled
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getTimezonesList
+  method: get
+  operationId: SitesManager.getTimezonesList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getTimezoneName
+  method: get
+  operationId: SitesManager.getTimezoneName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getUniqueSiteTimezones
+  method: get
+  operationId: SitesManager.getUniqueSiteTimezones
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.renameGroup
+  method: get
+  operationId: SitesManager.renameGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getPatternMatchSites
+  method: get
+  operationId: SitesManager.getPatternMatchSites
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=SitesManager.getNumWebsitesToDisplayPerPage
+  method: get
+  operationId: SitesManager.getNumWebsitesToDisplayPerPage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableContexts
+  method: get
+  operationId: TagManager.getAvailableContexts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableEnvironments
+  method: get
+  operationId: TagManager.getAvailableEnvironments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableEnvironmentsWithPublishCapability
+  method: get
+  operationId: TagManager.getAvailableEnvironmentsWithPublishCapability
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableTagFireLimits
+  method: get
+  operationId: TagManager.getAvailableTagFireLimits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableComparisons
+  method: get
+  operationId: TagManager.getAvailableComparisons
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableTagTypesInContext
+  method: get
+  operationId: TagManager.getAvailableTagTypesInContext
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableTriggerTypesInContext
+  method: get
+  operationId: TagManager.getAvailableTriggerTypesInContext
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableVariableTypesInContext
+  method: get
+  operationId: TagManager.getAvailableVariableTypesInContext
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerEmbedCode
+  method: get
+  operationId: TagManager.getContainerEmbedCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerInstallInstructions
+  method: get
+  operationId: TagManager.getContainerInstallInstructions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerTags
+  method: get
+  operationId: TagManager.getContainerTags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.createDefaultContainerForSite
+  method: get
+  operationId: TagManager.createDefaultContainerForSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.addContainerTag
+  method: get
+  operationId: TagManager.addContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.updateContainerTag
+  method: get
+  operationId: TagManager.updateContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.deleteContainerTag
+  method: get
+  operationId: TagManager.deleteContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.pauseContainerTag
+  method: get
+  operationId: TagManager.pauseContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.resumeContainerTag
+  method: get
+  operationId: TagManager.resumeContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerTag
+  method: get
+  operationId: TagManager.getContainerTag
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerTriggerReferences
+  method: get
+  operationId: TagManager.getContainerTriggerReferences
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerTriggers
+  method: get
+  operationId: TagManager.getContainerTriggers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.addContainerTrigger
+  method: get
+  operationId: TagManager.addContainerTrigger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.updateContainerTrigger
+  method: get
+  operationId: TagManager.updateContainerTrigger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.deleteContainerTrigger
+  method: get
+  operationId: TagManager.deleteContainerTrigger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerTrigger
+  method: get
+  operationId: TagManager.getContainerTrigger
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerVariableReferences
+  method: get
+  operationId: TagManager.getContainerVariableReferences
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerVariables
+  method: get
+  operationId: TagManager.getContainerVariables
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getAvailableContainerVariables
+  method: get
+  operationId: TagManager.getAvailableContainerVariables
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.addContainerVariable
+  method: get
+  operationId: TagManager.addContainerVariable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.updateContainerVariable
+  method: get
+  operationId: TagManager.updateContainerVariable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.deleteContainerVariable
+  method: get
+  operationId: TagManager.deleteContainerVariable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerVariable
+  method: get
+  operationId: TagManager.getContainerVariable
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainers
+  method: get
+  operationId: TagManager.getContainers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.addContainer
+  method: get
+  operationId: TagManager.addContainer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.updateContainer
+  method: get
+  operationId: TagManager.updateContainer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.createContainerVersion
+  method: get
+  operationId: TagManager.createContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.updateContainerVersion
+  method: get
+  operationId: TagManager.updateContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerVersions
+  method: get
+  operationId: TagManager.getContainerVersions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainerVersion
+  method: get
+  operationId: TagManager.getContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.deleteContainerVersion
+  method: get
+  operationId: TagManager.deleteContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.publishContainerVersion
+  method: get
+  operationId: TagManager.publishContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.deleteContainer
+  method: get
+  operationId: TagManager.deleteContainer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.getContainer
+  method: get
+  operationId: TagManager.getContainer
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.enablePreviewMode
+  method: get
+  operationId: TagManager.enablePreviewMode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.disablePreviewMode
+  method: get
+  operationId: TagManager.disablePreviewMode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.changeDebugUrl
+  method: get
+  operationId: TagManager.changeDebugUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.exportContainerVersion
+  method: get
+  operationId: TagManager.exportContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TagManager.importContainerVersion
+  method: get
+  operationId: TagManager.importContainerVersion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Tour.getChallenges
+  method: get
+  operationId: Tour.getChallenges
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Tour.skipChallenge
+  method: get
+  operationId: Tour.skipChallenge
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Tour.getLevel
+  method: get
+  operationId: Tour.getLevel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Transitions.getTransitionsForPageTitle
+  method: get
+  operationId: Transitions.getTransitionsForPageTitle
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Transitions.getTransitionsForPageUrl
+  method: get
+  operationId: Transitions.getTransitionsForPageUrl
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Transitions.getTransitionsForAction
+  method: get
+  operationId: Transitions.getTransitionsForAction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=Transitions.isPeriodAllowed
+  method: get
+  operationId: Transitions.isPeriodAllowed
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=TwoFactorAuth.resetTwoFactorAuth
+  method: get
+  operationId: TwoFactorAuth.resetTwoFactorAuth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getCountry
+  method: get
+  operationId: UserCountry.getCountry
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getContinent
+  method: get
+  operationId: UserCountry.getContinent
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getRegion
+  method: get
+  operationId: UserCountry.getRegion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getCity
+  method: get
+  operationId: UserCountry.getCity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getCountryCodeMapping
+  method: get
+  operationId: UserCountry.getCountryCodeMapping
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getLocationFromIP
+  method: get
+  operationId: UserCountry.getLocationFromIP
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.setLocationProvider
+  method: get
+  operationId: UserCountry.setLocationProvider
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserCountry.getNumberOfDistinctCountries
+  method: get
+  operationId: UserCountry.getNumberOfDistinctCountries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserId.getUsers
+  method: get
+  operationId: UserId.getUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserLanguage.getLanguage
+  method: get
+  operationId: UserLanguage.getLanguage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UserLanguage.getLanguageCode
+  method: get
+  operationId: UserLanguage.getLanguageCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getAvailableRoles
+  method: get
+  operationId: UsersManager.getAvailableRoles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getAvailableCapabilities
+  method: get
+  operationId: UsersManager.getAvailableCapabilities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.setUserPreference
+  method: get
+  operationId: UsersManager.setUserPreference
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUserPreference
+  method: get
+  operationId: UsersManager.getUserPreference
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersPlusRole
+  method: get
+  operationId: UsersManager.getUsersPlusRole
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsers
+  method: get
+  operationId: UsersManager.getUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersLogin
+  method: get
+  operationId: UsersManager.getUsersLogin
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersSitesFromAccess
+  method: get
+  operationId: UsersManager.getUsersSitesFromAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersAccessFromSite
+  method: get
+  operationId: UsersManager.getUsersAccessFromSite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersWithSiteAccess
+  method: get
+  operationId: UsersManager.getUsersWithSiteAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getSitesAccessFromUser
+  method: get
+  operationId: UsersManager.getSitesAccessFromUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getSitesAccessForUser
+  method: get
+  operationId: UsersManager.getSitesAccessForUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUser
+  method: get
+  operationId: UsersManager.getUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUserByEmail
+  method: get
+  operationId: UsersManager.getUserByEmail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.addUser
+  method: get
+  operationId: UsersManager.addUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.inviteUser
+  method: get
+  operationId: UsersManager.inviteUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.setSuperUserAccess
+  method: get
+  operationId: UsersManager.setSuperUserAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.hasSuperUserAccess
+  method: get
+  operationId: UsersManager.hasSuperUserAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUsersHavingSuperUserAccess
+  method: get
+  operationId: UsersManager.getUsersHavingSuperUserAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.updateUser
+  method: get
+  operationId: UsersManager.updateUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.deleteUser
+  method: get
+  operationId: UsersManager.deleteUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.logoutUser
+  method: get
+  operationId: UsersManager.logoutUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.userExists
+  method: get
+  operationId: UsersManager.userExists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.userEmailExists
+  method: get
+  operationId: UsersManager.userEmailExists
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.getUserLoginFromUserEmail
+  method: get
+  operationId: UsersManager.getUserLoginFromUserEmail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.setUserAccess
+  method: get
+  operationId: UsersManager.setUserAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.addCapabilities
+  method: get
+  operationId: UsersManager.addCapabilities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.removeCapabilities
+  method: get
+  operationId: UsersManager.removeCapabilities
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.createAppSpecificTokenAuth
+  method: get
+  operationId: UsersManager.createAppSpecificTokenAuth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.newsletterSignup
+  method: get
+  operationId: UsersManager.newsletterSignup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.resendInvite
+  method: get
+  operationId: UsersManager.resendInvite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=UsersManager.generateInviteLink
+  method: get
+  operationId: UsersManager.generateInviteLink
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitFrequency.get
+  method: get
+  operationId: VisitFrequency.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitTime.getVisitInformationPerLocalTime
+  method: get
+  operationId: VisitTime.getVisitInformationPerLocalTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitTime.getVisitInformationPerServerTime
+  method: get
+  operationId: VisitTime.getVisitInformationPerServerTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitTime.getByDayOfWeek
+  method: get
+  operationId: VisitTime.getByDayOfWeek
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitorInterest.getNumberOfVisitsPerVisitDuration
+  method: get
+  operationId: VisitorInterest.getNumberOfVisitsPerVisitDuration
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitorInterest.getNumberOfVisitsPerPage
+  method: get
+  operationId: VisitorInterest.getNumberOfVisitsPerPage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitorInterest.getNumberOfVisitsByDaysSinceLast
+  method: get
+  operationId: VisitorInterest.getNumberOfVisitsByDaysSinceLast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitorInterest.getNumberOfVisitsByVisitCount
+  method: get
+  operationId: VisitorInterest.getNumberOfVisitsByVisitCount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.get
+  method: get
+  operationId: VisitsSummary.get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getVisits
+  method: get
+  operationId: VisitsSummary.getVisits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getUniqueVisitors
+  method: get
+  operationId: VisitsSummary.getUniqueVisitors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getUsers
+  method: get
+  operationId: VisitsSummary.getUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getActions
+  method: get
+  operationId: VisitsSummary.getActions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getMaxActions
+  method: get
+  operationId: VisitsSummary.getMaxActions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getBounceCount
+  method: get
+  operationId: VisitsSummary.getBounceCount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getVisitsConverted
+  method: get
+  operationId: VisitsSummary.getVisitsConverted
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getSumVisitsLength
+  method: get
+  operationId: VisitsSummary.getSumVisitsLength
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /index.php?module=API&method=VisitsSummary.getSumVisitsLengthPretty
+  method: get
+  operationId: VisitsSummary.getSumVisitsLengthPretty
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

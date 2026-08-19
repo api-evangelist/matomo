@@ -1,0 +1,80 @@
+# Matomo
+
+> Matomo is an open source web analytics platform — self-hosted (On-Premise) or vendor-hosted (Matomo Cloud) — that gives an organisation full ownership of its analytics data. Formerly Piwik. Its API surface is unusual and worth understanding before you call it: there is no single vendor API host, because the API is served by the customer's own Matomo deployment, and the set of available methods depends on which Matomo version is installed and which plugins are activated.
+
+## How to call it
+
+- Reporting API entrypoint: `https://{matomo_host}/index.php?module=API&method=<Module>.<Action>`
+- Tracking API entrypoint: `https://{matomo_host}/matomo.php`
+- `{matomo_host}` is the customer's own instance. Matomo's public demo is `demo.matomo.cloud`.
+- **Always pass `format=json`.** The default response format is `xml`.
+- Authenticate with a Matomo auth token: as `token_auth` in the POST body (preferred), as a query parameter, or as `Authorization: Bearer <token_auth>`.
+- An error can be returned with HTTP 200. Check `result` in the body, not only the status code.
+- Pagination is `filter_limit` / `filter_offset`. Batch with `API.getBulkRequest`.
+- There is no idempotency key. Writes executed twice happen twice.
+
+## Discover the surface before calling it
+
+- API.getMatomoVersion — confirm the instance and version
+- API.getReportMetadata — the authoritative catalog of reports on THIS instance
+- API.isPluginActivated — check a capability exists before depending on it
+- API.getSegmentsMetadata — valid segment dimensions for this instance
+- ApiReference.getOpenApiSpec — returns a generated OpenAPI 3.1.0 document per plugin
+
+## APIs
+
+- [Reporting API](https://developer.matomo.org/api-reference/reporting-api): RPC dispatch through a single /index.php entrypoint; 556 documented operations across 59 plugins
+- [Tracking API](https://developer.matomo.org/api-reference/tracking-api): server-side event and pageview ingest at /matomo.php; exempt from rate limiting
+- [Segmentation](https://developer.matomo.org/api-reference/reporting-api-segmentation): the `segment=` expression language accepted by 193 operations
+- [Report metadata](https://developer.matomo.org/api-reference/reporting-api-metadata): machine-readable report catalog
+- [Tag Manager JavaScript API](https://developer.matomo.org/api-reference/tagmanager/javascript-api-reference): the `_mtm` data layer
+- [MCP server](https://matomo.org/guide/apis/mcp-model-context-protocol/): first-party Model Context Protocol server, 19 tools
+
+## Specs
+
+The 59 OpenAPI 3.1.0 documents in this repo are not hand-written. They are the documents Matomo's own first-party `ApiReference` plugin generates, harvested verbatim from a live instance via `ApiReference.getOpenApiSpec`. Largest surfaces:
+
+- [SitesManager](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-sites-manager-openapi.json) — 53 operations
+- [TagManager](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-tag-manager-openapi.json) — 47 operations
+- [UsersManager](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-users-manager-openapi.json) — 32 operations
+- [CrashAnalytics](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-crash-analytics-openapi.json) — 31 operations
+- [HeatmapSessionRecording](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-heatmap-session-recording-openapi.json) — 31 operations
+- [FormAnalytics](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-form-analytics-openapi.json) — 26 operations
+- [Referrers](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-referrers-openapi.json) — 23 operations
+- [Funnels](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-funnels-openapi.json) — 19 operations
+- [API core](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-api-openapi.json) — 17 operations, including the metadata and bulk-request methods
+- [VisitsSummary](https://raw.githubusercontent.com/api-evangelist/matomo/main/openapi/matomo-visits-summary-openapi.json) — 10 operations
+
+Known deviations in the generated documents: path keys carry a query string, and some `content` media-type entries serialize as empty arrays. Parse them as JSON; a strict OpenAPI validator will reject them.
+
+## Agent surface
+
+- [MCP manifest](https://raw.githubusercontent.com/api-evangelist/matomo/main/mcp/matomo-mcp.yml) — endpoint `https://{matomo_host}/index.php?module=API&method=McpServer.mcp&format=mcp`, remote HTTP, Bearer or OAuth 2.0
+- [Tool crosswalk](https://raw.githubusercontent.com/api-evangelist/matomo/main/mcp/matomo-tool-crosswalk.yml) — each of the 19 MCP tools bound to its backing REST operations
+- [Agent skills](https://raw.githubusercontent.com/api-evangelist/matomo/main/skills/_index.yml) — five packaged flows
+- No A2A agent card is published on any Matomo host.
+
+## Auth and limits
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/matomo/main/authentication/matomo-authentication.yml) — token_auth (query/body), HTTP Bearer, OAuth 2.0
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/matomo/main/scopes/matomo-scopes.yml) — matomo:read, matomo:write, matomo:admin, discovered via RFC 8414 metadata
+- [Rate limits](https://raw.githubusercontent.com/api-evangelist/matomo/main/rate-limits/matomo-rate-limits.yml) — Cloud only: 2,000/10min or 350/1min per IP; Live 200/min; Transitions 500/5min; 8 concurrent raw-data queries per account; 429 with no rate-limit headers
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/matomo/main/conventions/matomo-conventions.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/matomo/main/errors/matomo-problem-types.yml)
+
+## Docs
+
+- [Developer documentation](https://developer.matomo.org)
+- [Getting started](https://developer.matomo.org/guides/getting-started-part-1)
+- [Command line (console)](https://developer.matomo.org/guides/piwik-on-the-command-line)
+- [Tracking client libraries](https://developer.matomo.org/api-reference/tracking-api-clients)
+- [JavaScript tracking guide](https://developer.matomo.org/guides/tracking-javascript-guide)
+- [Changelog](https://matomo.org/changelog/)
+- [Developer changelog](https://developer.matomo.org/changelog)
+- [Plugin marketplace](https://plugins.matomo.org)
+- [Pricing](https://matomo.org/pricing/)
+- [Status (Cloud)](https://status.matomo.cloud/)
+- [Security](https://matomo.org/security/)
+- [Public demo](https://demo.matomo.cloud)
+- [Forum](https://forum.matomo.org)
+- [GitHub](https://github.com/matomo-org)

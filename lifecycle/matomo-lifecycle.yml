@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://matomo.org/changelog/, https://status.matomo.cloud/,
+  https://matomo.org/roadmap/, https://developer.matomo.org/changelog,
+  and the 59 first-party OpenAPI documents in openapi/
+versioning:
+  scheme: semver-platform
+  current: 5.12.0
+  current_release_date: '2026-07-14'
+  docs: https://matomo.org/changelog/
+  api_versioning: none
+  note: >-
+    The Reporting API carries NO version in the URL, in a header, or in the spec beyond
+    a flat info.version of 1.0.0 on every generated document. The API surface is
+    versioned by the Matomo RELEASE installed on the instance and by which plugins are
+    activated — two instances on the same Matomo version can expose different methods.
+    This is the defining lifecycle property of a self-hosted product and it means an
+    agent must discover the surface at runtime (API.getReportMetadata /
+    ApiReference.getOpenApiSpec) rather than assume it.
+  concurrent_branches:
+    - branch: '5.x'
+      status: current
+    - branch: '4.x'
+      status: maintenance
+      last_seen: 4.16.2 (2025-11-20)
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  spec_deprecated_operations: 0
+  migration_guides:
+    - https://developer.matomo.org/guides/migrate-matomo-4-to-5
+    - https://developer.matomo.org/guides/migrate-matomo-3-to-4
+    - https://developer.matomo.org/guides/migrate-piwik-2-to-3
+  note: >-
+    Matomo publishes NO deprecation policy. There is no /guides/deprecation page
+    (probed 2026-08-13, HTTP 404) — what exists instead is a per-major-version
+    migration guide written after the fact. Matomo emits no RFC 8594 Sunset or
+    Deprecation response headers, and NOT ONE of the 556 operations across the 59
+    generated OpenAPI documents carries `deprecated: true`. A client therefore gets no
+    deprecation signal from the runtime, the contract, or a stated policy. No
+    `Deprecation` pointer is emitted in apis.yml for this provider, because a migration
+    guide published alongside a breaking release is not a deprecation policy.
+sla:
+  url: https://matomo.org/support-plans/
+  uptime_target: null
+  note: >-
+    No public numeric uptime commitment was found. Support response times are published
+    per On-Premise plan (12-hour on Team/Business/Enterprise, 6-hour on VIP); those are
+    support SLAs, not availability SLAs. Community/self-hosted has none by definition —
+    the customer runs the instance.
+status_page: https://status.matomo.cloud/
+status_page_platform: Zoho StatusIQ (Site24x7)
+status_page_scope: >-
+  Matomo Cloud only. A self-hosted Matomo instance has no vendor status page — its
+  availability is the customer's own.
+status_page_machine_readable: false
+status_page_note: >-
+  Verified live 2026-08-13 (GET 200). No Statuspage-style /api/v2/summary.json is
+  exposed (404), so there is no machine-readable status feed for an agent to poll.
+changelog:
+  product: https://matomo.org/changelog/
+  developer: https://developer.matomo.org/changelog
+  see: changelog/matomo-changelog.yml
+roadmap: https://matomo.org/roadmap/
+support_channels:
+  - https://matomo.org/support/
+  - https://forum.matomo.org
+  - https://github.com/matomo-org/matomo/issues
+deprecated_operations: []

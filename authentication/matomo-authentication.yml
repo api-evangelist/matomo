@@ -1,20 +1,83 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/matomo-openapi.yml, openapi/matomo-tracking-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.matomo.org/api-reference/reporting-api#authenticate-to-the-api-via-token_auth-parameter,
+  https://demo.matomo.cloud/.well-known/oauth-authorization-server,
+  https://github.com/matomo-org/plugin-McpServer/blob/5.x-dev/docs/faq.md,
+  and the 59 first-party OpenAPI 3.1.0 documents in openapi/
+docs: https://matomo.org/faq/general/faq_114/
 summary:
-  types:
-  - apiKey
-  api_key_in:
-  - query
+  types: [apiKey, http, oauth2]
+  api_key_in: [query, body]
+  http_schemes: [bearer]
+  oauth2_flows: [authorizationCode, clientCredentials, refreshToken]
+  model: >-
+    One credential type — the Matomo auth token — carried three different ways, plus
+    optional OAuth 2.0 via the first-party OAuth2 plugin. A token inherits the exact
+    permissions of the Matomo user who created it; there is no separate API-key
+    permission model.
 schemes:
-- name: TokenAuth
-  type: apiKey
-  in: query
-  parameter: token_auth
-  description: |-
-    Matomo auth token created in Administration > Personal > Security >
-    Auth tokens. May be passed as a query parameter or, preferably, in
-    the POST body.
-  sources:
-  - openapi/matomo-openapi.yml
-  - openapi/matomo-tracking-openapi.yml
+  - name: TokenAuth
+    type: apiKey
+    in: query
+    parameter: token_auth
+    description: >-
+      Matomo auth token created in Administration > Personal > Security > Auth tokens.
+      Works as a query parameter but Matomo recommends the POST body instead so the
+      token does not land in URLs and access logs.
+    sources:
+      - openapi/matomo-index-php-api-openapi.yml
+      - openapi/matomo-matomo-php-api-openapi.yml
+  - name: TokenAuthBody
+    type: apiKey
+    in: body
+    parameter: token_auth
+    description: Recommended transport — the token is sent as a POST form field.
+    sources:
+      - https://developer.matomo.org/api-reference/reporting-api
+  - name: MatomoToken
+    type: http
+    scheme: bearer
+    description: >-
+      The Matomo auth token sent as an HTTP Bearer token. This is the scheme declared
+      in every one of the 59 OpenAPI documents Matomo's own ApiReference plugin
+      generates, and the scheme the MCP endpoint requires.
+    sources:
+      - openapi/matomo-api-openapi.json
+      - openapi/matomo-sites-manager-openapi.json
+      - openapi/matomo-users-manager-openapi.json
+  - name: OAuth2
+    type: oauth2
+    description: >-
+      OAuth 2.0 authorization server, available when the first-party Matomo OAuth2
+      plugin is installed and enabled. Discovered live via RFC 8414 metadata.
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://{matomo_host}/index.php?module=OAuth2&action=authorize
+        tokenUrl: https://{matomo_host}/index.php?module=OAuth2&action=token
+        scopes: [matomo:read, matomo:write, matomo:admin]
+      - flow: clientCredentials
+        tokenUrl: https://{matomo_host}/index.php?module=OAuth2&action=token
+        scopes: [matomo:read, matomo:write, matomo:admin]
+    pkce: [S256, plain]
+    sources:
+      - well-known/matomo-oauth-authorization-server.json
+      - openapi/matomo-oauth2-openapi.json
+    see: scopes/matomo-scopes.yml
+mfa:
+  supported: true
+  note: Matomo ships a first-party TwoFactorAuth plugin for UI login (not for API tokens).
+token_management:
+  create_ui: Administration > Personal > Security > Auth tokens
+  create_api: UsersManager.createAppSpecificTokenAuth
+  scope_note: >-
+    App-specific tokens can be created programmatically, but they still inherit the
+    creating user's full permissions — there is no way to mint a narrower token.
+notes:
+  - >-
+    Because Matomo is self-hosted or Matomo Cloud, credentials are issued by the
+    customer's own instance. There is no vendor-issued API key and no central developer
+    account.
+  - >-
+    The token grants whatever the user has. Least-privilege is achieved by creating a
+    dedicated low-role Matomo USER and minting the token as that user.

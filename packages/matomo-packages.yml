@@ -1,0 +1,171 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.matomo.org/api-reference/tracking-api-clients plus live registry
+  metadata reads of packagist.org, registry.npmjs.org, search.maven.org, api.nuget.org
+  and the matomo-org GitHub release feeds, 2026-08-13
+official_count: 7
+packages:
+  - language: php
+    registry: packagist
+    name: matomo/matomo-php-tracker
+    url: https://packagist.org/packages/matomo/matomo-php-tracker
+    repository: https://github.com/matomo-org/matomo-php-tracker
+    install: composer require matomo/matomo-php-tracker
+    official: true
+    version: 4.0.1
+    published: '2026-08-03'
+    role: Tracking API client
+  - language: php
+    registry: packagist
+    name: matomo/matomo
+    url: https://packagist.org/packages/matomo/matomo
+    repository: https://github.com/matomo-org/matomo
+    install: composer create-project matomo/matomo
+    official: true
+    version: 5.12.0-b1
+    published: '2026-06-29'
+    role: >-
+      The Matomo platform itself, distributed as a Composer package. This is the server,
+      not a client SDK.
+    note: >-
+      Packagist's latest tagged release here is a beta; the stable release train is
+      published at https://matomo.org/changelog/ and on GitHub (5.12.0, 2026-07-14).
+  - language: php
+    registry: packagist
+    name: matomo/device-detector
+    url: https://packagist.org/packages/matomo/device-detector
+    repository: https://github.com/matomo-org/device-detector
+    install: composer require matomo/device-detector
+    official: true
+    version: 6.5.1
+    published: '2026-05-27'
+    role: >-
+      Universal device-detection library. First-party, widely reused outside Matomo
+      (28M+ installs) — the most-adopted thing Matomo ships.
+  - language: java
+    registry: maven
+    name: org.piwik.java.tracking:matomo-java-tracker
+    url: https://central.sonatype.com/artifact/org.piwik.java.tracking/matomo-java-tracker
+    repository: https://github.com/matomo-org/matomo-java-tracker
+    install: 'implementation "org.piwik.java.tracking:matomo-java-tracker:3.4.0"'
+    official: true
+    version: 3.4.0
+    published: '2024-04-19'
+    role: Tracking API client
+    note: >-
+      DECAY SIGNAL. Maven Central's newest published artifact is 3.4.0 (2024-04-19),
+      but the GitHub repository tagged v4.0.0 on 2026-05-11. The release the docs point
+      developers at has not reached the registry a Java consumer resolves from — a Java
+      user running `implementation ...:matomo-java-tracker` today gets a build that is
+      more than two years old.
+  - language: swift
+    registry: cdn
+    name: MatomoTracker
+    url: https://github.com/matomo-org/matomo-sdk-ios
+    repository: https://github.com/matomo-org/matomo-sdk-ios
+    install: 'Swift Package Manager: https://github.com/matomo-org/matomo-sdk-ios (or CocoaPods `pod ''MatomoTracker''`)'
+    official: true
+    version: 7.8.0
+    published: '2025-12-12'
+    role: iOS / macOS tracking SDK
+    note: >-
+      Distributed via SPM and CocoaPods, neither of which exposes a metadata endpoint of
+      the kind npm/PyPI/Packagist do. Version and date read from the repository's
+      published release feed (tag v7.8.0).
+  - language: java
+    registry: cdn
+    name: matomo-sdk-android
+    url: https://github.com/matomo-org/matomo-sdk-android
+    repository: https://github.com/matomo-org/matomo-sdk-android
+    install: 'implementation "com.github.matomo-org:matomo-sdk-android:4.4" (JitPack)'
+    official: true
+    version: '4.4'
+    published: '2025-09-04'
+    role: Android tracking SDK
+    note: >-
+      Published through JitPack rather than Maven Central, so there is no Sonatype
+      metadata endpoint to query. Version and date read from the repository's published
+      release feed (tag 4.4).
+  - language: javascript
+    registry: npm
+    name: matomo-tracker
+    url: https://www.npmjs.com/package/matomo-tracker
+    repository: https://github.com/matomo-org/matomo-nodejs-tracker
+    install: npm install matomo-tracker
+    official: true
+    version: 2.2.4
+    published: '2020-08-25'
+    role: Node.js Tracking API client
+    note: >-
+      DECAY SIGNAL, and the sharpest one in this repo. The repository sits in the
+      matomo-org GitHub organisation, but the last npm publish is from 2020-08-25 —
+      almost six years stale against a platform that shipped 5.12.0 in July 2026. The
+      repo has tagged v3.0.0-beta.3 (2022-07-05) which was never released to npm.
+      Matomo's own tracking-clients page lists Node.js under "other community clients"
+      rather than as an official SDK.
+  - language: csharp
+    registry: nuget
+    name: Matomo.Tracker
+    url: https://www.nuget.org/packages/Matomo.Tracker
+    repository: https://github.com/matomo-org/matomo-dotnet-tracker
+    install: dotnet add package Matomo.Tracker
+    official: false
+    version: 1.0.0
+    published: '2021-05-27'
+    role: .NET Tracking API client
+    note: >-
+      Matomo's docs list the C# client as official and point at
+      matomo-org/matomo-dotnet-tracker, but that repository publishes no GitHub releases
+      and the NuGet package `Matomo.Tracker` carries a single 1.0.0 version from
+      2021-05-27 authored by "Administrator" with no verifiable link back to the
+      matomo-org organisation. Marked official:false because first-party ownership of
+      the REGISTRY entry could not be established — the repository is first-party, the
+      package listing is not provably so.
+  - language: javascript
+    registry: cdn
+    name: matomo.js (JavaScript Tracking Client)
+    url: https://developer.matomo.org/guides/tracking-javascript-guide
+    install: '<script src="//{matomo_host}/matomo.js"></script>'
+    official: true
+    version: null
+    published: null
+    role: Browser tracking client
+    note: >-
+      Matomo's primary and most-used client is not distributed through any registry. It
+      is served from the customer's own Matomo instance at /matomo.js and floats to
+      whatever version that instance is running, so there is nothing to pin and no
+      metadata endpoint to read. A consumer cannot tell what version they are loading
+      either — recording null is the honest result, not a gap in this probe.
+not_first_party:
+  - registry: pypi
+    name: matomo
+    url: https://pypi.org/project/matomo/
+    version: 1.0.0
+    owner: github.com/samastur/matomo
+    note: >-
+      Community package, NOT Matomo's. Matomo publishes no official Python client;
+      the docs list Python under community integrations. Recorded so a later pass does
+      not mistake it for first-party.
+  - registry: rubygems
+    name: matomo
+    url: https://rubygems.org/gems/matomo
+    version: 0.0.0
+    owner: github.com/hyperscalegr/matomo
+    note: Placeholder gem ("Nothing Yet"), not first-party.
+plugins:
+  distribution: https://plugins.matomo.org
+  note: >-
+    Matomo's real extension distribution channel is its own plugin marketplace, not a
+    language package registry. Server-side capability (including the MCP server) ships
+    as Matomo plugins installed into the instance.
+  first_party_examples:
+    - name: McpServer
+      version: 5.1.0
+      repository: https://github.com/matomo-org/plugin-McpServer
+      published: '2026-08-10'
+    - name: ApiReference
+      repository: https://github.com/matomo-org/plugin-ApiReference
+      note: Generates the OpenAPI 3.1.0 documents harvested into openapi/.
+    - name: OAuth2
+      url: https://plugins.matomo.org/OAuth2

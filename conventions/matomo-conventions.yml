@@ -1,0 +1,126 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://developer.matomo.org/api-reference/reporting-api,
+  https://developer.matomo.org/api-reference/tracking-api,
+  https://matomo.org/faq/troubleshooting/matomo-cloud-api-usage-limits/,
+  and the 59 first-party OpenAPI 3.1.0 documents in openapi/
+docs: https://developer.matomo.org/api-reference/reporting-api
+summary: >-
+  Matomo does not expose a resource-oriented REST surface. Every Reporting API call is
+  an RPC dispatch through a single `/index.php` entrypoint, selected by `module=API` and
+  `method=Module.Action`. Tracking is a second, separate entrypoint at `/matomo.php`.
+  The API host is the customer's own Matomo deployment (self-hosted or Matomo Cloud),
+  so there is no single vendor base URL.
+request_style:
+  shape: rpc-over-query-string
+  reporting_entrypoint: /index.php?module=API&method=<Module>.<Action>
+  tracking_entrypoint: /matomo.php
+  methods:
+    - GET
+    - POST
+  post_note: >-
+    POST is recommended so the auth token travels in the request body rather than the
+    query string and the URL/access log.
+  content_type_in: application/x-www-form-urlencoded
+authentication:
+  see: authentication/matomo-authentication.yml
+  styles:
+    - name: token_auth parameter
+      transport: query parameter or POST body field `token_auth`
+      preferred: POST body
+    - name: Bearer token
+      transport: 'Authorization: Bearer <token_auth>'
+      note: The form the generated OpenAPI declares (`MatomoToken`, http/bearer) and the form the MCP endpoint requires.
+    - name: OAuth 2.0
+      transport: Authorization Code / Client Credentials / Refresh Token
+      note: Requires the Matomo OAuth2 plugin. See scopes/matomo-scopes.yml.
+response_formats:
+  parameter: format
+  default: xml
+  values: [xml, json, csv, tsv, html, rss, original]
+  note: >-
+    The DEFAULT is xml, not json. Any agent that assumes JSON without sending
+    `format=json` will get XML back. This is the single most common Matomo integration bug.
+pagination:
+  style: offset
+  params:
+    limit: filter_limit
+    offset: filter_offset
+  extras:
+    - filter_truncate
+    - filter_sort_column
+    - filter_sort_order
+    - filter_pattern
+    - filter_column
+    - filter_pattern_recursive
+    - filter_column_recursive
+    - filter_excludelowpop
+    - filter_excludelowpop_value
+    - keep_summary_row
+  note: >-
+    `filter_limit=-1` returns all rows. Generic filters can be disabled with
+    `disable_generic_filters=1`.
+  mcp_pagination:
+    style: opaque-cursor
+    params: [limit, cursor]
+    note: The MCP tool surface uses opaque cursors, NOT filter_limit/filter_offset.
+field_selection:
+  params: [columns, hideColumns, showColumns, expanded, flat, idSubtable, label]
+  note: >-
+    Hierarchical reports return subtables; pass `idSubtable` to drill in, or `flat=1`
+    to flatten, or `expanded=1` to inline the children.
+batching:
+  supported: true
+  method: API.getBulkRequest
+  param: urls[]
+  note: >-
+    Multiple URL-encoded sub-requests are sent in one call. NOT usable against the MCP
+    endpoint — the MCP endpoint is root-request-only and rejects nested calls including
+    API.getBulkRequest with a 400.
+idempotency:
+  supported: false
+  note: >-
+    Matomo publishes no idempotency key, no request-deduplication header, and no
+    replay-safe write contract. Reads are naturally idempotent; writes (addSite,
+    addUser, addContainerTag, ...) are not protected against duplicate submission.
+    The MCP tool surface DOES declare per-tool `idempotentHint` annotations, which is
+    a hint to the agent, not a server-side guarantee. No Idempotency pointer is emitted
+    for this provider because none is genuinely supported.
+request_tracing:
+  header: x-matomo-request-id
+  direction: response
+  observed: '2026-08-13'
+  note: >-
+    Observed on live responses from demo.matomo.cloud. Matomo emits a short request id
+    on responses; there is no documented client-supplied correlation header.
+versioning:
+  see: lifecycle/matomo-lifecycle.yml
+  api_versioning: none
+  note: >-
+    The Reporting API is not versioned in the URL or in a header. The surface is versioned
+    by the Matomo RELEASE installed on the instance, and by which plugins are activated.
+    Two Matomo instances on the same version can expose different API methods.
+error_envelope:
+  see: errors/matomo-problem-types.yml
+  shape: '{result: error, message: <string>, code?: <int>}'
+  warning: >-
+    An error may be returned with HTTP 200. Check `result` in the body, not only the status.
+rate_limit_signaling:
+  see: rate-limits/matomo-rate-limits.yml
+  status_on_exhaustion: 429
+  headers_published: false
+  note: >-
+    Matomo publishes numeric Cloud limits but names NO rate-limit response headers —
+    no X-RateLimit-*, no RateLimit-*, no documented Retry-After. An agent gets the 429
+    but no machine-readable budget or reset time.
+discovery:
+  runtime_metadata:
+    - method: API.getReportMetadata
+      description: Machine-readable catalog of every report available on this instance.
+    - method: ApiReference.getOpenApiSpec
+      description: >-
+        Returns the generated OpenAPI 3.1.0 document for a named plugin. Requires the
+        first-party ApiReference plugin. This is how openapi/ in this repo was harvested.
+  well_known:
+    - /.well-known/oauth-authorization-server

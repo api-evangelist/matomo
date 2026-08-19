@@ -1,0 +1,230 @@
+generated: '2026-08-13'
+method: searched
+status: published
+source: >-
+  https://github.com/matomo-org/plugin-McpServer,
+  https://matomo.org/guide/apis/mcp-model-context-protocol/,
+  https://matomo.org/faq/how-to/how-to-configure-the-matomo-mcp-server/,
+  https://matomo.org/blog/2026/05/matomo-mcp-ai-now-available/
+deployment:
+  mode: remote
+  endpoint: https://{matomo_host}/index.php?module=API&method=McpServer.mcp&format=mcp
+  auth: oauth
+  verified: probed
+  probe:
+    url: https://demo.matomo.cloud/index.php?module=API&method=McpServer.mcp&format=mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    www_authenticate: Bearer realm="mcp"
+    response: '{"jsonrpc":"2.0","id":1,"error":{"code":-32600,"message":"Authentication required."}}'
+    date: '2026-08-13'
+    verdict: >-
+      A live, deployed, auth-gated MCP endpoint. The 401 + WWW-Authenticate challenge is
+      the server answering, not a 404 — the surface is real and reachable, and only the
+      tool schemas are gated.
+  endpoint_note: >-
+    The endpoint is TEMPLATED because Matomo is self-hosted or Matomo Cloud: the MCP URL
+    is the customer's OWN Matomo instance. There is no single vendor-hosted MCP URL to
+    point an agent at. Matomo Cloud ships the server enabled-capable; Matomo On-Premise
+    requires installing and activating the McpServer plugin first. The exact URL for a
+    given deployment is shown in Administration > Platform > MCP Server.
+  install: >-
+    On-Premise only, and this is a Matomo PLUGIN install, not an npx/pip package:
+    install the McpServer plugin, activate it in Administration > Plugins, then enable
+    MCP in Administration > System > General Settings > McpServer.
+  package: https://github.com/matomo-org/plugin-McpServer
+server:
+  name: matomo
+  official: true
+  vendor: Matomo (InnoCraft Ltd)
+  plugin: McpServer
+  plugin_version: 5.1.0
+  requires:
+    matomo: '>=5.8.0-rc1,<6.0.0-b1'
+    php: '>=8.1.0'
+  license: GPL v3+
+  transport: http
+  protocol: JSON-RPC 2.0
+  sdk: mcp/sdk 0.7
+  repository: https://github.com/matomo-org/plugin-McpServer
+  issues: https://github.com/matomo-org/plugin-McpServer/issues
+authentication:
+  preferred: oauth2
+  oauth2:
+    requires_plugin: OAuth2
+    scopes: [matomo:read, matomo:write, matomo:admin]
+    access_token_lifetime_seconds: 3600
+    see: scopes/matomo-scopes.yml
+  fallback:
+    scheme: bearer
+    credential: Matomo token_auth sent as an HTTP Bearer token
+  anonymous: false
+  note: Anonymous access to the MCP endpoint was explicitly disabled in plugin 5.0.2.
+access_model:
+  default_state: MCP access is DISABLED by default.
+  raw_api_tools_default: disabled
+  raw_api_access_modes:
+    - id: none
+      label: No API access (default)
+      effect: Hides every raw API discovery and execution tool.
+    - id: partial
+      label: Partial API access
+      effect: >-
+        Exposes matomo_api_get, matomo_api_list, and only the CRUD-specific execution
+        tools an administrator ticked (Read / Create / Update / Delete are independent).
+    - id: full
+      label: Full API access
+      effect: >-
+        Exposes matomo_api_get, matomo_api_list, all CRUD execution tools, and
+        matomo_api_call_full for non-restricted methods.
+  privilege_ceiling:
+    setting: Maximum allowed MCP privilege level
+    values: [none, view, write, admin]
+    effect: Denies MCP access to users authenticated above the configured level.
+  data_scope: >-
+    Limited to the sites and reports the authenticated Matomo user can already access.
+  origin_validation: >-
+    A supplied Origin header is validated against [General] trusted_hosts for
+    DNS-rebinding protection and rejected with 403 when outside. Direct cross-origin
+    browser MCP is not supported (no preflight handling).
+  root_request_only: >-
+    The endpoint rejects nested/proxied access, including API.getBulkRequest, with 400.
+tools_note: >-
+  The live tools/list is auth-gated (401 above), so tool names, descriptions and
+  annotations below were read from the plugin's own published source at
+  https://github.com/matomo-org/plugin-McpServer/tree/5.x-dev/McpTools — the same
+  place the server reads them from. inputSchema shapes are NOT reproduced here; they
+  require authenticated introspection against a real instance.
+tool_count: 19
+tools:
+  - name: matomo_site_list
+    category: sites
+    description: List accessible Matomo sites without a search hint; returns paginated site summaries.
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    source_class: McpTools/SiteList.php
+    always_available: true
+  - name: matomo_site_get
+    category: sites
+    description: Fetch authoritative details for exactly one Matomo site by known idSite.
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    source_class: McpTools/SiteGet.php
+    always_available: true
+  - name: matomo_site_search
+    category: sites
+    description: Find matching Matomo sites from a URL/domain/name hint and return candidate idSite values.
+    source_class: McpTools/SiteSearch.php
+    always_available: true
+  - name: matomo_report_list
+    category: reports
+    description: >-
+      Compact discovery list of reports available for a site, including subtable reports;
+      supports a search filter by report name, category or uniqueId.
+    source_class: McpTools/ReportList.php
+    always_available: true
+  - name: matomo_report_metadata
+    category: reports
+    description: >-
+      Full metadata for one report in a site scope, resolved by reportUniqueId (preferred)
+      or module/action selector.
+    source_class: McpTools/ReportMetadata.php
+    always_available: true
+  - name: matomo_report_processed
+    category: reports
+    description: >-
+      Tabular processed report data for a known report and date range, with stable
+      pagination metadata.
+    annotations: {readOnlyHint: conditional, destructiveHint: false, idempotentHint: false, openWorldHint: false}
+    note: >-
+      readOnlyHint is computed at runtime — true only when browser-triggered archiving is
+      fully disabled, because materializing a range aggregate can write archive data.
+    source_class: McpTools/ReportProcessed.php
+    always_available: true
+  - name: matomo_goal_list
+    category: goals
+    description: Paginated goal definitions available for a site.
+    source_class: McpTools/GoalList.php
+    always_available: true
+  - name: matomo_goal_get
+    category: goals
+    description: Authoritative details for exactly one configured goal.
+    source_class: McpTools/GoalGet.php
+    always_available: true
+  - name: matomo_segment_list
+    category: segments
+    description: Paginated saved segment definitions available for a site.
+    source_class: McpTools/SegmentList.php
+    always_available: true
+  - name: matomo_segment_get
+    category: segments
+    description: Resolve one saved segment by idSegment, exact name, or exact definition within a site scope.
+    source_class: McpTools/SegmentGet.php
+    always_available: true
+  - name: matomo_dimension_list
+    category: dimensions
+    description: Paginated active custom dimensions configured for a specific site.
+    source_class: McpTools/DimensionList.php
+    always_available: true
+  - name: matomo_dimension_get
+    category: dimensions
+    description: Authoritative details for exactly one configured custom dimension.
+    source_class: McpTools/DimensionGet.php
+    always_available: true
+  - name: matomo_api_list
+    category: raw-api
+    description: Paginated Matomo API method summaries with parameter metadata, for discovery.
+    source_class: McpTools/ApiList.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_get
+    category: raw-api
+    description: One authoritative Matomo API method summary with parameter metadata, by known method name.
+    source_class: McpTools/ApiGet.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_call_read
+    category: raw-api
+    description: Execute one allowed read-only Matomo API method directly.
+    annotations: {readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false}
+    source_class: McpTools/ApiCallRead.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_call_create
+    category: raw-api
+    description: Execute one allowed create-style Matomo API method directly.
+    source_class: McpTools/ApiCallCreate.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_call_update
+    category: raw-api
+    description: Execute one allowed update-style Matomo API method directly.
+    source_class: McpTools/ApiCallUpdate.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_call_delete
+    category: raw-api
+    description: Execute one allowed delete-style Matomo API method directly.
+    source_class: McpTools/ApiCallDelete.php
+    always_available: false
+    requires_access_mode: [partial, full]
+  - name: matomo_api_call_full
+    category: raw-api
+    description: >-
+      Execute one allowed Matomo API method that is not safely covered by a CRUD-specific
+      tool; unrestricted execution within policy.
+    source_class: McpTools/ApiCallFull.php
+    always_available: false
+    requires_access_mode: [full]
+extensibility:
+  events:
+    - McpServer.addTools
+    - McpServer.filterTools
+    - McpServer.serverEvent
+  note: Other Matomo plugins can contribute or restrict MCP tool registrations (plugin 5.1.0).
+clients_documented:
+  - Claude Desktop
+  - Claude Code
+  - ChatGPT
+  - OpenAI Codex
+  - Mistral AI
+  - Microsoft Copilot Studio

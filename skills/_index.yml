@@ -1,0 +1,66 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Generated from the 59 first-party OpenAPI 3.1.0 documents in openapi/, the MCP
+  manifest in mcp/matomo-mcp.yml, and the conventions and error rules captured in
+  conventions/matomo-conventions.yml and errors/matomo-problem-types.yml. Every
+  operationId referenced was verified verbatim in the saved specs.
+note: >-
+  Matomo publishes no AGENTS.md and no skill files of its own; these are ours. They are
+  written around the property that defines Matomo as an integration target — the API
+  surface belongs to the customer's deployment, not to a vendor — which is why the
+  first skill is discovery rather than a call.
+skills:
+  - file: matomo-discover-the-api-surface.md
+    name: Discover a Matomo instance's actual API surface
+    api: openapi/matomo-api-openapi.json
+    operations:
+      - API.getMatomoVersion
+      - API.getReportMetadata
+      - API.getMetadata
+      - API.isPluginActivated
+      - API.getSegmentsMetadata
+      - ApiReference.getOpenApiSpec
+      - SitesManager.getSitesWithAtLeastViewAccess
+  - file: matomo-pull-a-traffic-report.md
+    name: Pull a traffic report for a date range
+    api: openapi/matomo-visits-summary-openapi.json
+    operations:
+      - VisitsSummary.get
+      - Actions.getPageUrls
+      - Actions.getEntryPageUrls
+      - Actions.getExitPageUrls
+      - Referrers.getAll
+      - API.getProcessedReport
+      - API.getBulkRequest
+  - file: matomo-create-and-apply-a-segment.md
+    name: Create a saved segment and report against it
+    api: openapi/matomo-segment-editor-openapi.json
+    operations:
+      - API.getSegmentsMetadata
+      - API.getSuggestedValuesForSegment
+      - SegmentEditor.isUserCanAddNewSegment
+      - SegmentEditor.getAll
+      - SegmentEditor.add
+      - SegmentEditor.get
+      - SegmentEditor.update
+      - SegmentEditor.delete
+  - file: matomo-onboard-a-new-site.md
+    name: Onboard a new site and get its tracking code
+    api: openapi/matomo-sites-manager-openapi.json
+    operations:
+      - SitesManager.getSitesIdFromSiteUrl
+      - SitesManager.addSite
+      - SitesManager.getSiteFromId
+      - SitesManager.getJavascriptTag
+      - SitesManager.getImageTrackingCode
+      - Goals.addGoal
+      - Live.getCounters
+  - file: matomo-connect-an-agent-over-mcp.md
+    name: Connect an agent to Matomo over MCP
+    api: mcp/matomo-mcp.yml
+    operations:
+      - McpServer.mcp
+      - OAuth2.getClients
+      - UsersManager.createAppSpecificTokenAuth
+      - API.isPluginActivated

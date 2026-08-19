@@ -3,108 +3,87 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Matomo
 providerId: matomo
+generated: '2026-08-13'
+method: searched
+source: https://matomo.org/faq/troubleshooting/matomo-cloud-api-usage-limits/
+docs: https://matomo.org/faq/troubleshooting/matomo-cloud-api-usage-limits/
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
 tags:
   - Analytics
-  - Data Ownership
-  - Open Source
-  - Privacy
-  - Self-Hosted
-  - Web Analytics
   - Rate Limiting
-  - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Matomo API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  - Web Analytics
+description: >-
+  Published API usage limits for Matomo Cloud, read verbatim from the provider's own
+  limits FAQ on 2026-08-13. This artifact replaces a 2026-05-04 scaffold whose tiers,
+  quotas and headers were invented defaults and matched nothing Matomo publishes.
+scope_note: >-
+  These limits apply to MATOMO CLOUD ONLY. Matomo On-Premise is software the customer
+  runs on their own infrastructure, so there is no vendor-imposed rate limit — the
+  ceiling is whatever the customer's own server and PHP configuration allow.
+limit_count: 4
+limits:
+  - name: Non-tracking requests
+    scope: per-ip
+    applies_to: Reporting API, Dashboard and UI paths
+    metric: requests
+    limit: 2000
+    timeFrame: 10 minutes
+    secondary:
+      limit: 350
+      timeFrame: 1 minute
+    note: '"2,000 / 10 mins or 350 / 1 min (whichever occurs first)" — whichever trips first applies.'
+  - name: Live resources
+    scope: per-ip
+    applies_to: Live.* endpoints
+    metric: requests
+    limit: 200
+    timeFrame: 1 minute
+  - name: Transitions resources
+    scope: per-ip
+    applies_to: Transitions.* endpoints
+    metric: requests
+    limit: 500
+    timeFrame: 5 minutes
+  - name: Concurrent raw-data queries
+    scope: per-account
+    scope_detail: per subdomain / account
+    metric: simultaneous_queries
+    limit: 8
+    applies_to:
+      - Live.getCounters
+      - Live.getLastVisitsDetails
+      - Live.getVisitorProfile
+      - CustomReports.previewReport
+      - AdvertisingConversionExport.generateConversionExport
+    note: A concurrency cap, not a rate over time.
+exempt:
+  - name: Tracking API
+    note: >-
+      Tracking endpoints (/matomo.php and the tracking paths) are explicitly exempt from
+      rate limiting — the whole point of an analytics platform is that ingest never
+      throttles.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Matomo Reporting API
-      - Matomo Tracking API
-      - Matomo Live API
-      - Matomo Goals API
-      - Matomo Segments API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Matomo Reporting API
-      - Matomo Tracking API
-      - Matomo Live API
-      - Matomo Goals API
-      - Matomo Segments API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Matomo Reporting API
-      - Matomo Tracking API
-      - Matomo Live API
-      - Matomo Goals API
-      - Matomo Segments API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Matomo Reporting API
-      - Matomo Tracking API
-      - Matomo Live API
-      - Matomo Goals API
-      - Matomo Segments API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Matomo Reporting API
-      - Matomo Tracking API
-      - Matomo Live API
-      - Matomo Goals API
-      - Matomo Segments API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  throttled_label: 429 Too Many Requests
+headers:
+  published: false
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    Matomo names NO rate-limit response headers anywhere in its documentation — no
+    X-RateLimit-*, no RFC 9331 RateLimit-*, no documented Retry-After. This is the
+    material gap for an agent: it receives the 429 but is given no machine-readable
+    budget, no remaining count and no reset time, so the only available strategy is
+    blind exponential backoff. Recorded as absent because absence is the finding; the
+    previous scaffold asserted a full X-RateLimit-* header set that Matomo does not send.
+volatility_note: >-
+  Matomo states these limits "are subject to change without prior notice and may be
+  adjusted based on network conditions."
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
