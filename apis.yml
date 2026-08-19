@@ -41,7 +41,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/apis.yml
 created: '2026-03-26'
 modified: '2026-08-13'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: matomo:live-api
   name: Matomo Live API
