@@ -29,6 +29,17 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/matomo.png
 tags:
   - Analytics
   - Web Analytics
+  - Open-Source
+  - Privacy
+  - Data Ownership
+  - Self-Hosted
+  - GDPR
+  - Tag Management
+  - Conversion Optimization
+  - MCP
+tags_raw:
+  - Analytics
+  - Web Analytics
   - Open Source
   - Privacy
   - Data Ownership
@@ -132,6 +143,11 @@ apis:
   - Analytics
   - Reporting
   - RPC
+  - Entry Point
+  tags_raw:
+  - Analytics
+  - Reporting
+  - RPC
   - Entrypoint
   properties:
   - type: OpenAPI
@@ -154,6 +170,12 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/tracking-api
   baseURL: https://{matomo_host}/matomo.php
   tags:
+  - Analytics
+  - Tracking
+  - Event
+  - Ingest
+  - Server-Side
+  tags_raw:
   - Analytics
   - Tracking
   - Events
@@ -478,6 +500,10 @@ apis:
   tags:
   - Analytics
   - SMS
+  - Notification
+  tags_raw:
+  - Analytics
+  - SMS
   - Notifications
   properties:
   - type: OpenAPI
@@ -567,6 +593,10 @@ apis:
   baseURL: https://{matomo_host}/index.php
   tags:
   - Analytics
+  - Event
+  - Custom Events
+  tags_raw:
+  - Analytics
   - Events
   - Custom Events
   properties:
@@ -633,6 +663,11 @@ apis:
   baseURL: https://{matomo_host}/index.php
   tags:
   - Analytics
+  - Authentication
+  - Authorization
+  - Clients
+  tags_raw:
+  - Analytics
   - OAuth
   - Authorization
   - Clients
@@ -677,6 +712,10 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Analytics
+  - Notes
+  - Timelines
+  tags_raw:
   - Analytics
   - Notes
   - Timeline
@@ -1170,6 +1209,10 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Analytics
+  - Language
+  - Localization
+  tags_raw:
   - Analytics
   - Languages
   - Localization
