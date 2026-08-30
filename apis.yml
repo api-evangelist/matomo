@@ -134,6 +134,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - A/B Testing
+  tags_raw:
   - AbTesting
   properties:
   - type: OpenAPI
@@ -180,6 +182,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Activity Log
+  tags_raw:
   - ActivityLog
   properties:
   - type: OpenAPI
@@ -250,7 +254,8 @@ apis:
     target='_blank'>Metadata API documentation page</a>
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
-  tags:
+  tags: []
+  tags_raw:
   - API
   properties:
   - type: OpenAPI
@@ -272,6 +277,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - API Reference
+  tags_raw:
   - ApiReference
   properties:
   - type: OpenAPI
@@ -446,6 +453,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Custom Reports
+  tags_raw:
   - CustomReports
   properties:
   - type: OpenAPI
@@ -542,6 +551,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -844,6 +855,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Media Analytics
+  tags_raw:
   - MediaAnalytics
   properties:
   - type: OpenAPI
@@ -864,6 +877,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Mobile Messaging
+  tags_raw:
   - MobileMessaging
   properties:
   - type: OpenAPI
@@ -904,6 +919,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Authentication
+  tags_raw:
   - OAuth2
   properties:
   - type: OpenAPI
@@ -1050,6 +1067,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Scheduled Reports
+  tags_raw:
   - ScheduledReports
   properties:
   - type: OpenAPI
@@ -1162,6 +1181,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Tag Manager
+  tags_raw:
   - TagManager
   properties:
   - type: OpenAPI
