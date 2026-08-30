@@ -1,0 +1,705 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Scheduled Reports API
+  version: 1.0.0
+  description: The ScheduledReports API lets you manage Scheduled Email reports, as well as generate, download or email any existing report.  "generateReport" will generate the requested report (for a specific date range, website and in the requested language). "sendReport" will send the report by email to the recipients specified for this report.  You can also get the list of all existing reports via "getReports", create new reports via "addReport", or manage existing reports with "updateReport" and "deleteReport". See also the documentation about <a href='https://matomo.org/docs/email-reports/' rel='noreferrer' target='_blank'>Scheduled Email reports</a> in Matomo.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: ScheduledReports
+  description: The ScheduledReports API lets you manage Scheduled Email reports, as well as generate, download or email any existing report.  "generateReport" will generate the requested report (for a specific date range, website and in the requested language). "sendReport" will send the report by email to the recipients specified for this report.  You can also get the list of all existing reports via "getReports", create new reports via "addReport", or manage existing reports with "updateReport" and "deleteReport". See also the documentation about <a href='https://matomo.org/docs/email-reports/' rel='noreferrer' target='_blank'>Scheduled Email reports</a> in Matomo.
+paths:
+  /index.php?module=API&method=ScheduledReports.addReport:
+    get:
+      tags:
+      - ScheduledReports
+      description: Creates and schedules a new report.
+      operationId: ScheduledReports.addReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to report on.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: description
+        in: query
+        description: The report title shown in the UI and used in generated filenames. Truncated to 250 characters.
+        required: true
+        schema:
+          type: string
+          example: Compare the pricing page signup experience for New Zealand traffic.
+      - name: period
+        in: query
+        description: The delivery schedule for the report.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - never
+          example: never
+      - name: hour
+        in: query
+        description: The hour of day (0–23) when the report should be sent.
+        required: true
+        schema:
+          type: integer
+          example: 9
+      - name: reportType
+        in: query
+        description: The transport medium identifier, such as `'email'`.
+        required: true
+        schema:
+          type: string
+          example: table
+      - name: reportFormat
+        in: query
+        description: The output format identifier, such as `'pdf'` or `'html'`.
+        required: true
+        schema:
+          type: string
+          example: pdf
+      - name: reports
+        in: query
+        description: The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - VisitsSummary.get
+          - Goals.get
+      - name: parameters
+        in: query
+        description: Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: idSegment
+        in: query
+        description: The saved segment ID to apply, or `false` for no segment filter.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: evolutionPeriodFor
+        in: query
+        description: Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).
+        required: false
+        schema:
+          type: string
+          default: prev
+          enum:
+          - prev
+          - each
+      - name: evolutionPeriodN
+        in: query
+        description: The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: periodParam
+        in: query
+        description: The data period to generate on each scheduled send. Defaults to the delivery schedule period.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The newly created scheduled report ID.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=ScheduledReports.updateReport:
+    get:
+      tags:
+      - ScheduledReports
+      description: Updates an existing report.
+      operationId: ScheduledReports.updateReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idReport
+        in: query
+        description: The scheduled report ID to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website the report belongs to.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: description
+        in: query
+        description: The report title shown in the UI and used in generated filenames. Truncated to 250 characters.
+        required: true
+        schema:
+          type: string
+          example: Compare the pricing page signup experience for New Zealand traffic.
+      - name: period
+        in: query
+        description: The delivery schedule for the report.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - never
+          example: never
+      - name: hour
+        in: query
+        description: The hour of day (0–23) when the report should be sent.
+        required: true
+        schema:
+          type: integer
+          example: 9
+      - name: reportType
+        in: query
+        description: The transport medium identifier, such as `'email'`.
+        required: true
+        schema:
+          type: string
+          example: table
+      - name: reportFormat
+        in: query
+        description: The output format identifier, such as `'pdf'` or `'html'`.
+        required: true
+        schema:
+          type: string
+          example: pdf
+      - name: reports
+        in: query
+        description: The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - VisitsSummary.get
+          - Goals.get
+      - name: parameters
+        in: query
+        description: Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: idSegment
+        in: query
+        description: The saved segment ID to apply, or `false` for no segment filter.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: evolutionPeriodFor
+        in: query
+        description: Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).
+        required: false
+        schema:
+          type: string
+          default: prev
+          enum:
+          - prev
+          - each
+      - name: evolutionPeriodN
+        in: query
+        description: The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: periodParam
+        in: query
+        description: The data period to generate on each scheduled send. Defaults to the delivery schedule period.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=ScheduledReports.deleteReport:
+    get:
+      tags:
+      - ScheduledReports
+      description: Marks a scheduled report as deleted. The report row is retained in the database with `deleted = 1`.
+      operationId: ScheduledReports.deleteReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idReport
+        in: query
+        description: The scheduled report ID to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=ScheduledReports.getReports:
+    get:
+      tags:
+      - ScheduledReports
+      description: Returns scheduled reports that match the supplied filters. All filter parameters are optional; passing `false` disables that filter.
+      operationId: ScheduledReports.getReports
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Filters reports to a specific website when provided.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: period
+        in: query
+        description: Filters reports by delivery schedule when provided.
+        required: false
+        schema:
+          type: string
+      - name: idReport
+        in: query
+        description: Returns a single scheduled report when provided. Throws if not found.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: ifSuperUserReturnOnlySuperUserReports
+        in: query
+        description: When `true`, super users only receive their own reports instead of all reports.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSegment
+        in: query
+        description: Filters reports to a specific saved segment when provided.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'The matching scheduled reports, ordered by description. Each entry has decoded `parameters` and `reports` fields.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=ScheduledReports.generateReport:
+    get:
+      tags:
+      - ScheduledReports
+      description: Generates a scheduled report in the requested output mode.
+      operationId: ScheduledReports.generateReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idReport
+        in: query
+        description: The scheduled report ID to generate.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: date
+        in: query
+        description: The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: language
+        in: query
+        description: The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.
+        required: false
+        schema:
+          type: string
+      - name: outputType
+        in: query
+        description: The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: period
+        in: query
+        description: The data period to generate, or `false` to use the report's stored period.
+        required: false
+        schema:
+          type: string
+      - name: reportFormat
+        in: query
+        description: The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.
+        required: false
+        schema:
+          type: string
+      - name: parameters
+        in: query
+        description: Transport-specific parameters to override for this generation, or `false` to use the stored parameters.
+        required: false
+        schema:
+          oneOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+      responses:
+        '200':
+          description: 'Returns a 5-element array `[$outputFilename, $prettyDate, $reportSubject, $reportTitle, $additionalFiles]` when using `OUTPUT_SAVE_ON_DISK`, the rendered report string when using `OUTPUT_RETURN`, or void when streaming to the browser (`OUTPUT_DOWNLOAD` / `OUTPUT_INLINE`).
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=ScheduledReports.sendReport:
+    get:
+      tags:
+      - ScheduledReports
+      description: Sends a scheduled report immediately. Generates the report, saves it to a temporary file, dispatches it via the configured transport medium, and cleans up.
+      operationId: ScheduledReports.sendReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idReport
+        in: query
+        description: The scheduled report ID to send.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The data period to send, or `false` to use the report's stored period.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.
+        required: false
+        schema:
+          type: string
+      - name: force
+        in: query
+        description: Whether to send the report even if it has already been sent for the same period.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

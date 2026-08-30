@@ -1,0 +1,1058 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Ab Testing API
+  version: 1.0.0
+  description: Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading experiment reports.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: AbTesting
+  description: Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading experiment reports.
+paths:
+  /index.php?module=API&method=AbTesting.getMetricsOverview:
+    get:
+      tags:
+      - AbTesting
+      description: Returns overview metrics for each variation in an experiment.
+      operationId: AbTesting.getMetricsOverview
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idExperiment
+        in: query
+        description: The experiment ID to report on.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Data table containing the selected success metrics and base variation metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getMetricDetails:
+    get:
+      tags:
+      - AbTesting
+      description: Returns detailed report metrics for one success metric in an experiment.
+      operationId: AbTesting.getMetricDetails
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idExperiment
+        in: query
+        description: The experiment ID to report on.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: successMetric
+        in: query
+        description: Success metric ID assigned to the experiment, for example "nb_pageviews".
+        required: true
+        schema:
+          type: string
+          example: nb_visits
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Data table containing detailed metrics such as significance and remaining visitors.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.addExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Creates a new experiment with variations, targeting rules, and success metrics.
+      operationId: AbTesting.addExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The experiment name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: hypothesis
+        in: query
+        description: The hypothesis to test.
+        required: true
+        schema:
+          type: string
+          example: A shorter signup flow will improve conversions.
+      - name: description
+        in: query
+        description: The experiment description shown in the UI.
+        required: true
+        schema:
+          type: string
+          example: Compare the pricing page signup experience for New Zealand traffic.
+      - name: variations
+        in: query
+        description: Variation definitions. Each variation requires a name and can include percentage and redirect_url values.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: includedTargets
+        in: query
+        description: Targeting rules that must match for the experiment to run.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: successMetrics
+        in: query
+        description: Success metrics to evaluate for the experiment.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: 'The ID of the created experiment.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.updateExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Updates an existing experiment and its reporting configuration.
+      operationId: AbTesting.updateExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The experiment name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: description
+        in: query
+        description: The experiment description shown in the UI.
+        required: true
+        schema:
+          type: string
+          example: Compare the pricing page signup experience for New Zealand traffic.
+      - name: hypothesis
+        in: query
+        description: The hypothesis to test.
+        required: true
+        schema:
+          type: string
+          example: A shorter signup flow will improve conversions.
+      - name: variations
+        in: query
+        description: Variation definitions. Each variation requires a name and can include percentage and redirect_url values.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: confidenceThreshold
+        in: query
+        description: 'Confidence threshold to use for significance calculations. Allowed values: 90, 95, 98, 99, 99.5'
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 95
+          - type: number
+            example: 95
+          - type: string
+            example: '95'
+      - name: mdeRelative
+        in: query
+        description: Minimum detectable effect percentage.
+        required: true
+        schema:
+          type: integer
+          example: 10
+      - name: percentageParticipants
+        in: query
+        description: Percentage of visitors that should participate in the experiment.
+        required: true
+        schema:
+          type: integer
+          example: 100
+      - name: successMetrics
+        in: query
+        description: Success metrics to evaluate for the experiment.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: includedTargets
+        in: query
+        description: Targeting rules that must match for the experiment to run.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: excludedTargets
+        in: query
+        description: Targeting rules that exclude visitors from the experiment.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: startDate
+        in: query
+        description: Optional UTC start date in 'Y-m-d H:i:s' format, or false for no scheduled start date.
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        description: Optional UTC end date in 'Y-m-d H:i:s' format, or false for no scheduled end date.
+        required: false
+        schema:
+          type: string
+      - name: forwardUtmParams
+        in: query
+        description: Whether redirects should forward `utm*` query parameters.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: forwardAllQueryParams
+        in: query
+        description: Whether redirects should forward all query parameters.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.startExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Starts an experiment immediately.
+      operationId: AbTesting.startExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to start.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.finishExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Finishes an experiment and stops it from accepting new tracking requests.
+      operationId: AbTesting.finishExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to finish.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.archiveExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Archives an experiment so it is no longer available in reports, segments, or updates.
+      operationId: AbTesting.archiveExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to archive.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getJsIncludeTemplate:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the script tag needed to include the A/B testing JavaScript tracker.
+      operationId: AbTesting.getJsIncludeTemplate
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'HTML script tag, or an empty string when the tracker is already included automatically.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getJsExperimentTemplate:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the JavaScript snippet needed to run an experiment on a site.
+      operationId: AbTesting.getJsExperimentTemplate
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to embed.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'JavaScript embed code, or an empty string when the experiment is finished or archived.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getAllExperiments:
+    get:
+      tags:
+      - AbTesting
+      description: Returns all experiments configured for a site.
+      operationId: AbTesting.getAllExperiments
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'List of experiments for the site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getActiveExperiments:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the active experiments for a site.
+      operationId: AbTesting.getActiveExperiments
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'List of active experiments for the site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getExperimentsByStatuses:
+    get:
+      tags:
+      - AbTesting
+      description: Returns experiments for a site filtered by one or more statuses.
+      operationId: AbTesting.getExperimentsByStatuses
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: statuses
+        in: query
+        description: 'One or more status identifiers to filter by. Example: "running" or ["running", "finished"].'
+        required: true
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        example: '["running","finished"]'
+      responses:
+        '200':
+          description: 'Matching experiments for the site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Returns a single experiment definition.
+      operationId: AbTesting.getExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to fetch.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'Experiment data, or false when the experiment is not found.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.deleteExperiment:
+    get:
+      tags:
+      - AbTesting
+      description: Permanently deletes an experiment.
+      operationId: AbTesting.deleteExperiment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idExperiment
+        in: query
+        description: The experiment ID to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getAvailableStatuses:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the valid experiment status values.
+      operationId: AbTesting.getAvailableStatuses
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'List of valid experiment statuses.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getAvailableSuccessMetrics:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the success metrics that can be assigned to experiments for a site.
+      operationId: AbTesting.getAvailableSuccessMetrics
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'Available metric identifiers with display names.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=AbTesting.getAvailableTargetAttributes:
+    get:
+      tags:
+      - AbTesting
+      description: Returns the available target attributes and target rule types for experiment targeting.
+      operationId: AbTesting.getAvailableTargetAttributes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Available target attributes with their supported types and example values.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

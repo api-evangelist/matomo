@@ -1,0 +1,1150 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting for plugin API
+  version: 1.0.0
+  description: 'This API is the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API</a>: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.  Some of the information that is returned by the Metadata API: <ul> <li>the dynamically generated list of all API methods via "getReportMetadata"</li> <li>the list of metrics that will be returned by each method, along with their human readable name, via "getDefaultMetrics" and "getDefaultProcessedMetrics"</li> <li>the list of segments metadata supported by all functions that have a ''segment'' parameter</li> <li>the (truly magic) method "getProcessedReport" will return a human readable version of any other report, and include the processed metrics such as conversion rate, time on site, etc. which are not directly available in other methods.</li> <li>the method "getSuggestedValuesForSegment" returns top suggested values for a particular segment. It uses the Live.getLastVisitsDetails API to fetch the most recently used values, and will return the most often used values first.</li> </ul> The Metadata API is for example used by the Matomo Mobile App to automatically display all Matomo reports, with translated report & columns names and nicely formatted values. More information on the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API documentation page</a>'
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: API
+  description: 'This API is the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API</a>: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.  Some of the information that is returned by the Metadata API: <ul> <li>the dynamically generated list of all API methods via "getReportMetadata"</li> <li>the list of metrics that will be returned by each method, along with their human readable name, via "getDefaultMetrics" and "getDefaultProcessedMetrics"</li> <li>the list of segments metadata supported by all functions that have a ''segment'' parameter</li> <li>the (truly magic) method "getProcessedReport" will return a human readable version of any other report, and include the processed metrics such as conversion rate, time on site, etc. which are not directly available in other methods.</li> <li>the method "getSuggestedValuesForSegment" returns top suggested values for a particular segment. It uses the Live.getLastVisitsDetails API to fetch the most recently used values, and will return the most often used values first.</li> </ul> The Metadata API is for example used by the Matomo Mobile App to automatically display all Matomo reports, with translated report & columns names and nicely formatted values. More information on the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API documentation page</a>'
+paths:
+  /index.php?module=API&method=API.getMatomoVersion:
+    get:
+      tags:
+      - API
+      description: Returns the current Matomo version.
+      operationId: API.getMatomoVersion
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Matomo''s version string.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getPhpVersion:
+    get:
+      tags:
+      - API
+      description: Returns information about the PHP runtime version.
+      operationId: API.getPhpVersion
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericArray'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getIpFromHeader:
+    get:
+      tags:
+      - API
+      description: Returns the most accurate IP address available for the current user, in IPv4 format. This could be the proxy client's IP address.
+      operationId: API.getIpFromHeader
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'IP address in presentation format.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getSegmentsMetadata:
+    get:
+      tags:
+      - API
+      description: Returns metadata for all available segments.
+      operationId: API.getSegmentsMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSites
+        in: query
+        description: One or more site IDs. If empty, returns metadata visible to the current user.
+        required: false
+        schema:
+          oneOf:
+          - type: array
+            items:
+              type: integer
+            default: []
+          - type: integer
+          - type: string
+            default: '[]'
+      - name: _hideImplementationData
+        in: query
+        description: Whether internal implementation details should be omitted.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: _showAllSegments
+        in: query
+        description: Whether to include segments that are normally hidden.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getMetadata:
+    get:
+      tags:
+      - API
+      description: Returns metadata for a specific API method.
+      operationId: API.getMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID to use when loading metadata.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: apiModule
+        in: query
+        description: API module name.
+        required: true
+        schema:
+          type: string
+          example: VisitsSummary
+      - name: apiAction
+        in: query
+        description: API method name without the module prefix.
+        required: true
+        schema:
+          type: string
+          example: get
+      - name: apiParameters
+        in: query
+        description: Additional API parameters used to resolve metadata variants.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: language
+        in: query
+        description: Optional language code used to localize the response.
+        required: false
+        schema:
+          type: string
+      - name: period
+        in: query
+        description: Optional period used to resolve period-dependent metadata.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Optional date or date range used to resolve metadata.
+        required: false
+        schema:
+          type: string
+      - name: hideMetricsDoc
+        in: query
+        description: Whether metric documentation should be omitted.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: showSubtableReports
+        in: query
+        description: Whether subtable reports should be included.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getReportMetadata:
+    get:
+      tags:
+      - API
+      description: Returns metadata for all available reports.
+      operationId: API.getReportMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSites
+        in: query
+        description: Deprecated fallback for specifying one or more site IDs.
+        required: false
+        schema:
+          oneOf:
+          - type: array
+            items:
+              type: integer
+          - type: integer
+          - type: string
+            default: ''
+      - name: period
+        in: query
+        description: Optional period used to resolve report metadata.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Optional date or date range used to resolve report metadata.
+        required: false
+        schema:
+          type: string
+      - name: hideMetricsDoc
+        in: query
+        description: Whether metric documentation should be omitted.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: showSubtableReports
+        in: query
+        description: Whether subtable reports should be included.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSite
+        in: query
+        description: Preferred site ID parameter.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getProcessedReport:
+    get:
+      tags:
+      - API
+      description: Returns a processed report with metadata, formatting, and processed metrics applied.
+      operationId: API.getProcessedReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: period
+        in: query
+        description: Report period.
+        required: true
+        schema:
+          type: string
+          example: day
+      - name: date
+        in: query
+        description: Date or date range to query.
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: apiModule
+        in: query
+        description: API module name.
+        required: true
+        schema:
+          type: string
+          example: VisitsSummary
+      - name: apiAction
+        in: query
+        description: API method name without the module prefix.
+        required: true
+        schema:
+          type: string
+          example: get
+      - name: segment
+        in: query
+        description: Optional segment expression.
+        required: false
+        schema:
+          type: string
+      - name: apiParameters
+        in: query
+        description: Additional API parameters forwarded to the target report.
+        required: false
+        schema:
+          oneOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+      - name: idGoal
+        in: query
+        description: Optional goal ID.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: language
+        in: query
+        description: Optional language code for the response.
+        required: false
+        schema:
+          type: string
+      - name: showTimer
+        in: query
+        description: Whether processing time information should be included.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: hideMetricsDoc
+        in: query
+        description: Whether metric documentation should be omitted.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSubtable
+        in: query
+        description: Optional subtable ID to load.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: showRawMetrics
+        in: query
+        description: Whether raw metrics should be included alongside formatted metrics.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: format_metrics
+        in: query
+        description: Optional metrics formatting mode.
+        required: false
+        schema:
+          type: string
+      - name: idDimension
+        in: query
+        description: Optional dimension ID.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getReportPagesMetadata:
+    get:
+      tags:
+      - API
+      description: Returns page metadata for the Matomo UI, including the widgets shown on each page.
+      operationId: API.getReportPagesMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID used for the access check.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getWidgetMetadata:
+    get:
+      tags:
+      - API
+      description: Returns metadata for all widgets that can be displayed in the UI.
+      operationId: API.getWidgetMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID used for the access check.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.get:
+    get:
+      tags:
+      - API
+      description: Returns a combined report built from the `*.get` API methods of other plugins.
+      operationId: API.get
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: period
+        in: query
+        description: Report period.
+        required: true
+        schema:
+          type: string
+          example: day
+      - name: date
+        in: query
+        description: Date or date range to query.
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: Optional segment expression.
+        required: false
+        schema:
+          type: string
+      - name: columns
+        in: query
+        description: Optional metric names to keep in the combined result.
+        required: false
+        schema:
+          oneOf:
+          - type: array
+            items:
+              type: string
+          - type: string
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getRowEvolution:
+    get:
+      tags:
+      - API
+      description: Returns an evolution series for a specific report row or metric label.
+      operationId: API.getRowEvolution
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: period
+        in: query
+        description: Period to calculate the evolution for.
+        required: true
+        schema:
+          type: string
+          example: day
+      - name: date
+        in: query
+        description: Date or date range to query.
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: apiModule
+        in: query
+        description: API module name.
+        required: true
+        schema:
+          type: string
+          example: VisitsSummary
+      - name: apiAction
+        in: query
+        description: API method name without the module prefix.
+        required: true
+        schema:
+          type: string
+          example: get
+      - name: label
+        in: query
+        description: Optional row label to track.
+        required: false
+        schema:
+          type: string
+      - name: segment
+        in: query
+        description: Optional segment expression.
+        required: false
+        schema:
+          type: string
+      - name: column
+        in: query
+        description: Optional metric column to use.
+        required: false
+        schema:
+          type: string
+      - name: language
+        in: query
+        description: Optional language code for the response.
+        required: false
+        schema:
+          type: string
+      - name: idGoal
+        in: query
+        description: Optional goal ID.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: legendAppendMetric
+        in: query
+        description: Whether to append the metric name to the legend.
+        required: false
+        schema:
+          type: string
+      - name: labelUseAbsoluteUrl
+        in: query
+        description: Whether labels that are URLs should be normalized to absolute URLs.
+        required: false
+        schema:
+          type: string
+      - name: idDimension
+        in: query
+        description: Optional dimension ID.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: labelSeries
+        in: query
+        description: Optional custom series label.
+        required: false
+        schema:
+          type: string
+      - name: showGoalMetricsForGoal
+        in: query
+        description: Optional goal ID whose goal metrics should be included.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getBulkRequest:
+    get:
+      tags:
+      - API
+      description: Performs multiple API requests at once and returns every result.
+      operationId: API.getBulkRequest
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: urls
+        in: query
+        description: API query strings to execute.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - https:\/\/example.org
+          - https:\/\/example.org\/pricing
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.isPluginActivated:
+    get:
+      tags:
+      - API
+      description: Returns whether a plugin is currently activated.
+      operationId: API.isPluginActivated
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: pluginName
+        in: query
+        description: Plugin name to check.
+        required: true
+        schema:
+          type: string
+          example: Goals
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getSuggestedValuesForSegment:
+    get:
+      tags:
+      - API
+      description: Returns suggested values for a segment based on recent data or a segment-specific callback.
+      operationId: API.getSuggestedValuesForSegment
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: segmentName
+        in: query
+        description: Segment name to suggest values for.
+        required: true
+        schema:
+          type: string
+          example: New Zealand visitors
+      - name: idSite
+        in: query
+        description: Site ID to query, or `'all'` for all sites where supported.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getPagesComparisonsDisabledFor:
+    get:
+      tags:
+      - API
+      description: Returns category/subcategory pairs as "CategoryId.SubcategoryId" for whom comparison features should be disabled.
+      operationId: API.getPagesComparisonsDisabledFor
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getGlossaryReports:
+    get:
+      tags:
+      - API
+      description: Returns glossary entries for all reports.
+      operationId: API.getGlossaryReports
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID used for the access check.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=API.getGlossaryMetrics:
+    get:
+      tags:
+      - API
+      description: Returns glossary entries for all metrics.
+      operationId: API.getGlossaryMetrics
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Site ID used for the access check.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericArray:
+      description: Generic 200 response with array body
+      content:
+        text/plain:
+          schema:
+            type: string
+        text/html:
+          schema:
+            type: string
+        application/json:
+          schema:
+            type: array
+            items: []
+        application/xml:
+          schema:
+            type: array
+            items: []
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

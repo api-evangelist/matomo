@@ -1,0 +1,968 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Marketing Campaigns Reporting API
+  version: 1.0.0
+  description: Exposes reporting API endpoints for marketing campaign dimensions and drill-down reports. Includes campaign IDs, names, keywords, source and medium dimensions, and hierarchical subtables.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: MarketingCampaignsReporting
+  description: Exposes reporting API endpoints for marketing campaign dimensions and drill-down reports. Includes campaign IDs, names, keywords, source and medium dimensions, and hierarchical subtables.
+paths:
+  /index.php?module=API&method=MarketingCampaignsReporting.getId:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign ID rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign ID report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getName:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign name rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getName
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether to expand keyword/content subtables for each campaign name.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: flat
+        in: query
+        description: Whether to flatten expanded subtables into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Campaign name report rows, optionally including drill-down subtables.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getKeywordContentFromNameId:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns keyword and content rows for a campaign name subtable.
+      operationId: MarketingCampaignsReporting.getKeywordContentFromNameId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: The subtable ID from a `getName` campaign row.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Keyword and content rows for the selected campaign name.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getKeyword:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign keyword rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getKeyword
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign keyword report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getSource:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign source rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getSource
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign source report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getMedium:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign medium rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getMedium
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign medium report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getContent:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign content rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getContent
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign content report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getGroup:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign group rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getGroup
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign group report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getPlacement:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign placement rows with standard marketing campaign metrics.
+      operationId: MarketingCampaignsReporting.getPlacement
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign placement report rows with visit, conversion, and revenue metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getSourceMedium:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns hierarchical source and medium report rows.
+      operationId: MarketingCampaignsReporting.getSourceMedium
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether to expand campaign-name subtables under each source/medium row.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: flat
+        in: query
+        description: Whether to flatten expanded subtables into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Hierarchical source/medium rows, optionally including nested campaign-name subtables.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=MarketingCampaignsReporting.getNameFromSourceMediumId:
+    get:
+      tags:
+      - MarketingCampaignsReporting
+      description: Returns campaign names for a source and medium subtable.
+      operationId: MarketingCampaignsReporting.getNameFromSourceMediumId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: The subtable ID from a `getSourceMedium` source/medium row.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Campaign names for the selected source/medium row.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

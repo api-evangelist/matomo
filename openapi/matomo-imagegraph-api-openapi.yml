@@ -1,0 +1,377 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Image Graph API
+  version: 1.0.0
+  description: 'The ImageGraph.get API call lets you generate beautiful static PNG Graphs for any existing Matomo report. Supported graph types are: line plot, 2D/3D pie chart and vertical bar chart.  A few notes about some of the parameters available:<br/> - $graphType defines the type of graph plotted, accepted values are: ''evolution'', ''verticalBar'', ''pie'' and ''3dPie''<br/> - $colors accepts a comma delimited list of colors that will overwrite the default Matomo colors <br/> - you can also customize the width, height, font size, metric being plotted (in case the data contains multiple columns/metrics).  See also <a href=''https://developer.matomo.org/api-reference/reporting-api-metadata#static-image-graphs''>How to embed static Image Graphs?</a> for more information.'
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: ImageGraph
+  description: 'The ImageGraph.get API call lets you generate beautiful static PNG Graphs for any existing Matomo report. Supported graph types are: line plot, 2D/3D pie chart and vertical bar chart.  A few notes about some of the parameters available:<br/> - $graphType defines the type of graph plotted, accepted values are: ''evolution'', ''verticalBar'', ''pie'' and ''3dPie''<br/> - $colors accepts a comma delimited list of colors that will overwrite the default Matomo colors <br/> - you can also customize the width, height, font size, metric being plotted (in case the data contains multiple columns/metrics).  See also <a href=''https://developer.matomo.org/api-reference/reporting-api-metadata#static-image-graphs''>How to embed static Image Graphs?</a> for more information.'
+paths:
+  /index.php?module=API&method=ImageGraph.get:
+    get:
+      tags:
+      - ImageGraph
+      description: Generates a static graph image for a Matomo report.
+      operationId: ImageGraph.get
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: apiModule
+        in: query
+        description: API module name of the source report.
+        required: true
+        schema:
+          type: string
+          example: VisitsSummary
+      - name: apiAction
+        in: query
+        description: API method name of the source report.
+        required: true
+        schema:
+          type: string
+          example: get
+      - name: graphType
+        in: query
+        description: Optional graph type.
+        required: false
+        schema:
+          type: string
+      - name: outputType
+        in: query
+        description: 'Output mode: inline image, saved file, or raw PHP graph object.'
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: columns
+        in: query
+        description: Optional comma-separated metric names to plot.
+        required: false
+        schema:
+          type: string
+      - name: labels
+        in: query
+        description: Optional comma-separated row labels to include for evolution graphs.
+        required: false
+        schema:
+          type: string
+      - name: showLegend
+        in: query
+        description: Whether the graph legend should be displayed.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: width
+        in: query
+        description: Optional graph width in pixels.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: height
+        in: query
+        description: Optional graph height in pixels.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: fontSize
+        in: query
+        description: Base font size used in the graph.
+        required: false
+        schema:
+          type: integer
+          default: 9
+      - name: legendFontSize
+        in: query
+        description: Optional legend font size.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: aliasedGraph
+        in: query
+        description: Whether anti-aliasing should be enabled.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: idGoal
+        in: query
+        description: Optional goal ID for report methods that support goals.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: colors
+        in: query
+        description: Optional comma-separated list of hex colors to use in the graph.
+        required: false
+        schema:
+          type: string
+      - name: textColor
+        in: query
+        description: Hex color used for text.
+        required: false
+        schema:
+          type: string
+          default: '222222'
+      - name: backgroundColor
+        in: query
+        description: Hex color used for the background.
+        required: false
+        schema:
+          type: string
+          default: FFFFFF
+      - name: gridColor
+        in: query
+        description: Hex color used for grid lines.
+        required: false
+        schema:
+          type: string
+          default: CCCCCC
+      - name: idSubtable
+        in: query
+        description: Optional subtable ID for source reports that use subtables.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: legendAppendMetric
+        in: query
+        description: Whether the metric name should be appended to legend labels.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: idDimension
+        in: query
+        description: Optional dimension ID for reports that support dimensions.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'Generated graph output, depending on the selected output type.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

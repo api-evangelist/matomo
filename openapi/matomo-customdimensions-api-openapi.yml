@@ -1,0 +1,593 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Custom Dimensions API
+  version: 1.0.0
+  description: The Custom Dimensions API lets you manage and access reports for your configured Custom Dimensions.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: CustomDimensions
+  description: The Custom Dimensions API lets you manage and access reports for your configured Custom Dimensions.
+paths:
+  /index.php?module=API&method=CustomDimensions.getCustomDimension:
+    get:
+      tags:
+      - CustomDimensions
+      description: Returns the report for a configured custom dimension. Only reports for active dimensions can be fetched.
+      operationId: CustomDimensions.getCustomDimension
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idDimension
+        in: query
+        description: Custom dimension ID to load the report for.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether subtables should be expanded in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: flat
+        in: query
+        description: Whether subtable rows should be flattened into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSubtable
+        in: query
+        description: Optional subtable ID to load.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomDimensions.configureNewCustomDimension:
+    get:
+      tags:
+      - CustomDimensions
+      description: Configures a new custom dimension for a site. Note that custom dimensions cannot be deleted, so be careful when creating one as you might run out of available custom dimension slots.
+      operationId: CustomDimensions.configureNewCustomDimension
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to configure the dimension for.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The custom dimension name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: scope
+        in: query
+        description: The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.
+        required: true
+        schema:
+          type: string
+          enum:
+          - visit
+          - action
+          example: action
+      - name: active
+        in: query
+        description: Whether the custom dimension should be active.
+        required: true
+        schema:
+          type: integer
+          example: true
+      - name: extractions
+        in: query
+        description: 'Optional extraction rules, e.g. `[{"dimension": "url", "pattern": "index_(.+).html"}, {"dimension": "urlparam", "pattern": "..."}]`. Supported dimensions include `url`, `urlparam`, and `action_name`. Use `CustomDimensions.getAvailableExtractionDimensions` for the full list. Extractions are supported only for the `action` scope.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: caseSensitive
+        in: query
+        description: Whether extraction matching should be case-sensitive.
+        required: false
+        schema:
+          type: integer
+      - name: description
+        in: query
+        description: Optional description to provide additional context for the custom dimension.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'ID of the configured custom dimension. Note that the same ID may be used for different websites.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomDimensions.configureExistingCustomDimension:
+    get:
+      tags:
+      - CustomDimensions
+      description: Updates an existing custom dimension. This method updates all values, so you need to pass existing values of the dimension if you do not want to reset any value.
+      operationId: CustomDimensions.configureExistingCustomDimension
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idDimension
+        in: query
+        description: Custom dimension ID to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSite
+        in: query
+        description: The numeric ID of the website the dimension belongs to.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The custom dimension name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: active
+        in: query
+        description: Whether the custom dimension should be active.
+        required: true
+        schema:
+          type: integer
+          example: true
+      - name: extractions
+        in: query
+        description: 'Optional extraction rules, e.g. `[{"dimension": "url", "pattern": "index_(.+).html"}, {"dimension": "urlparam", "pattern": "..."}]`. Supported dimensions include `url`, `urlparam`, and `action_name`. Use `CustomDimensions.getAvailableExtractionDimensions` for the full list. Extractions are supported only for the `action` scope.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: caseSensitive
+        in: query
+        description: Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: description
+        in: query
+        description: Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomDimensions.getConfiguredCustomDimensions:
+    get:
+      tags:
+      - CustomDimensions
+      description: Returns all configured custom dimensions for a site.
+      operationId: CustomDimensions.getConfiguredCustomDimensions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomDimensions.getAvailableScopes:
+    get:
+      tags:
+      - CustomDimensions
+      description: Returns the supported custom-dimension scopes for a site. The response also contains information about how many custom dimension slots are available, used, and remaining, which can be used to check whether more custom dimensions can be created via `CustomDimensions.configureNewCustomDimension`.
+      operationId: CustomDimensions.getAvailableScopes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomDimensions.getAvailableExtractionDimensions:
+    get:
+      tags:
+      - CustomDimensions
+      description: Returns the dimensions that can be used in extraction rules.
+      operationId: CustomDimensions.getAvailableExtractionDimensions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericArray'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    GenericArray:
+      description: Generic 200 response with array body
+      content:
+        text/plain:
+          schema:
+            type: string
+        text/html:
+          schema:
+            type: string
+        application/json:
+          schema:
+            type: array
+            items: []
+        application/xml:
+          schema:
+            type: array
+            items: []
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

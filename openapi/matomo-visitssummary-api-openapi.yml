@@ -1,0 +1,886 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Visits Summary API
+  version: 1.0.0
+  description: VisitsSummary API lets you access the core web analytics metrics (visits, unique visitors, count of actions (page views & downloads & clicks on outlinks), time on site, bounces and converted visits.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: VisitsSummary
+  description: VisitsSummary API lets you access the core web analytics metrics (visits, unique visitors, count of actions (page views & downloads & clicks on outlinks), time on site, bounces and converted visits.
+paths:
+  /index.php?module=API&method=VisitsSummary.get:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the VisitsSummary overview report for the requested period.
+      operationId: VisitsSummary.get
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: columns
+        in: query
+        description: Specific metrics to include, or `false` to return the default set.
+        required: false
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: 'VisitsSummary metrics for the requested period.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getVisits:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of visits in the requested period.
+      operationId: VisitsSummary.getVisits
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the number of visits.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getUniqueVisitors:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of unique visitors in the requested period.
+      operationId: VisitsSummary.getUniqueVisitors
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the number of unique visitors.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getUsers:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of users in the requested period.
+      operationId: VisitsSummary.getUsers
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the number of users.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getActions:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of actions in the requested period.
+      operationId: VisitsSummary.getActions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the number of actions.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getMaxActions:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the maximum number of actions in a single visit for the requested period.
+      operationId: VisitsSummary.getMaxActions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the maximum actions value.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getBounceCount:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of bounces in the requested period.
+      operationId: VisitsSummary.getBounceCount
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing the bounce count.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getVisitsConverted:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the number of converted visits in the requested period.
+      operationId: VisitsSummary.getVisitsConverted
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing converted visits.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getSumVisitsLength:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the total visit duration in seconds for the requested period.
+      operationId: VisitsSummary.getSumVisitsLength
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing total visit duration.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=VisitsSummary.getSumVisitsLengthPretty:
+    get:
+      tags:
+      - VisitsSummary
+      description: Returns the total visit duration formatted as human-readable text.
+      operationId: VisitsSummary.getSumVisitsLengthPretty
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Numeric archive result containing Human-readable visit duration values.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

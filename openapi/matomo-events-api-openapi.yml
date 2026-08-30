@@ -1,0 +1,908 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Events API
+  version: 1.0.0
+  description: 'The Events API lets you request reports about your users'' Custom Events.  Events are tracked using the Javascript Tracker trackEvent() function, or using the [Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).  <br/>An event is defined by an event category (Videos, Music, Games...), an event action (Play, Pause, Duration, Add Playlist, Downloaded, Clicked...), and an optional event name (a movie name, a song title, etc.) and an optional numeric value.  <br/>This API exposes the following Custom Events reports: <code>getCategory</code> lists the top Event Categories, <code>getAction</code> lists the top Event Actions, <code>getName</code> lists the top Event Names.  <br/>These Events report define the following metrics: nb_uniq_visitors, nb_visits, nb_events. If you define values for your events, you can expect to see the following metrics: nb_events_with_value, sum_event_value, min_event_value, max_event_value, avg_event_value  <br/>The Events.get* reports can be used with an optional <code>&secondaryDimension</code> parameter. Secondary dimension is the dimension used in the sub-table of the Event report you are requesting.  <br/>Here are the possible values of <code>secondaryDimension</code>: <ul> <li>For <code>Events.getCategory</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventName</code>.</li> <li>For <code>Events.getAction</code> you can set <code>secondaryDimension</code> to <code>eventName</code> or <code>eventCategory</code>.</li> <li>For <code>Events.getName</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventCategory</code>.</li> </ul>  <br/>For example, to request all Custom Events Categories, and for each, the top Event actions, you would request: <code>method=Events.getCategory&secondaryDimension=eventAction&flat=1</code>. You may also omit <code>&flat=1</code> in which case, to get top Event actions for one Event category, use <code>method=Events.getActionFromCategoryId</code> passing it the <code>&idSubtable=</code> of this Event category.'
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: Events
+  description: 'The Events API lets you request reports about your users'' Custom Events.  Events are tracked using the Javascript Tracker trackEvent() function, or using the [Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).  <br/>An event is defined by an event category (Videos, Music, Games...), an event action (Play, Pause, Duration, Add Playlist, Downloaded, Clicked...), and an optional event name (a movie name, a song title, etc.) and an optional numeric value.  <br/>This API exposes the following Custom Events reports: <code>getCategory</code> lists the top Event Categories, <code>getAction</code> lists the top Event Actions, <code>getName</code> lists the top Event Names.  <br/>These Events report define the following metrics: nb_uniq_visitors, nb_visits, nb_events. If you define values for your events, you can expect to see the following metrics: nb_events_with_value, sum_event_value, min_event_value, max_event_value, avg_event_value  <br/>The Events.get* reports can be used with an optional <code>&secondaryDimension</code> parameter. Secondary dimension is the dimension used in the sub-table of the Event report you are requesting.  <br/>Here are the possible values of <code>secondaryDimension</code>: <ul> <li>For <code>Events.getCategory</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventName</code>.</li> <li>For <code>Events.getAction</code> you can set <code>secondaryDimension</code> to <code>eventName</code> or <code>eventCategory</code>.</li> <li>For <code>Events.getName</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventCategory</code>.</li> </ul>  <br/>For example, to request all Custom Events Categories, and for each, the top Event actions, you would request: <code>method=Events.getCategory&secondaryDimension=eventAction&flat=1</code>. You may also omit <code>&flat=1</code> in which case, to get top Event actions for one Event category, use <code>method=Events.getActionFromCategoryId</code> passing it the <code>&idSubtable=</code> of this Event category.'
+paths:
+  /index.php?module=API&method=Events.getCategory:
+    get:
+      tags:
+      - Events
+      description: Returns event metrics grouped by event category.
+      operationId: Events.getCategory
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether subtables should be expanded in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: secondaryDimension
+        in: query
+        description: Optional secondary dimension for subtable rows.
+        required: false
+        schema:
+          type: string
+      - name: flat
+        in: query
+        description: Whether subtable rows should be flattened into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Event category metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getAction:
+    get:
+      tags:
+      - Events
+      description: Returns event metrics grouped by event action.
+      operationId: Events.getAction
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether subtables should be expanded in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: secondaryDimension
+        in: query
+        description: Optional secondary dimension for subtable rows.
+        required: false
+        schema:
+          type: string
+      - name: flat
+        in: query
+        description: Whether subtable rows should be flattened into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Event action metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getName:
+    get:
+      tags:
+      - Events
+      description: Returns event metrics grouped by event name.
+      operationId: Events.getName
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether subtables should be expanded in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: secondaryDimension
+        in: query
+        description: Optional secondary dimension for subtable rows.
+        required: false
+        schema:
+          type: string
+      - name: flat
+        in: query
+        description: Whether subtable rows should be flattened into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Event name metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getActionFromCategoryId:
+    get:
+      tags:
+      - Events
+      description: Returns event actions for one event category row.
+      operationId: Events.getActionFromCategoryId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event category row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event action metrics for the selected category.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getNameFromCategoryId:
+    get:
+      tags:
+      - Events
+      description: Returns event names for one event category row.
+      operationId: Events.getNameFromCategoryId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event category row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event name metrics for the selected category.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getCategoryFromActionId:
+    get:
+      tags:
+      - Events
+      description: Returns event categories for one event action row.
+      operationId: Events.getCategoryFromActionId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event action row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event category metrics for the selected action.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getNameFromActionId:
+    get:
+      tags:
+      - Events
+      description: Returns event names for one event action row.
+      operationId: Events.getNameFromActionId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event action row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event name metrics for the selected action.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getActionFromNameId:
+    get:
+      tags:
+      - Events
+      description: Returns event actions for one event name row.
+      operationId: Events.getActionFromNameId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event name row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event action metrics for the selected name.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Events.getCategoryFromNameId:
+    get:
+      tags:
+      - Events
+      description: Returns event categories for one event name row.
+      operationId: Events.getCategoryFromNameId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSubtable
+        in: query
+        description: Subtable ID for the event name row to expand.
+        required: true
+        schema:
+          type: integer
+          example: 2
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Event category metrics for the selected name.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

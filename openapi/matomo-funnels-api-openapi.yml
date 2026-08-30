@@ -1,0 +1,1272 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Funnels API
+  version: 1.0.0
+  description: Exposes the Funnels reporting and management API for funnel analytics configuration. Includes endpoints for funnel reports, funnel definitions, and pattern validation helpers.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: Funnels
+  description: Exposes the Funnels reporting and management API for funnel analytics configuration. Includes endpoints for funnel reports, funnel definitions, and pattern validation helpers.
+paths:
+  /index.php?module=API&method=Funnels.getMetrics:
+    get:
+      tags:
+      - Funnels
+      description: Returns summary metrics for a funnel for the requested period.
+      operationId: Funnels.getMetrics
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report, or `false` to resolve the funnel from `$idGoal`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: idGoal
+        in: query
+        description: The goal ID to resolve the funnel from, or `false` to use `$idFunnel`. Use `0` for the sales funnel.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Summary metrics for the selected funnel.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelsSummary:
+    get:
+      tags:
+      - Funnels
+      description: Returns an overview table containing one row per activated funnel for the site.
+      operationId: Funnels.getFunnelsSummary
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - $ref: '#/components/parameters/idSiteRequired'
+      - $ref: '#/components/parameters/periodRequired'
+      - $ref: '#/components/parameters/dateRequired'
+      - $ref: '#/components/parameters/segmentOptional'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelsSummaryTotals:
+    get:
+      tags:
+      - Funnels
+      description: Returns overview totals across all activated funnels for the site.
+      operationId: Funnels.getFunnelsSummaryTotals
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - $ref: '#/components/parameters/idSiteRequired'
+      - $ref: '#/components/parameters/periodRequired'
+      - $ref: '#/components/parameters/dateRequired'
+      - $ref: '#/components/parameters/segmentOptional'
+      responses:
+        '200':
+          description: 'OK
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelFlow:
+    get:
+      tags:
+      - Funnels
+      description: Returns per-step funnel flow metrics for the requested funnel.
+      operationId: Funnels.getFunnelFlow
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report, or `false` to resolve the funnel from `$idGoal`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: idGoal
+        in: query
+        description: The goal ID to resolve the funnel from, or `false` to use `$idFunnel`. Use `0` for the sales funnel.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'A table with one row per funnel step and its flow metrics.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelFlowTable:
+    get:
+      tags:
+      - Funnels
+      description: Returns the funnel flow report formatted for the standard data table view.
+      operationId: Funnels.getFunnelFlowTable
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report, or `false` to resolve the funnel from `$idGoal`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: idGoal
+        in: query
+        description: The goal ID to resolve the funnel from, or `false` to use `$idFunnel`. Use `0` for the sales funnel.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The funnel flow table with presentation metadata applied.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelStepSubtable:
+    get:
+      tags:
+      - Funnels
+      description: Returns the subtable rows for a single funnel step.
+      operationId: Funnels.getFunnelStepSubtable
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: stepPosition
+        in: query
+        description: The funnel step position to inspect.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report, or `false` to resolve the funnel from `$idGoal`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: idGoal
+        in: query
+        description: The goal ID to resolve the funnel from, or `false` to use `$idFunnel`. Use `0` for the sales funnel.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'A table containing the proceeded, entry, and exit subtable rows for the step.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelEntries:
+    get:
+      tags:
+      - Funnels
+      description: Returns entry actions for a funnel or a specific funnel step.
+      operationId: Funnels.getFunnelEntries
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: step
+        in: query
+        description: Optional funnel step label to filter the report by.
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether to expand subtables in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSubtable
+        in: query
+        description: A specific subtable ID to load instead of the top-level report.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: flat
+        in: query
+        description: Whether to flatten the report hierarchy into a single table.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Entry actions for the funnel or selected step.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnelExits:
+    get:
+      tags:
+      - Funnels
+      description: Returns exit actions for a funnel or a specific funnel step.
+      operationId: Funnels.getFunnelExits
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idFunnel
+        in: query
+        description: The funnel ID to report.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: step
+        in: query
+        description: Optional funnel step label to filter the report by.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Exit actions for the funnel or selected step.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getGoalFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Returns the configured funnel for a goal.
+      operationId: Funnels.getGoalFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idGoal
+        in: query
+        description: The goal ID to load the funnel for. Use `0` for the sales funnel.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'The configured funnel definition, or `null` when no funnel has been configured yet.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getSalesFunnelForSite:
+    get:
+      tags:
+      - Funnels
+      description: Returns the configured sales funnel for a site.
+      operationId: Funnels.getSalesFunnelForSite
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'The configured sales funnel definition, or `null` when no sales funnel exists.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Returns a funnel definition by funnel ID.
+      operationId: Funnels.getFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idFunnel
+        in: query
+        description: The funnel ID to load.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'The funnel definition, or `null` when no matching funnel exists.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getAllActivatedFunnelsForSite:
+    get:
+      tags:
+      - Funnels
+      description: Returns all activated funnels for a site.
+      operationId: Funnels.getAllActivatedFunnelsForSite
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'Activated funnel definitions for the site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.hasAnyActivatedFunnelForSite:
+    get:
+      tags:
+      - Funnels
+      description: Returns whether the site has at least one activated funnel.
+      operationId: Funnels.hasAnyActivatedFunnelForSite
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: '`true` if the site has at least one activated funnel, `false` otherwise.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.deleteGoalFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Deletes the funnel configured for a goal.
+      operationId: Funnels.deleteGoalFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idGoal
+        in: query
+        description: The goal ID whose funnel should be deleted. Use `0` for the sales funnel.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.deleteNonGoalFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Deletes a non-goal funnel by funnel ID.
+      operationId: Funnels.deleteNonGoalFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idFunnel
+        in: query
+        description: The funnel ID to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.setGoalFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Creates or updates the funnel configuration for a goal.
+      operationId: Funnels.setGoalFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idGoal
+        in: query
+        description: The goal ID whose funnel should be saved. Use `0` for the sales funnel.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: isActivated
+        in: query
+        description: Whether the funnel should be active after saving. Truthy values enable funnel reporting.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: true
+          - type: string
+            example: 'true'
+      - name: steps
+        in: query
+        description: Funnel step definitions to save. When `$isActivated` is truthy, at least one step is required.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      responses:
+        '200':
+          description: 'The ID of the created or updated funnel.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.saveNonGoalFunnel:
+    get:
+      tags:
+      - Funnels
+      description: Creates or updates a funnel that is not tied to a goal.
+      operationId: Funnels.saveNonGoalFunnel
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idFunnel
+        in: query
+        description: The funnel ID to update, or `0` to create a new funnel.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: funnelName
+        in: query
+        description: The display name to store for the funnel.
+        required: true
+        schema:
+          type: string
+          example: Pricing Signup Funnel
+      - name: steps
+        in: query
+        description: Funnel step definitions to save.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: description
+        in: query
+        description: Optional funnel description (max 255 characters).
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The ID of the created or updated funnel.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.getAvailablePatternMatches:
+    get:
+      tags:
+      - Funnels
+      description: Returns the available pattern match types for funnel steps.
+      operationId: Funnels.getAvailablePatternMatches
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Supported funnel pattern types grouped by comparison category.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Funnels.testUrlMatchesSteps:
+    get:
+      tags:
+      - Funnels
+      description: Tests a value against the provided funnel step patterns.
+      operationId: Funnels.testUrlMatchesSteps
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: url
+        in: query
+        description: The URL or comparable value to test against the step patterns.
+        required: true
+        schema:
+          type: string
+          example: https://example.org/pricing
+      - name: steps
+        in: query
+        description: Funnel step definitions to test against the input value.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: 'The tested value and one result entry for each supported step pattern.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+  parameters:
+    segmentOptional:
+      name: segment
+      in: query
+      description: Segment expression; see `API.getSegmentDimensionMetadata`.
+      required: false
+      schema:
+        type: string
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+    periodRequired:
+      name: period
+      in: query
+      description: Reporting period.
+      required: true
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+        - range
+        example: day
+    idSiteRequired:
+      name: idSite
+      in: query
+      description: Matomo site ID.
+      required: true
+      schema:
+        type: integer
+        example: 1
+    dateRequired:
+      name: date
+      in: query
+      description: Date or range (e.g. `2025-08-01`, `yesterday`, `last30`, or `2025-08-01,2025-08-11`).
+      required: true
+      schema:
+        type: string
+        example: today
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

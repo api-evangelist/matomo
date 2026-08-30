@@ -1,0 +1,1788 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Heatmap Session Recording API
+  version: 1.0.0
+  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity.  Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. <code>idSiteHsr</code> identifies a heatmap or session recording configuration, while <code>idLogHsr</code> identifies an individual recorded activity entry.'
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: HeatmapSessionRecording
+  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity.  Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. <code>idSiteHsr</code> identifies a heatmap or session recording configuration, while <code>idLogHsr</code> identifies an individual recorded activity entry.'
+paths:
+  /index.php?module=API&method=HeatmapSessionRecording.addHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Adds a new heatmap.
+      operationId: HeatmapSessionRecording.addHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to configure.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The heatmap name shown in the reporting UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: matchPageRules
+        in: query
+        description: Matching rules that define which pages contribute to this heatmap.
+        required: true
+        schema:
+          type: array
+          items: []
+      - name: sampleLimit
+        in: query
+        description: The number of matching page views to record before the heatmap ends automatically.
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      - name: sampleRate
+        in: query
+        description: The percentage of matching traffic to record, from 0 to 100 with up to one decimal place.
+        required: false
+        schema:
+          type: number
+          default: 5
+      - name: excludedElements
+        in: query
+        description: Comma-separated CSS selectors to exclude from the heatmap output.
+        required: false
+        schema:
+          type: string
+      - name: screenshotUrl
+        in: query
+        description: URL of the page to capture for the heatmap screenshot.
+        required: false
+        schema:
+          type: string
+      - name: breakpointMobile
+        in: query
+        description: Width threshold used to classify visits as mobile when device detection is unavailable.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: breakpointTablet
+        in: query
+        description: Width threshold used to classify visits as tablet when device detection is unavailable.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: captureDomManually
+        in: query
+        description: Whether the DOM should be captured manually instead of automatically.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: description
+        in: query
+        description: Optional description providing additional context, such as the purpose or usage.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: autoRepeat
+        in: query
+        description: Whether Matomo should automatically create a new heatmap once this one finishes.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'The ID of the newly created heatmap configuration.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.duplicateHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Copies a specified heatmap to one or more sites. If a heatmap with the same name already exists, the new heatmap will have an automatically adjusted name to make it unique to the assigned site.
+      operationId: HeatmapSessionRecording.duplicateHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the source heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to duplicate.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idDestinationSites
+        in: query
+        description: Site IDs to copy the heatmap to. Defaults to the source site when omitted.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+      responses:
+        '200':
+          description: 'The duplication result, including success state, messages, and any newly created heatmap IDs.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.updateHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Updates an existing heatmap.
+      operationId: HeatmapSessionRecording.updateHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The heatmap name shown in the reporting UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: matchPageRules
+        in: query
+        description: Matching rules that define which pages contribute to this heatmap.
+        required: true
+        schema:
+          type: array
+          items: []
+      - name: sampleLimit
+        in: query
+        description: The number of matching page views to record before the heatmap ends automatically.
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      - name: sampleRate
+        in: query
+        description: The percentage of matching traffic to record, from 0 to 100 with up to one decimal place.
+        required: false
+        schema:
+          type: number
+          default: 5
+      - name: excludedElements
+        in: query
+        description: Comma-separated CSS selectors to exclude from the heatmap output.
+        required: false
+        schema:
+          type: string
+      - name: screenshotUrl
+        in: query
+        description: URL of the page to capture for the heatmap screenshot.
+        required: false
+        schema:
+          type: string
+      - name: breakpointMobile
+        in: query
+        description: Width threshold used to classify visits as mobile when device detection is unavailable.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: breakpointTablet
+        in: query
+        description: Width threshold used to classify visits as tablet when device detection is unavailable.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: captureDomManually
+        in: query
+        description: Whether the DOM should be captured manually instead of automatically.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: description
+        in: query
+        description: Optional description providing additional context, such as the purpose or usage.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: autoRepeat
+        in: query
+        description: Whether Matomo should automatically create a new heatmap once this one finishes.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmapScreenshot:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Deletes the stored snapshot (screenshot) for a heatmap.
+      operationId: HeatmapSessionRecording.deleteHeatmapScreenshot
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: captureManually
+        in: query
+        description: Whether the new snapshot must be captured manually instead of automatically.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Whether the snapshot reference was removed.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.addSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Adds a new session recording.
+      operationId: HeatmapSessionRecording.addSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to configure.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The session recording name shown in the reporting UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: matchPageRules
+        in: query
+        description: Matching rules that define which pages contribute to this heatmap.
+        required: false
+        schema:
+          type: array
+          items: []
+          default: []
+      - name: sampleLimit
+        in: query
+        description: The number of sessions to record before the recording ends automatically.
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      - name: sampleRate
+        in: query
+        description: The percentage of matching traffic to record, from 0 to 100 with up to one decimal place.
+        required: false
+        schema:
+          type: number
+          default: 10
+      - name: minSessionTime
+        in: query
+        description: Minimum time in seconds a visitor must spend on the current page before recording.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: requiresActivity
+        in: query
+        description: Whether the visitor must interact by scrolling or clicking before the session is kept.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: captureKeystrokes
+        in: query
+        description: Whether entered form text should be recorded. Password fields are masked automatically.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: description
+        in: query
+        description: Optional description providing additional context, such as the purpose or usage.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: autoRepeat
+        in: query
+        description: Whether Matomo should automatically create a new session recording once this one finishes.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'The ID of the newly created session recording configuration.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.updateSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Updates an existing session recording.
+      operationId: HeatmapSessionRecording.updateSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the session recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The session recording name shown in the reporting UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: matchPageRules
+        in: query
+        description: Matching rules that define which pages contribute to this heatmap.
+        required: false
+        schema:
+          type: array
+          items: []
+          default: []
+      - name: sampleLimit
+        in: query
+        description: The number of sessions to record before the recording ends automatically.
+        required: false
+        schema:
+          type: integer
+          default: 1000
+      - name: sampleRate
+        in: query
+        description: The percentage of matching traffic to record, from 0 to 100 with up to one decimal place.
+        required: false
+        schema:
+          type: number
+          default: 10
+      - name: minSessionTime
+        in: query
+        description: Minimum time in seconds a visitor must spend on the current page before recording.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: requiresActivity
+        in: query
+        description: Whether the visitor must interact by scrolling or clicking before the session is kept.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: captureKeystrokes
+        in: query
+        description: Whether entered form text should be recorded. Password fields are masked automatically.
+        required: false
+        schema:
+          type: boolean
+          default: true
+      - name: description
+        in: query
+        description: Optional description providing additional context, such as the purpose or usage.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: autoRepeat
+        in: query
+        description: Whether Matomo should automatically create a new session recording once this one finishes.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns a single heatmap configuration.
+      operationId: HeatmapSessionRecording.getHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to fetch.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'The heatmap configuration data for the requested heatmap.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns a single session recording configuration.
+      operationId: HeatmapSessionRecording.getSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to fetch.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'The session recording configuration data for the requested recording.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.pauseHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Pauses a heatmap configuration.
+      operationId: HeatmapSessionRecording.pauseHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to pause.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.resumeHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Resumes a paused heatmap configuration.
+      operationId: HeatmapSessionRecording.resumeHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to resume.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Deletes a heatmap configuration.
+      operationId: HeatmapSessionRecording.deleteHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.endHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Ends a heatmap configuration.
+      operationId: HeatmapSessionRecording.endHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the heatmap.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to end.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.pauseSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Pauses a session recording configuration.
+      operationId: HeatmapSessionRecording.pauseSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the session recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to pause.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.resumeSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Resumes a paused session recording configuration.
+      operationId: HeatmapSessionRecording.resumeSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the session recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to resume.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.deleteSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Deletes a session recording configuration.
+      operationId: HeatmapSessionRecording.deleteSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the session recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.endSessionRecording:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Ends a session recording configuration.
+      operationId: HeatmapSessionRecording.endSessionRecording
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the session recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to end.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getHeatmaps:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns all non-deleted heatmaps for a website.
+      operationId: HeatmapSessionRecording.getHeatmaps
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: includePageTreeMirror
+        in: query
+        description: Whether to include the stored page tree mirror for each heatmap.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: 'A list of heatmap configurations for the requested website.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getSessionRecordings:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns all non-deleted session recordings for a website.
+      operationId: HeatmapSessionRecording.getSessionRecordings
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'A list of session recording configurations for the requested website.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getRecordedSessions:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns all recorded sessions for a specific session recording.
+      operationId: HeatmapSessionRecording.getRecordedSessions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: idSubtable
+        in: query
+        description: Visit ID to fetch recorded pageviews for one visit instead of the session list.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'The recorded sessions, or the recorded pageviews for one visit when `idSubtable` is provided.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getRecordedSession:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Get all activities of a specific recorded session.
+      operationId: HeatmapSessionRecording.getRecordedSession
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idLogHsr
+        in: query
+        description: The ID of the recorded session entry to fetch.
+        required: true
+        schema:
+          type: integer
+          example: 101
+      responses:
+        '200':
+          description: 'The recorded session details, including events and recorded pageviews for the replay.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedSession:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Deletes all recorded page views within a recorded session.
+      operationId: HeatmapSessionRecording.deleteRecordedSession
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration whose data should be deleted.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idVisit
+        in: query
+        description: The visit ID of the recorded session to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1001
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedPageview:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Deletes an individual page view within a recorded session.
+      operationId: HeatmapSessionRecording.deleteRecordedPageview
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the recording.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idSiteHsr
+        in: query
+        description: The ID of the session recording configuration whose data should be deleted.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idLogHsr
+        in: query
+        description: The ID of the recorded pageview entry to delete.
+        required: true
+        schema:
+          type: integer
+          example: 101
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmapMetadata:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns summary metadata for a recorded heatmap.
+      operationId: HeatmapSessionRecording.getRecordedHeatmapMetadata
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The recorded heatmap metadata for the requested period.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmap:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Get all activities of a heatmap.
+      operationId: HeatmapSessionRecording.getRecordedHeatmap
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idSiteHsr
+        in: query
+        description: The ID of the heatmap configuration to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: heatmapType
+        in: query
+        description: Heatmap activity type to return.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: deviceType
+        in: query
+        description: Device type to return.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The aggregated heatmap activity points for the requested heatmap, period, and device type.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.testUrlMatchPages:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Tests, checks whether the given URL matches the given page rules.
+      operationId: HeatmapSessionRecording.testUrlMatchPages
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: url
+        in: query
+        description: The URL to test the matching rules against.
+        required: true
+        schema:
+          type: string
+          example: https://example.org/pricing
+      - name: matchPageRules
+        in: query
+        description: Matching rules to evaluate against the URL.
+        required: false
+        schema:
+          type: array
+          items: []
+          default: []
+      responses:
+        '200':
+          description: 'The result of the test, including the URL and whether it matches all rules.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getAvailableStatuses:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns the valid heatmap and session recording statuses.
+      operationId: HeatmapSessionRecording.getAvailableStatuses
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The list of potential statuses and their human-friendly names.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getAvailableTargetPageRules:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns the available target attributes and rule types for page matching.
+      operationId: HeatmapSessionRecording.getAvailableTargetPageRules
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The available components for building heatmap and session recording page rules.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getAvailableDeviceTypes:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns the device types supported by the heatmap reporting endpoints.
+      operationId: HeatmapSessionRecording.getAvailableDeviceTypes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The list of available device types and their human-friendly names.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getAvailableHeatmapTypes:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns the heatmap activity types supported by the heatmap reporting endpoints.
+      operationId: HeatmapSessionRecording.getAvailableHeatmapTypes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The list of available categories of heatmaps and their human-friendly names.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getAvailableSessionRecordingSampleLimits:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Get a list of available session recording sample limits.
+      operationId: HeatmapSessionRecording.getAvailableSessionRecordingSampleLimits
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The list of available integer values that can be used as the session recording sample limit.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=HeatmapSessionRecording.getEventTypes:
+    get:
+      tags:
+      - HeatmapSessionRecording
+      description: Returns the event types that may appear in recorded session data.
+      operationId: HeatmapSessionRecording.getEventTypes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'The tracked event types and their human-friendly names.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

@@ -1,0 +1,957 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Custom Reports API
+  version: 1.0.0
+  description: Exposes Custom Reports configuration and reporting endpoints. Use it to create, duplicate, manage, and query custom report definitions and their archived data.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: CustomReports
+  description: Exposes Custom Reports configuration and reporting endpoints. Use it to create, duplicate, manage, and query custom report definitions and their archived data.
+paths:
+  /index.php?module=API&method=CustomReports.duplicateCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Duplicates a custom report to one or more websites.
+      operationId: CustomReports.duplicateCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website that owns the source custom report.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to duplicate.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: idDestinationSites
+        in: query
+        description: Website IDs to copy the custom report to. Defaults to [$idSite] when omitted.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+      responses:
+        '200':
+          description: 'Response indicating whether the duplication succeeded and, on success, the new report ID.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.addCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Creates a new custom report definition.
+      operationId: CustomReports.addCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID that owns the report, or "all"/0 when creating a shared report for multiple websites.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: name
+        in: query
+        description: The report name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: reportType
+        in: query
+        description: Report type to create, for example "table", "evolution" or "kpicard".
+        required: true
+        schema:
+          type: string
+          example: table
+      - name: metricIds
+        in: query
+        description: Metric IDs to include in the report.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - nb_visits
+          - nb_conversions
+      - name: categoryId
+        in: query
+        description: Category ID to place the report in. Uses the default custom reports category when omitted.
+        required: false
+        schema:
+          type: string
+      - name: dimensionIds
+        in: query
+        description: Dimension IDs to include in the report.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: subcategoryId
+        in: query
+        description: Subcategory ID to place the report in. Creates a new reporting page when omitted.
+        required: false
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: Optional report description shown in the report help tooltip.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: segmentFilter
+        in: query
+        description: Optional URL-encoded segment applied to the report data.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: multipleIdSites
+        in: query
+        description: Optional website IDs to assign the report to when creating a shared report.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      responses:
+        '200':
+          description: 'The ID of the newly created custom report.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.updateCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Updates an existing custom report definition.
+      operationId: CustomReports.updateCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID that owns the report, or "all"/0 when updating a shared report.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to update.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: name
+        in: query
+        description: The report name.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: reportType
+        in: query
+        description: Report type to store, for example "table", "evolution" or "kpicard".
+        required: true
+        schema:
+          type: string
+          example: table
+      - name: metricIds
+        in: query
+        description: Metric IDs to include in the report.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - nb_visits
+          - nb_conversions
+      - name: categoryId
+        in: query
+        description: Category ID to place the report in. Uses the default custom reports category when omitted.
+        required: false
+        schema:
+          type: string
+      - name: dimensionIds
+        in: query
+        description: Dimension IDs to include in the report.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      - name: subcategoryId
+        in: query
+        description: Subcategory ID to place the report in. Creates a new reporting page when omitted.
+        required: false
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: Optional report description shown in the report help tooltip.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: segmentFilter
+        in: query
+        description: Optional URL-encoded segment applied to the report data.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: subCategoryReportIds
+        in: query
+        description: Child report IDs mapped to this report.
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+          default: []
+      - name: multipleIdSites
+        in: query
+        description: Optional website IDs to assign the report to when updating a shared report.
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+          default: []
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getConfiguredReports:
+    get:
+      tags:
+      - CustomReports
+      description: Returns all configured custom reports for a website.
+      operationId: CustomReports.getConfiguredReports
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID to query, or "all" for reports shared across all websites.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: skipCategoryMetadata
+        in: query
+        description: Whether to omit category metadata from each returned report.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'The configured custom reports for the requested website.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getConfiguredReport:
+    get:
+      tags:
+      - CustomReports
+      description: Returns a specific custom report configuration.
+      operationId: CustomReports.getConfiguredReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID to query, or "all" for a report shared across all websites.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'The configured custom report details.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.deleteCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Deletes a custom report definition.
+      operationId: CustomReports.deleteCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID that owns the custom report, or "all" for a shared report.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to delete.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.pauseCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Pauses a custom report.
+      operationId: CustomReports.pauseCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID that owns the custom report, or "all" for a shared report.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to pause.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.resumeCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Resumes a paused custom report.
+      operationId: CustomReports.resumeCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID that owns the custom report, or "all" for a shared report.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to resume.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getAvailableCategories:
+    get:
+      tags:
+      - CustomReports
+      description: Returns report categories and subcategories that can contain custom reports.
+      operationId: CustomReports.getAvailableCategories
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID used to resolve available report pages.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'Available categories and subcategories for custom report placement.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getAvailableReportTypes:
+    get:
+      tags:
+      - CustomReports
+      description: Returns report types that can be used for custom reports.
+      operationId: CustomReports.getAvailableReportTypes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Available custom report types keyed by identifier and translated name.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getAvailableDimensions:
+    get:
+      tags:
+      - CustomReports
+      description: Returns dimensions that can be used in custom reports.
+      operationId: CustomReports.getAvailableDimensions
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID used to resolve available dimensions.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'Available dimensions grouped by category.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getAvailableMetrics:
+    get:
+      tags:
+      - CustomReports
+      description: Returns metrics that can be used in custom reports.
+      operationId: CustomReports.getAvailableMetrics
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID used to resolve available metrics.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      responses:
+        '200':
+          description: 'Available metrics grouped by category.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=CustomReports.getCustomReport:
+    get:
+      tags:
+      - CustomReports
+      description: Returns archived data for a configured custom report.
+      operationId: CustomReports.getCustomReport
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The website ID to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+      - name: period
+        in: query
+        description: The period to process, processes data for the period containing the specified date.
+        required: true
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+          - range
+          example: day
+      - name: date
+        in: query
+        description: The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).
+        required: true
+        schema:
+          type: string
+          example: yesterday
+      - name: idCustomReport
+        in: query
+        description: The ID of the custom report to look up data for.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the report. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: expanded
+        in: query
+        description: Whether to expand recursive subtables in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: flat
+        in: query
+        description: Whether to flatten the report rows into a single level.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: idSubtable
+        in: query
+        description: The subtable ID to fetch instead of the root table.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: columns
+        in: query
+        description: Comma-separated list of columns to include in the response.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'The archived data for the requested custom report.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

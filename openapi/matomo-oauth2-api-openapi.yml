@@ -1,0 +1,568 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin O Auth2 API
+  version: 1.0.0
+  description: Exposes super-user OAuth2 client management endpoints for Matomo.  This API lists configured scopes and lets administrators create, inspect, update, rotate, activate, and delete OAuth2 clients.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: OAuth2
+  description: Exposes super-user OAuth2 client management endpoints for Matomo.  This API lists configured scopes and lets administrators create, inspect, update, rotate, activate, and delete OAuth2 clients.
+paths:
+  /index.php?module=API&method=OAuth2.getClients:
+    get:
+      tags:
+      - OAuth2
+      description: Lists all OAuth2 clients configured in Matomo (super users only).
+      operationId: OAuth2.getClients
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'OAuth2 clients ordered by most recently updated first.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.getClient:
+    get:
+      tags:
+      - OAuth2
+      description: Returns one OAuth2 client configured in Matomo (super users only).
+      operationId: OAuth2.getClient
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: clientId
+        in: query
+        description: 32-character hexadecimal client identifier.
+        required: true
+        schema:
+          type: string
+          example: 0123456789abcdef0123456789abcdef
+      responses:
+        '200':
+          description: 'Sanitized OAuth2 client details for the requested client.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.getScopes:
+    get:
+      tags:
+      - OAuth2
+      description: Returns the OAuth2 scopes enabled for client configuration (super users only).
+      operationId: OAuth2.getScopes
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Enabled scope identifiers mapped to their translated descriptions.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.createClient:
+    get:
+      tags:
+      - OAuth2
+      description: Creates a new OAuth2 client and optionally returns the generated secret.
+      operationId: OAuth2.createClient
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: name
+        in: query
+        description: Display name shown in the Matomo UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: grantTypes
+        in: query
+        description: Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - authorization_code
+      - name: scope
+        in: query
+        description: Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.
+        required: true
+        schema:
+          type: string
+          example: matomo:read
+      - name: redirectUris
+        in: query
+        description: Allowed redirect URIs (array or newline-separated string).
+        required: false
+        schema:
+          oneOf:
+          - type: string
+            default: '[]'
+          - type: array
+            items:
+              type: string
+            default: []
+      - name: description
+        in: query
+        description: Optional description for administrators.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: type
+        in: query
+        description: '`confidential` (default, requires secret) or `public` (no client secret).'
+        required: false
+        schema:
+          type: string
+          default: confidential
+      - name: active
+        in: query
+        description: '`''1''` to enable the client or `''0''` to disable it.'
+        required: false
+        schema:
+          type: string
+          default: '1'
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'The sanitized client record and the generated plaintext secret when the created client is confidential.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.updateClient:
+    get:
+      tags:
+      - OAuth2
+      description: Updates an OAuth2 client and optionally returns a newly generated secret.
+      operationId: OAuth2.updateClient
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: clientId
+        in: query
+        description: 32-character hexadecimal client identifier.
+        required: true
+        schema:
+          type: string
+          example: 0123456789abcdef0123456789abcdef
+      - name: name
+        in: query
+        description: Display name shown in the Matomo UI.
+        required: true
+        schema:
+          type: string
+          example: Pricing
+      - name: grantTypes
+        in: query
+        description: Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - authorization_code
+      - name: scope
+        in: query
+        description: Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.
+        required: true
+        schema:
+          type: string
+          example: matomo:read
+      - name: redirectUris
+        in: query
+        description: Allowed redirect URIs (array or newline-separated string).
+        required: false
+        schema:
+          oneOf:
+          - type: string
+            default: '[]'
+          - type: array
+            items:
+              type: string
+            default: []
+      - name: description
+        in: query
+        description: Optional description for administrators.
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: type
+        in: query
+        description: '`confidential` (default, requires secret) or `public` (no client secret).'
+        required: false
+        schema:
+          type: string
+          default: confidential
+      - name: active
+        in: query
+        description: '`''1''` to enable the client or `''0''` to disable it.'
+        required: false
+        schema:
+          type: string
+          default: '1'
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'The sanitized updated client record and a newly generated plaintext secret when the client becomes confidential.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.rotateSecret:
+    get:
+      tags:
+      - OAuth2
+      description: Generates and persists a new secret for the given OAuth2 client (super users only).
+      operationId: OAuth2.rotateSecret
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: clientId
+        in: query
+        description: 32-character hexadecimal client identifier.
+        required: true
+        schema:
+          type: string
+          example: 0123456789abcdef0123456789abcdef
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'The client ID and the newly generated plaintext secret.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.setClientActive:
+    get:
+      tags:
+      - OAuth2
+      description: Updates whether an OAuth2 client is active (super users only).
+      operationId: OAuth2.setClientActive
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: clientId
+        in: query
+        description: 32-character hexadecimal client identifier.
+        required: true
+        schema:
+          type: string
+          example: 0123456789abcdef0123456789abcdef
+      - name: active
+        in: query
+        description: '`''1''` to enable the client or `''0''` to disable it.'
+        required: true
+        schema:
+          type: string
+          example: '1'
+      responses:
+        '200':
+          description: 'The sanitized client record after the active flag is updated.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=OAuth2.deleteClient:
+    get:
+      tags:
+      - OAuth2
+      description: Deletes an OAuth2 client and its related access tokens, refresh tokens, and auth codes (super users only).
+      operationId: OAuth2.deleteClient
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: clientId
+        in: query
+        description: 32-character hexadecimal client identifier.
+        required: true
+        schema:
+          type: string
+          example: 0123456789abcdef0123456789abcdef
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'Confirmation that the client and its related OAuth2 records were deleted.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

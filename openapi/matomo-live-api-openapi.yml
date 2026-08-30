@@ -1,0 +1,551 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Live API
+  version: 1.0.0
+  description: 'The Live! API lets you access complete visit level information about your visitors. Combined with the power of <a href=''https://matomo.org/docs/analytics-api/segmentation/'' target=''_blank''>Segmentation</a>, you will be able to request visits filtered by any criteria.  The method "getLastVisitsDetails" will return extensive <a href=''https://matomo.org/guide/apis/raw-data/''>RAW data</a> for each visit, which includes: server time, visitId, visitorId, visitorType (new or returning), number of pages, list of all pages (and events, file downloaded and outlinks clicked), custom variables names and values set to this visit, number of goal conversions (and list of all Goal conversions for this visit, with time of conversion, revenue, URL, etc.), but also other attributes such as: days since last visit, days since first visit, country, continent, visitor IP, provider, referrer used (referrer name, keyword if it was a search engine, full URL), campaign name and keyword, operating system, browser, type of screen, resolution, supported browser plugins (flash, java, silverlight, pdf, etc.), various dates & times format to make it easier for API users... and more!  With the parameter <a href=''https://matomo.org/docs/analytics-api/segmentation/'' rel=''noreferrer'' target=''_blank''>''&segment=''</a> you can filter the returned visits by any criteria (visitor IP, visitor ID, country, keyword used, time of day, etc.).  The method "getCounters" is used to return a simple counter: visits, number of actions, number of converted visits, in the last N minutes.  See also the documentation about <a href=''https://matomo.org/docs/real-time/'' rel=''noreferrer'' target=''_blank''>Real time widget and visitor level reports</a> in Matomo. You may also be interested in steps to <a href=''https://matomo.org/faq/how-to/faq_24536/''>export your RAW data to a data warehouse</a>.'
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: Live
+  description: 'The Live! API lets you access complete visit level information about your visitors. Combined with the power of <a href=''https://matomo.org/docs/analytics-api/segmentation/'' target=''_blank''>Segmentation</a>, you will be able to request visits filtered by any criteria.  The method "getLastVisitsDetails" will return extensive <a href=''https://matomo.org/guide/apis/raw-data/''>RAW data</a> for each visit, which includes: server time, visitId, visitorId, visitorType (new or returning), number of pages, list of all pages (and events, file downloaded and outlinks clicked), custom variables names and values set to this visit, number of goal conversions (and list of all Goal conversions for this visit, with time of conversion, revenue, URL, etc.), but also other attributes such as: days since last visit, days since first visit, country, continent, visitor IP, provider, referrer used (referrer name, keyword if it was a search engine, full URL), campaign name and keyword, operating system, browser, type of screen, resolution, supported browser plugins (flash, java, silverlight, pdf, etc.), various dates & times format to make it easier for API users... and more!  With the parameter <a href=''https://matomo.org/docs/analytics-api/segmentation/'' rel=''noreferrer'' target=''_blank''>''&segment=''</a> you can filter the returned visits by any criteria (visitor IP, visitor ID, country, keyword used, time of day, etc.).  The method "getCounters" is used to return a simple counter: visits, number of actions, number of converted visits, in the last N minutes.  See also the documentation about <a href=''https://matomo.org/docs/real-time/'' rel=''noreferrer'' target=''_blank''>Real time widget and visitor level reports</a> in Matomo. You may also be interested in steps to <a href=''https://matomo.org/faq/how-to/faq_24536/''>export your RAW data to a data warehouse</a>.'
+paths:
+  /index.php?module=API&method=Live.getCounters:
+    get:
+      tags:
+      - Live
+      description: Returns simple live counters for visits over the last N minutes.
+      operationId: Live.getCounters
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID or IDs to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: lastMinutes
+        in: query
+        description: Number of minutes to look back at, between 1 and 2880.
+        required: true
+        schema:
+          type: integer
+          example: 30
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the counters. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: showColumns
+        in: query
+        description: Optional columns to include, for example `visits` or `actions`.
+        required: false
+        schema:
+          oneOf:
+          - type: string
+            default: '[]'
+          - type: array
+            items:
+              type: string
+            default: []
+      - name: hideColumns
+        in: query
+        description: Optional columns to omit from the response.
+        required: false
+        schema:
+          oneOf:
+          - type: string
+            default: '[]'
+          - type: array
+            items:
+              type: string
+            default: []
+      responses:
+        '200':
+          description: 'A single-row array containing the requested counters.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Live.isVisitorProfileEnabled:
+    get:
+      tags:
+      - Live
+      description: Returns whether the visitor profile is enabled for the given site selection.
+      operationId: Live.isVisitorProfileEnabled
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID or site selection to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Whether visitor profiles are enabled.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Live.getLastVisitsDetails:
+    get:
+      tags:
+      - Live
+      description: Returns the most recent visit details for one or more websites.
+      operationId: Live.getLastVisitsDetails
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: string
+            example: '1'
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: Optional period restriction.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Optional date or date range restriction.
+        required: false
+        schema:
+          type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the visits. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: countVisitorsToFetch
+        in: query
+        description: Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: minTimestamp
+        in: query
+        description: Optional minimum timestamp for incremental refreshes or pagination.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: flat
+        in: query
+        description: Whether to flatten action details into the visit rows.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: doNotFetchActions
+        in: query
+        description: Whether to skip fetching action details for better performance.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: enhanced
+        in: query
+        description: Whether plugins should enrich the returned visit details.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Recent visit details.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Live.getVisitorProfile:
+    get:
+      tags:
+      - Live
+      description: Returns a visitor profile built from the visitor's recent visits.
+      operationId: Live.getVisitorProfile
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: visitorId
+        in: query
+        description: Optional visitor ID. If omitted, the most recent visitor is used.
+        required: false
+        schema:
+          type: string
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the profile lookup. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      - name: limitVisits
+        in: query
+        description: Optional maximum number of visits to include in the profile.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      responses:
+        '200':
+          description: 'Visitor profile data, or an empty array if no visitor is found.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Live.getMostRecentVisitorId:
+    get:
+      tags:
+      - Live
+      description: Returns the visitor ID of the most recent visit.
+      operationId: Live.getMostRecentVisitorId
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to query.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: segment
+        in: query
+        description: 'Custom segment to filter the lookup. Example: "referrerName==example.com" Supports AND (;) and OR (,) operators.'
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Visitor ID of the most recent matching visit, or `false` if none is found.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=Live.getMostRecentVisitsDateTime:
+    get:
+      tags:
+      - Live
+      description: Returns the most recent UTC datetime when an action was performed for the given website or websites.
+      operationId: Live.getMostRecentVisitsDateTime
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Website ID or IDs to query.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: 1
+          - type: array
+            items:
+              type: integer
+            example: 1
+      - name: period
+        in: query
+        description: Optional period restriction.
+        required: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: Optional date or date range restriction.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Most recent visit datetime in UTC, or an empty string if none exists.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/

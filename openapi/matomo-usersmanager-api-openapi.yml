@@ -1,0 +1,1568 @@
+openapi: 3.2.0
+info:
+  title: Matomo Reporting API for plugin Users Manager API
+  version: 1.0.0
+  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.  You can create users via "addUser", update existing users via "updateUser" and delete users via "deleteUser". There are many ways to list users based on their login "getUser" and "getUsers", their email "getUserByEmail", or which users have permission (view or admin) to access the specified websites "getUsersWithSiteAccess".  Existing Permissions are listed given a login via "getSitesAccessFromUser", or a website ID via "getUsersAccessFromSite", or you can list all users and websites for a given permission via "getUsersSitesFromAccess". Permissions are set and updated via the method "setUserAccess". See also the documentation about <a href='https://matomo.org/docs/manage-users/' rel='noreferrer' target='_blank'>Managing Users</a> in Matomo.
+servers:
+- url: https://demo-proxy.innocraft.cloud/
+  description: Current Matomo instance
+security:
+- MatomoToken: []
+tags:
+- name: UsersManager
+  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.  You can create users via "addUser", update existing users via "updateUser" and delete users via "deleteUser". There are many ways to list users based on their login "getUser" and "getUsers", their email "getUserByEmail", or which users have permission (view or admin) to access the specified websites "getUsersWithSiteAccess".  Existing Permissions are listed given a login via "getSitesAccessFromUser", or a website ID via "getUsersAccessFromSite", or you can list all users and websites for a given permission via "getUsersSitesFromAccess". Permissions are set and updated via the method "setUserAccess". See also the documentation about <a href='https://matomo.org/docs/manage-users/' rel='noreferrer' target='_blank'>Managing Users</a> in Matomo.
+paths:
+  /index.php?module=API&method=UsersManager.getAvailableRoles:
+    get:
+      tags:
+      - UsersManager
+      description: Get the list of all available roles.
+      operationId: UsersManager.getAvailableRoles
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'List of available roles.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getAvailableCapabilities:
+    get:
+      tags:
+      - UsersManager
+      description: Get the list of all available capabilities.
+      operationId: UsersManager.getAvailableCapabilities
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'List of available capabilities.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.setUserPreference:
+    get:
+      tags:
+      - UsersManager
+      description: Sets a supported UsersManager preference for a user.
+      operationId: UsersManager.setUserPreference
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login of the user whose preference should be updated.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: preferenceName
+        in: query
+        description: Preference name registered by UsersManager or plugin configuration.
+        required: true
+        schema:
+          type: string
+          example: reportFormat
+      - name: preferenceValue
+        in: query
+        description: Value to store for the preference.
+        required: true
+        schema:
+          type: string
+          example: pdf
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUserPreference:
+    get:
+      tags:
+      - UsersManager
+      description: Returns a supported UsersManager preference for a user.
+      operationId: UsersManager.getUserPreference
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: preferenceName
+        in: query
+        description: Preference name registered by UsersManager or plugin configuration.
+        required: true
+        schema:
+          type: string
+          example: reportFormat
+      - name: userLogin
+        in: query
+        description: User login to read. Use `false` to read the current user.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Stored preference value, or the default value when none was saved yet.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersPlusRole:
+    get:
+      tags:
+      - UsersManager
+      description: Returns all users with their role for $idSite.
+      operationId: UsersManager.getUsersPlusRole
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to inspect.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: limit
+        in: query
+        description: Maximum number of users to return.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: offset
+        in: query
+        description: Zero-based result offset.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+            default: 0
+          - type: string
+            default: '0'
+      - name: filter_search
+        in: query
+        description: Text to search for in user login or email.
+        required: false
+        schema:
+          type: string
+      - name: filter_access
+        in: query
+        description: Access filter for the site. Accepted values are `noaccess`, `some`, `view`, `write`, `admin`, and `superuser`. Filtering by `superuser` is only allowed for super users.
+        required: false
+        schema:
+          type: string
+      - name: filter_status
+        in: query
+        description: Invite status filter.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Users visible to the current requester, enriched with role and capabilities for the site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsers:
+    get:
+      tags:
+      - UsersManager
+      description: Returns users visible to the current requester.
+      operationId: UsersManager.getUsers
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogins
+        in: query
+        description: Comma-separated list of user logins to fetch. Leave empty to return every visible user.
+        required: false
+        schema:
+          type: string
+          default: ''
+      responses:
+        '200':
+          description: 'Matching users enriched with invite and access metadata.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersLogin:
+    get:
+      tags:
+      - UsersManager
+      description: Returns the login names of all users visible to the current requester.
+      operationId: UsersManager.getUsersLogin
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Matching user logins.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersSitesFromAccess:
+    get:
+      tags:
+      - UsersManager
+      description: Returns the site IDs where each user has the requested access entry.
+      operationId: UsersManager.getUsersSitesFromAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: access
+        in: query
+        description: Access entry to match, for example a role or capability ID.
+        required: true
+        schema:
+          type: string
+          example: view
+      responses:
+        '200':
+          description: 'Mapping of user login to site IDs where that access entry is assigned.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersAccessFromSite:
+    get:
+      tags:
+      - UsersManager
+      description: Returns one access entry per visible user for the requested site.
+      operationId: UsersManager.getUsersAccessFromSite
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: Numeric site ID.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: 'Mapping of user login to access entry.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersWithSiteAccess:
+    get:
+      tags:
+      - UsersManager
+      description: Returns users who have the requested access entry for a website.
+      operationId: UsersManager.getUsersWithSiteAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: idSite
+        in: query
+        description: The numeric ID of the website to inspect.
+        required: true
+        schema:
+          type: integer
+          example: 1
+      - name: access
+        in: query
+        description: Access entry to match, for example a role or capability ID.
+        required: true
+        schema:
+          type: string
+          example: view
+      responses:
+        '200':
+          description: 'Matching users enriched with user metadata.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getSitesAccessFromUser:
+    get:
+      tags:
+      - UsersManager
+      description: Returns the raw site access entries assigned to a user.
+      operationId: UsersManager.getSitesAccessFromUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Existing user login to inspect.
+        required: true
+        schema:
+          type: string
+          example: alice
+      responses:
+        '200':
+          description: 'Site access rows for the user.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getSitesAccessForUser:
+    get:
+      tags:
+      - UsersManager
+      description: Returns site access rows for a non-superuser, with filtering and pagination.
+      operationId: UsersManager.getSitesAccessForUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Existing non-superuser login to inspect.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: limit
+        in: query
+        description: Maximum number of sites to return.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: offset
+        in: query
+        description: Zero-based result offset.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+            default: 0
+          - type: string
+            default: '0'
+      - name: filter_search
+        in: query
+        description: Text to search in site names, URLs, or groups.
+        required: false
+        schema:
+          type: string
+      - name: filter_access
+        in: query
+        description: Access filter. Accepted values are `some`, `view`, `write`, or `admin`.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Site access rows including role and explicit capabilities for each returned site.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUser:
+    get:
+      tags:
+      - UsersManager
+      description: Returns one user's metadata as visible to the requester.
+      operationId: UsersManager.getUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Existing user login to fetch.
+        required: true
+        schema:
+          type: string
+          example: alice
+      responses:
+        '200':
+          description: 'Enriched user data, or an empty array when no user record is returned.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUserByEmail:
+    get:
+      tags:
+      - UsersManager
+      description: Returns one user's metadata for the given email address.
+      operationId: UsersManager.getUserByEmail
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userEmail
+        in: query
+        description: Existing email address to look up.
+        required: true
+        schema:
+          type: string
+          example: alice@example.org
+      responses:
+        '200':
+          description: 'Enriched user data, or an empty array when no user record is returned.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.addUser:
+    get:
+      tags:
+      - UsersManager
+      description: Creates a new user account.
+      operationId: UsersManager.addUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name for the new user.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: password
+        in: query
+        description: Password for the new user.
+        required: true
+        schema:
+          type: string
+          example: correct-horse-battery-staple
+      - name: email
+        in: query
+        description: Email address for the new user.
+        required: true
+        schema:
+          type: string
+          example: alice@example.org
+      - name: _isPasswordHashed
+        in: query
+        description: '`true` if `$password` is already pre-hashed for storage.'
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: initialIdSite
+        in: query
+        description: Initial site to grant `view` access to. Required for non-superusers.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.inviteUser:
+    get:
+      tags:
+      - UsersManager
+      description: Invites a new user by email and grants initial access to a website.
+      operationId: UsersManager.inviteUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name for the invited user.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: email
+        in: query
+        description: Email address for the invited user.
+        required: true
+        schema:
+          type: string
+          example: alice@example.org
+      - name: initialIdSite
+        in: query
+        description: Initial site to grant `view` access to.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: expiryInDays
+        in: query
+        description: Number of days before the invite expires. Uses the configured default when empty.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: string
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.setSuperUserAccess:
+    get:
+      tags:
+      - UsersManager
+      description: 'Enable or disable Super user access to the given user login. Note: When granting Super User access all previous permissions of the user will be removed as the user gains access to everything.'
+      operationId: UsersManager.setSuperUserAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: User login to update.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: hasSuperUserAccess
+        in: query
+        description: '`true` or `1` to grant super user access, `false` or `0` to remove it.'
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+            example: true
+          - type: string
+            example: 'true'
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.hasSuperUserAccess:
+    get:
+      tags:
+      - UsersManager
+      description: Detect whether the current user has super user access or not.
+      operationId: UsersManager.hasSuperUserAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: '`true` if the current user has super user access.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+          content:
+            text/xml: []
+            application/json: []
+            application/vnd.ms-excel: []
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUsersHavingSuperUserAccess:
+    get:
+      tags:
+      - UsersManager
+      description: Returns all users that currently have super user access.
+      operationId: UsersManager.getUsersHavingSuperUserAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Super user records enriched with invite metadata.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.updateUser:
+    get:
+      tags:
+      - UsersManager
+      description: Updates a user in the database.
+      operationId: UsersManager.updateUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name of the user to update.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: password
+        in: query
+        description: New password to set, or `false` to keep the current password.
+        required: false
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: New email address to set, or `false` to keep the current email.
+        required: false
+        schema:
+          type: string
+      - name: _isPasswordHashed
+        in: query
+        description: '`true` if `$password` is already pre-hashed for storage.'
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.deleteUser:
+    get:
+      tags:
+      - UsersManager
+      description: Deletes a user account and all of its access assignments.
+      operationId: UsersManager.deleteUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Existing user login to delete.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.logoutUser:
+    get:
+      tags:
+      - UsersManager
+      description: Signs a user out of all active sessions. Requires super user access.
+      operationId: UsersManager.logoutUser
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login of the user to sign out.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.userExists:
+    get:
+      tags:
+      - UsersManager
+      description: Returns whether the given login exists.
+      operationId: UsersManager.userExists
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login to check.
+        required: true
+        schema:
+          type: string
+          example: alice
+      responses:
+        '200':
+          description: '`true` if the login exists.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.userEmailExists:
+    get:
+      tags:
+      - UsersManager
+      description: Returns whether a user with the given email exists.
+      operationId: UsersManager.userEmailExists
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userEmail
+        in: query
+        description: Email address to check.
+        required: true
+        schema:
+          type: string
+          example: alice@example.org
+      responses:
+        '200':
+          description: '`true` if the email exists.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.getUserLoginFromUserEmail:
+    get:
+      tags:
+      - UsersManager
+      description: Returns the login name for an existing user with the given email address.
+      operationId: UsersManager.getUserLoginFromUserEmail
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userEmail
+        in: query
+        description: Email address to look up.
+        required: true
+        schema:
+          type: string
+          example: alice@example.org
+      responses:
+        '200':
+          description: 'Login name of the matched user.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.setUserAccess:
+    get:
+      tags:
+      - UsersManager
+      description: Sets access entries for a user across one or more websites.
+      operationId: UsersManager.setUserAccess
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: User login to update.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: access
+        in: query
+        description: Access entries to grant. Use `noaccess` to remove access, or provide one role plus optional capabilities.
+        required: true
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        example: '["view"]'
+      - name: idSites
+        in: query
+        description: Website ID(s) to update. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list ("1,4,5") or "all"
+        required: true
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+          - type: array
+            items:
+              type: integer
+        example: '[1,2]'
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation. Only required through session auth when granting anonymous `view` access or the `admin` role.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.addCapabilities:
+    get:
+      tags:
+      - UsersManager
+      description: Adds the given capabilities to the given user for the given sites.
+      operationId: UsersManager.addCapabilities
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: User login to update.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: capabilities
+        in: query
+        description: Capability IDs to add.
+        required: true
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        example: '["read:reports"]'
+      - name: idSites
+        in: query
+        description: Website ID or IDs to update.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          - type: string
+        example: '[1,2]'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.removeCapabilities:
+    get:
+      tags:
+      - UsersManager
+      description: Removes the given capabilities from the given user for the given sites.
+      operationId: UsersManager.removeCapabilities
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: User login to update.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: capabilities
+        in: query
+        description: Capability IDs to remove.
+        required: true
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+        example: '["read:reports"]'
+      - name: idSites
+        in: query
+        description: Website ID or IDs to update.
+        required: true
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          - type: string
+        example: '[1,2]'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.createAppSpecificTokenAuth:
+    get:
+      tags:
+      - UsersManager
+      description: Generates a new app-specific API token for a user.
+      operationId: UsersManager.createAppSpecificTokenAuth
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name or email address for the user.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: passwordConfirmation
+        in: query
+        description: The user's current password.
+        required: true
+        schema:
+          type: string
+          example: correct-horse-battery-staple
+      - name: description
+        in: query
+        description: Description for the app-specific token, for example an app name.
+        required: true
+        schema:
+          type: string
+          example: Compare the pricing page signup experience for New Zealand traffic.
+      - name: expireDate
+        in: query
+        description: Optional expiry date for the token.
+        required: false
+        schema:
+          type: string
+      - name: expireHours
+        in: query
+        description: Optional number of hours before the token expires. Ignored when `$expireDate` is set.
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+            default: 0
+          - type: string
+            default: '0'
+      - name: secureOnly
+        in: query
+        description: '`true` if the token must not be accepted in GET requests.'
+        required: false
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: 'Newly generated app-specific token.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.newsletterSignup:
+    get:
+      tags:
+      - UsersManager
+      description: Signs the current user up for the Matomo newsletter.
+      operationId: UsersManager.newsletterSignup
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      responses:
+        '200':
+          description: 'Signup result payload.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.resendInvite:
+    get:
+      tags:
+      - UsersManager
+      description: Resends an existing user invitation email.
+      operationId: UsersManager.resendInvite
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name of the invited user.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: expiryInDays
+        in: query
+        description: Number of days before the regenerated invite expires.
+        required: false
+        schema:
+          type: integer
+          default: 7
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSuccess'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /index.php?module=API&method=UsersManager.generateInviteLink:
+    get:
+      tags:
+      - UsersManager
+      description: Generates a fresh invitation link for an existing pending user.
+      operationId: UsersManager.generateInviteLink
+      parameters:
+      - $ref: '#/components/parameters/formatOptional'
+      - name: userLogin
+        in: query
+        description: Login name of the invited user.
+        required: true
+        schema:
+          type: string
+          example: alice
+      - name: expiryInDays
+        in: query
+        description: Number of days before the generated invite expires.
+        required: false
+        schema:
+          type: integer
+          default: 7
+      - name: passwordConfirmation
+        in: query
+        description: Current user's password confirmation when required by session auth.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Generated invitation URL.
+
+
+            Example responses require Super User access. Use Try it out to see a live response.'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/ServerError'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  schemas:
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+  securitySchemes:
+    MatomoToken:
+      type: http
+      description: Paste your token generated from Personal > Security. Swagger will send it as a Bearer token.
+      scheme: bearer
+externalDocs:
+  description: Matomo Reporting API developer page
+  url: https://developer.matomo.org/api-reference/reporting-api/
