@@ -126,28 +126,6 @@ apis:
     url: https://developer.matomo.org/api-reference/tracking-api-clients
   - type: GettingStarted
     url: https://developer.matomo.org/guides/tracking-javascript-guide
-- aid: matomo:matomo-abtesting-api
-  name: Matomo Ab Testing API
-  description: >-
-    Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading experiment
-    reports.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - A/B Testing
-  tags_raw:
-  - AbTesting
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-abtesting-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 - aid: matomo:matomo-actions-api
   name: Matomo Actions API
   description: >-
@@ -166,28 +144,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-actions-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-activitylog-api
-  name: Matomo Activity Log API
-  description: >-
-    Exposes Activity Log API endpoints for listing activity entries, counting matches, and resolving the
-    permitted date range for the current caller.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - Activity Log
-  tags_raw:
-  - ActivityLog
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-activitylog-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
@@ -260,29 +216,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-api-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-apireference-api
-  name: Matomo API Reference API
-  description: >-
-    Provides Reporting API endpoints for reading OpenAPI plugin configuration and specifications.  Exposes
-    endpoints to return the effective plugin list for spec generation, read pre-generated spec files,
-    or generate plugin OpenAPI specifications on demand.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - API Reference
-  tags_raw:
-  - ApiReference
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-apireference-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
@@ -437,28 +370,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-customjstracker-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-customreports-api
-  name: Matomo Custom Reports API
-  description: >-
-    Exposes Custom Reports configuration and reporting endpoints. Use it to create, duplicate, manage,
-    and query custom report definitions and their archived data.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - Custom Reports
-  tags_raw:
-  - CustomReports
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-customreports-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
@@ -911,28 +822,6 @@ apis:
     url: https://developer.matomo.org/api-reference/reporting-api#Goals
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-oauth2-api
-  name: Matomo O Auth2 API
-  description: >-
-    Exposes super-user OAuth2 client management endpoints for Matomo.  This API lists configured scopes
-    and lets administrators create, inspect, update, rotate, activate, and delete OAuth2 clients.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth2
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-oauth2-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 - aid: matomo:matomo-overlay-api
   name: Matomo Overlay API
   description: The Overlay API exposes translation data and overlay-specific page transition reports.
@@ -1054,33 +943,6 @@ apis:
     url: https://developer.matomo.org/api-reference/reporting-api#Goals
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-scheduledreports-api
-  name: Matomo Scheduled Reports API
-  description: >-
-    The ScheduledReports API lets you manage Scheduled Email reports, as well as generate, download or
-    email any existing report.  "generateReport" will generate the requested report (for a specific date
-    range, website and in the requested language). "sendReport" will send the report by email to the recipients
-    specified for this report.  You can also get the list of all existing reports via "getReports", create
-    new reports via "addReport", or manage existing reports with "updateReport" and "deleteReport". See
-    also the documentation about <a href='https://matomo.org/docs/email-reports/' rel='noreferrer' target='_blank'>Scheduled
-    Email reports</a> in Matomo.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - Scheduled Reports
-  tags_raw:
-  - ScheduledReports
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-scheduledreports-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 - aid: matomo:matomo-searchenginekeywordsperformance-api
   name: Matomo Search Engine Keywords Performance API
   description: >-
@@ -1171,30 +1033,6 @@ apis:
     url: https://developer.matomo.org/api-reference/reporting-api#Goals
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-tagmanager-api
-  name: Matomo Tag Manager API
-  description: >-
-    Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables.  The
-    endpoints also provide installation metadata, publishing workflows, preview controls, and import/export
-    operations. A container may have several versions, and the current editable version is exposed as
-    the "draft" version by {@link TagManager.getContainer}.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - Tag Manager
-  tags_raw:
-  - TagManager
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-tagmanager-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 - aid: matomo:matomo-tour-api
   name: Matomo Tour API
   description: Provides API methods for Tour challenges and engagement levels.
@@ -1223,24 +1061,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-transitions-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-twofactorauth-api
-  name: Matomo Two Factor Auth API
-  description: Provides API methods for managing two-factor authentication.
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags:
-  - TwoFactorAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-twofactorauth-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
@@ -1399,6 +1219,167 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-visittime-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-oauth2-api
+  name: Matomo O Auth2 API
+  description: >-
+    Exposes super-user OAuth2 client management endpoints for Matomo.  This API lists configured scopes
+    and lets administrators create, inspect, update, rotate, activate, and delete OAuth2 clients.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - OAuth2
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-oauth2-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-ab-testing-api
+  name: Matomo Ab Testing API
+  description: >-
+    Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading experiment
+    reports.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Ab Testing
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-ab-testing-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-activity-log-api
+  name: Matomo Activity Log API
+  description: >-
+    Exposes Activity Log API endpoints for listing activity entries, counting matches, and resolving the
+    permitted date range for the current caller.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Activity Log
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-activity-log-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-api-reference-api
+  name: Matomo API Reference API
+  description: >-
+    Provides Reporting API endpoints for reading OpenAPI plugin configuration and specifications. Exposes
+    endpoints to return the effective plugin list for spec generation, read pre-generated spec files,
+    or generate plugin OpenAPI specifications on demand.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - API Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-api-reference-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-custom-reports-api
+  name: Matomo Custom Reports API
+  description: >-
+    Exposes Custom Reports configuration and reporting endpoints. Use it to create, duplicate, manage,
+    and query custom report definitions and their archived data.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Custom Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-custom-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-scheduled-reports-api
+  name: Matomo Scheduled Reports API
+  description: >-
+    The ScheduledReports API lets you manage Scheduled Email reports, as well as generate, download or
+    email any existing report.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Scheduled Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-scheduled-reports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-tag-manager-api
+  name: Matomo Tag Manager API
+  description: >-
+    Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables. The
+    endpoints also provide installation metadata, publishing workflows, preview controls, and import/export
+    operations. A container may have several versions, and the current editable version is exposed as
+    the "draft" version by {@link TagManager.getContainer}.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Tag Manager
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-tag-manager-api-openapi.yml
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Live
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api#Goals
+  - type: Documentation
+    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
+- aid: matomo:matomo-two-factor-auth-api
+  name: Matomo Two Factor Auth API
+  description: Provides API methods for managing two-factor authentication.
+  humanURL: https://developer.matomo.org/api-reference/reporting-api
+  baseURL: https://{matomo_host}/index.php
+  tags:
+  - Two Factor Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/matomo-two-factor-auth-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
