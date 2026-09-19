@@ -178,6 +178,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Annotation
+  tags_raw:
   - Annotations
   properties:
   - type: OpenAPI
@@ -385,6 +387,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -828,6 +832,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Overlays
+  tags_raw:
   - Overlay
   properties:
   - type: OpenAPI
@@ -1235,6 +1241,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - Authentication
+  tags_raw:
   - OAuth2
   properties:
   - type: OpenAPI
@@ -1255,6 +1263,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - A/B Testing
+  tags_raw:
   - Ab Testing
   properties:
   - type: OpenAPI
