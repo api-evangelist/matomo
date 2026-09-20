@@ -1,0 +1,105 @@
+slug: matomo
+provider: Matomo
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: PrivacyManager
+  spec_file: matomo-privacymanager-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.88
+  evidence: '"lets you manage GDPR workflows, anonymization settings, and privacy compliance controls"
+    — PrivacyManager.deleteDataSubjects, PrivacyManager.exportDataSubjects, PrivacyManager.anonymizeSomeRawData'
+  reason: Operations execute data-subject access/erasure/export requests and data anonymisation — directly
+    realises privacy and data protection compliance (GDPR data subject rights).
+- tag: AbTesting
+  spec_file: matomo-abtesting-api-openapi.yml
+  capability_id: BC-4280.50
+  capability_id_l1: BC-4280
+  capability_name: A/B Test Execution
+  confidence: 0.85
+  evidence: Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading
+    experiment reports; AbTesting.addExperiment; AbTesting.startExperiment; AbTesting.getActiveExperiments
+  reason: Full lifecycle of A/B experiments — create, start, finish, archive, list active — plus JS variation
+    include templates and metric reporting. That is configuration, targeting and monitoring of running
+    A/B tests. Slight ambiguity between programme management and test execution keeps this at 0.85.
+- tag: SearchEngineKeywordsPerformance
+  spec_file: matomo-searchenginekeywordsperformance-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.85
+  evidence: '"Exposes combined and provider-specific reports for Google, Bing, and Yandex search data"
+    — SearchEngineKeywordsPerformance.getKeywordsGoogle, getCrawlingOverviewBing'
+  reason: Search keyword and crawl performance reporting is squarely SEO measurement, part of Digital
+    Marketing Management.
+- tag: UsersManager
+  spec_file: matomo-usersmanager-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.82
+  evidence: '"lets you Manage Users and their permissions to access specific websites... Permissions are
+    set and updated via the method \"setUserAccess\"" plus UsersManager.getAvailableRoles / getUsersWithSiteAccess'
+  reason: Operations create, update, delete users and grant roles/capabilities and per-site access permissions
+    — identity and access administration, not analytics reporting.
+- tag: SEO
+  spec_file: matomo-seo-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.8
+  evidence: '"The SEO API lets you access a list of SEO metrics for the specified URL: Bing indexed pages
+    and age of the Domain name"'
+  reason: Explicit SEO metrics retrieval maps to Digital Marketing Management, which covers web and SEO
+    measurement.
+- tag: MarketingCampaignsReporting
+  spec_file: matomo-marketingcampaignsreporting-api-openapi.yml
+  capability_id: BC-400
+  capability_id_l1: BC-400
+  capability_name: Marketing Management
+  confidence: 0.78
+  evidence: '"Exposes reporting API endpoints for marketing campaign dimensions and drill-down reports.
+    Includes campaign IDs, names, keywords, source and medium dimensions"'
+  reason: Operations return campaign, keyword, source/medium and placement reports — marketing campaign
+    performance measurement. Clearly Marketing Management at L1; ambiguous between Marketing Operations
+    (measurement) and Digital Marketing, so no L2 asserted.
+- tag: CustomReports
+  spec_file: matomo-customreports-api-openapi.yml
+  capability_id: BC-610.50
+  capability_id_l1: BC-610
+  capability_name: Analytics & BI Management
+  confidence: 0.7
+  evidence: '"create, duplicate, manage, and query custom report definitions and their archived data"'
+  reason: Definition and querying of custom reports with dimensions and metrics is squarely reporting/BI
+    delivery. Some residual doubt only about whether marketing-specific analytics would be the better
+    home.
+- tag: Referrers
+  spec_file: matomo-referrers-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"reports about websites, search engines, keywords, social networks, AI assistants, and campaigns
+    used to access your website" (Referrers.getSearchEngines, Referrers.getCampaigns, Referrers.getSocials)'
+  reason: Acquisition-channel reporting across search, social and campaign referrers is digital marketing
+    performance measurement. Some overlap with generic analytics/BI, hence 0.7.
+- tag: UserCountry
+  spec_file: matomo-usercountry-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: '"lets you access reports about your visitors'' Countries and Continents" — UserCountry.getLocationFromIP'
+  reason: Geographic visitor reporting is web audience analytics, sitting under digital marketing measurement.
