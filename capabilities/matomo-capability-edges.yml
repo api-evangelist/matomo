@@ -24,7 +24,8 @@ edges:
   reason: Operations execute data-subject access/erasure/export requests and data anonymisation — directly
     realises privacy and data protection compliance (GDPR data subject rights).
 - tag: AbTesting
-  spec_file: matomo-abtesting-api-openapi.yml
+  spec_file: matomo-ab-testing-api-openapi.yml
+  reanchored_from: matomo-abtesting-api-openapi.yml
   capability_id: BC-4280.50
   capability_id_l1: BC-4280
   capability_name: A/B Test Execution
@@ -76,7 +77,8 @@ edges:
     performance measurement. Clearly Marketing Management at L1; ambiguous between Marketing Operations
     (measurement) and Digital Marketing, so no L2 asserted.
 - tag: CustomReports
-  spec_file: matomo-customreports-api-openapi.yml
+  spec_file: matomo-custom-reports-api-openapi.yml
+  reanchored_from: matomo-customreports-api-openapi.yml
   capability_id: BC-610.50
   capability_id_l1: BC-610
   capability_name: Analytics & BI Management
