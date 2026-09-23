@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Events API
   version: 1.0.0
-  description: 'The Events API lets you request reports about your users'' Custom Events.  Events are tracked using the Javascript Tracker trackEvent() function, or using the [Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).  <br/>An event is defined by an event category (Videos, Music, Games...), an event action (Play, Pause, Duration, Add Playlist, Downloaded, Clicked...), and an optional event name (a movie name, a song title, etc.) and an optional numeric value.  <br/>This API exposes the following Custom Events reports: <code>getCategory</code> lists the top Event Categories, <code>getAction</code> lists the top Event Actions, <code>getName</code> lists the top Event Names.  <br/>These Events report define the following metrics: nb_uniq_visitors, nb_visits, nb_events. If you define values for your events, you can expect to see the following metrics: nb_events_with_value, sum_event_value, min_event_value, max_event_value, avg_event_value  <br/>The Events.get* reports can be used with an optional <code>&secondaryDimension</code> parameter. Secondary dimension is the dimension used in the sub-table of the Event report you are requesting.  <br/>Here are the possible values of <code>secondaryDimension</code>: <ul> <li>For <code>Events.getCategory</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventName</code>.</li> <li>For <code>Events.getAction</code> you can set <code>secondaryDimension</code> to <code>eventName</code> or <code>eventCategory</code>.</li> <li>For <code>Events.getName</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventCategory</code>.</li> </ul>  <br/>For example, to request all Custom Events Categories, and for each, the top Event actions, you would request: <code>method=Events.getCategory&secondaryDimension=eventAction&flat=1</code>. You may also omit <code>&flat=1</code> in which case, to get top Event actions for one Event category, use <code>method=Events.getActionFromCategoryId</code> passing it the <code>&idSubtable=</code> of this Event category.'
+  description: The Events API lets you request reports about your users' Custom Events.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: Events
-  description: 'The Events API lets you request reports about your users'' Custom Events.  Events are tracked using the Javascript Tracker trackEvent() function, or using the [Tracking HTTP API](https://developer.matomo.org/api-reference/tracking-api).  <br/>An event is defined by an event category (Videos, Music, Games...), an event action (Play, Pause, Duration, Add Playlist, Downloaded, Clicked...), and an optional event name (a movie name, a song title, etc.) and an optional numeric value.  <br/>This API exposes the following Custom Events reports: <code>getCategory</code> lists the top Event Categories, <code>getAction</code> lists the top Event Actions, <code>getName</code> lists the top Event Names.  <br/>These Events report define the following metrics: nb_uniq_visitors, nb_visits, nb_events. If you define values for your events, you can expect to see the following metrics: nb_events_with_value, sum_event_value, min_event_value, max_event_value, avg_event_value  <br/>The Events.get* reports can be used with an optional <code>&secondaryDimension</code> parameter. Secondary dimension is the dimension used in the sub-table of the Event report you are requesting.  <br/>Here are the possible values of <code>secondaryDimension</code>: <ul> <li>For <code>Events.getCategory</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventName</code>.</li> <li>For <code>Events.getAction</code> you can set <code>secondaryDimension</code> to <code>eventName</code> or <code>eventCategory</code>.</li> <li>For <code>Events.getName</code> you can set <code>secondaryDimension</code> to <code>eventAction</code> or <code>eventCategory</code>.</li> </ul>  <br/>For example, to request all Custom Events Categories, and for each, the top Event actions, you would request: <code>method=Events.getCategory&secondaryDimension=eventAction&flat=1</code>. You may also omit <code>&flat=1</code> in which case, to get top Event actions for one Event category, use <code>method=Events.getActionFromCategoryId</code> passing it the <code>&idSubtable=</code> of this Event category.'
+  description: The Events API lets you request reports about your users' Custom Events.
 paths:
   /index.php?module=API&method=Events.getCategory:
     get:
@@ -102,6 +102,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get category
+      x-summary-source: derived
   /index.php?module=API&method=Events.getAction:
     get:
       tags:
@@ -192,6 +194,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get action
+      x-summary-source: derived
   /index.php?module=API&method=Events.getName:
     get:
       tags:
@@ -282,6 +286,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get name
+      x-summary-source: derived
   /index.php?module=API&method=Events.getActionFromCategoryId:
     get:
       tags:
@@ -359,6 +365,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get action from category id
+      x-summary-source: derived
   /index.php?module=API&method=Events.getNameFromCategoryId:
     get:
       tags:
@@ -436,6 +444,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get name from category id
+      x-summary-source: derived
   /index.php?module=API&method=Events.getCategoryFromActionId:
     get:
       tags:
@@ -513,6 +523,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get category from action id
+      x-summary-source: derived
   /index.php?module=API&method=Events.getNameFromActionId:
     get:
       tags:
@@ -590,6 +602,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get name from action id
+      x-summary-source: derived
   /index.php?module=API&method=Events.getActionFromNameId:
     get:
       tags:
@@ -667,6 +681,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get action from name id
+      x-summary-source: derived
   /index.php?module=API&method=Events.getCategoryFromNameId:
     get:
       tags:
@@ -744,27 +760,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Events get category from name id
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -780,17 +781,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -814,6 +815,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -831,40 +866,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -898,6 +899,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

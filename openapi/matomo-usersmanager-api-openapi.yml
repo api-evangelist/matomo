@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Users Manager API
   version: 1.0.0
-  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.  You can create users via "addUser", update existing users via "updateUser" and delete users via "deleteUser". There are many ways to list users based on their login "getUser" and "getUsers", their email "getUserByEmail", or which users have permission (view or admin) to access the specified websites "getUsersWithSiteAccess".  Existing Permissions are listed given a login via "getSitesAccessFromUser", or a website ID via "getUsersAccessFromSite", or you can list all users and websites for a given permission via "getUsersSitesFromAccess". Permissions are set and updated via the method "setUserAccess". See also the documentation about <a href='https://matomo.org/docs/manage-users/' rel='noreferrer' target='_blank'>Managing Users</a> in Matomo.
+  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: UsersManager
-  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.  You can create users via "addUser", update existing users via "updateUser" and delete users via "deleteUser". There are many ways to list users based on their login "getUser" and "getUsers", their email "getUserByEmail", or which users have permission (view or admin) to access the specified websites "getUsersWithSiteAccess".  Existing Permissions are listed given a login via "getSitesAccessFromUser", or a website ID via "getUsersAccessFromSite", or you can list all users and websites for a given permission via "getUsersSitesFromAccess". Permissions are set and updated via the method "setUserAccess". See also the documentation about <a href='https://matomo.org/docs/manage-users/' rel='noreferrer' target='_blank'>Managing Users</a> in Matomo.
+  description: The UsersManager API lets you Manage Users and their permissions to access specific websites.
 paths:
   /index.php?module=API&method=UsersManager.getAvailableRoles:
     get:
@@ -38,6 +38,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get available roles
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getAvailableCapabilities:
     get:
       tags:
@@ -64,6 +66,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get available capabilities
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.setUserPreference:
     get:
       tags:
@@ -108,6 +112,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager set user preference
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUserPreference:
     get:
       tags:
@@ -147,6 +153,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get user preference
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersPlusRole:
     get:
       tags:
@@ -216,6 +224,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users plus role
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsers:
     get:
       tags:
@@ -249,6 +259,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersLogin:
     get:
       tags:
@@ -275,6 +287,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users login
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersSitesFromAccess:
     get:
       tags:
@@ -308,6 +322,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users sites from access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersAccessFromSite:
     get:
       tags:
@@ -341,6 +357,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users access from site
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersWithSiteAccess:
     get:
       tags:
@@ -381,6 +399,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users with site access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getSitesAccessFromUser:
     get:
       tags:
@@ -414,6 +434,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get sites access from user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getSitesAccessForUser:
     get:
       tags:
@@ -477,6 +499,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get sites access for user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUser:
     get:
       tags:
@@ -510,6 +534,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUserByEmail:
     get:
       tags:
@@ -543,6 +569,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get user by email
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.addUser:
     get:
       tags:
@@ -608,6 +636,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager add user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.inviteUser:
     get:
       tags:
@@ -667,6 +697,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager invite user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.setSuperUserAccess:
     get:
       tags:
@@ -713,6 +745,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager set super user access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.hasSuperUserAccess:
     get:
       tags:
@@ -743,6 +777,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager has super user access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUsersHavingSuperUserAccess:
     get:
       tags:
@@ -769,6 +805,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get users having super user access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.updateUser:
     get:
       tags:
@@ -824,6 +862,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager update user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.deleteUser:
     get:
       tags:
@@ -860,6 +900,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager delete user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.logoutUser:
     get:
       tags:
@@ -896,6 +938,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager logout user
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.userExists:
     get:
       tags:
@@ -929,6 +973,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager user exists
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.userEmailExists:
     get:
       tags:
@@ -962,6 +1008,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager user email exists
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.getUserLoginFromUserEmail:
     get:
       tags:
@@ -995,6 +1043,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager get user login from user email
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.setUserAccess:
     get:
       tags:
@@ -1054,6 +1104,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager set user access
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.addCapabilities:
     get:
       tags:
@@ -1107,6 +1159,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager add capabilities
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.removeCapabilities:
     get:
       tags:
@@ -1160,6 +1214,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager remove capabilities
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.createAppSpecificTokenAuth:
     get:
       tags:
@@ -1230,6 +1286,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager create app specific token auth
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.newsletterSignup:
     get:
       tags:
@@ -1256,6 +1314,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager newsletter signup
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.resendInvite:
     get:
       tags:
@@ -1299,6 +1359,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager resend invite
+      x-summary-source: derived
   /index.php?module=API&method=UsersManager.generateInviteLink:
     get:
       tags:
@@ -1345,8 +1407,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Users manager generate invite link
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -1389,22 +1469,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -1439,17 +1503,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1473,25 +1537,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

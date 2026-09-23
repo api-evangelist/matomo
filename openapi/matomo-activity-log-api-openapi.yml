@@ -9,13 +9,13 @@ servers:
 security:
 - MatomoToken: []
 tags:
-- name: ActivityLog
+- name: Activity Log
   description: Exposes Activity Log API endpoints for listing activity entries, counting matches, and resolving the permitted date range for the current caller.
 paths:
   /index.php?module=API&method=ActivityLog.getEntries:
     get:
       tags:
-      - ActivityLog
+      - Activity Log
       description: Returns Activity Log entries visible to the current caller.
       operationId: ActivityLog.getEntries
       parameters:
@@ -82,10 +82,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Activity log get entries
+      x-summary-source: derived
   /index.php?module=API&method=ActivityLog.getEntryCount:
     get:
       tags:
-      - ActivityLog
+      - Activity Log
       description: Returns the number of Activity Log entries visible to the current caller.
       operationId: ActivityLog.getEntryCount
       parameters:
@@ -132,10 +134,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Activity log get entry count
+      x-summary-source: derived
   /index.php?module=API&method=ActivityLog.getAllActivityTypes:
     get:
       tags:
-      - ActivityLog
+      - Activity Log
       description: Returns the available activity type metadata grouped by plugin.
       operationId: ActivityLog.getAllActivityTypes
       parameters:
@@ -167,27 +171,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Activity log get all activity types
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -203,17 +192,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -237,6 +226,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -254,40 +277,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -321,6 +310,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

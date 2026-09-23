@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Form Analytics API
   version: 1.0.0
-  description: Exposes the Form Analytics API for managing tracked forms and retrieving form performance reports.  Use these endpoints to create, update, archive, and delete configured forms, inspect form metadata, and query aggregated reports about form usage, field interactions, conversions, and real-time activity.
+  description: Exposes the Form Analytics API for managing tracked forms and retrieving form performance reports. Use these endpoints to create, update, archive, and delete configured forms, inspect form metadata, and query aggregated reports about form usage, field interactions, conversions, and real-time activity.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: FormAnalytics
-  description: Exposes the Form Analytics API for managing tracked forms and retrieving form performance reports.  Use these endpoints to create, update, archive, and delete configured forms, inspect form metadata, and query aggregated reports about form usage, field interactions, conversions, and real-time activity.
+  description: Exposes the Form Analytics API for managing tracked forms and retrieving form performance reports. Use these endpoints to create, update, archive, and delete configured forms, inspect form metadata, and query aggregated reports about form usage, field interactions, conversions, and real-time activity.
 paths:
   /index.php?module=API&method=FormAnalytics.addForm:
     get:
@@ -104,6 +104,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics add form
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.updateForm:
     get:
       tags:
@@ -200,6 +202,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics update form
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getForm:
     get:
       tags:
@@ -240,6 +244,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get form
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getForms:
     get:
       tags:
@@ -276,6 +282,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get forms
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getFormsByStatuses:
     get:
       tags:
@@ -323,6 +331,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get forms by statuses
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.deleteForm:
     get:
       tags:
@@ -360,6 +370,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics delete form
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.archiveForm:
     get:
       tags:
@@ -397,6 +409,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics archive form
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.get:
     get:
       tags:
@@ -478,6 +492,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getSummary:
     get:
       tags:
@@ -551,6 +567,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get summary
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getEntryFields:
     get:
       tags:
@@ -617,6 +635,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get entry fields
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getDropOffFields:
     get:
       tags:
@@ -683,6 +703,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get drop off fields
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getPageUrls:
     get:
       tags:
@@ -753,6 +775,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get page urls
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getFieldTimings:
     get:
       tags:
@@ -819,6 +843,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get field timings
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getFieldSize:
     get:
       tags:
@@ -885,6 +911,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get field size
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getUneededFields:
     get:
       tags:
@@ -951,6 +979,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get uneeded fields
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getMostUsedFields:
     get:
       tags:
@@ -1017,6 +1047,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get most used fields
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getFieldCorrections:
     get:
       tags:
@@ -1083,6 +1115,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get field corrections
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.updateFormFieldDisplayName:
     get:
       tags:
@@ -1129,6 +1163,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics update form field display name
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getCounters:
     get:
       tags:
@@ -1179,6 +1215,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get counters
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getCurrentMostPopularForms:
     get:
       tags:
@@ -1236,6 +1274,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get current most popular forms
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAutoCreationSettings:
     get:
       tags:
@@ -1269,6 +1309,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get auto creation settings
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAvailableStatuses:
     get:
       tags:
@@ -1295,6 +1337,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get available statuses
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAllGoals:
     get:
       tags:
@@ -1328,6 +1372,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get all goals
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAvailableFormRules:
     get:
       tags:
@@ -1354,6 +1400,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get available form rules
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAvailablePageRules:
     get:
       tags:
@@ -1380,6 +1428,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get available page rules
+      x-summary-source: derived
   /index.php?module=API&method=FormAnalytics.getAvailableConversionRuleOptions:
     get:
       tags:
@@ -1406,8 +1456,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Form analytics get available conversion rule options
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -1450,22 +1518,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -1500,17 +1552,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1534,25 +1586,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

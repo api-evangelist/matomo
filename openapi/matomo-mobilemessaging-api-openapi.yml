@@ -42,6 +42,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging are SMSAPI credential provided
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.getSMSProvider:
     get:
       tags:
@@ -68,6 +70,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging get SMS provider
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.setSMSAPICredential:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging set SMSAPI credential
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.addPhoneNumber:
     get:
       tags:
@@ -136,6 +142,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging add phone number
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.resendVerificationCode:
     get:
       tags:
@@ -166,6 +174,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging resend verification code
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.getCreditLeft:
     get:
       tags:
@@ -192,6 +202,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging get credit left
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.getPhoneNumbers:
     get:
       tags:
@@ -218,6 +230,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging get phone numbers
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.removePhoneNumber:
     get:
       tags:
@@ -248,6 +262,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging remove phone number
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.validatePhoneNumber:
     get:
       tags:
@@ -288,6 +304,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging validate phone number
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.deleteSMSAPICredential:
     get:
       tags:
@@ -311,6 +329,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging delete SMSAPI credential
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.setDelegatedManagement:
     get:
       tags:
@@ -341,6 +361,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging set delegated management
+      x-summary-source: derived
   /index.php?module=API&method=MobileMessaging.getDelegatedManagement:
     get:
       tags:
@@ -371,8 +393,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Mobile messaging get delegated management
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -415,22 +455,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -465,17 +489,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -499,25 +523,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

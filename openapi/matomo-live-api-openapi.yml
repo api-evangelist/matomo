@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Live API
   version: 1.0.0
-  description: 'The Live! API lets you access complete visit level information about your visitors. Combined with the power of <a href=''https://matomo.org/docs/analytics-api/segmentation/'' target=''_blank''>Segmentation</a>, you will be able to request visits filtered by any criteria.  The method "getLastVisitsDetails" will return extensive <a href=''https://matomo.org/guide/apis/raw-data/''>RAW data</a> for each visit, which includes: server time, visitId, visitorId, visitorType (new or returning), number of pages, list of all pages (and events, file downloaded and outlinks clicked), custom variables names and values set to this visit, number of goal conversions (and list of all Goal conversions for this visit, with time of conversion, revenue, URL, etc.), but also other attributes such as: days since last visit, days since first visit, country, continent, visitor IP, provider, referrer used (referrer name, keyword if it was a search engine, full URL), campaign name and keyword, operating system, browser, type of screen, resolution, supported browser plugins (flash, java, silverlight, pdf, etc.), various dates & times format to make it easier for API users... and more!  With the parameter <a href=''https://matomo.org/docs/analytics-api/segmentation/'' rel=''noreferrer'' target=''_blank''>''&segment=''</a> you can filter the returned visits by any criteria (visitor IP, visitor ID, country, keyword used, time of day, etc.).  The method "getCounters" is used to return a simple counter: visits, number of actions, number of converted visits, in the last N minutes.  See also the documentation about <a href=''https://matomo.org/docs/real-time/'' rel=''noreferrer'' target=''_blank''>Real time widget and visitor level reports</a> in Matomo. You may also be interested in steps to <a href=''https://matomo.org/faq/how-to/faq_24536/''>export your RAW data to a data warehouse</a>.'
+  description: The Live!
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: Live
-  description: 'The Live! API lets you access complete visit level information about your visitors. Combined with the power of <a href=''https://matomo.org/docs/analytics-api/segmentation/'' target=''_blank''>Segmentation</a>, you will be able to request visits filtered by any criteria.  The method "getLastVisitsDetails" will return extensive <a href=''https://matomo.org/guide/apis/raw-data/''>RAW data</a> for each visit, which includes: server time, visitId, visitorId, visitorType (new or returning), number of pages, list of all pages (and events, file downloaded and outlinks clicked), custom variables names and values set to this visit, number of goal conversions (and list of all Goal conversions for this visit, with time of conversion, revenue, URL, etc.), but also other attributes such as: days since last visit, days since first visit, country, continent, visitor IP, provider, referrer used (referrer name, keyword if it was a search engine, full URL), campaign name and keyword, operating system, browser, type of screen, resolution, supported browser plugins (flash, java, silverlight, pdf, etc.), various dates & times format to make it easier for API users... and more!  With the parameter <a href=''https://matomo.org/docs/analytics-api/segmentation/'' rel=''noreferrer'' target=''_blank''>''&segment=''</a> you can filter the returned visits by any criteria (visitor IP, visitor ID, country, keyword used, time of day, etc.).  The method "getCounters" is used to return a simple counter: visits, number of actions, number of converted visits, in the last N minutes.  See also the documentation about <a href=''https://matomo.org/docs/real-time/'' rel=''noreferrer'' target=''_blank''>Real time widget and visitor level reports</a> in Matomo. You may also be interested in steps to <a href=''https://matomo.org/faq/how-to/faq_24536/''>export your RAW data to a data warehouse</a>.'
+  description: The Live!
 paths:
   /index.php?module=API&method=Live.getCounters:
     get:
@@ -91,6 +91,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live get counters
+      x-summary-source: derived
   /index.php?module=API&method=Live.isVisitorProfileEnabled:
     get:
       tags:
@@ -135,6 +137,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live is visitor profile enabled
+      x-summary-source: derived
   /index.php?module=API&method=Live.getLastVisitsDetails:
     get:
       tags:
@@ -234,6 +238,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live get last visits details
+      x-summary-source: derived
   /index.php?module=API&method=Live.getVisitorProfile:
     get:
       tags:
@@ -290,6 +296,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live get visitor profile
+      x-summary-source: derived
   /index.php?module=API&method=Live.getMostRecentVisitorId:
     get:
       tags:
@@ -333,6 +341,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live get most recent visitor id
+      x-summary-source: derived
   /index.php?module=API&method=Live.getMostRecentVisitsDateTime:
     get:
       tags:
@@ -387,27 +397,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Live get most recent visits date time
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -423,17 +418,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -457,6 +452,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -474,40 +503,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -541,6 +536,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

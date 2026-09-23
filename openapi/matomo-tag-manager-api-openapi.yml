@@ -2,20 +2,20 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Tag Manager API
   version: 1.0.0
-  description: Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables.  The endpoints also provide installation metadata, publishing workflows, preview controls, and import/export operations. A container may have several versions, and the current editable version is exposed as the "draft" version by {@link TagManager.getContainer}.
+  description: Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables. The endpoints also provide installation metadata, publishing workflows, preview controls, and import/export operations. A container may have several versions, and the current editable version is exposed as the "draft" version by {@link TagManager.getContainer}.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
 security:
 - MatomoToken: []
 tags:
-- name: TagManager
-  description: Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables.  The endpoints also provide installation metadata, publishing workflows, preview controls, and import/export operations. A container may have several versions, and the current editable version is exposed as the "draft" version by {@link TagManager.getContainer}.
+- name: Tag Manager
+  description: Exposes the Tag Manager API for managing containers, versions, tags, triggers, and variables. The endpoints also provide installation metadata, publishing workflows, preview controls, and import/export operations. A container may have several versions, and the current editable version is exposed as the "draft" version by {@link TagManager.getContainer}.
 paths:
   /index.php?module=API&method=TagManager.getAvailableContexts:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the contexts that currently expose at least one tag type.
       operationId: TagManager.getAvailableContexts
       parameters:
@@ -42,10 +42,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available contexts
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableEnvironments:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the environments that can receive container releases.
       operationId: TagManager.getAvailableEnvironments
       parameters:
@@ -72,10 +74,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available environments
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableEnvironmentsWithPublishCapability:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the environments the current user can publish to for a site.
       operationId: TagManager.getAvailableEnvironmentsWithPublishCapability
       parameters:
@@ -109,10 +113,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available environments with publish capability
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableTagFireLimits:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the supported fire limit options for tags.
       operationId: TagManager.getAvailableTagFireLimits
       parameters:
@@ -139,10 +145,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available tag fire limits
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableComparisons:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the comparison operators available for trigger conditions and variable lookup tables.
       operationId: TagManager.getAvailableComparisons
       parameters:
@@ -169,10 +177,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available comparisons
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableTagTypesInContext:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the tag templates that support the requested context.
       operationId: TagManager.getAvailableTagTypesInContext
       parameters:
@@ -205,10 +215,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available tag types in context
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableTriggerTypesInContext:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the trigger templates that support the requested context.
       operationId: TagManager.getAvailableTriggerTypesInContext
       parameters:
@@ -241,10 +253,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available trigger types in context
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableVariableTypesInContext:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the manually creatable variable templates that support the requested context.
       operationId: TagManager.getAvailableVariableTypesInContext
       parameters:
@@ -277,10 +291,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available variable types in context
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerEmbedCode:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the embed code for loading a container release on a website.
       operationId: TagManager.getContainerEmbedCode
       parameters:
@@ -324,10 +340,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container embed code
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerInstallInstructions:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns installation instructions for embedding a container release.
       operationId: TagManager.getContainerInstallInstructions
       parameters:
@@ -378,10 +396,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container install instructions
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerTags:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns all configured tags in a container version.
       operationId: TagManager.getContainerTags
       parameters:
@@ -425,10 +445,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container tags
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.createDefaultContainerForSite:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Creates a default web container for a site with the standard Matomo tracking setup.
       operationId: TagManager.createDefaultContainerForSite
       parameters:
@@ -458,10 +480,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager create default container for site
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.addContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Creates a tag in the requested container version.
       operationId: TagManager.addContainerTag
       parameters:
@@ -593,10 +617,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager add container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.updateContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates a tag in the requested container version.
       operationId: TagManager.updateContainerTag
       parameters:
@@ -718,10 +744,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager update container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.deleteContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Deletes a tag from a container version.
       operationId: TagManager.deleteContainerTag
       parameters:
@@ -769,10 +797,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager delete container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.pauseContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Pauses a tag in a container version.
       operationId: TagManager.pauseContainerTag
       parameters:
@@ -823,10 +853,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager pause container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.resumeContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Resumes a paused tag in a container version.
       operationId: TagManager.resumeContainerTag
       parameters:
@@ -877,10 +909,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager resume container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerTag:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the configuration for a specific tag.
       operationId: TagManager.getContainerTag
       parameters:
@@ -931,10 +965,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container tag
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerTriggerReferences:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the places where a trigger is referenced in a container version.
       operationId: TagManager.getContainerTriggerReferences
       parameters:
@@ -985,10 +1021,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container trigger references
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerTriggers:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns all configured triggers in a container version.
       operationId: TagManager.getContainerTriggers
       parameters:
@@ -1032,10 +1070,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container triggers
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.addContainerTrigger:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Creates a trigger in the requested container version.
       operationId: TagManager.addContainerTrigger
       parameters:
@@ -1118,10 +1158,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager add container trigger
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.updateContainerTrigger:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates a trigger in the requested container version.
       operationId: TagManager.updateContainerTrigger
       parameters:
@@ -1201,10 +1243,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager update container trigger
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.deleteContainerTrigger:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Deletes a trigger from a container version.
       operationId: TagManager.deleteContainerTrigger
       parameters:
@@ -1252,10 +1296,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager delete container trigger
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerTrigger:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the configuration for a specific trigger.
       operationId: TagManager.getContainerTrigger
       parameters:
@@ -1306,10 +1352,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container trigger
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerVariableReferences:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the places where a variable is referenced in a container version.
       operationId: TagManager.getContainerVariableReferences
       parameters:
@@ -1360,10 +1408,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container variable references
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerVariables:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the manually configured variables in a container version.
       operationId: TagManager.getContainerVariables
       parameters:
@@ -1407,10 +1457,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container variables
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getAvailableContainerVariables:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the manual and preconfigured variables available in a container version.
       operationId: TagManager.getAvailableContainerVariables
       parameters:
@@ -1454,10 +1506,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get available container variables
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.addContainerVariable:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Creates a variable in the requested container version.
       operationId: TagManager.addContainerVariable
       parameters:
@@ -1549,10 +1603,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager add container variable
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.updateContainerVariable:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates a variable in the requested container version.
       operationId: TagManager.updateContainerVariable
       parameters:
@@ -1641,10 +1697,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager update container variable
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.deleteContainerVariable:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Deletes a variable from a container version.
       operationId: TagManager.deleteContainerVariable
       parameters:
@@ -1692,10 +1750,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager delete container variable
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerVariable:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Returns the configuration for a specific variable.
       operationId: TagManager.getContainerVariable
       parameters:
@@ -1746,10 +1806,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container variable
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainers:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Get a list of all available containers within a site.
       operationId: TagManager.getContainers
       parameters:
@@ -1770,10 +1832,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get containers
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.addContainer:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Create a new container within the given site.
       operationId: TagManager.addContainer
       parameters:
@@ -1845,10 +1909,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager add container
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.updateContainer:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates the given container and its settings.
       operationId: TagManager.updateContainer
       parameters:
@@ -1920,10 +1986,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager update container
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.createContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Creates a new version from either the current draft version or the given container version.
       operationId: TagManager.createContainerVersion
       parameters:
@@ -1982,10 +2050,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager create container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.updateContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates a container version.
       operationId: TagManager.updateContainerVersion
       parameters:
@@ -2043,10 +2113,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager update container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerVersions:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Get a list of all versions that exist for the given container.
       operationId: TagManager.getContainerVersions
       parameters:
@@ -2080,10 +2152,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container versions
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Get details about a specific container version.
       operationId: TagManager.getContainerVersion
       parameters:
@@ -2124,10 +2198,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.deleteContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Delete a specific container version.
       operationId: TagManager.deleteContainerVersion
       parameters:
@@ -2171,10 +2247,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager delete container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.publishContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Publish (release) a container version to the given environment.
       operationId: TagManager.publishContainerVersion
       parameters:
@@ -2222,10 +2300,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager publish container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.deleteContainer:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Deletes a container including all versions, releases, etc.
       operationId: TagManager.deleteContainer
       parameters:
@@ -2262,10 +2342,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager delete container
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.getContainer:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Get details about a specific container including existing versions, releases, the ID of the draft version, etc.
       operationId: TagManager.getContainer
       parameters:
@@ -2299,10 +2381,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager get container
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.enablePreviewMode:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Enables the preview/debug mode for the given container. The preview mode will be enabled for all environments a container has releases for. To enable the preview mode for a specific version instead of the current draft, ensure to set a container version.
       operationId: TagManager.enablePreviewMode
       parameters:
@@ -2345,10 +2429,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager enable preview mode
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.disablePreviewMode:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Disables the preview/debug mode for the given container.
       operationId: TagManager.disablePreviewMode
       parameters:
@@ -2391,10 +2477,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager disable preview mode
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.changeDebugUrl:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Updates the debug siteurl cookie
       operationId: TagManager.changeDebugUrl
       parameters:
@@ -2431,10 +2519,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager change debug url
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.exportContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Exports a container version including all details such as the configured tags, triggers, and variables within this version. You can use this export to import it into a different container version for example. By default, the current draft will be exported unless you specify a specific container version.
       operationId: TagManager.exportContainerVersion
       parameters:
@@ -2474,10 +2564,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager export container version
+      x-summary-source: derived
   /index.php?module=API&method=TagManager.importContainerVersion:
     get:
       tags:
-      - TagManager
+      - Tag Manager
       description: Import all tags, triggers, and variables from the given import. Please note that this will delete / remove the all current tags, triggers, and variables from the current draft version and then import all tags, triggers, and variables from a previously exported container version. To not lose the current draft configuration, specify a backup name so nothing gets lost in case you ever want to revert.
       operationId: TagManager.importContainerVersion
       parameters:
@@ -2532,8 +2624,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Tag manager import container version
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -2576,22 +2686,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -2626,17 +2720,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -2660,25 +2754,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:
@@ -2746,6 +2840,14 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorXml'
   parameters:
+    idSiteRequired:
+      name: idSite
+      in: query
+      description: Matomo site ID.
+      required: true
+      schema:
+        type: integer
+        example: 1
     formatOptional:
       name: format
       in: query
@@ -2762,14 +2864,6 @@ components:
         - html
         - rss
         - original
-    idSiteRequired:
-      name: idSite
-      in: query
-      description: Matomo site ID.
-      required: true
-      schema:
-        type: integer
-        example: 1
   securitySchemes:
     MatomoToken:
       type: http

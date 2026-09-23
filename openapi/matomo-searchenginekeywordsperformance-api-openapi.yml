@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Matomo Reporting API for plugin Search Engine Keywords Performance API
+  title: Matomo Reporting API for plugin Search Engine Keywords…
   version: 1.0.0
-  description: Provides SearchEngineKeywordsPerformance API endpoints for imported keyword and crawl-performance reports. Exposes combined and provider-specific reports for Google, Bing, and Yandex search data.  \Plugins\SearchEngineKeywordsPerformance
+  description: Provides SearchEngineKeywordsPerformance API endpoints for imported keyword and crawl-performance reports. Exposes combined and provider-specific reports for Google, Bing, and Yandex search data. \Plugins\SearchEngineKeywordsPerformance
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: SearchEngineKeywordsPerformance
-  description: Provides SearchEngineKeywordsPerformance API endpoints for imported keyword and crawl-performance reports. Exposes combined and provider-specific reports for Google, Bing, and Yandex search data.  \Plugins\SearchEngineKeywordsPerformance
+  description: Provides SearchEngineKeywordsPerformance API endpoints for imported keyword and crawl-performance reports. Exposes combined and provider-specific reports for Google, Bing, and Yandex search data. \Plugins\SearchEngineKeywordsPerformance
 paths:
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywords:
     get:
@@ -76,6 +76,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsImported:
     get:
       tags:
@@ -140,6 +142,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords imported
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogle:
     get:
       tags:
@@ -204,6 +208,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords google
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsBing:
     get:
       tags:
@@ -264,6 +270,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords bing
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsYandex:
     get:
       tags:
@@ -324,6 +332,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords yandex
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleWeb:
     get:
       tags:
@@ -388,6 +398,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords google web
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleImage:
     get:
       tags:
@@ -452,6 +464,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords google image
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleVideo:
     get:
       tags:
@@ -516,6 +530,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords google video
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getKeywordsGoogleNews:
     get:
       tags:
@@ -576,6 +592,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get keywords google news
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingOverviewBing:
     get:
       tags:
@@ -640,6 +658,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get crawling overview bing
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingOverviewYandex:
     get:
       tags:
@@ -704,6 +724,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get crawling overview yandex
+      x-summary-source: derived
   /index.php?module=API&method=SearchEngineKeywordsPerformance.getCrawlingErrorExamplesBing:
     get:
       tags:
@@ -744,27 +766,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Search engine keywords performance get crawling error examples bing
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -780,17 +787,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -814,6 +821,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -831,40 +872,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -898,6 +905,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

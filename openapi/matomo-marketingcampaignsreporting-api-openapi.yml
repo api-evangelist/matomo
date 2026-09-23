@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Matomo Reporting API for plugin Marketing Campaigns Reporting API
+  title: Matomo Reporting API for plugin Marketing Campaigns…
   version: 1.0.0
   description: Exposes reporting API endpoints for marketing campaign dimensions and drill-down reports. Includes campaign IDs, names, keywords, source and medium dimensions, and hierarchical subtables.
 servers:
@@ -78,6 +78,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get id
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getName:
     get:
       tags:
@@ -162,6 +164,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get name
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getKeywordContentFromNameId:
     get:
       tags:
@@ -235,6 +239,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get keyword content from name id
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getKeyword:
     get:
       tags:
@@ -305,6 +311,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get keyword
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getSource:
     get:
       tags:
@@ -375,6 +383,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get source
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getMedium:
     get:
       tags:
@@ -445,6 +455,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get medium
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getContent:
     get:
       tags:
@@ -515,6 +527,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get content
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getGroup:
     get:
       tags:
@@ -581,6 +595,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get group
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getPlacement:
     get:
       tags:
@@ -647,6 +663,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get placement
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getSourceMedium:
     get:
       tags:
@@ -731,6 +749,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get source medium
+      x-summary-source: derived
   /index.php?module=API&method=MarketingCampaignsReporting.getNameFromSourceMediumId:
     get:
       tags:
@@ -804,27 +824,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Marketing campaigns reporting get name from source medium id
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -840,17 +845,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -874,6 +879,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -891,40 +930,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -958,6 +963,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

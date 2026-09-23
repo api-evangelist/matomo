@@ -35,6 +35,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Core admin home delete all tracking failures
+      x-summary-source: derived
   /index.php?module=API&method=CoreAdminHome.deleteTrackingFailure:
     get:
       tags:
@@ -75,6 +77,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Core admin home delete tracking failure
+      x-summary-source: derived
   /index.php?module=API&method=CoreAdminHome.getTrackingFailures:
     get:
       tags:
@@ -101,8 +105,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Core admin home get tracking failures
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -145,22 +167,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -195,17 +201,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -229,25 +235,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

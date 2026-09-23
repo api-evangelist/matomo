@@ -9,13 +9,13 @@ servers:
 security:
 - MatomoToken: []
 tags:
-- name: CustomReports
+- name: Custom Reports
   description: Exposes Custom Reports configuration and reporting endpoints. Use it to create, duplicate, manage, and query custom report definitions and their archived data.
 paths:
   /index.php?module=API&method=CustomReports.duplicateCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Duplicates a custom report to one or more websites.
       operationId: CustomReports.duplicateCustomReport
       parameters:
@@ -61,10 +61,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports duplicate custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.addCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Creates a new custom report definition.
       operationId: CustomReports.addCustomReport
       parameters:
@@ -166,10 +168,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports add custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.updateCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Updates an existing custom report definition.
       operationId: CustomReports.updateCustomReport
       parameters:
@@ -284,10 +288,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports update custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getConfiguredReports:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns all configured custom reports for a website.
       operationId: CustomReports.getConfiguredReports
       parameters:
@@ -330,10 +336,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get configured reports
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getConfiguredReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns a specific custom report configuration.
       operationId: CustomReports.getConfiguredReport
       parameters:
@@ -376,10 +384,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get configured report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.deleteCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Deletes a custom report definition.
       operationId: CustomReports.deleteCustomReport
       parameters:
@@ -416,10 +426,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports delete custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.pauseCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Pauses a custom report.
       operationId: CustomReports.pauseCustomReport
       parameters:
@@ -456,10 +468,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports pause custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.resumeCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Resumes a paused custom report.
       operationId: CustomReports.resumeCustomReport
       parameters:
@@ -496,10 +510,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports resume custom report
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getAvailableCategories:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns report categories and subcategories that can contain custom reports.
       operationId: CustomReports.getAvailableCategories
       parameters:
@@ -535,10 +551,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get available categories
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getAvailableReportTypes:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns report types that can be used for custom reports.
       operationId: CustomReports.getAvailableReportTypes
       parameters:
@@ -561,10 +579,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get available report types
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getAvailableDimensions:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns dimensions that can be used in custom reports.
       operationId: CustomReports.getAvailableDimensions
       parameters:
@@ -597,10 +617,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get available dimensions
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getAvailableMetrics:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns metrics that can be used in custom reports.
       operationId: CustomReports.getAvailableMetrics
       parameters:
@@ -633,10 +655,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get available metrics
+      x-summary-source: derived
   /index.php?module=API&method=CustomReports.getCustomReport:
     get:
       tags:
-      - CustomReports
+      - Custom Reports
       description: Returns archived data for a configured custom report.
       operationId: CustomReports.getCustomReport
       parameters:
@@ -734,8 +758,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Custom reports get custom report
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -778,22 +820,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -828,17 +854,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -862,25 +888,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

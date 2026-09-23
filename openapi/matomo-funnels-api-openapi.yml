@@ -87,6 +87,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get metrics
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelsSummary:
     get:
       tags:
@@ -121,6 +123,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnels summary
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelsSummaryTotals:
     get:
       tags:
@@ -155,6 +159,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnels summary totals
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelFlow:
     get:
       tags:
@@ -230,6 +236,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel flow
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelFlowTable:
     get:
       tags:
@@ -305,6 +313,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel flow table
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelStepSubtable:
     get:
       tags:
@@ -387,6 +397,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel step subtable
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelEntries:
     get:
       tags:
@@ -481,6 +493,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel entries
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnelExits:
     get:
       tags:
@@ -553,6 +567,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel exits
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getGoalFunnel:
     get:
       tags:
@@ -596,6 +612,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get goal funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getSalesFunnelForSite:
     get:
       tags:
@@ -632,6 +650,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get sales funnel for site
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getFunnel:
     get:
       tags:
@@ -672,6 +692,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getAllActivatedFunnelsForSite:
     get:
       tags:
@@ -708,6 +730,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get all activated funnels for site
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.hasAnyActivatedFunnelForSite:
     get:
       tags:
@@ -745,6 +769,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels has any activated funnel for site
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.deleteGoalFunnel:
     get:
       tags:
@@ -785,6 +811,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels delete goal funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.deleteNonGoalFunnel:
     get:
       tags:
@@ -822,6 +850,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels delete non goal funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.setGoalFunnel:
     get:
       tags:
@@ -884,6 +914,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels set goal funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.saveNonGoalFunnel:
     get:
       tags:
@@ -945,6 +977,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels save non goal funnel
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.getAvailablePatternMatches:
     get:
       tags:
@@ -971,6 +1005,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels get available pattern matches
+      x-summary-source: derived
   /index.php?module=API&method=Funnels.testUrlMatchesSteps:
     get:
       tags:
@@ -1012,8 +1048,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Funnels test url matches steps
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -1056,22 +1110,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -1088,6 +1126,60 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    periodRequired:
+      name: period
+      in: query
+      description: Reporting period.
+      required: true
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+        - range
+        example: day
+    idSiteRequired:
+      name: idSite
+      in: query
+      description: Matomo site ID.
+      required: true
+      schema:
+        type: integer
+        example: 1
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+    dateRequired:
+      name: date
+      in: query
+      description: Date or range (e.g. `2025-08-01`, `yesterday`, `last30`, or `2025-08-01,2025-08-11`).
+      required: true
+      schema:
+        type: string
+        example: today
+    segmentOptional:
+      name: segment
+      in: query
+      description: Segment expression; see `API.getSegmentDimensionMetadata`.
+      required: false
+      schema:
+        type: string
   responses:
     NotFound:
       description: Resource not found.
@@ -1106,8 +1198,42 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
@@ -1140,57 +1266,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: You must be logged in to access this functionality.'
-        text/html:
-          schema:
-            type: string
-          example: You must be logged in to access this functionality.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: Not authorised.'
-        text/html:
-          schema:
-            type: string
-          example: Not authorised.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
     GenericSuccess:
       description: Generic 200 response
       content:
@@ -1208,60 +1283,23 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/GenericSuccessXml'
-  parameters:
-    segmentOptional:
-      name: segment
-      in: query
-      description: Segment expression; see `API.getSegmentDimensionMetadata`.
-      required: false
-      schema:
-        type: string
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
-    periodRequired:
-      name: period
-      in: query
-      description: Reporting period.
-      required: true
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-        - range
-        example: day
-    idSiteRequired:
-      name: idSite
-      in: query
-      description: Matomo site ID.
-      required: true
-      schema:
-        type: integer
-        example: 1
-    dateRequired:
-      name: date
-      in: query
-      description: Date or range (e.g. `2025-08-01`, `yesterday`, `last30`, or `2025-08-01,2025-08-11`).
-      required: true
-      schema:
-        type: string
-        example: today
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
   securitySchemes:
     MatomoToken:
       type: http

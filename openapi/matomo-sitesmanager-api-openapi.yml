@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Sites Manager API
   version: 1.0.0
-  description: 'The SitesManager API gives you full control on Websites in Matomo (create, update and delete), and many methods to retrieve websites based on various attributes.  This API lets you create websites via "addSite", update existing websites via "updateSite" and delete websites via "deleteSite". When creating websites, it can be useful to access internal codes used by Matomo for currencies via "getCurrencyList", or timezones via "getTimezonesList".  There are also many ways to request a list of websites: from the website ID via "getSiteFromId" or the site URL via "getSitesIdFromSiteUrl". Often, the most useful technique is to list all websites that are known to a current user, based on the token_auth, via "getSitesWithAdminAccess", "getSitesWithViewAccess" or "getSitesWithAtLeastViewAccess" (which returns both).  Some methods will affect all websites globally: "setGlobalExcludedIps" will set the list of IPs to be excluded on all websites, "setGlobalExcludedQueryParameters" will set the list of URL parameters to remove from URLs for all websites. The existing values can be fetched via "getExcludedIpsGlobal" and "getExcludedQueryParametersGlobal". See also the documentation about <a href=''https://matomo.org/docs/manage-websites/'' rel=''noreferrer'' target=''_blank''>Managing Websites</a> in Matomo.'
+  description: The SitesManager API gives you full control on Websites in Matomo (create, update and delete), and many methods to retrieve websites based on various attributes.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: SitesManager
-  description: 'The SitesManager API gives you full control on Websites in Matomo (create, update and delete), and many methods to retrieve websites based on various attributes.  This API lets you create websites via "addSite", update existing websites via "updateSite" and delete websites via "deleteSite". When creating websites, it can be useful to access internal codes used by Matomo for currencies via "getCurrencyList", or timezones via "getTimezonesList".  There are also many ways to request a list of websites: from the website ID via "getSiteFromId" or the site URL via "getSitesIdFromSiteUrl". Often, the most useful technique is to list all websites that are known to a current user, based on the token_auth, via "getSitesWithAdminAccess", "getSitesWithViewAccess" or "getSitesWithAtLeastViewAccess" (which returns both).  Some methods will affect all websites globally: "setGlobalExcludedIps" will set the list of IPs to be excluded on all websites, "setGlobalExcludedQueryParameters" will set the list of URL parameters to remove from URLs for all websites. The existing values can be fetched via "getExcludedIpsGlobal" and "getExcludedQueryParametersGlobal". See also the documentation about <a href=''https://matomo.org/docs/manage-websites/'' rel=''noreferrer'' target=''_blank''>Managing Websites</a> in Matomo.'
+  description: The SitesManager API gives you full control on Websites in Matomo (create, update and delete), and many methods to retrieve websites based on various attributes.
 paths:
   /index.php?module=API&method=SitesManager.getJavascriptTag:
     get:
@@ -173,6 +173,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get javascript tag
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getImageTrackingCode:
     get:
       tags:
@@ -247,6 +249,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get image tracking code
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesFromGroup:
     get:
       tags:
@@ -280,6 +284,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites from group
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesGroups:
     get:
       tags:
@@ -306,6 +312,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites groups
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSiteFromId:
     get:
       tags:
@@ -343,6 +351,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get site from id
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSiteUrlsFromId:
     get:
       tags:
@@ -380,6 +390,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get site urls from id
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getAllSites:
     get:
       tags:
@@ -406,6 +418,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get all sites
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getAllSitesId:
     get:
       tags:
@@ -432,6 +446,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get all sites id
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesWithAdminAccess:
     get:
       tags:
@@ -488,6 +504,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites with admin access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesWithMinimumAccess:
     get:
       tags:
@@ -555,6 +573,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites with minimum access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesWithViewAccess:
     get:
       tags:
@@ -585,6 +605,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites with view access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesWithAtLeastViewAccess:
     get:
       tags:
@@ -629,6 +651,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites with at least view access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesIdWithAdminAccess:
     get:
       tags:
@@ -655,6 +679,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites id with admin access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesIdWithViewAccess:
     get:
       tags:
@@ -685,6 +711,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites id with view access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesIdWithWriteAccess:
     get:
       tags:
@@ -711,6 +739,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites id with write access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesIdWithAtLeastViewAccess:
     get:
       tags:
@@ -747,6 +777,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites id with at least view access
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSitesIdFromSiteUrl:
     get:
       tags:
@@ -784,6 +816,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get sites id from site url
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.addSite:
     get:
       tags:
@@ -935,6 +969,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager add site
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSiteSettings:
     get:
       tags:
@@ -968,6 +1004,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get site settings
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.deleteSite:
     get:
       tags:
@@ -1004,6 +1042,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager delete site
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.addSiteAliasUrls:
     get:
       tags:
@@ -1048,6 +1088,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager add site alias urls
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setSiteAliasUrls:
     get:
       tags:
@@ -1090,6 +1132,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set site alias urls
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getIpsForRange:
     get:
       tags:
@@ -1127,6 +1171,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get ips for range
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setGlobalExcludedIps:
     get:
       tags:
@@ -1160,6 +1206,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set global excluded ips
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setGlobalSearchParameters:
     get:
       tags:
@@ -1200,6 +1248,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set global search parameters
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSearchKeywordParametersGlobal:
     get:
       tags:
@@ -1226,6 +1276,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get search keyword parameters global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getSearchCategoryParametersGlobal:
     get:
       tags:
@@ -1252,6 +1304,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get search category parameters global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedQueryParameters:
     get:
       tags:
@@ -1285,6 +1339,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded query parameters
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedQueryParametersGlobal:
     get:
       tags:
@@ -1320,6 +1376,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded query parameters global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedUserAgentsGlobal:
     get:
       tags:
@@ -1346,6 +1404,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded user agents global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setGlobalExcludedUserAgents:
     get:
       tags:
@@ -1376,6 +1436,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set global excluded user agents
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedReferrers:
     get:
       tags:
@@ -1409,6 +1471,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded referrers
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedReferrersGlobal:
     get:
       tags:
@@ -1435,6 +1499,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded referrers global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setGlobalExcludedReferrers:
     get:
       tags:
@@ -1465,6 +1531,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set global excluded referrers
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getKeepURLFragmentsGlobal:
     get:
       tags:
@@ -1495,6 +1563,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get keep URL fragments global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setKeepURLFragmentsGlobal:
     get:
       tags:
@@ -1525,6 +1595,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set keep URL fragments global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExcludedIpsGlobal:
     get:
       tags:
@@ -1551,6 +1623,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get excluded ips global
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getDefaultCurrency:
     get:
       tags:
@@ -1577,6 +1651,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get default currency
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setDefaultCurrency:
     get:
       tags:
@@ -1610,6 +1686,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set default currency
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getDefaultTimezone:
     get:
       tags:
@@ -1640,6 +1718,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get default timezone
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setDefaultTimezone:
     get:
       tags:
@@ -1673,6 +1753,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set default timezone
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.setGlobalQueryParamExclusion:
     get:
       tags:
@@ -1709,6 +1791,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager set global query param exclusion
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getExclusionTypeForQueryParams:
     get:
       tags:
@@ -1745,6 +1829,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get exclusion type for query params
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.updateSite:
     get:
       tags:
@@ -1899,6 +1985,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager update site
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getCurrencyList:
     get:
       tags:
@@ -1929,6 +2017,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get currency list
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getCurrencySymbols:
     get:
       tags:
@@ -1959,6 +2049,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get currency symbols
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.isTimezoneSupportEnabled:
     get:
       tags:
@@ -1989,6 +2081,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager is timezone support enabled
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getTimezonesList:
     get:
       tags:
@@ -2017,6 +2111,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get timezones list
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getTimezoneName:
     get:
       tags:
@@ -2066,6 +2162,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get timezone name
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getUniqueSiteTimezones:
     get:
       tags:
@@ -2092,6 +2190,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get unique site timezones
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.renameGroup:
     get:
       tags:
@@ -2132,6 +2232,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager rename group
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getPatternMatchSites:
     get:
       tags:
@@ -2182,6 +2284,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get pattern match sites
+      x-summary-source: derived
   /index.php?module=API&method=SitesManager.getNumWebsitesToDisplayPerPage:
     get:
       tags:
@@ -2212,8 +2316,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Sites manager get num websites to display per page
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -2256,22 +2378,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -2306,17 +2412,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -2340,25 +2446,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

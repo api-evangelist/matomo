@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Referrers API
   version: 1.0.0
-  description: The Referrers API lets you access reports about websites, search engines, keywords, social networks, AI assistants, and campaigns used to access your website.  For example, "getKeywords" returns all search engine keywords (with <a href='https://developer.matomo.org/api-reference/reporting-api#api-response-metric-definitions' rel='noreferrer' target='_blank'>general analytics metrics</a> for each keyword), "getWebsites" returns referrer websites (along with the full Referrer URL if the parameter &expanded=1 is set). "getReferrerType" returns the Referrer overview report. "getCampaigns" returns the list of all campaigns (and all campaign keywords if the parameter &expanded=1 is set). "getSocials" returns social network referrers, and "getAIAssistants" returns AI assistant referrers.
+  description: The Referrers API lets you access reports about websites, search engines, keywords, social networks, AI assistants, and campaigns used to access your website.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: Referrers
-  description: The Referrers API lets you access reports about websites, search engines, keywords, social networks, AI assistants, and campaigns used to access your website.  For example, "getKeywords" returns all search engine keywords (with <a href='https://developer.matomo.org/api-reference/reporting-api#api-response-metric-definitions' rel='noreferrer' target='_blank'>general analytics metrics</a> for each keyword), "getWebsites" returns referrer websites (along with the full Referrer URL if the parameter &expanded=1 is set). "getReferrerType" returns the Referrer overview report. "getCampaigns" returns the list of all campaigns (and all campaign keywords if the parameter &expanded=1 is set). "getSocials" returns social network referrers, and "getAIAssistants" returns AI assistant referrers.
+  description: The Referrers API lets you access reports about websites, search engines, keywords, social networks, AI assistants, and campaigns used to access your website.
 paths:
   /index.php?module=API&method=Referrers.get:
     get:
@@ -88,6 +88,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getReferrerType:
     get:
       tags:
@@ -182,6 +184,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get referrer type
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getAll:
     get:
       tags:
@@ -248,6 +252,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get all
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getKeywords:
     get:
       tags:
@@ -332,6 +338,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get keywords
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getSearchEnginesFromKeywordId:
     get:
       tags:
@@ -405,6 +413,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get search engines from keyword id
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getSearchEngines:
     get:
       tags:
@@ -489,6 +499,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get search engines
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getKeywordsFromSearchEngineId:
     get:
       tags:
@@ -562,6 +574,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get keywords from search engine id
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getCampaigns:
     get:
       tags:
@@ -639,6 +653,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get campaigns
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getKeywordsFromCampaignId:
     get:
       tags:
@@ -708,6 +724,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get keywords from campaign id
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getWebsites:
     get:
       tags:
@@ -792,6 +810,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get websites
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getUrlsFromWebsiteId:
     get:
       tags:
@@ -869,6 +889,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get urls from website id
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getSocials:
     get:
       tags:
@@ -953,6 +975,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get socials
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getAIAssistants:
     get:
       tags:
@@ -1043,6 +1067,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get AI assistants
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getUrlsForSocial:
     get:
       tags:
@@ -1119,6 +1145,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get urls for social
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getEntryPageUrlsForAIAssistant:
     get:
       tags:
@@ -1195,6 +1223,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get entry page urls for AI assistant
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getEntryPageTitlesForAIAssistant:
     get:
       tags:
@@ -1271,6 +1301,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get entry page titles for AI assistant
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctSearchEngines:
     get:
       tags:
@@ -1341,6 +1373,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct search engines
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctSocialNetworks:
     get:
       tags:
@@ -1411,6 +1445,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct social networks
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctKeywords:
     get:
       tags:
@@ -1481,6 +1517,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct keywords
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctCampaigns:
     get:
       tags:
@@ -1551,6 +1589,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct campaigns
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctWebsites:
     get:
       tags:
@@ -1621,6 +1661,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct websites
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctAIAssistants:
     get:
       tags:
@@ -1691,6 +1733,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct AI assistants
+      x-summary-source: derived
   /index.php?module=API&method=Referrers.getNumberOfDistinctWebsitesUrls:
     get:
       tags:
@@ -1761,27 +1805,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Referrers get number of distinct websites urls
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -1797,17 +1826,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1831,6 +1860,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -1848,40 +1911,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -1915,6 +1944,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting API for plugin Languages Manager API
   version: 1.0.0
-  description: The LanguagesManager API lets you access existing Matomo translations, and change Users languages preferences.  "getTranslationsForLanguage" will return all translation strings for a given language, so you can leverage Matomo translations in your application (and automatically benefit from the <a href='https://matomo.org/translations/' rel='noreferrer' target='_blank'>40+ translations</a>!). This is mostly useful to developers who integrate Matomo API results in their own application.  You can also request the default language to load for a user via "getLanguageForUser", or update it via "setLanguageForUser".
+  description: The LanguagesManager API lets you access existing Matomo translations, and change Users languages preferences.
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: LanguagesManager
-  description: The LanguagesManager API lets you access existing Matomo translations, and change Users languages preferences.  "getTranslationsForLanguage" will return all translation strings for a given language, so you can leverage Matomo translations in your application (and automatically benefit from the <a href='https://matomo.org/translations/' rel='noreferrer' target='_blank'>40+ translations</a>!). This is mostly useful to developers who integrate Matomo API results in their own application.  You can also request the default language to load for a user via "getLanguageForUser", or update it via "setLanguageForUser".
+  description: The LanguagesManager API lets you access existing Matomo translations, and change Users languages preferences.
 paths:
   /index.php?module=API&method=LanguagesManager.isLanguageAvailable:
     get:
@@ -56,6 +56,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager is language available
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.getAvailableLanguages:
     get:
       tags:
@@ -93,6 +95,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager get available languages
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.getAvailableLanguagesInfo:
     get:
       tags:
@@ -137,6 +141,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager get available languages info
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.getAvailableLanguageNames:
     get:
       tags:
@@ -174,6 +180,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager get available language names
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.getTranslationsForLanguage:
     get:
       tags:
@@ -211,6 +219,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager get translations for language
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.getLanguageForUser:
     get:
       tags:
@@ -244,6 +254,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager get language for user
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.setLanguageForUser:
     get:
       tags:
@@ -284,6 +296,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager set language for user
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.uses12HourClockForUser:
     get:
       tags:
@@ -317,6 +331,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager uses12 hour clock for user
+      x-summary-source: derived
   /index.php?module=API&method=LanguagesManager.set12HourClockForUser:
     get:
       tags:
@@ -357,27 +373,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Languages manager set12 hour clock for user
+      x-summary-source: derived
 components:
   responses:
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    BadRequest:
+      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -393,17 +394,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
+    NotFound:
+      description: Resource not found.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: The method is not available.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -427,6 +428,40 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
       content:
@@ -444,40 +479,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
   schemas:
     ErrorXml:
       description: Generic Matomo error payload in XML.
@@ -511,6 +512,23 @@ components:
           type: integer
       type: object
       additionalProperties: true
+  parameters:
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
   securitySchemes:
     MatomoToken:
       type: http

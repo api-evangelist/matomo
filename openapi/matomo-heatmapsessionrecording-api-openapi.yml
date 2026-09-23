@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Matomo Reporting API for plugin Heatmap Session Recording API
+  title: Matomo Reporting API for plugin Heatmap Session Recording…
   version: 1.0.0
-  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity.  Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. <code>idSiteHsr</code> identifies a heatmap or session recording configuration, while <code>idLogHsr</code> identifies an individual recorded activity entry.'
+  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity. Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. idSiteHsr identifies a heatmap or session recording configuration, while idLogHsr identifies an individual recorded activity entry.'
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
@@ -10,7 +10,7 @@ security:
 - MatomoToken: []
 tags:
 - name: HeatmapSessionRecording
-  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity.  Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. <code>idSiteHsr</code> identifies a heatmap or session recording configuration, while <code>idLogHsr</code> identifies an individual recorded activity entry.'
+  description: 'Exposes the Heatmap & Session Recording API endpoints for managing configurations and retrieving recorded activity. Heatmap coordinates use relative values: X and Y positions range from 0 to 2000, where 1000 represents 50% of the matched element. Scroll reach and above-the-fold positions range from 0 to 1000, where 100 represents 10% of the page height. idSiteHsr identifies a heatmap or session recording configuration, while idLogHsr identifies an individual recorded activity entry.'
 paths:
   /index.php?module=API&method=HeatmapSessionRecording.addHeatmap:
     get:
@@ -122,6 +122,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording add heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.duplicateHeatmap:
     get:
       tags:
@@ -171,6 +173,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording duplicate heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.updateHeatmap:
     get:
       tags:
@@ -285,6 +289,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording update heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmapScreenshot:
     get:
       tags:
@@ -332,6 +338,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording delete heatmap screenshot
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.addSessionRecording:
     get:
       tags:
@@ -429,6 +437,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording add session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.updateSessionRecording:
     get:
       tags:
@@ -530,6 +540,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording update session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getHeatmap:
     get:
       tags:
@@ -573,6 +585,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getSessionRecording:
     get:
       tags:
@@ -616,6 +630,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.pauseHeatmap:
     get:
       tags:
@@ -653,6 +669,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording pause heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.resumeHeatmap:
     get:
       tags:
@@ -690,6 +708,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording resume heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.deleteHeatmap:
     get:
       tags:
@@ -727,6 +747,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording delete heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.endHeatmap:
     get:
       tags:
@@ -764,6 +786,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording end heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.pauseSessionRecording:
     get:
       tags:
@@ -801,6 +825,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording pause session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.resumeSessionRecording:
     get:
       tags:
@@ -838,6 +864,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording resume session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.deleteSessionRecording:
     get:
       tags:
@@ -875,6 +903,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording delete session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.endSessionRecording:
     get:
       tags:
@@ -912,6 +942,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording end session recording
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getHeatmaps:
     get:
       tags:
@@ -953,6 +985,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get heatmaps
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getSessionRecordings:
     get:
       tags:
@@ -989,6 +1023,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get session recordings
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getRecordedSessions:
     get:
       tags:
@@ -1067,6 +1103,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get recorded sessions
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getRecordedSession:
     get:
       tags:
@@ -1114,6 +1152,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get recorded session
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedSession:
     get:
       tags:
@@ -1158,6 +1198,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording delete recorded session
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.deleteRecordedPageview:
     get:
       tags:
@@ -1202,6 +1244,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording delete recorded pageview
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmapMetadata:
     get:
       tags:
@@ -1272,6 +1316,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get recorded heatmap metadata
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getRecordedHeatmap:
     get:
       tags:
@@ -1356,6 +1402,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get recorded heatmap
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.testUrlMatchPages:
     get:
       tags:
@@ -1397,6 +1445,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording test url match pages
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getAvailableStatuses:
     get:
       tags:
@@ -1423,6 +1473,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get available statuses
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getAvailableTargetPageRules:
     get:
       tags:
@@ -1449,6 +1501,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get available target page rules
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getAvailableDeviceTypes:
     get:
       tags:
@@ -1479,6 +1533,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get available device types
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getAvailableHeatmapTypes:
     get:
       tags:
@@ -1509,6 +1565,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get available heatmap types
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getAvailableSessionRecordingSampleLimits:
     get:
       tags:
@@ -1535,6 +1593,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get available session recording sample limits
+      x-summary-source: derived
   /index.php?module=API&method=HeatmapSessionRecording.getEventTypes:
     get:
       tags:
@@ -1565,8 +1625,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Heatmap session recording get event types
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -1609,22 +1687,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -1659,17 +1721,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1693,25 +1755,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

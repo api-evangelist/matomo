@@ -2,20 +2,20 @@ openapi: 3.2.0
 info:
   title: Matomo Reporting for plugin API
   version: 1.0.0
-  description: 'This API is the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API</a>: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.  Some of the information that is returned by the Metadata API: <ul> <li>the dynamically generated list of all API methods via "getReportMetadata"</li> <li>the list of metrics that will be returned by each method, along with their human readable name, via "getDefaultMetrics" and "getDefaultProcessedMetrics"</li> <li>the list of segments metadata supported by all functions that have a ''segment'' parameter</li> <li>the (truly magic) method "getProcessedReport" will return a human readable version of any other report, and include the processed metrics such as conversion rate, time on site, etc. which are not directly available in other methods.</li> <li>the method "getSuggestedValuesForSegment" returns top suggested values for a particular segment. It uses the Live.getLastVisitsDetails API to fetch the most recently used values, and will return the most often used values first.</li> </ul> The Metadata API is for example used by the Matomo Mobile App to automatically display all Matomo reports, with translated report & columns names and nicely formatted values. More information on the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API documentation page</a>'
+  description: 'This API is the Metadata API: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.'
 servers:
 - url: https://demo-proxy.innocraft.cloud/
   description: Current Matomo instance
 security:
 - MatomoToken: []
 tags:
-- name: API
-  description: 'This API is the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API</a>: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.  Some of the information that is returned by the Metadata API: <ul> <li>the dynamically generated list of all API methods via "getReportMetadata"</li> <li>the list of metrics that will be returned by each method, along with their human readable name, via "getDefaultMetrics" and "getDefaultProcessedMetrics"</li> <li>the list of segments metadata supported by all functions that have a ''segment'' parameter</li> <li>the (truly magic) method "getProcessedReport" will return a human readable version of any other report, and include the processed metrics such as conversion rate, time on site, etc. which are not directly available in other methods.</li> <li>the method "getSuggestedValuesForSegment" returns top suggested values for a particular segment. It uses the Live.getLastVisitsDetails API to fetch the most recently used values, and will return the most often used values first.</li> </ul> The Metadata API is for example used by the Matomo Mobile App to automatically display all Matomo reports, with translated report & columns names and nicely formatted values. More information on the <a href=''https://matomo.org/docs/analytics-api/metadata/'' rel=''noreferrer'' target=''_blank''>Metadata API documentation page</a>'
+- name: api
+  description: 'This API is the Metadata API: it gives information about all other available APIs methods, as well as providing human readable and more complete outputs than normal API methods.'
 paths:
   /index.php?module=API&method=API.getMatomoVersion:
     get:
       tags:
-      - API
+      - api
       description: Returns the current Matomo version.
       operationId: API.getMatomoVersion
       parameters:
@@ -42,10 +42,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get matomo version
+      x-summary-source: derived
   /index.php?module=API&method=API.getPhpVersion:
     get:
       tags:
-      - API
+      - api
       description: Returns information about the PHP runtime version.
       operationId: API.getPhpVersion
       parameters:
@@ -65,10 +67,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get php version
+      x-summary-source: derived
   /index.php?module=API&method=API.getIpFromHeader:
     get:
       tags:
-      - API
+      - api
       description: Returns the most accurate IP address available for the current user, in IPv4 format. This could be the proxy client's IP address.
       operationId: API.getIpFromHeader
       parameters:
@@ -95,10 +99,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get ip from header
+      x-summary-source: derived
   /index.php?module=API&method=API.getSegmentsMetadata:
     get:
       tags:
-      - API
+      - api
       description: Returns metadata for all available segments.
       operationId: API.getSegmentsMetadata
       parameters:
@@ -151,10 +157,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get segments metadata
+      x-summary-source: derived
   /index.php?module=API&method=API.getMetadata:
     get:
       tags:
-      - API
+      - api
       description: Returns metadata for a specific API method.
       operationId: API.getMetadata
       parameters:
@@ -245,10 +253,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get metadata
+      x-summary-source: derived
   /index.php?module=API&method=API.getReportMetadata:
     get:
       tags:
-      - API
+      - api
       description: Returns metadata for all available reports.
       operationId: API.getReportMetadata
       parameters:
@@ -320,10 +330,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get report metadata
+      x-summary-source: derived
   /index.php?module=API&method=API.getProcessedReport:
     get:
       tags:
-      - API
+      - api
       description: Returns a processed report with metadata, formatting, and processed metrics applied.
       operationId: API.getProcessedReport
       parameters:
@@ -460,10 +472,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get processed report
+      x-summary-source: derived
   /index.php?module=API&method=API.getReportPagesMetadata:
     get:
       tags:
-      - API
+      - api
       description: Returns page metadata for the Matomo UI, including the widgets shown on each page.
       operationId: API.getReportPagesMetadata
       parameters:
@@ -499,10 +513,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get report pages metadata
+      x-summary-source: derived
   /index.php?module=API&method=API.getWidgetMetadata:
     get:
       tags:
-      - API
+      - api
       description: Returns metadata for all widgets that can be displayed in the UI.
       operationId: API.getWidgetMetadata
       parameters:
@@ -538,10 +554,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get widget metadata
+      x-summary-source: derived
   /index.php?module=API&method=API.get:
     get:
       tags:
-      - API
+      - api
       description: Returns a combined report built from the `*.get` API methods of other plugins.
       operationId: API.get
       parameters:
@@ -608,10 +626,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get
+      x-summary-source: derived
   /index.php?module=API&method=API.getRowEvolution:
     get:
       tags:
-      - API
+      - api
       description: Returns an evolution series for a specific report row or metric label.
       operationId: API.getRowEvolution
       parameters:
@@ -738,10 +758,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get row evolution
+      x-summary-source: derived
   /index.php?module=API&method=API.getBulkRequest:
     get:
       tags:
-      - API
+      - api
       description: Performs multiple API requests at once and returns every result.
       operationId: API.getBulkRequest
       parameters:
@@ -775,10 +797,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get bulk request
+      x-summary-source: derived
   /index.php?module=API&method=API.isPluginActivated:
     get:
       tags:
-      - API
+      - api
       description: Returns whether a plugin is currently activated.
       operationId: API.isPluginActivated
       parameters:
@@ -812,10 +836,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API is plugin activated
+      x-summary-source: derived
   /index.php?module=API&method=API.getSuggestedValuesForSegment:
     get:
       tags:
-      - API
+      - api
       description: Returns suggested values for a segment based on recent data or a segment-specific callback.
       operationId: API.getSuggestedValuesForSegment
       parameters:
@@ -859,10 +885,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get suggested values for segment
+      x-summary-source: derived
   /index.php?module=API&method=API.getPagesComparisonsDisabledFor:
     get:
       tags:
-      - API
+      - api
       description: Returns category/subcategory pairs as "CategoryId.SubcategoryId" for whom comparison features should be disabled.
       operationId: API.getPagesComparisonsDisabledFor
       parameters:
@@ -889,10 +917,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get pages comparisons disabled for
+      x-summary-source: derived
   /index.php?module=API&method=API.getGlossaryReports:
     get:
       tags:
-      - API
+      - api
       description: Returns glossary entries for all reports.
       operationId: API.getGlossaryReports
       parameters:
@@ -929,10 +959,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get glossary reports
+      x-summary-source: derived
   /index.php?module=API&method=API.getGlossaryMetrics:
     get:
       tags:
-      - API
+      - api
       description: Returns glossary entries for all metrics.
       operationId: API.getGlossaryMetrics
       parameters:
@@ -969,7 +1001,42 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: API get glossary metrics
+      x-summary-source: derived
 components:
+  schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
   responses:
     NotFound:
       description: Resource not found.
@@ -982,40 +1049,6 @@ components:
           schema:
             type: string
           example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: You must be logged in to access this functionality.'
-        text/html:
-          schema:
-            type: string
-          example: You must be logged in to access this functionality.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1039,8 +1072,42 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:
@@ -1107,39 +1174,6 @@ components:
         - html
         - rss
         - original
-  schemas:
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
-    Error:
-      description: Generic Matomo error payload.
-      required:
-      - result
-      - message
-      properties:
-        result:
-          type: string
-          example: error
-        message:
-          type: string
-          example: There was an error
-        code:
-          type: integer
-      type: object
-      additionalProperties: true
   securitySchemes:
     MatomoToken:
       type: http

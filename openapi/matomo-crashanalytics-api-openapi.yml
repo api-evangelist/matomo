@@ -54,6 +54,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics merge crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.unmergeCrashGroup:
     get:
       tags:
@@ -91,6 +93,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics unmerge crash group
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashGroups:
     get:
       tags:
@@ -124,6 +128,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crash groups
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashTypes:
     get:
       tags:
@@ -169,6 +175,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crash types
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.setIgnoreCrash:
     get:
       tags:
@@ -212,6 +220,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics set ignore crash
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getIgnoredCrashes:
     get:
       tags:
@@ -245,6 +255,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get ignored crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashSummary:
     get:
       tags:
@@ -289,6 +301,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crash summary
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashVisitContext:
     get:
       tags:
@@ -375,6 +389,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crash visit context
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getAllCrashes:
     get:
       tags:
@@ -440,6 +456,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get all crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.get:
     get:
       tags:
@@ -520,6 +538,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getAllCrashMessages:
     get:
       tags:
@@ -597,6 +617,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get all crash messages
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashMessages:
     get:
       tags:
@@ -674,6 +696,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crash messages
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getUnidentifiedCrashMessages:
     get:
       tags:
@@ -751,6 +775,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get unidentified crash messages
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getDisappearedCrashes:
     get:
       tags:
@@ -810,6 +836,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get disappeared crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getReappearedCrashes:
     get:
       tags:
@@ -869,6 +897,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get reappeared crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getNewCrashes:
     get:
       tags:
@@ -932,6 +962,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get new crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesByPageUrl:
     get:
       tags:
@@ -1014,6 +1046,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by page url
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesForPageUrl:
     get:
       tags:
@@ -1084,6 +1118,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes for page url
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesByPageTitle:
     get:
       tags:
@@ -1166,6 +1202,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by page title
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesForPageTitle:
     get:
       tags:
@@ -1236,6 +1274,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes for page title
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesBySource:
     get:
       tags:
@@ -1318,6 +1358,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by source
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesForSource:
     get:
       tags:
@@ -1388,6 +1430,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes for source
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesByCategory:
     get:
       tags:
@@ -1470,6 +1514,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by category
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesForCategory:
     get:
       tags:
@@ -1540,6 +1586,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes for category
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesByFirstParty:
     get:
       tags:
@@ -1603,6 +1651,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by first party
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getCrashesByThirdParty:
     get:
       tags:
@@ -1666,6 +1716,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get crashes by third party
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getLastCrashesOverview:
     get:
       tags:
@@ -1716,6 +1768,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get last crashes overview
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getLastTopCrashes:
     get:
       tags:
@@ -1773,6 +1827,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get last top crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getLastNewCrashes:
     get:
       tags:
@@ -1826,6 +1882,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get last new crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getLastReappearedCrashes:
     get:
       tags:
@@ -1879,6 +1937,8 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get last reappeared crashes
+      x-summary-source: derived
   /index.php?module=API&method=CrashAnalytics.getLastDisappearedCrashes:
     get:
       tags:
@@ -1932,8 +1992,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Crash analytics get last disappeared crashes
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -1976,22 +2054,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -2026,17 +2088,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -2060,25 +2122,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:

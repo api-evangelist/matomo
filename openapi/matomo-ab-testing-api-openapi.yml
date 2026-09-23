@@ -9,13 +9,13 @@ servers:
 security:
 - MatomoToken: []
 tags:
-- name: AbTesting
+- name: Ab Testing
   description: Exposes the AbTesting API for managing experiments, embedding experiment scripts, and reading experiment reports.
 paths:
   /index.php?module=API&method=AbTesting.getMetricsOverview:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns overview metrics for each variation in an experiment.
       operationId: AbTesting.getMetricsOverview
       parameters:
@@ -82,10 +82,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get metrics overview
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getMetricDetails:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns detailed report metrics for one success metric in an experiment.
       operationId: AbTesting.getMetricDetails
       parameters:
@@ -155,10 +157,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get metric details
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.addExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Creates a new experiment with variations, targeting rules, and success metrics.
       operationId: AbTesting.addExperiment
       parameters:
@@ -233,10 +237,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing add experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.updateExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Updates an existing experiment and its reporting configuration.
       operationId: AbTesting.updateExperiment
       parameters:
@@ -376,10 +382,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing update experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.startExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Starts an experiment immediately.
       operationId: AbTesting.startExperiment
       parameters:
@@ -413,10 +421,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing start experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.finishExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Finishes an experiment and stops it from accepting new tracking requests.
       operationId: AbTesting.finishExperiment
       parameters:
@@ -450,10 +460,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing finish experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.archiveExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Archives an experiment so it is no longer available in reports, segments, or updates.
       operationId: AbTesting.archiveExperiment
       parameters:
@@ -487,10 +499,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing archive experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getJsIncludeTemplate:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the script tag needed to include the A/B testing JavaScript tracker.
       operationId: AbTesting.getJsIncludeTemplate
       parameters:
@@ -513,10 +527,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get js include template
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getJsExperimentTemplate:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the JavaScript snippet needed to run an experiment on a site.
       operationId: AbTesting.getJsExperimentTemplate
       parameters:
@@ -553,10 +569,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get js experiment template
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getAllExperiments:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns all experiments configured for a site.
       operationId: AbTesting.getAllExperiments
       parameters:
@@ -586,10 +604,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get all experiments
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getActiveExperiments:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the active experiments for a site.
       operationId: AbTesting.getActiveExperiments
       parameters:
@@ -619,10 +639,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get active experiments
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getExperimentsByStatuses:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns experiments for a site filtered by one or more statuses.
       operationId: AbTesting.getExperimentsByStatuses
       parameters:
@@ -663,10 +685,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get experiments by statuses
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns a single experiment definition.
       operationId: AbTesting.getExperiment
       parameters:
@@ -706,10 +730,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.deleteExperiment:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Permanently deletes an experiment.
       operationId: AbTesting.deleteExperiment
       parameters:
@@ -743,10 +769,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing delete experiment
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getAvailableStatuses:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the valid experiment status values.
       operationId: AbTesting.getAvailableStatuses
       parameters:
@@ -776,10 +804,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get available statuses
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getAvailableSuccessMetrics:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the success metrics that can be assigned to experiments for a site.
       operationId: AbTesting.getAvailableSuccessMetrics
       parameters:
@@ -809,10 +839,12 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get available success metrics
+      x-summary-source: derived
   /index.php?module=API&method=AbTesting.getAvailableTargetAttributes:
     get:
       tags:
-      - AbTesting
+      - Ab Testing
       description: Returns the available target attributes and target rule types for experiment targeting.
       operationId: AbTesting.getAvailableTargetAttributes
       parameters:
@@ -835,8 +867,26 @@ paths:
           $ref: '#/components/responses/ServerError'
         default:
           $ref: '#/components/responses/DefaultError'
+      summary: Ab testing get available target attributes
+      x-summary-source: derived
 components:
   schemas:
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -879,22 +929,6 @@ components:
         result: success
         message: ok
       additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
     Error:
       description: Generic Matomo error payload.
       required:
@@ -929,17 +963,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: There was an error.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: There was an error.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -963,25 +997,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: There was an error.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:
