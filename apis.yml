@@ -12,16 +12,22 @@ description: >-
   exposing 19 agent tools over an authenticated HTTP endpoint.
 type: Index
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: GPL-3.0
+  license_evidence:
+    repo: matomo-org/matomo
+    spdx: GPL-3.0
+    stars: 21896
+  open_source: true
   commercial: true
-  callable_host: false
-  label: Hosted service · you call their endpoint
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
   confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -41,7 +47,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/matomo.png
 tags:
   - Analytics
   - Web Analytics
-  - Open-Source
+  - Open Source
   - Privacy
   - Data Ownership
   - Self-Hosted
@@ -60,6 +66,7 @@ tags_raw:
   - Tag Management
   - Conversion Optimization
   - Model Context Protocol
+  - Open-Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/matomo/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -184,40 +191,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/matomo-annotations-api-openapi.yml
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Live
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api#Goals
-  - type: Documentation
-    url: https://developer.matomo.org/api-reference/reporting-api-segmentation
-- aid: matomo:matomo-api-api
-  name: Matomo API
-  description: >-
-    This API is the <a href='https://matomo.org/docs/analytics-api/metadata/' rel='noreferrer' target='_blank'>Metadata
-    API</a>: it gives information about all other available APIs methods, as well as providing human readable
-    and more complete outputs than normal API methods.  Some of the information that is returned by the
-    Metadata API: <ul> <li>the dynamically generated list of all API methods via "getReportMetadata"</li>
-    <li>the list of metrics that will be returned by each method, along with their human readable name,
-    via "getDefaultMetrics" and "getDefaultProcessedMetrics"</li> <li>the list of segments metadata supported
-    by all functions that have a 'segment' parameter</li> <li>the (truly magic) method "getProcessedReport"
-    will return a human readable version of any other report, and include the processed metrics such as
-    conversion rate, time on site, etc. which are not directly available in other methods.</li> <li>the
-    method "getSuggestedValuesForSegment" returns top suggested values for a particular segment. It uses
-    the Live.getLastVisitsDetails API to fetch the most recently used values, and will return the most
-    often used values first.</li> </ul> The Metadata API is for example used by the Matomo Mobile App
-    to automatically display all Matomo reports, with translated report & columns names and nicely formatted
-    values. More information on the <a href='https://matomo.org/docs/analytics-api/metadata/' rel='noreferrer'
-    target='_blank'>Metadata API documentation page</a>
-  humanURL: https://developer.matomo.org/api-reference/reporting-api
-  baseURL: https://{matomo_host}/index.php
-  tags: []
-  tags_raw:
-  - API
-  properties:
-  - type: OpenAPI
-    url: openapi/matomo-api-api-openapi.yml
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api
   - type: Documentation
@@ -1263,8 +1236,6 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
-  - A/B Testing
-  tags_raw:
   - Ab Testing
   properties:
   - type: OpenAPI

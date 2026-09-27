@@ -125,6 +125,20 @@ paths:
       - Matomo.php
 components:
   parameters:
+    EventAction:
+      in: query
+      name: e_a
+      schema:
+        type: string
+      description: Event action.
+    Cid:
+      in: query
+      name: cid
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 16
+      description: 16 character visitor ID override (requires token_auth).
     UrlRef:
       in: query
       name: urlref
@@ -132,24 +146,6 @@ components:
         type: string
         format: uri
       description: Full HTTP Referrer URL.
-    Ec:
-      in: query
-      name: ec_id
-      schema:
-        type: string
-      description: Unique String identifier for the ecommerce order.
-    EcSh:
-      in: query
-      name: ec_sh
-      schema:
-        type: number
-      description: Shipping cost of the order.
-    SearchCat:
-      in: query
-      name: search_cat
-      schema:
-        type: string
-      description: Specified search category.
     IdSite:
       in: query
       name: idsite
@@ -157,54 +153,12 @@ components:
       schema:
         type: integer
       description: ID of the website being tracked.
-    NewVisit:
+    Res:
       in: query
-      name: new_visit
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: Force a new visit to be created for this action.
-    ContentPiece:
-      in: query
-      name: c_p
+      name: res
       schema:
         type: string
-      description: Actual content piece (text or media URL).
-    QueuedTracking:
-      in: query
-      name: queuedtracking
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: Bypass the Queued Tracking plugin for this request.
-    SearchCount:
-      in: query
-      name: search_count
-      schema:
-        type: integer
-      description: Number of search results displayed.
-    EventCategory:
-      in: query
-      name: e_c
-      schema:
-        type: string
-      description: Event category.
-    IdGoal:
-      in: query
-      name: idgoal
-      schema:
-        type: integer
-      description: Goal ID for conversion tracking.
-    Lat:
-      in: query
-      name: lat
-      schema:
-        type: number
-      description: Override visitor latitude (requires token_auth).
+      description: Screen resolution, e.g. 1280x1024.
     SendImage:
       in: query
       name: send_image
@@ -214,39 +168,6 @@ components:
         - 0
         - 1
       description: If 0, return HTTP 204 instead of the 1x1 GIF.
-    Uid:
-      in: query
-      name: uid
-      schema:
-        type: string
-      description: User ID string for the logged-in user.
-    ContentTarget:
-      in: query
-      name: c_t
-      schema:
-        type: string
-      description: Target of the content interaction (URL).
-    Search:
-      in: query
-      name: search
-      schema:
-        type: string
-      description: Site search query.
-    Rand:
-      in: query
-      name: rand
-      schema:
-        type: string
-      description: Random value to avoid intermediary caching.
-    Cookie:
-      in: query
-      name: cookie
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-      description: Whether the visitor's browser supports cookies.
     ApiV:
       in: query
       name: apiv
@@ -255,24 +176,18 @@ components:
         enum:
         - 1
       description: API version, currently 1.
-    EcSt:
+    EcSh:
       in: query
-      name: ec_st
+      name: ec_sh
       schema:
         type: number
-      description: Sub-total of the order, excluding shipping.
-    Lang:
+      description: Shipping cost of the order.
+    ContentInteraction:
       in: query
-      name: lang
+      name: c_i
       schema:
         type: string
-      description: Accept-Language HTTP header override.
-    City:
-      in: query
-      name: city
-      schema:
-        type: string
-      description: Override visitor city (requires token_auth).
+      description: Type of content interaction (e.g. click).
     PvId:
       in: query
       name: pv_id
@@ -281,40 +196,73 @@ components:
         minLength: 6
         maxLength: 6
       description: 6 character unique ID for the pageview.
-    Rec:
+    Url:
       in: query
-      name: rec
-      required: true
-      schema:
-        type: integer
-        enum:
-        - 1
-      description: Must be set to 1 to record the request.
-    Long:
-      in: query
-      name: long
-      schema:
-        type: number
-      description: Override visitor longitude (requires token_auth).
-    UserAgent:
-      in: query
-      name: ua
-      schema:
-        type: string
-      description: Override the User-Agent HTTP header.
-    Download:
-      in: query
-      name: download
+      name: url
       schema:
         type: string
         format: uri
-      description: URL of a downloaded file.
-    EcItems:
+      description: Full URL for the current action.
+    ContentTarget:
       in: query
-      name: ec_items
+      name: c_t
       schema:
         type: string
-      description: JSON-encoded array of ecommerce line items.
+      description: Target of the content interaction (URL).
+    Region:
+      in: query
+      name: region
+      schema:
+        type: string
+      description: Override visitor region code (requires token_auth).
+    IdGoal:
+      in: query
+      name: idgoal
+      schema:
+        type: integer
+      description: Goal ID for conversion tracking.
+    Country:
+      in: query
+      name: country
+      schema:
+        type: string
+      description: Override visitor country code (requires token_auth).
+    Lat:
+      in: query
+      name: lat
+      schema:
+        type: number
+      description: Override visitor latitude (requires token_auth).
+    EcSt:
+      in: query
+      name: ec_st
+      schema:
+        type: number
+      description: Sub-total of the order, excluding shipping.
+    EventValue:
+      in: query
+      name: e_v
+      schema:
+        type: number
+      description: Event numeric value.
+    City:
+      in: query
+      name: city
+      schema:
+        type: string
+      description: Override visitor city (requires token_auth).
+    EventCategory:
+      in: query
+      name: e_c
+      schema:
+        type: string
+      description: Event category.
+    EcId:
+      in: query
+      name: ec_id
+      schema:
+        type: string
+      description: Unique string identifier for the ecommerce order.
     TokenAuth:
       in: query
       name: token_auth
@@ -325,44 +273,30 @@ components:
         values (cip, cdt > 24h, country/region/city/lat/long, cid).
 
         '
-    VisitorId:
+    ContentPiece:
       in: query
-      name: _id
+      name: c_p
       schema:
         type: string
-        minLength: 16
-        maxLength: 16
-      description: 16 character unique visitor ID (hex).
-    Region:
+      description: Actual content piece (text or media URL).
+    Rand:
       in: query
-      name: region
+      name: rand
       schema:
         type: string
-      description: Override visitor region code (requires token_auth).
-    EventName:
+      description: Random value to avoid intermediary caching.
+    Long:
       in: query
-      name: e_n
-      schema:
-        type: string
-      description: Event name.
-    Revenue:
-      in: query
-      name: revenue
+      name: long
       schema:
         type: number
-      description: Monetary value generated as revenue.
-    EcDt:
+      description: Override visitor longitude (requires token_auth).
+    Search:
       in: query
-      name: ec_dt
-      schema:
-        type: number
-      description: Discount offered on the order.
-    Cdt:
-      in: query
-      name: cdt
+      name: search
       schema:
         type: string
-      description: Override datetime of the request (UTC, requires token_auth if older than 24h).
+      description: Site search query.
     Link:
       in: query
       name: link
@@ -370,41 +304,54 @@ components:
         type: string
         format: uri
       description: External URL clicked by the user (outlink).
-    ContentName:
+    SearchCat:
       in: query
-      name: c_n
+      name: search_cat
       schema:
         type: string
-      description: Name of the content block.
-    Cid:
+      description: Specified search category.
+    Rec:
       in: query
-      name: cid
+      name: rec
+      required: true
+      schema:
+        type: integer
+        enum:
+        - 1
+      description: Must be set to 1 to record the request.
+    Cip:
+      in: query
+      name: cip
       schema:
         type: string
-        minLength: 16
-        maxLength: 16
-      description: 16 character visitor ID override (requires token_auth).
-    Res:
+      description: Override the visitor IP (requires token_auth).
+    SearchCount:
       in: query
-      name: res
+      name: search_count
+      schema:
+        type: integer
+      description: Number of search results displayed.
+    UaData:
+      in: query
+      name: uadata
       schema:
         type: string
-      description: Screen resolution, e.g. 1280x1024.
-    Country:
+      description: JSON-encoded Client Hints.
+    ActionName:
       in: query
-      name: country
+      name: action_name
       schema:
         type: string
-      description: Override visitor country code (requires token_auth).
-    Bots:
+      description: Title of the action being tracked (page title).
+    Cookie:
       in: query
-      name: bots
+      name: cookie
       schema:
         type: integer
         enum:
         - 0
         - 1
-      description: Set to 1 to record requests from known bots.
+      description: Whether the visitor's browser supports cookies.
     Ping:
       in: query
       name: ping
@@ -414,61 +361,114 @@ components:
         - 0
         - 1
       description: Heartbeat ping; updates total_time on an existing visit.
-    EventValue:
+    QueuedTracking:
       in: query
-      name: e_v
+      name: queuedtracking
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: Bypass the Queued Tracking plugin for this request.
+    Revenue:
+      in: query
+      name: revenue
       schema:
         type: number
-      description: Event numeric value.
-    Url:
+      description: Monetary value generated as revenue.
+    Cdt:
       in: query
-      name: url
+      name: cdt
       schema:
         type: string
-        format: uri
-      description: Full URL for the current action.
-    EventAction:
+      description: Override datetime of the request (UTC, requires token_auth if older than 24h).
+    EcItems:
       in: query
-      name: e_a
+      name: ec_items
       schema:
         type: string
-      description: Event action.
+      description: JSON-encoded array of ecommerce line items.
+    EventName:
+      in: query
+      name: e_n
+      schema:
+        type: string
+      description: Event name.
+    UserAgent:
+      in: query
+      name: ua
+      schema:
+        type: string
+      description: Override the User-Agent HTTP header.
+    Bots:
+      in: query
+      name: bots
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: Set to 1 to record requests from known bots.
     EcTx:
       in: query
       name: ec_tx
       schema:
         type: number
       description: Tax amount of the order.
-    UaData:
+    Uid:
       in: query
-      name: uadata
+      name: uid
       schema:
         type: string
-      description: JSON-encoded Client Hints.
-    ContentInteraction:
+      description: User ID string for the logged-in user.
+    VisitorId:
       in: query
-      name: c_i
+      name: _id
       schema:
         type: string
-      description: Type of content interaction (e.g. click).
-    EcId:
+        minLength: 16
+        maxLength: 16
+      description: 16 character unique visitor ID (hex).
+    EcDt:
+      in: query
+      name: ec_dt
+      schema:
+        type: number
+      description: Discount offered on the order.
+    Lang:
+      in: query
+      name: lang
+      schema:
+        type: string
+      description: Accept-Language HTTP header override.
+    ContentName:
+      in: query
+      name: c_n
+      schema:
+        type: string
+      description: Name of the content block.
+    NewVisit:
+      in: query
+      name: new_visit
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+      description: Force a new visit to be created for this action.
+    Ec:
       in: query
       name: ec_id
       schema:
         type: string
-      description: Unique string identifier for the ecommerce order.
-    ActionName:
+      description: Unique String identifier for the ecommerce order.
+    Download:
       in: query
-      name: action_name
+      name: download
       schema:
         type: string
-      description: Title of the action being tracked (page title).
-    Cip:
-      in: query
-      name: cip
-      schema:
-        type: string
-      description: Override the visitor IP (requires token_auth).
+        format: uri
+      description: URL of a downloaded file.
   schemas:
     BulkRequest:
       type: object
