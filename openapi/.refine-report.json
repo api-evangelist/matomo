@@ -126,7 +126,7 @@
     "matomo-visitssummary-api-openapi.yml"
   ],
   "archived": [
-    "deleted 8 superseded output(s) from the previous generation"
+    "deleted 7 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -218,7 +218,7 @@
     "matomo-visitor-interest-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "matomo-visits-summary-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "tag 'Index.php' spans 2 source specs (matomo-api-openapi.json, matomo-openapi.yml): per-path servers applied",
-    "superseded outputs removed: matomo-ab-testing-api-openapi.yml, matomo-activity-log-api-openapi.yml, matomo-api-api-openapi.yml, matomo-api-reference-api-openapi.yml, matomo-custom-reports-api-openapi.yml \u2026",
+    "superseded outputs removed: matomo-ab-testing-api-openapi.yml, matomo-activity-log-api-openapi.yml, matomo-api-reference-api-openapi.yml, matomo-custom-reports-api-openapi.yml, matomo-scheduled-reports-api-openapi.yml \u2026",
     "apis.yml register: written (+7 apis, 60 total)"
   ],
   "skipped": [
@@ -227,7 +227,6 @@
     "matomo-activity-log-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "matomo-advertisingconversionexport-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "matomo-annotations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "matomo-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "matomo-api-reference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "matomo-bandwidth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "matomo-cohorts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

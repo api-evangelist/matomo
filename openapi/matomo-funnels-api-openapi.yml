@@ -1052,6 +1052,23 @@ paths:
       x-summary-source: derived
 components:
   responses:
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     GenericSuccess:
       description: Generic 200 response
       content:
@@ -1069,8 +1086,8 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/GenericSuccessXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
@@ -1103,23 +1120,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: You must be logged in to access this functionality.'
-        text/html:
-          schema:
-            type: string
-          example: You must be logged in to access this functionality.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
     Forbidden:
       description: Authenticated but not allowed to access the resource.
       content:
@@ -1137,6 +1137,23 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
     NotFound:
       description: Resource not found.
       content:
@@ -1148,23 +1165,6 @@ components:
           schema:
             type: string
           example: The method is not available.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -1247,13 +1247,22 @@ components:
       xml:
         name: result
   parameters:
-    segmentOptional:
-      name: segment
+    formatOptional:
+      name: format
       in: query
-      description: Segment expression; see `API.getSegmentDimensionMetadata`.
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
       required: false
       schema:
         type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
     idSiteRequired:
       name: idSite
       in: query
@@ -1276,22 +1285,13 @@ components:
         - year
         - range
         example: day
-    formatOptional:
-      name: format
+    segmentOptional:
+      name: segment
       in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      description: Segment expression; see `API.getSegmentDimensionMetadata`.
       required: false
       schema:
         type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
     dateRequired:
       name: date
       in: query

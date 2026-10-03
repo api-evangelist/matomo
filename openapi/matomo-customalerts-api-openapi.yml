@@ -544,57 +544,6 @@ paths:
       x-summary-source: derived
 components:
   responses:
-    GenericSuccess:
-      description: Generic 200 response
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: Success:ok
-        text/html:
-          schema:
-            type: string
-          example: '<!-- Success: ok -->'
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GenericSuccess'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/GenericSuccessXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
     Unauthorized:
       description: Authentication failed or missing token.
       content:
@@ -606,40 +555,6 @@ components:
           schema:
             type: string
           example: You must be logged in to access this functionality.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: Not authorised.'
-        text/html:
-          schema:
-            type: string
-          example: Not authorised.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    NotFound:
-      description: Resource not found.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: The method is not available.'
-        text/html:
-          schema:
-            type: string
-          example: The method is not available.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -663,23 +578,112 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: Not authorised.'
+        text/html:
+          schema:
+            type: string
+          example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    NotFound:
+      description: Resource not found.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: The method is not available.'
+        text/html:
+          schema:
+            type: string
+          example: The method is not available.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    GenericSuccess:
+      description: Generic 200 response
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: Success:ok
+        text/html:
+          schema:
+            type: string
+          example: '<!-- Success: ok -->'
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericSuccess'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/GenericSuccessXml'
   schemas:
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
       properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
       type: object
-      xml:
-        name: result
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
     GenericSuccessXml:
       description: Generic Matomo success payload in XML.
       required:
@@ -718,26 +722,22 @@ components:
           type: integer
       type: object
       additionalProperties: true
-    GenericSuccess:
-      description: Generic Matomo success payload.
-      required:
-      - result
-      - message
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
       properties:
-        result:
-          type: string
-          example: success
-        message:
-          type: string
-          example: ok
-        code:
-          type: integer
-          example: '200'
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
       type: object
-      example:
-        result: success
-        message: ok
-      additionalProperties: true
+      xml:
+        name: result
   parameters:
     formatOptional:
       name: format

@@ -303,8 +303,25 @@ paths:
       x-summary-source: derived
 components:
   responses:
-    BadRequest:
-      description: Bad request (validation or missing parameters).
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    DefaultError:
+      description: Default error response (any non-2xx).
       content:
         text/plain:
           schema:
@@ -337,23 +354,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Unauthorized:
-      description: Authentication failed or missing token.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: You must be logged in to access this functionality.'
-        text/html:
-          schema:
-            type: string
-          example: You must be logged in to access this functionality.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
     Forbidden:
       description: Authenticated but not allowed to access the resource.
       content:
@@ -365,6 +365,23 @@ components:
           schema:
             type: string
           example: Not authorised.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -388,23 +405,6 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    DefaultError:
-      description: Default error response (any non-2xx).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
   parameters:
     idSiteRequired:
       name: idSite
@@ -414,20 +414,6 @@ components:
       schema:
         type: integer
         example: 1
-    periodRequired:
-      name: period
-      in: query
-      description: Reporting period.
-      required: true
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-        - range
-        example: day
     formatOptional:
       name: format
       in: query
@@ -444,6 +430,20 @@ components:
         - html
         - rss
         - original
+    periodRequired:
+      name: period
+      in: query
+      description: Reporting period.
+      required: true
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+        - range
+        example: day
     dateRequired:
       name: date
       in: query
