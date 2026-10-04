@@ -495,18 +495,93 @@ paths:
       summary: Scheduled reports send report
       x-summary-source: derived
 components:
+  schemas:
+    GenericSuccess:
+      description: Generic Matomo success payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: success
+        message:
+          type: string
+          example: ok
+        code:
+          type: integer
+          example: '200'
+      type: object
+      example:
+        result: success
+        message: ok
+      additionalProperties: true
+    GenericSuccessXml:
+      description: Generic Matomo success payload in XML.
+      required:
+      - success
+      properties:
+        success:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: ok
+          type: object
+          xml:
+            name: success
+      type: object
+      xml:
+        name: result
+      example:
+        success:
+          message: ok
+      additionalProperties: true
+    ErrorXml:
+      description: Generic Matomo error payload in XML.
+      properties:
+        error:
+          properties:
+            message:
+              type: string
+              xml:
+                attribute: true
+              example: There was an error
+          type: object
+          xml:
+            name: error
+      type: object
+      xml:
+        name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
   responses:
-    Unauthorized:
-      description: Authentication failed or missing token.
+    Forbidden:
+      description: Authenticated but not allowed to access the resource.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: You must be logged in to access this functionality.'
+          example: 'Error: Not authorised.'
         text/html:
           schema:
             type: string
-          example: You must be logged in to access this functionality.
+          example: Not authorised.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -530,17 +605,17 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    Forbidden:
-      description: Authenticated but not allowed to access the resource.
+    Unauthorized:
+      description: Authentication failed or missing token.
       content:
         text/plain:
           schema:
             type: string
-          example: 'Error: Not authorised.'
+          example: 'Error: You must be logged in to access this functionality.'
         text/html:
           schema:
             type: string
-          example: Not authorised.
+          example: You must be logged in to access this functionality.
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
@@ -549,23 +624,6 @@ components:
             $ref: '#/components/schemas/ErrorXml'
     ServerError:
       description: Unexpected server error.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
       content:
         text/plain:
           schema:
@@ -615,81 +673,23 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/GenericSuccessXml'
-  schemas:
-    GenericSuccess:
-      description: Generic Matomo success payload.
-      required:
-      - result
-      - message
-      properties:
-        result:
-          type: string
-          example: success
-        message:
-          type: string
-          example: ok
-        code:
-          type: integer
-          example: '200'
-      type: object
-      example:
-        result: success
-        message: ok
-      additionalProperties: true
-    GenericSuccessXml:
-      description: Generic Matomo success payload in XML.
-      required:
-      - success
-      properties:
-        success:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: ok
-          type: object
-          xml:
-            name: success
-      type: object
-      xml:
-        name: result
-      example:
-        success:
-          message: ok
-      additionalProperties: true
-    Error:
-      description: Generic Matomo error payload.
-      required:
-      - result
-      - message
-      properties:
-        result:
-          type: string
-          example: error
-        message:
-          type: string
-          example: There was an error
-        code:
-          type: integer
-      type: object
-      additionalProperties: true
-    ErrorXml:
-      description: Generic Matomo error payload in XML.
-      properties:
-        error:
-          properties:
-            message:
-              type: string
-              xml:
-                attribute: true
-              example: There was an error
-          type: object
-          xml:
-            name: error
-      type: object
-      xml:
-        name: result
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
   parameters:
     formatOptional:
       name: format

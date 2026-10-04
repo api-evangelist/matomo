@@ -303,42 +303,8 @@ paths:
       x-summary-source: derived
 components:
   responses:
-    Unauthorized:
-      description: Authentication failed or missing token.
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: You must be logged in to access this functionality.'
-        text/html:
-          schema:
-            type: string
-          example: You must be logged in to access this functionality.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
     DefaultError:
       description: Default error response (any non-2xx).
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: 'Error: There was an error.'
-        text/html:
-          schema:
-            type: string
-          example: There was an error.
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/ErrorXml'
-    ServerError:
-      description: Unexpected server error.
       content:
         text/plain:
           schema:
@@ -371,8 +337,25 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-    BadRequest:
-      description: Bad request (validation or missing parameters).
+    Unauthorized:
+      description: Authentication failed or missing token.
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: You must be logged in to access this functionality.'
+        text/html:
+          schema:
+            type: string
+          example: You must be logged in to access this functionality.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
+    ServerError:
+      description: Unexpected server error.
       content:
         text/plain:
           schema:
@@ -405,70 +388,24 @@ components:
         application/xml:
           schema:
             $ref: '#/components/schemas/ErrorXml'
-  parameters:
-    idSiteRequired:
-      name: idSite
-      in: query
-      description: Matomo site ID.
-      required: true
-      schema:
-        type: integer
-        example: 1
-    formatOptional:
-      name: format
-      in: query
-      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
-      required: false
-      schema:
-        type: string
-        default: xml
-        enum:
-        - xml
-        - json
-        - csv
-        - tsv
-        - html
-        - rss
-        - original
-    periodRequired:
-      name: period
-      in: query
-      description: Reporting period.
-      required: true
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-        - range
-        example: day
-    dateRequired:
-      name: date
-      in: query
-      description: Date or range (e.g. `2025-08-01`, `yesterday`, `last30`, or `2025-08-01,2025-08-11`).
-      required: true
-      schema:
-        type: string
-        example: today
+    BadRequest:
+      description: Bad request (validation or missing parameters).
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: 'Error: There was an error.'
+        text/html:
+          schema:
+            type: string
+          example: There was an error.
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/ErrorXml'
   schemas:
-    Error:
-      description: Generic Matomo error payload.
-      required:
-      - result
-      - message
-      properties:
-        result:
-          type: string
-          example: error
-        message:
-          type: string
-          example: There was an error
-        code:
-          type: integer
-      type: object
-      additionalProperties: true
     ErrorXml:
       description: Generic Matomo error payload in XML.
       properties:
@@ -485,6 +422,69 @@ components:
       type: object
       xml:
         name: result
+    Error:
+      description: Generic Matomo error payload.
+      required:
+      - result
+      - message
+      properties:
+        result:
+          type: string
+          example: error
+        message:
+          type: string
+          example: There was an error
+        code:
+          type: integer
+      type: object
+      additionalProperties: true
+  parameters:
+    idSiteRequired:
+      name: idSite
+      in: query
+      description: Matomo site ID.
+      required: true
+      schema:
+        type: integer
+        example: 1
+    periodRequired:
+      name: period
+      in: query
+      description: Reporting period.
+      required: true
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+        - range
+        example: day
+    formatOptional:
+      name: format
+      in: query
+      description: Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.
+      required: false
+      schema:
+        type: string
+        default: xml
+        enum:
+        - xml
+        - json
+        - csv
+        - tsv
+        - html
+        - rss
+        - original
+    dateRequired:
+      name: date
+      in: query
+      description: Date or range (e.g. `2025-08-01`, `yesterday`, `last30`, or `2025-08-01,2025-08-11`).
+      required: true
+      schema:
+        type: string
+        example: today
   securitySchemes:
     MatomoToken:
       type: http
