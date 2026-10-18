@@ -1236,6 +1236,8 @@ apis:
   humanURL: https://developer.matomo.org/api-reference/reporting-api
   baseURL: https://{matomo_host}/index.php
   tags:
+  - A/B Testing
+  tags_raw:
   - Ab Testing
   properties:
   - type: OpenAPI
