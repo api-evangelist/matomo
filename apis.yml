@@ -1372,6 +1372,8 @@ apis:
   - type: Documentation
     url: https://developer.matomo.org/api-reference/reporting-api-segmentation
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/matomo/overview
   - type: CapabilityMap
     url: capabilities/matomo-capability-edges.yml
     name: Matomo Business Capability Map
