@@ -1,0 +1,508 @@
+{
+  "info": {
+    "_postman_id": "306dca23-2ac3-4012-8ea4-84f7a54b741f",
+    "name": "Matomo Reporting API for plugin Two Factor Auth API",
+    "description": "Provides API methods for managing two-factor authentication.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:36:26.000Z",
+    "updatedAt": "2026-10-22T01:36:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-306dca23-2ac3-4012-8ea4-84f7a54b741f"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=TwoFactorAuth.resetTwoFactorAuth",
+      "item": [
+        {
+          "name": "Two factor auth reset two factor auth",
+          "id": "8bb7514d-7ec5-4978-b05e-a4664bf30b13",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=TwoFactorAuth.resetTwoFactorAuth&format=xml&userLogin=<string>&passwordConfirmation=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "TwoFactorAuth.resetTwoFactorAuth"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                  "key": "userLogin",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The current superuser's password confirmation.",
+                  "key": "passwordConfirmation",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Disables two-factor authentication for the specified user."
+          },
+          "response": [
+            {
+              "id": "795ef7a5-d200-40aa-abe3-7e2022648e11",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-795ef7a5-d200-40aa-abe3-7e2022648e11"
+            },
+            {
+              "id": "3b52552c-63c3-4f27-bd40-9344e1ac3439",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-3b52552c-63c3-4f27-bd40-9344e1ac3439"
+            },
+            {
+              "id": "e48b3607-fb95-477a-95b9-f66e01d6ed1f",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-e48b3607-fb95-477a-95b9-f66e01d6ed1f"
+            },
+            {
+              "id": "02c2c01b-edf2-4416-8a45-37f1b3243a78",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-02c2c01b-edf2-4416-8a45-37f1b3243a78"
+            },
+            {
+              "id": "c8ece10d-90b7-4f10-98b4-a2a4e4e4f614",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-c8ece10d-90b7-4f10-98b4-a2a4e4e4f614"
+            },
+            {
+              "id": "bce2626f-426e-4bb5-8bfa-0bde7af1ee9c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-bce2626f-426e-4bb5-8bfa-0bde7af1ee9c"
+            },
+            {
+              "id": "03e03c0d-fb65-48b9-9ddd-9bde6fc9d8b9",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&userLogin=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The login of the user whose two-factor authentication should be reset.",
+                      "key": "userLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The current superuser's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:26.000Z",
+              "updatedAt": "2026-10-22T01:36:26.000Z",
+              "uid": "35240-03e03c0d-fb65-48b9-9ddd-9bde6fc9d8b9"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:26.000Z",
+          "updatedAt": "2026-10-22T01:36:26.000Z",
+          "uid": "35240-8bb7514d-7ec5-4978-b05e-a4664bf30b13"
+        }
+      ],
+      "id": "459d3285-80c4-4547-8a64-4aeebf7e86b5",
+      "createdAt": "2026-10-22T01:36:26.000Z",
+      "updatedAt": "2026-10-22T01:36:26.000Z",
+      "uid": "35240-459d3285-80c4-4547-8a64-4aeebf7e86b5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

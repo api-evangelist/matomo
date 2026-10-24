@@ -1,0 +1,1437 @@
+{
+  "info": {
+    "_postman_id": "4ad02b51-04da-4945-80a1-fec06f74f521",
+    "name": "Matomo Reporting API for plugin Feedback API",
+    "description": "Provides API methods for submitting product feedback and managing feedback reminders.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:33:32.000Z",
+    "updatedAt": "2026-10-22T01:33:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4ad02b51-04da-4945-80a1-fec06f74f521"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=Feedback.sendFeedbackForFeature",
+      "item": [
+        {
+          "name": "Feedback send feedback for feature",
+          "id": "e3b9be34-01ab-4509-82ec-92411b14639f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Feedback.sendFeedbackForFeature&format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Feedback.sendFeedbackForFeature"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Name of the feature the feedback is about.",
+                  "key": "featureName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether the user likes the feature.",
+                  "key": "like",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional selected multiple-choice answer.",
+                  "key": "choice",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Feedback message entered by the user.",
+                  "key": "message",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Sends a survey response to the Matomo team or to the configured feedback email address."
+          },
+          "response": [
+            {
+              "id": "32395aa4-5c14-4402-9451-b634c4c9b5a1",
+              "name": "Translation key text when validation fails, or `success` when the feedback email is sent.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-32395aa4-5c14-4402-9451-b634c4c9b5a1"
+            },
+            {
+              "id": "7190c0bb-f982-4f85-b1e5-32448c747932",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-7190c0bb-f982-4f85-b1e5-32448c747932"
+            },
+            {
+              "id": "3e2e0718-6eb2-4987-880e-3171eeac9862",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-3e2e0718-6eb2-4987-880e-3171eeac9862"
+            },
+            {
+              "id": "a6c19e32-c343-4f81-836b-e8e574c9a794",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-a6c19e32-c343-4f81-836b-e8e574c9a794"
+            },
+            {
+              "id": "2eb9975e-9ca6-4356-bb59-b8a3c4866841",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-2eb9975e-9ca6-4356-bb59-b8a3c4866841"
+            },
+            {
+              "id": "3787b54e-3a6b-4ea4-ab6c-8a19982e1380",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-3787b54e-3a6b-4ea4-ab6c-8a19982e1380"
+            },
+            {
+              "id": "5ae66703-e313-49c8-b945-e6eb9cd7e871",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&featureName=<string>&like=<string>&choice=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Name of the feature the feedback is about.",
+                      "key": "featureName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the user likes the feature.",
+                      "key": "like",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional selected multiple-choice answer.",
+                      "key": "choice",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Feedback message entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-5ae66703-e313-49c8-b945-e6eb9cd7e871"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:33.000Z",
+          "updatedAt": "2026-10-22T01:33:33.000Z",
+          "uid": "35240-e3b9be34-01ab-4509-82ec-92411b14639f"
+        }
+      ],
+      "id": "6045672f-adf5-40bd-be84-efd144a609f1",
+      "createdAt": "2026-10-22T01:33:33.000Z",
+      "updatedAt": "2026-10-22T01:33:33.000Z",
+      "uid": "35240-6045672f-adf5-40bd-be84-efd144a609f1"
+    },
+    {
+      "name": "index.php?module=API&method=Feedback.sendFeedbackForSurvey",
+      "item": [
+        {
+          "name": "Feedback send feedback for survey",
+          "id": "66415573-d14b-4db6-8320-5dd37f73e04f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Feedback.sendFeedbackForSurvey&format=xml&question=<string>&message=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Feedback.sendFeedbackForSurvey"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Survey question or feature label the answer belongs to.",
+                  "key": "question",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Survey answer entered by the user.",
+                  "key": "message",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Sends feedback for a specific feature to the Matomo team or alternatively to the email address configured in the config: \"feedback_email_address\"."
+          },
+          "response": [
+            {
+              "id": "e3c52994-2603-4f40-a0a1-40fac2a5e7d8",
+              "name": "Translation key text when validation fails, or `success` when the feedback email is sent.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-e3c52994-2603-4f40-a0a1-40fac2a5e7d8"
+            },
+            {
+              "id": "06128a89-fa9f-4891-9907-a71f19faaaa4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-06128a89-fa9f-4891-9907-a71f19faaaa4"
+            },
+            {
+              "id": "4db08d22-14aa-4bcd-b0e7-3dc199556469",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-4db08d22-14aa-4bcd-b0e7-3dc199556469"
+            },
+            {
+              "id": "b2bb8920-e5e9-4579-b015-6d69ec90ed10",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-b2bb8920-e5e9-4579-b015-6d69ec90ed10"
+            },
+            {
+              "id": "8a8b0cae-66b6-4746-9c38-64e654d44d47",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-8a8b0cae-66b6-4746-9c38-64e654d44d47"
+            },
+            {
+              "id": "0df14310-4e2a-48ab-a935-f5375b7c0b35",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-0df14310-4e2a-48ab-a935-f5375b7c0b35"
+            },
+            {
+              "id": "50f770b9-9cac-47c9-afa1-ba56a071e5be",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&question=<string>&message=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Survey question or feature label the answer belongs to.",
+                      "key": "question",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Survey answer entered by the user.",
+                      "key": "message",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-50f770b9-9cac-47c9-afa1-ba56a071e5be"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:33.000Z",
+          "updatedAt": "2026-10-22T01:33:33.000Z",
+          "uid": "35240-66415573-d14b-4db6-8320-5dd37f73e04f"
+        }
+      ],
+      "id": "4c6acee6-cd52-4046-b0f2-4e5c563f3f50",
+      "createdAt": "2026-10-22T01:33:33.000Z",
+      "updatedAt": "2026-10-22T01:33:33.000Z",
+      "uid": "35240-4c6acee6-cd52-4046-b0f2-4e5c563f3f50"
+    },
+    {
+      "name": "index.php?module=API&method=Feedback.updateFeedbackReminderDate",
+      "item": [
+        {
+          "name": "Feedback update feedback reminder date",
+          "id": "f1bc7fb1-1cac-4e0c-8494-6f80cd388df2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Feedback.updateFeedbackReminderDate&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Feedback.updateFeedbackReminderDate"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Postpones the feedback reminder for the current user by six months."
+          },
+          "response": [
+            {
+              "id": "048ad4c8-9f19-4178-b294-e23df42005be",
+              "name": "JSON-encoded array containing the next reminder date.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-048ad4c8-9f19-4178-b294-e23df42005be"
+            },
+            {
+              "id": "da27c963-f26a-4416-8850-1c714828e426",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-da27c963-f26a-4416-8850-1c714828e426"
+            },
+            {
+              "id": "008c236c-0579-4185-b6ef-135d0767c089",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-008c236c-0579-4185-b6ef-135d0767c089"
+            },
+            {
+              "id": "07c1bb5d-d881-47ca-a043-99378a5c41ed",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-07c1bb5d-d881-47ca-a043-99378a5c41ed"
+            },
+            {
+              "id": "75699740-8337-447c-9faa-c870b518ada2",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-75699740-8337-447c-9faa-c870b518ada2"
+            },
+            {
+              "id": "5f395298-43ea-47df-841c-f034abcd91e9",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-5f395298-43ea-47df-841c-f034abcd91e9"
+            },
+            {
+              "id": "cb8fd550-78d5-496a-8738-552ae6e560df",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:33.000Z",
+              "updatedAt": "2026-10-22T01:33:33.000Z",
+              "uid": "35240-cb8fd550-78d5-496a-8738-552ae6e560df"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:33.000Z",
+          "updatedAt": "2026-10-22T01:33:33.000Z",
+          "uid": "35240-f1bc7fb1-1cac-4e0c-8494-6f80cd388df2"
+        }
+      ],
+      "id": "75cb3d38-975c-4be4-9c47-2cae16f06fc6",
+      "createdAt": "2026-10-22T01:33:33.000Z",
+      "updatedAt": "2026-10-22T01:33:33.000Z",
+      "uid": "35240-75cb3d38-975c-4be4-9c47-2cae16f06fc6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

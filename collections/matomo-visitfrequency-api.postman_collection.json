@@ -1,0 +1,633 @@
+{
+  "info": {
+    "_postman_id": "cd2689c9-a56d-4548-852a-b4794a70acef",
+    "name": "Matomo Reporting API for plugin Visit Frequency API",
+    "description": "VisitFrequency API lets you access a list of metrics related to Returning Visitors.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:35:45.000Z",
+    "updatedAt": "2026-10-22T01:35:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cd2689c9-a56d-4548-852a-b4794a70acef"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=VisitFrequency.get",
+      "item": [
+        {
+          "name": "Visit frequency get",
+          "id": "702092be-740f-4f6c-95f6-daf8a1871ad1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=VisitFrequency.get&format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>&columns=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "VisitFrequency.get"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "week"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to append to the visitor type filters.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                  "key": "columns",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                  "key": "columns",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns visit summary metrics split between new and returning visitors."
+          },
+          "response": [
+            {
+              "id": "a8b57490-bb62-40f9-b42e-53a6d78e813f",
+              "name": "Visit summary metrics with `_new` and `_returning` column suffixes.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-a8b57490-bb62-40f9-b42e-53a6d78e813f"
+            },
+            {
+              "id": "f5ec6739-7826-4b78-878d-5672119f8c01",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-f5ec6739-7826-4b78-878d-5672119f8c01"
+            },
+            {
+              "id": "f594c0ad-9b90-4274-aca3-a850767440de",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-f594c0ad-9b90-4274-aca3-a850767440de"
+            },
+            {
+              "id": "3e5f32d2-1b8f-4818-8ecf-4a304430831b",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-3e5f32d2-1b8f-4818-8ecf-4a304430831b"
+            },
+            {
+              "id": "016c7b04-1220-478d-a9f2-74fff71b0c49",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-016c7b04-1220-478d-a9f2-74fff71b0c49"
+            },
+            {
+              "id": "7bd55542-2633-462c-9788-b07ac2aa3fde",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-7bd55542-2633-462c-9788-b07ac2aa3fde"
+            },
+            {
+              "id": "bceed571-a5fa-4ed3-8ac0-e3b4cb6518ec",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=week&date=<string>&segment=<string>&columns=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to append to the visitor type filters.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metrics to include in the response. Accepts a comma-separated list or array of metric names.",
+                      "key": "columns",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:45.000Z",
+              "updatedAt": "2026-10-22T01:35:45.000Z",
+              "uid": "35240-bceed571-a5fa-4ed3-8ac0-e3b4cb6518ec"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:45.000Z",
+          "updatedAt": "2026-10-22T01:35:45.000Z",
+          "uid": "35240-702092be-740f-4f6c-95f6-daf8a1871ad1"
+        }
+      ],
+      "id": "53ac9f2c-312c-4695-9a2e-ebfbff227bcb",
+      "createdAt": "2026-10-22T01:35:45.000Z",
+      "updatedAt": "2026-10-22T01:35:45.000Z",
+      "uid": "35240-53ac9f2c-312c-4695-9a2e-ebfbff227bcb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

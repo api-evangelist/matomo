@@ -1,0 +1,1026 @@
+{
+  "info": {
+    "_postman_id": "3ea71d3c-14c5-4c67-b0a7-ccd4d4a2dcc5",
+    "name": "Matomo Reporting API for plugin Overlay API",
+    "description": "The Overlay API exposes translation data and overlay-specific page transition reports.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:34:38.000Z",
+    "updatedAt": "2026-10-22T01:34:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ea71d3c-14c5-4c67-b0a7-ccd4d4a2dcc5"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=Overlay.getTranslations",
+      "item": [
+        {
+          "name": "Overlay get translations",
+          "id": "58aba254-e542-4f86-b881-e85e55743305",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Overlay.getTranslations&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Overlay.getTranslations"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Returns the translation strings used by the Overlay client."
+          },
+          "response": [
+            {
+              "id": "8ca98cbb-e66d-4809-a3cc-d4e2d47865ec",
+              "name": "Overlay translation strings keyed by client-side identifier.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-8ca98cbb-e66d-4809-a3cc-d4e2d47865ec"
+            },
+            {
+              "id": "ab1761b2-ed4b-41d0-a804-400bd62e4bf1",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-ab1761b2-ed4b-41d0-a804-400bd62e4bf1"
+            },
+            {
+              "id": "9a5f7928-6fde-47d8-b7a2-b401c0e5f21d",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-9a5f7928-6fde-47d8-b7a2-b401c0e5f21d"
+            },
+            {
+              "id": "2234b261-1b88-4914-b703-7cfd92b88afe",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-2234b261-1b88-4914-b703-7cfd92b88afe"
+            },
+            {
+              "id": "ac98c857-23db-48af-b667-42c7fec5ff6e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-ac98c857-23db-48af-b667-42c7fec5ff6e"
+            },
+            {
+              "id": "cc9826d4-b667-4f8d-8820-70d41a87876d",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-cc9826d4-b667-4f8d-8820-70d41a87876d"
+            },
+            {
+              "id": "e0488052-fd74-4c9e-b6a2-3e1d6d92619e",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-e0488052-fd74-4c9e-b6a2-3e1d6d92619e"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:39.000Z",
+          "updatedAt": "2026-10-22T01:34:39.000Z",
+          "uid": "35240-58aba254-e542-4f86-b881-e85e55743305"
+        }
+      ],
+      "id": "6cba4232-9483-4656-9960-29100778ef0f",
+      "createdAt": "2026-10-22T01:34:39.000Z",
+      "updatedAt": "2026-10-22T01:34:39.000Z",
+      "uid": "35240-6cba4232-9483-4656-9960-29100778ef0f"
+    },
+    {
+      "name": "index.php?module=API&method=Overlay.getFollowingPages",
+      "item": [
+        {
+          "name": "Overlay get following pages",
+          "id": "05ac6309-da27-4754-8d70-535af8f414d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Overlay.getFollowingPages&format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Overlay.getFollowingPages"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Page URL to analyze.",
+                  "key": "url",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "range"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the following pages reached after visits to a specific page URL."
+          },
+          "response": [
+            {
+              "id": "cc42a8cc-c993-425a-9616-ccd4cc328dab",
+              "name": "Rows for following pages, outlinks, and downloads reached from the requested URL.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-cc42a8cc-c993-425a-9616-ccd4cc328dab"
+            },
+            {
+              "id": "465b08d7-40e4-4519-a756-a8dcfa6db3c7",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-465b08d7-40e4-4519-a756-a8dcfa6db3c7"
+            },
+            {
+              "id": "7cd5b22e-5543-45de-b5c5-8991a71f4fee",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-7cd5b22e-5543-45de-b5c5-8991a71f4fee"
+            },
+            {
+              "id": "f0bd48ea-cf25-4c61-a60d-18e25fa11622",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-f0bd48ea-cf25-4c61-a60d-18e25fa11622"
+            },
+            {
+              "id": "86369929-94c4-480a-a18f-b53154df78c4",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-86369929-94c4-480a-a18f-b53154df78c4"
+            },
+            {
+              "id": "565c68f2-708f-45eb-b087-40e78390dcbe",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-565c68f2-708f-45eb-b087-40e78390dcbe"
+            },
+            {
+              "id": "5dde822e-d828-4d03-8a0d-48cfd43d105c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&url=<string>&idSite=<integer>&period=range&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Page URL to analyze.",
+                      "key": "url",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "range"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:39.000Z",
+              "updatedAt": "2026-10-22T01:34:39.000Z",
+              "uid": "35240-5dde822e-d828-4d03-8a0d-48cfd43d105c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:39.000Z",
+          "updatedAt": "2026-10-22T01:34:39.000Z",
+          "uid": "35240-05ac6309-da27-4754-8d70-535af8f414d3"
+        }
+      ],
+      "id": "57754e14-575b-4f75-b624-7cf257bf1397",
+      "createdAt": "2026-10-22T01:34:39.000Z",
+      "updatedAt": "2026-10-22T01:34:39.000Z",
+      "uid": "35240-57754e14-575b-4f75-b624-7cf257bf1397"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

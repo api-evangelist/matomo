@@ -1,0 +1,4096 @@
+{
+  "info": {
+    "_postman_id": "7e246b19-ee74-4421-9f16-b7ee686f844e",
+    "name": "Matomo Reporting API for plugin Scheduled Reports API",
+    "description": "The ScheduledReports API lets you manage Scheduled Email reports, as well as generate, download or email any existing report.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:36:16.000Z",
+    "updatedAt": "2026-10-22T01:36:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7e246b19-ee74-4421-9f16-b7ee686f844e"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=ScheduledReports.addReport",
+      "item": [
+        {
+          "name": "Scheduled reports add report",
+          "id": "7b710088-0e4c-487a-adc5-468cf818a36f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.addReport&format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&reports=<string>&parameters=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.addReport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to report on.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The delivery schedule for the report.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                  "key": "hour",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The transport medium identifier, such as `'email'`.",
+                  "key": "reportType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                  "key": "reportFormat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                  "key": "reports",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                  "key": "reports",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                  "key": "evolutionPeriodFor",
+                  "value": "prev"
+                },
+                {
+                  "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                  "key": "evolutionPeriodN",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                  "key": "periodParam",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Creates and schedules a new report."
+          },
+          "response": [
+            {
+              "id": "3bf19f9f-b785-4f63-a513-0e781722efbf",
+              "name": "The newly created scheduled report ID.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-3bf19f9f-b785-4f63-a513-0e781722efbf"
+            },
+            {
+              "id": "99935f03-91ad-401f-b907-6f257fbddbbe",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-99935f03-91ad-401f-b907-6f257fbddbbe"
+            },
+            {
+              "id": "e0958587-f75d-42d5-af9c-d7f638ec9022",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-e0958587-f75d-42d5-af9c-d7f638ec9022"
+            },
+            {
+              "id": "6644cfc2-670a-4113-8ec4-e93d71a83584",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-6644cfc2-670a-4113-8ec4-e93d71a83584"
+            },
+            {
+              "id": "1e9db6eb-56f2-4dfb-8727-c603b73b5cf6",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-1e9db6eb-56f2-4dfb-8727-c603b73b5cf6"
+            },
+            {
+              "id": "7ef315f8-6504-4872-866e-4391a0c49a76",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-7ef315f8-6504-4872-866e-4391a0c49a76"
+            },
+            {
+              "id": "dae33c8b-5357-4ecc-8a8c-bb481a47d403",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to report on.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-dae33c8b-5357-4ecc-8a8c-bb481a47d403"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-7b710088-0e4c-487a-adc5-468cf818a36f"
+        }
+      ],
+      "id": "181c275f-51b1-49b9-a4ce-09b95a6889cd",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-181c275f-51b1-49b9-a4ce-09b95a6889cd"
+    },
+    {
+      "name": "index.php?module=API&method=ScheduledReports.updateReport",
+      "item": [
+        {
+          "name": "Scheduled reports update report",
+          "id": "6ab8a246-493f-4991-adcd-704799441e4b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.updateReport&format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&reports=<string>&parameters=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.updateReport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The scheduled report ID to update.",
+                  "key": "idReport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website the report belongs to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The delivery schedule for the report.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                  "key": "hour",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The transport medium identifier, such as `'email'`.",
+                  "key": "reportType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                  "key": "reportFormat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                  "key": "reports",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                  "key": "reports",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                  "key": "evolutionPeriodFor",
+                  "value": "prev"
+                },
+                {
+                  "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                  "key": "evolutionPeriodN",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                  "key": "periodParam",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Updates an existing report."
+          },
+          "response": [
+            {
+              "id": "0ea6994c-4015-4576-995f-0ebc42a3e647",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-0ea6994c-4015-4576-995f-0ebc42a3e647"
+            },
+            {
+              "id": "0662de8c-7fe0-4067-bd03-5f5ab5947828",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-0662de8c-7fe0-4067-bd03-5f5ab5947828"
+            },
+            {
+              "id": "5060426d-7b28-4102-8c53-595d401b77f5",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-5060426d-7b28-4102-8c53-595d401b77f5"
+            },
+            {
+              "id": "e2b006a4-fd63-431a-a16b-1764cc2914c7",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-e2b006a4-fd63-431a-a16b-1764cc2914c7"
+            },
+            {
+              "id": "32b19d5d-b59b-454f-ac31-4547b6ce7737",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-32b19d5d-b59b-454f-ac31-4547b6ce7737"
+            },
+            {
+              "id": "37e08b9a-fb41-49e4-9627-6599b156743c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-37e08b9a-fb41-49e4-9627-6599b156743c"
+            },
+            {
+              "id": "578e2a83-c472-4a78-a91b-06108fda2cf7",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&idSite=<integer>&description=<string>&period=month&hour=<integer>&reportType=<string>&reportFormat=<string>&reports=<string>&parameters=<string>&idSegment=<integer>&evolutionPeriodFor=prev&evolutionPeriodN=<integer>&periodParam=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to update.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the report belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The report title shown in the UI and used in generated filenames. Truncated to 250 characters.",
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The delivery schedule for the report.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The hour of day (0\u201323) when the report should be sent.",
+                      "key": "hour",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The transport medium identifier, such as `'email'`.",
+                      "key": "reportType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The output format identifier, such as `'pdf'` or `'html'`.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The report unique IDs to include, e.g. `['VisitsSummary_get', 'Actions_get']`.",
+                      "key": "reports",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Transport-specific parameters, e.g. `['emailMe' => true, 'additionalEmails' => ['user@example.com']]` for email reports.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The saved segment ID to apply, or `false` for no segment filter.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether evolution graphs compare previous periods (`'prev'`) or each day within the selected period (`'each'`).",
+                      "key": "evolutionPeriodFor",
+                      "value": "prev"
+                    },
+                    {
+                      "description": "The number of previous periods to include when `$evolutionPeriodFor` is `'prev'`. Defaults to the configured graph evolution periods.",
+                      "key": "evolutionPeriodN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate on each scheduled send. Defaults to the delivery schedule period.",
+                      "key": "periodParam",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-578e2a83-c472-4a78-a91b-06108fda2cf7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-6ab8a246-493f-4991-adcd-704799441e4b"
+        }
+      ],
+      "id": "bbeeddce-6a31-4562-a34b-f48416d16b75",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-bbeeddce-6a31-4562-a34b-f48416d16b75"
+    },
+    {
+      "name": "index.php?module=API&method=ScheduledReports.deleteReport",
+      "item": [
+        {
+          "name": "Scheduled reports delete report",
+          "id": "4691f2cb-ef75-4d7f-bba5-a66dd972d95a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.deleteReport&format=xml&idReport=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.deleteReport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The scheduled report ID to delete.",
+                  "key": "idReport",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Marks a scheduled report as deleted. The report row is retained in the database with `deleted = 1`."
+          },
+          "response": [
+            {
+              "id": "cea9a82c-0d91-4eec-aaad-ced2d2ca7cec",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-cea9a82c-0d91-4eec-aaad-ced2d2ca7cec"
+            },
+            {
+              "id": "7a776b2a-fd1e-47d4-b805-1c8591c591e6",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-7a776b2a-fd1e-47d4-b805-1c8591c591e6"
+            },
+            {
+              "id": "dfd98fc8-7ead-4001-8d4b-5fda158813c3",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-dfd98fc8-7ead-4001-8d4b-5fda158813c3"
+            },
+            {
+              "id": "050ca654-0ddf-4883-94d1-2ddca12207d6",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-050ca654-0ddf-4883-94d1-2ddca12207d6"
+            },
+            {
+              "id": "69dad2de-e870-4a1a-aca8-9fc7ff3bdfea",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-69dad2de-e870-4a1a-aca8-9fc7ff3bdfea"
+            },
+            {
+              "id": "9590e34c-cf3a-4c5f-b3df-38142fc7b87b",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-9590e34c-cf3a-4c5f-b3df-38142fc7b87b"
+            },
+            {
+              "id": "c81ed7e1-d436-460a-87fe-152b333bee58",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to delete.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-c81ed7e1-d436-460a-87fe-152b333bee58"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-4691f2cb-ef75-4d7f-bba5-a66dd972d95a"
+        }
+      ],
+      "id": "1d8ad15e-67d4-4b80-8448-78ebd0a96a3f",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-1d8ad15e-67d4-4b80-8448-78ebd0a96a3f"
+    },
+    {
+      "name": "index.php?module=API&method=ScheduledReports.getReports",
+      "item": [
+        {
+          "name": "Scheduled reports get reports",
+          "id": "973ca036-8778-4f0b-8e34-8ee23334fbc6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.getReports&format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.getReports"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Filters reports to a specific website when provided.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Filters reports by delivery schedule when provided.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Returns a single scheduled report when provided. Throws if not found.",
+                  "key": "idReport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "When `true`, super users only receive their own reports instead of all reports.",
+                  "key": "ifSuperUserReturnOnlySuperUserReports",
+                  "value": "false"
+                },
+                {
+                  "description": "Filters reports to a specific saved segment when provided.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns scheduled reports that match the supplied filters. All filter parameters are optional; passing `false` disables that filter."
+          },
+          "response": [
+            {
+              "id": "ac679707-b751-486e-943b-b2f4d52d8a20",
+              "name": "The matching scheduled reports, ordered by description. Each entry has decoded `parameters` and `reports` fields.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-ac679707-b751-486e-943b-b2f4d52d8a20"
+            },
+            {
+              "id": "4875681d-358f-40a8-aeb4-425a9ffed0dc",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-4875681d-358f-40a8-aeb4-425a9ffed0dc"
+            },
+            {
+              "id": "d3de665d-14fd-4e17-b606-c2818fd894a0",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-d3de665d-14fd-4e17-b606-c2818fd894a0"
+            },
+            {
+              "id": "6a5fa881-53e8-48bc-8eff-57b6850faa01",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-6a5fa881-53e8-48bc-8eff-57b6850faa01"
+            },
+            {
+              "id": "fd08616a-d395-4b52-be90-98d160bf3e44",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-fd08616a-d395-4b52-be90-98d160bf3e44"
+            },
+            {
+              "id": "195c444a-5431-4114-8e57-a90edeaf5c72",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-195c444a-5431-4114-8e57-a90edeaf5c72"
+            },
+            {
+              "id": "e68b31b6-543d-4a83-b7fb-ea816fb1034f",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&idReport=<integer>&ifSuperUserReturnOnlySuperUserReports=false&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Filters reports to a specific website when provided.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filters reports by delivery schedule when provided.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Returns a single scheduled report when provided. Throws if not found.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "When `true`, super users only receive their own reports instead of all reports.",
+                      "key": "ifSuperUserReturnOnlySuperUserReports",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Filters reports to a specific saved segment when provided.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-e68b31b6-543d-4a83-b7fb-ea816fb1034f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-973ca036-8778-4f0b-8e34-8ee23334fbc6"
+        }
+      ],
+      "id": "567df70c-0a87-4e81-9a3f-c973370e0618",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-567df70c-0a87-4e81-9a3f-c973370e0618"
+    },
+    {
+      "name": "index.php?module=API&method=ScheduledReports.generateReport",
+      "item": [
+        {
+          "name": "Scheduled reports generate report",
+          "id": "59dc8194-112d-4d8e-915e-f92f93ba219b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.generateReport&format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>&parameters=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.generateReport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The scheduled report ID to generate.",
+                  "key": "idReport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                  "key": "outputType",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The data period to generate, or `false` to use the report's stored period.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                  "key": "reportFormat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                  "key": "parameters",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Generates a scheduled report in the requested output mode."
+          },
+          "response": [
+            {
+              "id": "d15299d4-094a-4293-85c5-22fc93ce723b",
+              "name": "Returns a 5-element array `[$outputFilename, $prettyDate, $reportSubject, $reportTitle, $additionalFiles]` when using `OUTPUT_SAVE_ON_DISK`, the rendered report string when using `OUTPUT_RETURN`, or void when streaming to the browser (`OUTPUT_DOWNLOAD` / ",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-d15299d4-094a-4293-85c5-22fc93ce723b"
+            },
+            {
+              "id": "1d88ea40-c0f6-4e45-a383-b34a3ac0ba82",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-1d88ea40-c0f6-4e45-a383-b34a3ac0ba82"
+            },
+            {
+              "id": "b13cfae4-3c65-4a7f-9386-f89152d63373",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-b13cfae4-3c65-4a7f-9386-f89152d63373"
+            },
+            {
+              "id": "3f39e890-1475-4dac-ac35-11ee86c1f6a6",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-3f39e890-1475-4dac-ac35-11ee86c1f6a6"
+            },
+            {
+              "id": "f2579147-1585-4633-8c2c-bf4f2c5af37d",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-f2579147-1585-4633-8c2c-bf4f2c5af37d"
+            },
+            {
+              "id": "b13567d0-d620-4447-a9bc-90b8f32d11e7",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-b13567d0-d620-4447-a9bc-90b8f32d11e7"
+            },
+            {
+              "id": "9aaac5d6-6e9d-4cdd-9fe8-3cf1a5eb4aa7",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&date=<string>&language=<string>&outputType=<integer>&period=<string>&reportFormat=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to generate.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. `'YYYY-MM-DD'`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (e.g. `'YYYY-MM-DD,YYYY-MM-DD'`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ISO language code to render the report in (e.g. `'en'`, `'de'`), or `false` to use the default language.",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output mode controlling how the generated report is delivered. Use `OUTPUT_DOWNLOAD` (browser download), `OUTPUT_SAVE_ON_DISK` (temp file for sending), `OUTPUT_INLINE` (browser inline display), or `OUTPUT_RETURN` (return contents as string). Defaults to `OUTPUT_DOWNLOAD`.",
+                      "key": "outputType",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to generate, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format identifier (e.g. `'pdf'`, `'html'`), or `false` to use the stored format.",
+                      "key": "reportFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Transport-specific parameters to override for this generation, or `false` to use the stored parameters.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-9aaac5d6-6e9d-4cdd-9fe8-3cf1a5eb4aa7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-59dc8194-112d-4d8e-915e-f92f93ba219b"
+        }
+      ],
+      "id": "539f5b3a-14d4-498e-add3-d194a7727b0b",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-539f5b3a-14d4-498e-add3-d194a7727b0b"
+    },
+    {
+      "name": "index.php?module=API&method=ScheduledReports.sendReport",
+      "item": [
+        {
+          "name": "Scheduled reports send report",
+          "id": "43682a3c-a2a1-4a52-a519-cb8533f141ed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ScheduledReports.sendReport&format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ScheduledReports.sendReport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The scheduled report ID to send.",
+                  "key": "idReport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The data period to send, or `false` to use the report's stored period.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether to send the report even if it has already been sent for the same period.",
+                  "key": "force",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Sends a scheduled report immediately. Generates the report, saves it to a temporary file, dispatches it via the configured transport medium, and cleans up."
+          },
+          "response": [
+            {
+              "id": "572d7844-4ae7-4a76-a3c2-5106dfec78ed",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-572d7844-4ae7-4a76-a3c2-5106dfec78ed"
+            },
+            {
+              "id": "aed46150-9050-4d24-b1da-d8597fdb5ac4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-aed46150-9050-4d24-b1da-d8597fdb5ac4"
+            },
+            {
+              "id": "a36cc9fb-09e2-42d0-bc78-56086378b1fe",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-a36cc9fb-09e2-42d0-bc78-56086378b1fe"
+            },
+            {
+              "id": "35df6942-e678-43a5-b432-58b66076fb53",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-35df6942-e678-43a5-b432-58b66076fb53"
+            },
+            {
+              "id": "320bcde5-3ea1-469a-927a-fcc6f33e7c7b",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-320bcde5-3ea1-469a-927a-fcc6f33e7c7b"
+            },
+            {
+              "id": "72cafbce-8894-452a-98d5-02050d0a298f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-72cafbce-8894-452a-98d5-02050d0a298f"
+            },
+            {
+              "id": "e8894533-d8b4-4257-baab-2d0022428911",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idReport=<integer>&period=<string>&date=<string>&force=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The scheduled report ID to send.",
+                      "key": "idReport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The data period to send, or `false` to use the report's stored period.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date to generate the report for (e.g. `'2024-01-15'`), or `false` to use the previous scheduled period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to send the report even if it has already been sent for the same period.",
+                      "key": "force",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:17.000Z",
+              "updatedAt": "2026-10-22T01:36:17.000Z",
+              "uid": "35240-e8894533-d8b4-4257-baab-2d0022428911"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:17.000Z",
+          "updatedAt": "2026-10-22T01:36:17.000Z",
+          "uid": "35240-43682a3c-a2a1-4a52-a519-cb8533f141ed"
+        }
+      ],
+      "id": "56a94d64-22df-4a44-a3a6-77e2735bfd7b",
+      "createdAt": "2026-10-22T01:36:17.000Z",
+      "updatedAt": "2026-10-22T01:36:17.000Z",
+      "uid": "35240-56a94d64-22df-4a44-a3a6-77e2735bfd7b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

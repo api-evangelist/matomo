@@ -1,0 +1,4416 @@
+{
+  "info": {
+    "_postman_id": "b718dc0a-42e2-4b3e-adc1-c02a1e595e62",
+    "name": "Matomo Reporting API for plugin Segment Editor API",
+    "description": "The SegmentEditor API lets you add, update, delete custom Segments, and list saved segments.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:35:05.000Z",
+    "updatedAt": "2026-10-22T01:35:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b718dc0a-42e2-4b3e-adc1-c02a1e595e62"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=SegmentEditor.isUserCanAddNewSegment",
+      "item": [
+        {
+          "name": "Segment editor is user can add new segment",
+          "id": "5d984259-6c94-4c9f-9509-e1cba09a84b9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.isUserCanAddNewSegment&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.isUserCanAddNewSegment"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns whether the current user can create a new stored segment."
+          },
+          "response": [
+            {
+              "id": "456d3dd7-1b02-4465-a667-883012ca16a2",
+              "name": "`true` if the current user can add a segment for the requested scope, `false` otherwise.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-456d3dd7-1b02-4465-a667-883012ca16a2"
+            },
+            {
+              "id": "e9d41cac-06f1-4b60-894e-38da41f940a9",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-e9d41cac-06f1-4b60-894e-38da41f940a9"
+            },
+            {
+              "id": "876f25ed-d041-47d6-a81a-b93c1da52a20",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-876f25ed-d041-47d6-a81a-b93c1da52a20"
+            },
+            {
+              "id": "f8193e1f-fb1a-4727-902c-13191f4f672d",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-f8193e1f-fb1a-4727-902c-13191f4f672d"
+            },
+            {
+              "id": "17aabf69-6c8d-4ca0-9d8d-e9eee2fc0fe7",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-17aabf69-6c8d-4ca0-9d8d-e9eee2fc0fe7"
+            },
+            {
+              "id": "9c25a78a-79b1-4cd8-b516-5f48dc09a9ff",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-9c25a78a-79b1-4cd8-b516-5f48dc09a9ff"
+            },
+            {
+              "id": "5158ebfa-9db9-45a5-b451-3a6584ec6113",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, checks permissions for this site; otherwise checks whether the user can create an all-websites segment.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-5158ebfa-9db9-45a5-b451-3a6584ec6113"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-5d984259-6c94-4c9f-9509-e1cba09a84b9"
+        }
+      ],
+      "id": "80b32c06-b2c9-4fcc-abf5-3750b8b2c1ab",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-80b32c06-b2c9-4fcc-abf5-3750b8b2c1ab"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.delete",
+      "item": [
+        {
+          "name": "Segment editor delete",
+          "id": "f3e60961-e0cd-49e3-9675-e19c7b4c34b4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.delete&format=xml&idSegment=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.delete"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the stored segment to delete.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Deletes a stored segment."
+          },
+          "response": [
+            {
+              "id": "4465c36f-1b34-4b80-aac0-e8cfe095f01b",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-4465c36f-1b34-4b80-aac0-e8cfe095f01b"
+            },
+            {
+              "id": "fbc45b26-3785-40f1-963d-5c7abca2d5ab",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-fbc45b26-3785-40f1-963d-5c7abca2d5ab"
+            },
+            {
+              "id": "2333d852-5fe2-468c-b758-8beebced9567",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-2333d852-5fe2-468c-b758-8beebced9567"
+            },
+            {
+              "id": "aea7d7e2-710b-4b37-b801-739c8346cad8",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-aea7d7e2-710b-4b37-b801-739c8346cad8"
+            },
+            {
+              "id": "ec042cf5-ce51-458b-905b-f778a68721f5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-ec042cf5-ce51-458b-905b-f778a68721f5"
+            },
+            {
+              "id": "d1237ef1-3e1a-4bf5-b3a6-0ced83179279",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-d1237ef1-3e1a-4bf5-b3a6-0ced83179279"
+            },
+            {
+              "id": "7d0f5814-6195-4ce2-a84a-6695a9aeb3e0",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to delete.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-7d0f5814-6195-4ce2-a84a-6695a9aeb3e0"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-f3e60961-e0cd-49e3-9675-e19c7b4c34b4"
+        }
+      ],
+      "id": "b8d9ce4b-102d-4a39-9dbd-f51278eb019b",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-b8d9ce4b-102d-4a39-9dbd-f51278eb019b"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.update",
+      "item": [
+        {
+          "name": "Segment editor update",
+          "id": "dd4b6a73-5f9c-43f7-b440-8b47654a7622",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.update&format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.update"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the stored segment to modify.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The new name of the segment.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The new definition of the segment.",
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "If supplied, associates the stored segment with a single site.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether to automatically archive data with the segment or not.",
+                  "key": "autoArchive",
+                  "value": "false"
+                },
+                {
+                  "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                  "key": "enabledAllUsers",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Modifies an existing stored segment."
+          },
+          "response": [
+            {
+              "id": "3562b210-f9d1-406c-a4a1-7f82c5e9706b",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-3562b210-f9d1-406c-a4a1-7f82c5e9706b"
+            },
+            {
+              "id": "24c1537c-7403-4a5e-8534-c5ee8c1bcb4e",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-24c1537c-7403-4a5e-8534-c5ee8c1bcb4e"
+            },
+            {
+              "id": "591ec784-1d4d-44f9-9b2b-215cc8e1c516",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-591ec784-1d4d-44f9-9b2b-215cc8e1c516"
+            },
+            {
+              "id": "b0eafb87-c482-4fe8-bca8-ff00244cc839",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-b0eafb87-c482-4fe8-bca8-ff00244cc839"
+            },
+            {
+              "id": "7c1917a4-d89c-45ff-94da-5e6ebb5e4ee2",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-7c1917a4-d89c-45ff-94da-5e6ebb5e4ee2"
+            },
+            {
+              "id": "9e789bd6-c2c0-4371-b31a-58ac99cc90ed",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-9e789bd6-c2c0-4371-b31a-58ac99cc90ed"
+            },
+            {
+              "id": "099d5c32-c5b9-4544-a4c4-febcd9a9b3a7",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to modify.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-099d5c32-c5b9-4544-a4c4-febcd9a9b3a7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-dd4b6a73-5f9c-43f7-b440-8b47654a7622"
+        }
+      ],
+      "id": "cca847ff-2488-49f5-9047-e82f61ee1d49",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-cca847ff-2488-49f5-9047-e82f61ee1d49"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.add",
+      "item": [
+        {
+          "name": "Segment editor add",
+          "id": "1e6aaaf2-bbef-4a1b-865b-c5bef0dd16de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.add&format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.add"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The new name of the segment.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The new definition of the segment.",
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "If supplied, associates the stored segment with a single site.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether to automatically archive data with the segment or not.",
+                  "key": "autoArchive",
+                  "value": "false"
+                },
+                {
+                  "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                  "key": "enabledAllUsers",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Adds a new stored segment."
+          },
+          "response": [
+            {
+              "id": "596c1edf-5f9b-4717-87de-f06a4cc03daf",
+              "name": "The newly created segment ID.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-596c1edf-5f9b-4717-87de-f06a4cc03daf"
+            },
+            {
+              "id": "eb918bd8-c7af-45bd-83d0-462fe0fb6e21",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-eb918bd8-c7af-45bd-83d0-462fe0fb6e21"
+            },
+            {
+              "id": "5ea8a961-c4ac-4129-b2b2-08a179b888e8",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-5ea8a961-c4ac-4129-b2b2-08a179b888e8"
+            },
+            {
+              "id": "b0306e1b-65f3-426f-8aff-91fe9f362702",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-b0306e1b-65f3-426f-8aff-91fe9f362702"
+            },
+            {
+              "id": "ce81cf9d-9e06-415d-b0a7-e79b72747a11",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-ce81cf9d-9e06-415d-b0a7-e79b72747a11"
+            },
+            {
+              "id": "77521a33-c4c7-4555-a67a-f0c57fc98267",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-77521a33-c4c7-4555-a67a-f0c57fc98267"
+            },
+            {
+              "id": "27359ae5-15bf-4265-8279-dc4ca472bb7b",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&definition=<string>&idSite=<integer>&autoArchive=false&enabledAllUsers=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The new name of the segment.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The new definition of the segment.",
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "If supplied, associates the stored segment with a single site.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to automatically archive data with the segment or not.",
+                      "key": "autoArchive",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether the stored segment is viewable by all users or just the one that created it.",
+                      "key": "enabledAllUsers",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-27359ae5-15bf-4265-8279-dc4ca472bb7b"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-1e6aaaf2-bbef-4a1b-865b-c5bef0dd16de"
+        }
+      ],
+      "id": "8456cdd4-7bcb-46bc-816d-58fdc97f90d2",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-8456cdd4-7bcb-46bc-816d-58fdc97f90d2"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.star",
+      "item": [
+        {
+          "name": "Segment editor star",
+          "id": "5d474526-8a79-4339-9cc1-eb6ebf52f98a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.star&format=xml&idSegment=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.star"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the stored segment to star.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Stars a stored segment."
+          },
+          "response": [
+            {
+              "id": "42697aee-ff28-4133-869e-90fa9eea9674",
+              "name": "The update result and new starred state.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-42697aee-ff28-4133-869e-90fa9eea9674"
+            },
+            {
+              "id": "631f9652-1aad-4f84-b8cb-774144160092",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-631f9652-1aad-4f84-b8cb-774144160092"
+            },
+            {
+              "id": "2c5f8617-cc66-44ba-9931-1e919a27e344",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-2c5f8617-cc66-44ba-9931-1e919a27e344"
+            },
+            {
+              "id": "6d8a216c-50c7-4eb7-8feb-220fa96135d8",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-6d8a216c-50c7-4eb7-8feb-220fa96135d8"
+            },
+            {
+              "id": "b169fb74-5b4a-41a5-8e48-6b4555ff6c61",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-b169fb74-5b4a-41a5-8e48-6b4555ff6c61"
+            },
+            {
+              "id": "3163378e-d526-4fd3-8c06-1f72b8be740d",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-3163378e-d526-4fd3-8c06-1f72b8be740d"
+            },
+            {
+              "id": "f6f7c9b6-a077-4390-bb7c-f8aeca927fbc",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to star.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-f6f7c9b6-a077-4390-bb7c-f8aeca927fbc"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-5d474526-8a79-4339-9cc1-eb6ebf52f98a"
+        }
+      ],
+      "id": "5e72a3f4-84cf-4d30-a84a-6e3346dabc39",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-5e72a3f4-84cf-4d30-a84a-6e3346dabc39"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.unstar",
+      "item": [
+        {
+          "name": "Segment editor unstar",
+          "id": "baed205f-33c0-4d46-9fa7-1c94b66ccb76",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.unstar&format=xml&idSegment=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.unstar"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the stored segment to unstar.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Unstars a stored segment."
+          },
+          "response": [
+            {
+              "id": "856b5163-b91c-456f-a849-8ed0418c262c",
+              "name": "The update result and new starred state.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-856b5163-b91c-456f-a849-8ed0418c262c"
+            },
+            {
+              "id": "bf8d6192-ae71-4925-80de-7a06693cc57c",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-bf8d6192-ae71-4925-80de-7a06693cc57c"
+            },
+            {
+              "id": "d3932fb4-53de-4a32-956b-5c746299cf82",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-d3932fb4-53de-4a32-956b-5c746299cf82"
+            },
+            {
+              "id": "4e126fe2-a738-45b1-b207-99a80bbb0b1c",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-4e126fe2-a738-45b1-b207-99a80bbb0b1c"
+            },
+            {
+              "id": "19fe141d-5fa0-435d-8299-9be1772a19ff",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-19fe141d-5fa0-435d-8299-9be1772a19ff"
+            },
+            {
+              "id": "e63bfc8c-f764-4399-b00b-ac6de8900f96",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-e63bfc8c-f764-4399-b00b-ac6de8900f96"
+            },
+            {
+              "id": "9dba3b47-f73e-4600-82c5-ec4ad590c769",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to unstar.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-9dba3b47-f73e-4600-82c5-ec4ad590c769"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-baed205f-33c0-4d46-9fa7-1c94b66ccb76"
+        }
+      ],
+      "id": "13b28616-b39f-4fab-b4ed-1e034be15fd9",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-13b28616-b39f-4fab-b4ed-1e034be15fd9"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.get",
+      "item": [
+        {
+          "name": "Segment editor get",
+          "id": "afea846a-cb63-4028-a936-0f5cfa51bdf8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.get&format=xml&idSegment=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.get"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the stored segment to fetch.",
+                  "key": "idSegment",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a stored segment by ID."
+          },
+          "response": [
+            {
+              "id": "476c22e3-090f-4182-984e-5c7352f31491",
+              "name": "The stored segment, or `null` if it does not exist.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-476c22e3-090f-4182-984e-5c7352f31491"
+            },
+            {
+              "id": "971f9723-3d8c-47a2-9b42-9ad22e230ea5",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-971f9723-3d8c-47a2-9b42-9ad22e230ea5"
+            },
+            {
+              "id": "87270f91-0dfa-4390-be83-0ba88246efe2",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-87270f91-0dfa-4390-be83-0ba88246efe2"
+            },
+            {
+              "id": "5f3083dc-86de-47ad-8d81-c1ece3f7e2f7",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-5f3083dc-86de-47ad-8d81-c1ece3f7e2f7"
+            },
+            {
+              "id": "a25be9ff-63da-4331-bb00-3fd7b9bc31af",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-a25be9ff-63da-4331-bb00-3fd7b9bc31af"
+            },
+            {
+              "id": "0da04ced-4916-4aa8-8fef-f266c6850d50",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-0da04ced-4916-4aa8-8fef-f266c6850d50"
+            },
+            {
+              "id": "58be4d91-c768-49c0-b897-1157dffe86c5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSegment=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the stored segment to fetch.",
+                      "key": "idSegment",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-58be4d91-c768-49c0-b897-1157dffe86c5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-afea846a-cb63-4028-a936-0f5cfa51bdf8"
+        }
+      ],
+      "id": "d40c42d7-9996-4b92-b87f-789fa5a1c061",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-d40c42d7-9996-4b92-b87f-789fa5a1c061"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.getAll",
+      "item": [
+        {
+          "name": "Segment editor get all",
+          "id": "8432b868-9eb8-4ab0-9e67-32f6425d2ec7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.getAll&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.getAll"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns all stored segments."
+          },
+          "response": [
+            {
+              "id": "d2d764a2-9982-4658-989e-19724d650e45",
+              "name": "Stored segments visible to the current user.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-d2d764a2-9982-4658-989e-19724d650e45"
+            },
+            {
+              "id": "293a8e54-81d4-44a4-874e-0ccb8d091899",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-293a8e54-81d4-44a4-874e-0ccb8d091899"
+            },
+            {
+              "id": "c0a2b141-dc1b-479c-b333-d32caf1dd986",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-c0a2b141-dc1b-479c-b333-d32caf1dd986"
+            },
+            {
+              "id": "b805207a-a167-4a40-ad8e-471c4f5b3da0",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-b805207a-a167-4a40-ad8e-471c4f5b3da0"
+            },
+            {
+              "id": "4964c383-e5f8-47e4-be82-608da069d0bf",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-4964c383-e5f8-47e4-be82-608da069d0bf"
+            },
+            {
+              "id": "dc01f7c4-8a8a-4193-b35d-98f7ac8ec9a7",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-dc01f7c4-8a8a-4193-b35d-98f7ac8ec9a7"
+            },
+            {
+              "id": "d0f057c0-6adb-4cfd-93cb-c4a78dfdb93c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "If supplied, returns stored segments for one site only; otherwise returns all visible stored segments.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-d0f057c0-6adb-4cfd-93cb-c4a78dfdb93c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-8432b868-9eb8-4ab0-9e67-32f6425d2ec7"
+        }
+      ],
+      "id": "28dac573-fe5b-4abb-ad3d-09d54df2e8ce",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-28dac573-fe5b-4abb-ad3d-09d54df2e8ce"
+    },
+    {
+      "name": "index.php?module=API&method=SegmentEditor.getSegmentData",
+      "item": [
+        {
+          "name": "Segment editor get segment data",
+          "id": "b10a969e-5d97-49f0-960e-c46e27244dbb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=SegmentEditor.getSegmentData&format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "SegmentEditor.getSegmentData"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns visit and action totals for a pre-processed segment together with visit evolution."
+          },
+          "response": [
+            {
+              "id": "194c45bf-9f8c-4918-886e-697a027f40ae",
+              "name": "Visit totals, action totals, and visit evolution metadata for the segment.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-194c45bf-9f8c-4918-886e-697a027f40ae"
+            },
+            {
+              "id": "cbf96e1c-d884-4e8d-ba56-88a922d78fa4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-cbf96e1c-d884-4e8d-ba56-88a922d78fa4"
+            },
+            {
+              "id": "4de47752-ecfe-43c3-bdfe-6b2142d7cd06",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-4de47752-ecfe-43c3-bdfe-6b2142d7cd06"
+            },
+            {
+              "id": "f5775e55-320b-4efa-9090-e81c3441c3f0",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-f5775e55-320b-4efa-9090-e81c3441c3f0"
+            },
+            {
+              "id": "5254fed5-2d95-4f90-9be2-dccc4d8cab32",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-5254fed5-2d95-4f90-9be2-dccc4d8cab32"
+            },
+            {
+              "id": "548bbf68-517a-42dc-bd1a-452096b17469",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-548bbf68-517a-42dc-bd1a-452096b17469"
+            },
+            {
+              "id": "4ff75ec5-66bb-47df-963c-6da14ec2e642",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:06.000Z",
+              "updatedAt": "2026-10-22T01:35:06.000Z",
+              "uid": "35240-4ff75ec5-66bb-47df-963c-6da14ec2e642"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:06.000Z",
+          "updatedAt": "2026-10-22T01:35:06.000Z",
+          "uid": "35240-b10a969e-5d97-49f0-960e-c46e27244dbb"
+        }
+      ],
+      "id": "bf6bcc5c-0164-403d-b633-0072d937123f",
+      "createdAt": "2026-10-22T01:35:06.000Z",
+      "updatedAt": "2026-10-22T01:35:06.000Z",
+      "uid": "35240-bf6bcc5c-0164-403d-b633-0072d937123f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

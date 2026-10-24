@@ -1,842 +1,681 @@
 {
+  "info": {
+    "_postman_id": "ed54e2cb-dc62-4e96-9317-6a4bc2f358b6",
+    "name": "Matomo Tracking Matomo.php API",
+    "description": "The Matomo Tracking HTTP API records visits, pageviews, events, content\ninteractions, site searches, ecommerce transactions, and custom dimensions\nfrom any client or server.\n\nContact Support:\n Name: Matomo Developer Documentation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:31:29.000Z",
+    "updatedAt": "2026-10-22T01:31:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed54e2cb-dc62-4e96-9317-6a4bc2f358b6"
+  },
   "item": [
     {
-      "id": "654efed6-2c3f-44c1-97af-44e202225bae",
-      "name": "Matomo.php",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "matomo.php",
       "item": [
         {
-          "id": "cf657d9b-f688-4c20-b969-08856f707bcc",
           "name": "Submit a single tracking request (querystring)",
+          "id": "10d9599b-372a-4f9b-8bae-3608a47ef8b0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Submit a single tracking request (querystring)",
-            "description": {
-              "content": "Records a single pageview, event, content interaction, search, or\necommerce action by passing tracking parameters in the URL\nquerystring. `idsite` and `rec=1` are required.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "matomo.php"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "idsite",
-                  "value": "<integer>",
-                  "description": "(Required) ID of the website being tracked."
-                },
-                {
-                  "disabled": false,
-                  "key": "rec",
-                  "value": "<integer>",
-                  "description": "(Required) Must be set to 1 to record the request."
-                },
-                {
-                  "disabled": false,
-                  "key": "action_name",
-                  "value": "<string>",
-                  "description": "Title of the action being tracked (page title)."
-                },
-                {
-                  "disabled": false,
-                  "key": "url",
-                  "value": "<uri>",
-                  "description": "Full URL for the current action."
-                },
-                {
-                  "disabled": false,
-                  "key": "_id",
-                  "value": "<string>",
-                  "description": "16 character unique visitor ID (hex)."
-                },
-                {
-                  "disabled": false,
-                  "key": "rand",
-                  "value": "<string>",
-                  "description": "Random value to avoid intermediary caching."
-                },
-                {
-                  "disabled": false,
-                  "key": "apiv",
-                  "value": "<integer>",
-                  "description": "API version, currently 1."
-                },
-                {
-                  "disabled": false,
-                  "key": "urlref",
-                  "value": "<uri>",
-                  "description": "Full HTTP Referrer URL."
-                },
-                {
-                  "disabled": false,
-                  "key": "res",
-                  "value": "<string>",
-                  "description": "Screen resolution, e.g. 1280x1024."
-                },
-                {
-                  "disabled": false,
-                  "key": "cookie",
-                  "value": "<integer>",
-                  "description": "Whether the visitor's browser supports cookies."
-                },
-                {
-                  "disabled": false,
-                  "key": "ua",
-                  "value": "<string>",
-                  "description": "Override the User-Agent HTTP header."
-                },
-                {
-                  "disabled": false,
-                  "key": "uadata",
-                  "value": "<string>",
-                  "description": "JSON-encoded Client Hints."
-                },
-                {
-                  "disabled": false,
-                  "key": "lang",
-                  "value": "<string>",
-                  "description": "Accept-Language HTTP header override."
-                },
-                {
-                  "disabled": false,
-                  "key": "uid",
-                  "value": "<string>",
-                  "description": "User ID string for the logged-in user."
-                },
-                {
-                  "disabled": false,
-                  "key": "cid",
-                  "value": "<string>",
-                  "description": "16 character visitor ID override (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "new_visit",
-                  "value": "<integer>",
-                  "description": "Force a new visit to be created for this action."
-                },
-                {
-                  "disabled": false,
-                  "key": "link",
-                  "value": "<uri>",
-                  "description": "External URL clicked by the user (outlink)."
-                },
-                {
-                  "disabled": false,
-                  "key": "download",
-                  "value": "<uri>",
-                  "description": "URL of a downloaded file."
-                },
-                {
-                  "disabled": false,
-                  "key": "search",
-                  "value": "<string>",
-                  "description": "Site search query."
-                },
-                {
-                  "disabled": false,
-                  "key": "search_cat",
-                  "value": "<string>",
-                  "description": "Specified search category."
-                },
-                {
-                  "disabled": false,
-                  "key": "search_count",
-                  "value": "<integer>",
-                  "description": "Number of search results displayed."
-                },
-                {
-                  "disabled": false,
-                  "key": "pv_id",
-                  "value": "<string>",
-                  "description": "6 character unique ID for the pageview."
-                },
-                {
-                  "disabled": false,
-                  "key": "idgoal",
-                  "value": "<integer>",
-                  "description": "Goal ID for conversion tracking."
-                },
-                {
-                  "disabled": false,
-                  "key": "revenue",
-                  "value": "<number>",
-                  "description": "Monetary value generated as revenue."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_id",
-                  "value": "<string>",
-                  "description": "Unique String identifier for the ecommerce order."
-                },
-                {
-                  "disabled": false,
-                  "key": "e_c",
-                  "value": "<string>",
-                  "description": "Event category."
-                },
-                {
-                  "disabled": false,
-                  "key": "e_a",
-                  "value": "<string>",
-                  "description": "Event action."
-                },
-                {
-                  "disabled": false,
-                  "key": "e_n",
-                  "value": "<string>",
-                  "description": "Event name."
-                },
-                {
-                  "disabled": false,
-                  "key": "e_v",
-                  "value": "<number>",
-                  "description": "Event numeric value."
-                },
-                {
-                  "disabled": false,
-                  "key": "c_n",
-                  "value": "<string>",
-                  "description": "Name of the content block."
-                },
-                {
-                  "disabled": false,
-                  "key": "c_p",
-                  "value": "<string>",
-                  "description": "Actual content piece (text or media URL)."
-                },
-                {
-                  "disabled": false,
-                  "key": "c_t",
-                  "value": "<string>",
-                  "description": "Target of the content interaction (URL)."
-                },
-                {
-                  "disabled": false,
-                  "key": "c_i",
-                  "value": "<string>",
-                  "description": "Type of content interaction (e.g. click)."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_id",
-                  "value": "<string>",
-                  "description": "Unique string identifier for the ecommerce order."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_items",
-                  "value": "<string>",
-                  "description": "JSON-encoded array of ecommerce line items."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_st",
-                  "value": "<number>",
-                  "description": "Sub-total of the order, excluding shipping."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_tx",
-                  "value": "<number>",
-                  "description": "Tax amount of the order."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_sh",
-                  "value": "<number>",
-                  "description": "Shipping cost of the order."
-                },
-                {
-                  "disabled": false,
-                  "key": "ec_dt",
-                  "value": "<number>",
-                  "description": "Discount offered on the order."
-                },
-                {
-                  "disabled": false,
-                  "key": "token_auth",
-                  "value": "<string>",
-                  "description": "Auth token. Required for parameters that override server-side\nvalues (cip, cdt > 24h, country/region/city/lat/long, cid).\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "cip",
-                  "value": "<string>",
-                  "description": "Override the visitor IP (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "cdt",
-                  "value": "<string>",
-                  "description": "Override datetime of the request (UTC, requires token_auth if older than 24h)."
-                },
-                {
-                  "disabled": false,
-                  "key": "country",
-                  "value": "<string>",
-                  "description": "Override visitor country code (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "region",
-                  "value": "<string>",
-                  "description": "Override visitor region code (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "city",
-                  "value": "<string>",
-                  "description": "Override visitor city (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "lat",
-                  "value": "<number>",
-                  "description": "Override visitor latitude (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "long",
-                  "value": "<number>",
-                  "description": "Override visitor longitude (requires token_auth)."
-                },
-                {
-                  "disabled": false,
-                  "key": "send_image",
-                  "value": "<integer>",
-                  "description": "If 0, return HTTP 204 instead of the 1x1 GIF."
-                },
-                {
-                  "disabled": false,
-                  "key": "ping",
-                  "value": "<integer>",
-                  "description": "Heartbeat ping; updates total_time on an existing visit."
-                },
-                {
-                  "disabled": false,
-                  "key": "queuedtracking",
-                  "value": "<integer>",
-                  "description": "Bypass the Queued Tracking plugin for this request."
-                },
-                {
-                  "disabled": false,
-                  "key": "bots",
-                  "value": "<integer>",
-                  "description": "Set to 1 to record requests from known bots."
-                }
-              ],
-              "variable": [
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "type": "any",
-                  "value": "{{matomo_host}}",
-                  "key": "matomo_host"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "image/gif"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/matomo.php?idsite=<integer>&rec=1&action_name=<string>&url=<uri>&_id=<string>&rand=<string>&apiv=1&urlref=<uri>&res=<string>&cookie=1&ua=<string>&uadata=<string>&lang=<string>&uid=<string>&cid=<string>&new_visit=1&link=<uri>&download=<uri>&search=<string>&search_cat=<string>&search_count=<integer>&pv_id=<string>&idgoal=<integer>&revenue=<number>&ec_id=<string>&e_c=<string>&e_a=<string>&e_n=<string>&e_v=<number>&c_n=<string>&c_p=<string>&c_t=<string>&c_i=<string>&ec_id=<string>&ec_items=<string>&ec_st=<number>&ec_tx=<number>&ec_sh=<number>&ec_dt=<number>&token_auth=<string>&cip=<string>&cdt=<string>&country=<string>&region=<string>&city=<string>&lat=<number>&long=<number>&send_image=1&ping=1&queuedtracking=1&bots=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "matomo.php"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ID of the website being tracked.",
+                  "key": "idsite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Must be set to 1 to record the request.",
+                  "key": "rec",
+                  "value": "1"
+                },
+                {
+                  "description": "Title of the action being tracked (page title).",
+                  "key": "action_name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Full URL for the current action.",
+                  "key": "url",
+                  "value": "<uri>"
+                },
+                {
+                  "description": "16 character unique visitor ID (hex).",
+                  "key": "_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Random value to avoid intermediary caching.",
+                  "key": "rand",
+                  "value": "<string>"
+                },
+                {
+                  "description": "API version, currently 1.",
+                  "key": "apiv",
+                  "value": "1"
+                },
+                {
+                  "description": "Full HTTP Referrer URL.",
+                  "key": "urlref",
+                  "value": "<uri>"
+                },
+                {
+                  "description": "Screen resolution, e.g. 1280x1024.",
+                  "key": "res",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether the visitor's browser supports cookies.",
+                  "key": "cookie",
+                  "value": "1"
+                },
+                {
+                  "description": "Override the User-Agent HTTP header.",
+                  "key": "ua",
+                  "value": "<string>"
+                },
+                {
+                  "description": "JSON-encoded Client Hints.",
+                  "key": "uadata",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Accept-Language HTTP header override.",
+                  "key": "lang",
+                  "value": "<string>"
+                },
+                {
+                  "description": "User ID string for the logged-in user.",
+                  "key": "uid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "16 character visitor ID override (requires token_auth).",
+                  "key": "cid",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Force a new visit to be created for this action.",
+                  "key": "new_visit",
+                  "value": "1"
+                },
+                {
+                  "description": "External URL clicked by the user (outlink).",
+                  "key": "link",
+                  "value": "<uri>"
+                },
+                {
+                  "description": "URL of a downloaded file.",
+                  "key": "download",
+                  "value": "<uri>"
+                },
+                {
+                  "description": "Site search query.",
+                  "key": "search",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Specified search category.",
+                  "key": "search_cat",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of search results displayed.",
+                  "key": "search_count",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "6 character unique ID for the pageview.",
+                  "key": "pv_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Goal ID for conversion tracking.",
+                  "key": "idgoal",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Monetary value generated as revenue.",
+                  "key": "revenue",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Unique String identifier for the ecommerce order.",
+                  "key": "ec_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Event category.",
+                  "key": "e_c",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Event action.",
+                  "key": "e_a",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Event name.",
+                  "key": "e_n",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Event numeric value.",
+                  "key": "e_v",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Name of the content block.",
+                  "key": "c_n",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Actual content piece (text or media URL).",
+                  "key": "c_p",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Target of the content interaction (URL).",
+                  "key": "c_t",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Type of content interaction (e.g. click).",
+                  "key": "c_i",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Unique string identifier for the ecommerce order.",
+                  "key": "ec_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "JSON-encoded array of ecommerce line items.",
+                  "key": "ec_items",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Sub-total of the order, excluding shipping.",
+                  "key": "ec_st",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Tax amount of the order.",
+                  "key": "ec_tx",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Shipping cost of the order.",
+                  "key": "ec_sh",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Discount offered on the order.",
+                  "key": "ec_dt",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Auth token. Required for parameters that override server-side\nvalues (cip, cdt > 24h, country/region/city/lat/long, cid).\n",
+                  "key": "token_auth",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override the visitor IP (requires token_auth).",
+                  "key": "cip",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override datetime of the request (UTC, requires token_auth if older than 24h).",
+                  "key": "cdt",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override visitor country code (requires token_auth).",
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override visitor region code (requires token_auth).",
+                  "key": "region",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override visitor city (requires token_auth).",
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Override visitor latitude (requires token_auth).",
+                  "key": "lat",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Override visitor longitude (requires token_auth).",
+                  "key": "long",
+                  "value": "<number>"
+                },
+                {
+                  "description": "If 0, return HTTP 204 instead of the 1x1 GIF.",
+                  "key": "send_image",
+                  "value": "1"
+                },
+                {
+                  "description": "Heartbeat ping; updates total_time on an existing visit.",
+                  "key": "ping",
+                  "value": "1"
+                },
+                {
+                  "description": "Bypass the Queued Tracking plugin for this request.",
+                  "key": "queuedtracking",
+                  "value": "1"
+                },
+                {
+                  "description": "Set to 1 to record requests from known bots.",
+                  "key": "bots",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Records a single pageview, event, content interaction, search, or\necommerce action by passing tracking parameters in the URL\nquerystring. `idsite` and `rec=1` are required."
           },
           "response": [
             {
-              "id": "0d40f99f-b831-4a92-9648-f76e4bd49d7a",
+              "id": "cfd955dc-ae6d-427e-a349-a3031eba38a9",
               "name": "Default response is a 1x1 transparent GIF (204 if\n`send_image=0`). Errors surface in Matomo logs, not HTTP status.\n",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "matomo.php"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "idsite",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "rec",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "action_name",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "url",
-                      "value": "<uri>"
-                    },
-                    {
-                      "key": "_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "rand",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "apiv",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "urlref",
-                      "value": "<uri>"
-                    },
-                    {
-                      "key": "res",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cookie",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "ua",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "uadata",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "lang",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "uid",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cid",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "new_visit",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "link",
-                      "value": "<uri>"
-                    },
-                    {
-                      "key": "download",
-                      "value": "<uri>"
-                    },
-                    {
-                      "key": "search",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "search_cat",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "search_count",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "pv_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "idgoal",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "revenue",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "ec_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "e_c",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "e_a",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "e_n",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "e_v",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "c_n",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "c_p",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "c_t",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "c_i",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "ec_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "ec_items",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "ec_st",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "ec_tx",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "ec_sh",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "ec_dt",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "token_auth",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cip",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "cdt",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "country",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "region",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "city",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "lat",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "long",
-                      "value": "<number>"
-                    },
-                    {
-                      "key": "send_image",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "ping",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "queuedtracking",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "bots",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "token_auth",
-                      "value": "<API Key>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
-                      "type": "any",
-                      "value": "{{matomo_host}}",
-                      "key": "matomo_host"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "image/gif"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/matomo.php?idsite=<integer>&rec=1&action_name=<string>&url=<uri>&_id=<string>&rand=<string>&apiv=1&urlref=<uri>&res=<string>&cookie=1&ua=<string>&uadata=<string>&lang=<string>&uid=<string>&cid=<string>&new_visit=1&link=<uri>&download=<uri>&search=<string>&search_cat=<string>&search_count=<integer>&pv_id=<string>&idgoal=<integer>&revenue=<number>&ec_id=<string>&e_c=<string>&e_a=<string>&e_n=<string>&e_v=<number>&c_n=<string>&c_p=<string>&c_t=<string>&c_i=<string>&ec_items=<string>&ec_st=<number>&ec_tx=<number>&ec_sh=<number>&ec_dt=<number>&token_auth=<string>&cip=<string>&cdt=<string>&country=<string>&region=<string>&city=<string>&lat=<number>&long=<number>&send_image=1&ping=1&queuedtracking=1&bots=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "matomo.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the website being tracked.",
+                      "key": "idsite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Must be set to 1 to record the request.",
+                      "key": "rec",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Title of the action being tracked (page title).",
+                      "key": "action_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Full URL for the current action.",
+                      "key": "url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "16 character unique visitor ID (hex).",
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Random value to avoid intermediary caching.",
+                      "key": "rand",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "API version, currently 1.",
+                      "key": "apiv",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Full HTTP Referrer URL.",
+                      "key": "urlref",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "Screen resolution, e.g. 1280x1024.",
+                      "key": "res",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the visitor's browser supports cookies.",
+                      "key": "cookie",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Override the User-Agent HTTP header.",
+                      "key": "ua",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON-encoded Client Hints.",
+                      "key": "uadata",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Accept-Language HTTP header override.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User ID string for the logged-in user.",
+                      "key": "uid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "16 character visitor ID override (requires token_auth).",
+                      "key": "cid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Force a new visit to be created for this action.",
+                      "key": "new_visit",
+                      "value": "1"
+                    },
+                    {
+                      "description": "External URL clicked by the user (outlink).",
+                      "key": "link",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "URL of a downloaded file.",
+                      "key": "download",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "Site search query.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specified search category.",
+                      "key": "search_cat",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of search results displayed.",
+                      "key": "search_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "6 character unique ID for the pageview.",
+                      "key": "pv_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Goal ID for conversion tracking.",
+                      "key": "idgoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Monetary value generated as revenue.",
+                      "key": "revenue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Unique String identifier for the ecommerce order.",
+                      "key": "ec_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Event category.",
+                      "key": "e_c",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Event action.",
+                      "key": "e_a",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Event name.",
+                      "key": "e_n",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Event numeric value.",
+                      "key": "e_v",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Name of the content block.",
+                      "key": "c_n",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Actual content piece (text or media URL).",
+                      "key": "c_p",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Target of the content interaction (URL).",
+                      "key": "c_t",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Type of content interaction (e.g. click).",
+                      "key": "c_i",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "JSON-encoded array of ecommerce line items.",
+                      "key": "ec_items",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Sub-total of the order, excluding shipping.",
+                      "key": "ec_st",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Tax amount of the order.",
+                      "key": "ec_tx",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Shipping cost of the order.",
+                      "key": "ec_sh",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Discount offered on the order.",
+                      "key": "ec_dt",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Auth token. Required for parameters that override server-side\nvalues (cip, cdt > 24h, country/region/city/lat/long, cid).\n",
+                      "key": "token_auth",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override the visitor IP (requires token_auth).",
+                      "key": "cip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override datetime of the request (UTC, requires token_auth if older than 24h).",
+                      "key": "cdt",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override visitor country code (requires token_auth).",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override visitor region code (requires token_auth).",
+                      "key": "region",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override visitor city (requires token_auth).",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Override visitor latitude (requires token_auth).",
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Override visitor longitude (requires token_auth).",
+                      "key": "long",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "If 0, return HTTP 204 instead of the 1x1 GIF.",
+                      "key": "send_image",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Heartbeat ping; updates total_time on an existing visit.",
+                      "key": "ping",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Bypass the Queued Tracking plugin for this request.",
+                      "key": "queuedtracking",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Set to 1 to record requests from known bots.",
+                      "key": "bots",
+                      "value": "1"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "text",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "image/gif"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:31:30.000Z",
+              "updatedAt": "2026-10-22T01:31:30.000Z",
+              "uid": "35240-cfd955dc-ae6d-427e-a349-a3031eba38a9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:31:29.000Z",
+          "updatedAt": "2026-10-22T01:31:29.000Z",
+          "uid": "35240-10d9599b-372a-4f9b-8bae-3608a47ef8b0"
         },
         {
-          "id": "bc97176e-4040-4f1d-971e-24fac27d677b",
           "name": "Submit a single tracking request or a bulk batch",
+          "id": "6560bb2b-ea0c-4171-a095-3620c3f7dbe9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Submit a single tracking request or a bulk batch",
-            "description": {
-              "content": "POST may carry the same parameters as GET in a form-encoded body,\nor a JSON body containing a `requests` array for Bulk Tracking.\nBulk tracking can include hundreds of requests in one HTTP call;\nrequests should be sent in chronological order.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "matomo.php"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": {
-                    "content": "",
-                    "type": "text/plain"
-                  },
-                  "type": "any",
-                  "value": "{{matomo_host}}",
-                  "key": "matomo_host"
-                }
-              ]
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/x-www-form-urlencoded"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "0",
-                  "value": "<"
-                },
-                {
-                  "disabled": false,
-                  "key": "1",
-                  "value": "o"
-                },
-                {
-                  "disabled": false,
-                  "key": "2",
-                  "value": "b"
-                },
-                {
-                  "disabled": false,
-                  "key": "3",
-                  "value": "j"
-                },
-                {
-                  "disabled": false,
-                  "key": "4",
-                  "value": "e"
-                },
-                {
-                  "disabled": false,
-                  "key": "5",
-                  "value": "c"
-                },
-                {
-                  "disabled": false,
-                  "key": "6",
-                  "value": "t"
-                },
-                {
-                  "disabled": false,
-                  "key": "7",
-                  "value": ">"
-                }
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{baseUrl}}/matomo.php",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "matomo.php"
               ]
-            }
+            },
+            "description": "POST may carry the same parameters as GET in a form-encoded body,\nor a JSON body containing a `requests` array for Bulk Tracking.\nBulk tracking can include hundreds of requests in one HTTP call;\nrequests should be sent in chronological order."
           },
           "response": [
             {
-              "id": "4998dcb2-e0ea-42a3-96f8-780f719ca351",
+              "id": "93d8ffd3-cbe1-4673-96e5-82c0b30faacc",
               "name": "Tracking accepted.",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": []
+                },
                 "url": {
-                  "path": [
-                    "matomo.php"
-                  ],
+                  "raw": "{{baseUrl}}/matomo.php",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "token_auth",
-                      "value": "<API Key>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "description": {
-                        "content": "",
-                        "type": "text/plain"
-                      },
-                      "type": "any",
-                      "value": "{{matomo_host}}",
-                      "key": "matomo_host"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "0",
-                      "value": "<"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "1",
-                      "value": "o"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "2",
-                      "value": "b"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "3",
-                      "value": "j"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "4",
-                      "value": "e"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "5",
-                      "value": "c"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "6",
-                      "value": "t"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "7",
-                      "value": ">"
-                    }
+                  "path": [
+                    "matomo.php"
                   ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:31:30.000Z",
+              "updatedAt": "2026-10-22T01:31:30.000Z",
+              "uid": "35240-93d8ffd3-cbe1-4673-96e5-82c0b30faacc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:31:29.000Z",
+          "updatedAt": "2026-10-22T01:31:29.000Z",
+          "uid": "35240-6560bb2b-ea0c-4171-a095-3620c3f7dbe9"
         }
       ],
-      "event": []
+      "id": "9506356a-ac53-4ac0-bdf7-ec2333510439",
+      "createdAt": "2026-10-22T01:31:29.000Z",
+      "updatedAt": "2026-10-22T01:31:29.000Z",
+      "uid": "35240-9506356a-ac53-4ac0-bdf7-ec2333510439"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "demo.matomo.cloud",
-      "key": "matomo_host"
+      "key": "matomo_host",
+      "value": "demo.matomo.cloud"
     },
     {
-      "type": "string",
-      "value": "https://{{matomo_host}}",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://{{matomo_host}}"
     }
-  ],
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "key",
-        "value": "token_auth"
-      },
-      {
-        "key": "value",
-        "value": "{{apiKey}}"
-      },
-      {
-        "key": "in",
-        "value": "query"
-      }
-    ]
-  },
-  "info": {
-    "_postman_id": "f3669a64-ea38-4568-ab95-0f27895c0e6b",
-    "name": "Matomo Reporting Index.php Matomo.php API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Programmatic access to Matomo analytics reports. All Reporting API calls\nare dispatched through a single `/index.php` entrypoint by supplying\n`module=API` and a `method=Module.MethodName` query parameter. The API\nexposes 200+ methods across modules like VisitsSummary, Actions,\nReferrers, UserCountry, DevicesDetection, and Goals.\n\n\nContact Support:\n Name: Matomo Developer Documentation",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

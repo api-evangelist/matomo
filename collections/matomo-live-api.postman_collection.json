@@ -1,0 +1,3378 @@
+{
+  "info": {
+    "_postman_id": "f3e31c1e-1366-403c-b311-ba633e51338b",
+    "name": "Matomo Reporting API for plugin Live API",
+    "description": "The Live!",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:34:14.000Z",
+    "updatedAt": "2026-10-22T01:34:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3e31c1e-1366-403c-b311-ba633e51338b"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=Live.getCounters",
+      "item": [
+        {
+          "name": "Live get counters",
+          "id": "dea5086d-2c45-4fd2-b19d-54f27b6d6ce7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.getCounters&format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.getCounters"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID or IDs to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                  "key": "lastMinutes",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional columns to include, for example `visits` or `actions`.",
+                  "key": "showColumns",
+                  "value": "[]"
+                },
+                {
+                  "description": "Optional columns to omit from the response.",
+                  "key": "hideColumns",
+                  "value": "[]"
+                }
+              ]
+            },
+            "description": "Returns simple live counters for visits over the last N minutes."
+          },
+          "response": [
+            {
+              "id": "e649d36b-883d-4ded-91d3-a8b8e1377a6a",
+              "name": "A single-row array containing the requested counters.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-e649d36b-883d-4ded-91d3-a8b8e1377a6a"
+            },
+            {
+              "id": "1ee187f1-7494-4405-9343-d2b388f787b0",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-1ee187f1-7494-4405-9343-d2b388f787b0"
+            },
+            {
+              "id": "3041863e-13e6-499b-98fe-c1bb9c8e1b54",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-3041863e-13e6-499b-98fe-c1bb9c8e1b54"
+            },
+            {
+              "id": "b9438f00-a1f7-4b7c-9735-b71a37c81e5d",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-b9438f00-a1f7-4b7c-9735-b71a37c81e5d"
+            },
+            {
+              "id": "e59230a7-6bec-40ba-abbe-b9316665ff7e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-e59230a7-6bec-40ba-abbe-b9316665ff7e"
+            },
+            {
+              "id": "e4f84bc2-4813-4586-95f1-194a329728f5",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-e4f84bc2-4813-4586-95f1-194a329728f5"
+            },
+            {
+              "id": "4e814fe3-cbf2-463c-813f-8ae30d334758",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&lastMinutes=<integer>&segment=<string>&showColumns=[]&hideColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of minutes to look back at, between 1 and 2880.",
+                      "key": "lastMinutes",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the counters. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional columns to include, for example `visits` or `actions`.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional columns to omit from the response.",
+                      "key": "hideColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-4e814fe3-cbf2-463c-813f-8ae30d334758"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-dea5086d-2c45-4fd2-b19d-54f27b6d6ce7"
+        }
+      ],
+      "id": "131c42cb-82bb-400f-8fbf-84beb88d6ba6",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-131c42cb-82bb-400f-8fbf-84beb88d6ba6"
+    },
+    {
+      "name": "index.php?module=API&method=Live.isVisitorProfileEnabled",
+      "item": [
+        {
+          "name": "Live is visitor profile enabled",
+          "id": "e5caa0d1-34b1-41b6-9b99-3bdade0d328a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.isVisitorProfileEnabled&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.isVisitorProfileEnabled"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID or site selection to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns whether the visitor profile is enabled for the given site selection."
+          },
+          "response": [
+            {
+              "id": "7c024818-f5a0-481b-8318-9db0ef0905ae",
+              "name": "Whether visitor profiles are enabled.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-7c024818-f5a0-481b-8318-9db0ef0905ae"
+            },
+            {
+              "id": "49b5092f-b32a-4afd-ba2f-9438fa22dab3",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-49b5092f-b32a-4afd-ba2f-9438fa22dab3"
+            },
+            {
+              "id": "4f354a4a-20a8-4831-811f-95aaea6fad25",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-4f354a4a-20a8-4831-811f-95aaea6fad25"
+            },
+            {
+              "id": "343d6d60-0ad6-46e2-b4cf-d7e4cc1324a3",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-343d6d60-0ad6-46e2-b4cf-d7e4cc1324a3"
+            },
+            {
+              "id": "c241aba5-7d63-4921-bc55-222396991bdf",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-c241aba5-7d63-4921-bc55-222396991bdf"
+            },
+            {
+              "id": "da76cb10-a7ee-4beb-9ff5-80c3c91c22ee",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-da76cb10-a7ee-4beb-9ff5-80c3c91c22ee"
+            },
+            {
+              "id": "5960d0ff-180c-490d-8265-33703b8aeeb7",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or site selection to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-5960d0ff-180c-490d-8265-33703b8aeeb7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-e5caa0d1-34b1-41b6-9b99-3bdade0d328a"
+        }
+      ],
+      "id": "2403f3f4-078a-4b90-9cd8-301c9b17efc9",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-2403f3f4-078a-4b90-9cd8-301c9b17efc9"
+    },
+    {
+      "name": "index.php?module=API&method=Live.getLastVisitsDetails",
+      "item": [
+        {
+          "name": "Live get last visits details",
+          "id": "267248bc-7352-452c-a767-f78ef7edb0b7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.getLastVisitsDetails&format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.getLastVisitsDetails"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional period restriction.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional date or date range restriction.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                  "key": "countVisitorsToFetch",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                  "key": "minTimestamp",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether to flatten action details into the visit rows.",
+                  "key": "flat",
+                  "value": "false"
+                },
+                {
+                  "description": "Whether to skip fetching action details for better performance.",
+                  "key": "doNotFetchActions",
+                  "value": "false"
+                },
+                {
+                  "description": "Whether plugins should enrich the returned visit details.",
+                  "key": "enhanced",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the most recent visit details for one or more websites."
+          },
+          "response": [
+            {
+              "id": "c6db933a-9391-41fd-abf3-7392e2c56dad",
+              "name": "Recent visit details.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-c6db933a-9391-41fd-abf3-7392e2c56dad"
+            },
+            {
+              "id": "70a3255d-c3a8-47b8-b1e0-a1430ad91125",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-70a3255d-c3a8-47b8-b1e0-a1430ad91125"
+            },
+            {
+              "id": "393ce857-5da4-4ba3-aa7b-28279f6ff4c6",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-393ce857-5da4-4ba3-aa7b-28279f6ff4c6"
+            },
+            {
+              "id": "8d1fbc1a-8546-4fc6-a8de-5f75654999af",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-8d1fbc1a-8546-4fc6-a8de-5f75654999af"
+            },
+            {
+              "id": "c7096280-4bc3-4002-8fdd-97d315d1d183",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-c7096280-4bc3-4002-8fdd-97d315d1d183"
+            },
+            {
+              "id": "0e56730c-5e5b-44a3-bf14-f15969691d89",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-0e56730c-5e5b-44a3-bf14-f15969691d89"
+            },
+            {
+              "id": "fd893941-24db-4cba-998e-768d380f3135",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>&segment=<string>&countVisitorsToFetch=<integer>&minTimestamp=<integer>&flat=false&doNotFetchActions=false&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. - Single site ID (e.g. 1) - Multiple site IDs (e.g. [1, 4, 5]) - Comma-separated list (\"1,4,5\") or \"all\"",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the visits. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Deprecated explicit row limit. Prefer `filter_offset` and `filter_limit`.",
+                      "key": "countVisitorsToFetch",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional minimum timestamp for incremental refreshes or pagination.",
+                      "key": "minTimestamp",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to flatten action details into the visit rows.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether to skip fetching action details for better performance.",
+                      "key": "doNotFetchActions",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether plugins should enrich the returned visit details.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-fd893941-24db-4cba-998e-768d380f3135"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-267248bc-7352-452c-a767-f78ef7edb0b7"
+        }
+      ],
+      "id": "ab7dc6fd-9e22-4b42-aa47-cc61c95c73b6",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-ab7dc6fd-9e22-4b42-aa47-cc61c95c73b6"
+    },
+    {
+      "name": "index.php?module=API&method=Live.getVisitorProfile",
+      "item": [
+        {
+          "name": "Live get visitor profile",
+          "id": "7f17720b-2179-4356-852d-3fa5f0fe6e0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.getVisitorProfile&format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.getVisitorProfile"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                  "key": "visitorId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional maximum number of visits to include in the profile.",
+                  "key": "limitVisits",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a visitor profile built from the visitor's recent visits."
+          },
+          "response": [
+            {
+              "id": "6b8b924c-349c-4bb1-960b-498d1b09c226",
+              "name": "Visitor profile data, or an empty array if no visitor is found.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-6b8b924c-349c-4bb1-960b-498d1b09c226"
+            },
+            {
+              "id": "5eaf3a36-ffef-478b-b381-4d39cc2ba8d3",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-5eaf3a36-ffef-478b-b381-4d39cc2ba8d3"
+            },
+            {
+              "id": "02298e07-ea29-4ff1-8e26-9e45f4e9a8a7",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-02298e07-ea29-4ff1-8e26-9e45f4e9a8a7"
+            },
+            {
+              "id": "a20b80bc-f983-4a80-82fb-fafeb0771ac0",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-a20b80bc-f983-4a80-82fb-fafeb0771ac0"
+            },
+            {
+              "id": "a4173b8f-818b-4112-b517-329244f6a837",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-a4173b8f-818b-4112-b517-329244f6a837"
+            },
+            {
+              "id": "98423ce8-ff69-4b5f-ae46-c06dd0c65d6c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-98423ce8-ff69-4b5f-ae46-c06dd0c65d6c"
+            },
+            {
+              "id": "2501722e-9beb-47a7-b730-3a697f86dfde",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&visitorId=<string>&segment=<string>&limitVisits=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional visitor ID. If omitted, the most recent visitor is used.",
+                      "key": "visitorId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the profile lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional maximum number of visits to include in the profile.",
+                      "key": "limitVisits",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-2501722e-9beb-47a7-b730-3a697f86dfde"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-7f17720b-2179-4356-852d-3fa5f0fe6e0c"
+        }
+      ],
+      "id": "66581e23-8efa-40f5-b748-7ec139973c12",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-66581e23-8efa-40f5-b748-7ec139973c12"
+    },
+    {
+      "name": "index.php?module=API&method=Live.getMostRecentVisitorId",
+      "item": [
+        {
+          "name": "Live get most recent visitor id",
+          "id": "d5a7ea50-f534-4c33-b1ca-84d44ffd1912",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.getMostRecentVisitorId&format=xml&idSite=<integer>&segment=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.getMostRecentVisitorId"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the visitor ID of the most recent visit."
+          },
+          "response": [
+            {
+              "id": "76281fbc-4064-407c-bf54-b34ac1cce4d3",
+              "name": "Visitor ID of the most recent matching visit, or `false` if none is found.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-76281fbc-4064-407c-bf54-b34ac1cce4d3"
+            },
+            {
+              "id": "0236d1fd-bc24-4eae-b9f9-7cdf2cb71ff4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-0236d1fd-bc24-4eae-b9f9-7cdf2cb71ff4"
+            },
+            {
+              "id": "c861ff3e-1dc2-4778-8b1b-340b2cfb1808",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-c861ff3e-1dc2-4778-8b1b-340b2cfb1808"
+            },
+            {
+              "id": "d400e12e-2700-4880-8b78-204ff2093f0f",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-d400e12e-2700-4880-8b78-204ff2093f0f"
+            },
+            {
+              "id": "7f615bd2-0ec9-429d-89bb-1da62dcbae11",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-7f615bd2-0ec9-429d-89bb-1da62dcbae11"
+            },
+            {
+              "id": "b1b2be30-c1d1-4408-8e58-c42e0675fb71",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-b1b2be30-c1d1-4408-8e58-c42e0675fb71"
+            },
+            {
+              "id": "14d9afa8-a452-42e3-be21-043c0f6e853c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&segment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Custom segment to filter the lookup. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-14d9afa8-a452-42e3-be21-043c0f6e853c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-d5a7ea50-f534-4c33-b1ca-84d44ffd1912"
+        }
+      ],
+      "id": "d3c289fe-b98b-4396-8a18-257f41195e9f",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-d3c289fe-b98b-4396-8a18-257f41195e9f"
+    },
+    {
+      "name": "index.php?module=API&method=Live.getMostRecentVisitsDateTime",
+      "item": [
+        {
+          "name": "Live get most recent visits date time",
+          "id": "6142f580-45a9-4a16-a86c-8bc649c9e556",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Live.getMostRecentVisitsDateTime&format=xml&idSite=<integer>&period=<string>&date=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Live.getMostRecentVisitsDateTime"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID or IDs to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional period restriction.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional date or date range restriction.",
+                  "key": "date",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the most recent UTC datetime when an action was performed for the given website or websites."
+          },
+          "response": [
+            {
+              "id": "a0f0dd7a-ddc1-4467-b301-edc6ece0efa2",
+              "name": "Most recent visit datetime in UTC, or an empty string if none exists.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-a0f0dd7a-ddc1-4467-b301-edc6ece0efa2"
+            },
+            {
+              "id": "f0e3b059-9ee3-4dd7-b2fc-06c930b4beab",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-f0e3b059-9ee3-4dd7-b2fc-06c930b4beab"
+            },
+            {
+              "id": "97d760d3-7393-4a09-94c3-914f725e1e6b",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-97d760d3-7393-4a09-94c3-914f725e1e6b"
+            },
+            {
+              "id": "1f2ffef5-45a7-4406-b6e6-a46f576a078e",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-1f2ffef5-45a7-4406-b6e6-a46f576a078e"
+            },
+            {
+              "id": "3415e542-7a12-4826-b87e-d8d9598e8860",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-3415e542-7a12-4826-b87e-d8d9598e8860"
+            },
+            {
+              "id": "a45f1b79-e1ce-4cff-b781-f1f8ab84d30e",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-a45f1b79-e1ce-4cff-b781-f1f8ab84d30e"
+            },
+            {
+              "id": "b590ee71-0188-4569-b6c3-7ed8bdd0cfc7",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID or IDs to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional period restriction.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional date or date range restriction.",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:15.000Z",
+              "updatedAt": "2026-10-22T01:34:15.000Z",
+              "uid": "35240-b590ee71-0188-4569-b6c3-7ed8bdd0cfc7"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:15.000Z",
+          "updatedAt": "2026-10-22T01:34:15.000Z",
+          "uid": "35240-6142f580-45a9-4a16-a86c-8bc649c9e556"
+        }
+      ],
+      "id": "7558649c-65e2-4485-8de3-21a24853ab1f",
+      "createdAt": "2026-10-22T01:34:15.000Z",
+      "updatedAt": "2026-10-22T01:34:15.000Z",
+      "uid": "35240-7558649c-65e2-4485-8de3-21a24853ab1f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

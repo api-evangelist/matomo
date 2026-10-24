@@ -1,0 +1,3289 @@
+{
+  "info": {
+    "_postman_id": "70c7ab80-72e7-4b96-b7c7-9a4730daf78f",
+    "name": "Matomo Reporting API for plugin Custom Dimensions API",
+    "description": "The Custom Dimensions API lets you manage and access reports for your configured Custom Dimensions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:32:50.000Z",
+    "updatedAt": "2026-10-22T01:32:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-70c7ab80-72e7-4b96-b7c7-9a4730daf78f"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=CustomDimensions.getCustomDimension",
+      "item": [
+        {
+          "name": "Custom dimensions get custom dimension",
+          "id": "b0f9d46a-3f25-431c-b584-a67dcf873514",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.getCustomDimension&format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.getCustomDimension"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Custom dimension ID to load the report for.",
+                  "key": "idDimension",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "year"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether subtables should be expanded in the response.",
+                  "key": "expanded",
+                  "value": "false"
+                },
+                {
+                  "description": "Whether subtable rows should be flattened into a single table.",
+                  "key": "flat",
+                  "value": "false"
+                },
+                {
+                  "description": "Optional subtable ID to load.",
+                  "key": "idSubtable",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns the report for a configured custom dimension. Only reports for active dimensions can be fetched."
+          },
+          "response": [
+            {
+              "id": "69ff6f75-61ad-4248-b39d-ab7e5375c864",
+              "name": "OK\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-69ff6f75-61ad-4248-b39d-ab7e5375c864"
+            },
+            {
+              "id": "9d6d1b55-1211-450a-8313-349653ae8f7c",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-9d6d1b55-1211-450a-8313-349653ae8f7c"
+            },
+            {
+              "id": "32af630e-bda7-4b4c-b60a-cd68bdc932e9",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-32af630e-bda7-4b4c-b60a-cd68bdc932e9"
+            },
+            {
+              "id": "0ca1e689-01b7-4422-a562-9b95532c57e0",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-0ca1e689-01b7-4422-a562-9b95532c57e0"
+            },
+            {
+              "id": "063fdc09-c790-40d1-b471-4c7c46f6999e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-063fdc09-c790-40d1-b471-4c7c46f6999e"
+            },
+            {
+              "id": "5187c22f-2760-43d1-b3d7-68ce33229e0c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-5187c22f-2760-43d1-b3d7-68ce33229e0c"
+            },
+            {
+              "id": "85d06209-07c8-43fa-8ed0-6567e0dfa216",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&period=year&date=<string>&segment=<string>&expanded=false&flat=false&idSubtable=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to load the report for.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether subtables should be expanded in the response.",
+                      "key": "expanded",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Whether subtable rows should be flattened into a single table.",
+                      "key": "flat",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Optional subtable ID to load.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-85d06209-07c8-43fa-8ed0-6567e0dfa216"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-b0f9d46a-3f25-431c-b584-a67dcf873514"
+        }
+      ],
+      "id": "36b08746-5428-430f-8900-f8ccae86e8cb",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-36b08746-5428-430f-8900-f8ccae86e8cb"
+    },
+    {
+      "name": "index.php?module=API&method=CustomDimensions.configureNewCustomDimension",
+      "item": [
+        {
+          "name": "Custom dimensions configure new custom dimension",
+          "id": "bfb8a5b8-de28-4f55-be8e-9c72bab116f7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.configureNewCustomDimension&format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.configureNewCustomDimension"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The custom dimension name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                  "key": "scope",
+                  "value": "action"
+                },
+                {
+                  "description": "(Required) Whether the custom dimension should be active.",
+                  "key": "active",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether extraction matching should be case-sensitive.",
+                  "key": "caseSensitive",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional description to provide additional context for the custom dimension.",
+                  "key": "description",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Configures a new custom dimension for a site. Note that custom dimensions cannot be deleted, so be careful when creating one as you might run out of available custom dimension slots."
+          },
+          "response": [
+            {
+              "id": "78846a0e-e953-4b56-a2ba-c3ae8aef8636",
+              "name": "ID of the configured custom dimension. Note that the same ID may be used for different websites.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-78846a0e-e953-4b56-a2ba-c3ae8aef8636"
+            },
+            {
+              "id": "b15860f9-5fac-4d47-93df-fb65f503ecbc",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-b15860f9-5fac-4d47-93df-fb65f503ecbc"
+            },
+            {
+              "id": "cccd4e4f-1d7b-4cd2-8b90-92fd63b935cd",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-cccd4e4f-1d7b-4cd2-8b90-92fd63b935cd"
+            },
+            {
+              "id": "5e2cf42b-744a-473b-9ace-8c71e629b3d4",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-5e2cf42b-744a-473b-9ace-8c71e629b3d4"
+            },
+            {
+              "id": "64010860-50c5-483c-b34c-85db93f15680",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-64010860-50c5-483c-b34c-85db93f15680"
+            },
+            {
+              "id": "e9e23d86-317b-4bfe-8663-f2cd9e8a398d",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-e9e23d86-317b-4bfe-8663-f2cd9e8a398d"
+            },
+            {
+              "id": "f78c9f0f-e293-4b92-8b7e-533c6bc7b01c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&scope=action&active=<integer>&caseSensitive=<integer>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to configure the dimension for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The dimension scope. Use `CustomDimensions.getAvailableScopes` for an up-to-date list.",
+                      "key": "scope",
+                      "value": "action"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-f78c9f0f-e293-4b92-8b7e-533c6bc7b01c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-bfb8a5b8-de28-4f55-be8e-9c72bab116f7"
+        }
+      ],
+      "id": "0fc6cabc-5d44-4c66-9822-c57611b3b941",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-0fc6cabc-5d44-4c66-9822-c57611b3b941"
+    },
+    {
+      "name": "index.php?module=API&method=CustomDimensions.configureExistingCustomDimension",
+      "item": [
+        {
+          "name": "Custom dimensions configure existing custom dimension",
+          "id": "c5a40690-f578-4642-aebb-905bf8544390",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.configureExistingCustomDimension&format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.configureExistingCustomDimension"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Custom dimension ID to update.",
+                  "key": "idDimension",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The custom dimension name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Whether the custom dimension should be active.",
+                  "key": "active",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                  "key": "caseSensitive",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                  "key": "description",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Updates an existing custom dimension. This method updates all values, so you need to pass existing values of the dimension if you do not want to reset any value."
+          },
+          "response": [
+            {
+              "id": "875d68ae-1242-426e-be4a-671f5cf83dad",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-875d68ae-1242-426e-be4a-671f5cf83dad"
+            },
+            {
+              "id": "995d9479-f23f-4478-9f16-91c590550302",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-995d9479-f23f-4478-9f16-91c590550302"
+            },
+            {
+              "id": "f2e615d4-de3b-43e2-ad3d-6247a33b9428",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-f2e615d4-de3b-43e2-ad3d-6247a33b9428"
+            },
+            {
+              "id": "a05d835e-6b9d-4df4-94ce-2e02eac2ad9d",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-a05d835e-6b9d-4df4-94ce-2e02eac2ad9d"
+            },
+            {
+              "id": "4000c7cc-63e5-430e-a62d-c454088d80ca",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-4000c7cc-63e5-430e-a62d-c454088d80ca"
+            },
+            {
+              "id": "82e8e54d-fb24-418f-9324-0419b7f28a52",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-82e8e54d-fb24-418f-9324-0419b7f28a52"
+            },
+            {
+              "id": "f5c1e171-8ef8-4a26-a513-ac490d9c7fc8",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDimension=<integer>&idSite=<integer>&name=<string>&active=<integer>&caseSensitive=<integer>&description=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Custom dimension ID to update.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the dimension belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The custom dimension name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether the custom dimension should be active.",
+                      "key": "active",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether extraction matching should be case-sensitive. Use `null` to keep the current setting.",
+                      "key": "caseSensitive",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional description to provide additional context for the custom dimension. Use `null` to keep the current description.",
+                      "key": "description",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-f5c1e171-8ef8-4a26-a513-ac490d9c7fc8"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-c5a40690-f578-4642-aebb-905bf8544390"
+        }
+      ],
+      "id": "ffc42056-808b-45e6-a058-f1043224229c",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-ffc42056-808b-45e6-a058-f1043224229c"
+    },
+    {
+      "name": "index.php?module=API&method=CustomDimensions.getConfiguredCustomDimensions",
+      "item": [
+        {
+          "name": "Custom dimensions get configured custom dimensions",
+          "id": "4cf9093e-20a5-4c6f-a20b-feebe20039f7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.getConfiguredCustomDimensions&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.getConfiguredCustomDimensions"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns all configured custom dimensions for a site."
+          },
+          "response": [
+            {
+              "id": "d9ac7d95-0217-45de-9f7f-8c17386835b9",
+              "name": "OK\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-d9ac7d95-0217-45de-9f7f-8c17386835b9"
+            },
+            {
+              "id": "c849e91d-daaf-4a32-941b-e17dff38a026",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-c849e91d-daaf-4a32-941b-e17dff38a026"
+            },
+            {
+              "id": "5cc04924-7629-4b16-a638-551d032b6003",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-5cc04924-7629-4b16-a638-551d032b6003"
+            },
+            {
+              "id": "34f2c179-64d6-434c-96c2-d6816cfaba8c",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-34f2c179-64d6-434c-96c2-d6816cfaba8c"
+            },
+            {
+              "id": "75083f78-e8a2-493f-ab00-3d8c903aa4c0",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-75083f78-e8a2-493f-ab00-3d8c903aa4c0"
+            },
+            {
+              "id": "7ad86815-9fda-440e-b554-ff4c4f8d8e5b",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-7ad86815-9fda-440e-b554-ff4c4f8d8e5b"
+            },
+            {
+              "id": "3299719f-b4f9-4f81-adc8-cae7474ca05f",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-3299719f-b4f9-4f81-adc8-cae7474ca05f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-4cf9093e-20a5-4c6f-a20b-feebe20039f7"
+        }
+      ],
+      "id": "b490fdde-c1bc-4356-a64d-dffd7411dfe0",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-b490fdde-c1bc-4356-a64d-dffd7411dfe0"
+    },
+    {
+      "name": "index.php?module=API&method=CustomDimensions.getAvailableScopes",
+      "item": [
+        {
+          "name": "Custom dimensions get available scopes",
+          "id": "ff17569b-db2e-40d8-9b6f-115b9900be05",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.getAvailableScopes&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.getAvailableScopes"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns the supported custom-dimension scopes for a site. The response also contains information about how many custom dimension slots are available, used, and remaining, which can be used to check whether more custom dimensions can be created via `CustomDimensions.configureNewCustomDimension`."
+          },
+          "response": [
+            {
+              "id": "182bb381-9f02-4a36-834c-d4443e9c7538",
+              "name": "OK\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-182bb381-9f02-4a36-834c-d4443e9c7538"
+            },
+            {
+              "id": "5462d2cc-217c-425b-b46d-9112c95549c1",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-5462d2cc-217c-425b-b46d-9112c95549c1"
+            },
+            {
+              "id": "aa655875-964e-48c1-98f2-8e646654349b",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-aa655875-964e-48c1-98f2-8e646654349b"
+            },
+            {
+              "id": "e10cd029-8b03-44ad-9fae-563e184553db",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-e10cd029-8b03-44ad-9fae-563e184553db"
+            },
+            {
+              "id": "b2cdf1e0-cdcf-4e77-996e-e0d52fefcd79",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-b2cdf1e0-cdcf-4e77-996e-e0d52fefcd79"
+            },
+            {
+              "id": "20c48847-4943-4556-aa01-f0d0855d177f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-20c48847-4943-4556-aa01-f0d0855d177f"
+            },
+            {
+              "id": "b6b3df70-2c92-4465-afd5-56c2f1d3afd0",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-b6b3df70-2c92-4465-afd5-56c2f1d3afd0"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-ff17569b-db2e-40d8-9b6f-115b9900be05"
+        }
+      ],
+      "id": "328330cb-18b7-442f-b3a5-69ce532421a4",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-328330cb-18b7-442f-b3a5-69ce532421a4"
+    },
+    {
+      "name": "index.php?module=API&method=CustomDimensions.getAvailableExtractionDimensions",
+      "item": [
+        {
+          "name": "Custom dimensions get available extraction dimensions",
+          "id": "64b82e90-5704-49f8-b649-81ac32ee7a31",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomDimensions.getAvailableExtractionDimensions&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomDimensions.getAvailableExtractionDimensions"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Returns the dimensions that can be used in extraction rules."
+          },
+          "response": [
+            {
+              "id": "917426c2-f775-4063-9239-be80197e9d56",
+              "name": "Generic 200 response with array body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[]",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-917426c2-f775-4063-9239-be80197e9d56"
+            },
+            {
+              "id": "c4bd8e7f-d74e-4f5a-9006-d9ea6c00542b",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-c4bd8e7f-d74e-4f5a-9006-d9ea6c00542b"
+            },
+            {
+              "id": "0974023b-cdad-45af-a476-43af7ccd78ab",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-0974023b-cdad-45af-a476-43af7ccd78ab"
+            },
+            {
+              "id": "012702c0-9f94-4d96-9bb8-6cc3a2b5753c",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-012702c0-9f94-4d96-9bb8-6cc3a2b5753c"
+            },
+            {
+              "id": "a790da71-ae76-4f6a-90d7-6b0e7294f42b",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-a790da71-ae76-4f6a-90d7-6b0e7294f42b"
+            },
+            {
+              "id": "e442291a-a01c-45d2-9844-49fc1bc8eefb",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-e442291a-a01c-45d2-9844-49fc1bc8eefb"
+            },
+            {
+              "id": "299b118a-787a-4e84-9b8f-d8eb2149168f",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:51.000Z",
+              "updatedAt": "2026-10-22T01:32:51.000Z",
+              "uid": "35240-299b118a-787a-4e84-9b8f-d8eb2149168f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:51.000Z",
+          "updatedAt": "2026-10-22T01:32:51.000Z",
+          "uid": "35240-64b82e90-5704-49f8-b649-81ac32ee7a31"
+        }
+      ],
+      "id": "b7be78e9-ae81-4bec-9a77-fa02e7853cde",
+      "createdAt": "2026-10-22T01:32:51.000Z",
+      "updatedAt": "2026-10-22T01:32:51.000Z",
+      "uid": "35240-b7be78e9-ae81-4bec-9a77-fa02e7853cde"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

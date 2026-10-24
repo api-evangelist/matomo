@@ -1,0 +1,4112 @@
+{
+  "info": {
+    "_postman_id": "32b922b1-d8c9-4cb1-b7b6-8b596d02664f",
+    "name": "Matomo Reporting API for plugin O Auth2 API",
+    "description": "Exposes super-user OAuth2 client management endpoints for Matomo. This API lists configured scopes and lets administrators create, inspect, update, rotate, activate, and delete OAuth2 clients.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:35:58.000Z",
+    "updatedAt": "2026-10-22T01:35:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-32b922b1-d8c9-4cb1-b7b6-8b596d02664f"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=OAuth2.getClients",
+      "item": [
+        {
+          "name": "OAuth2 get clients",
+          "id": "0b60e412-8969-4e16-acd3-3fd11abcd2df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.getClients&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.getClients"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Lists all OAuth2 clients configured in Matomo (super users only)."
+          },
+          "response": [
+            {
+              "id": "31346c3b-fc30-4746-852c-4ef44296c387",
+              "name": "OAuth2 clients ordered by most recently updated first.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-31346c3b-fc30-4746-852c-4ef44296c387"
+            },
+            {
+              "id": "70fbafb2-08f4-46b8-ad89-52b97794de63",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-70fbafb2-08f4-46b8-ad89-52b97794de63"
+            },
+            {
+              "id": "e8aba71d-f791-4f29-a343-1fb40d3c9a8c",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-e8aba71d-f791-4f29-a343-1fb40d3c9a8c"
+            },
+            {
+              "id": "799655dd-717d-4d81-91cf-fc09128be865",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-799655dd-717d-4d81-91cf-fc09128be865"
+            },
+            {
+              "id": "151c4bca-8509-4d43-bc53-77a5cdc6eb44",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-151c4bca-8509-4d43-bc53-77a5cdc6eb44"
+            },
+            {
+              "id": "d8d65ff3-035f-454a-b37b-588595e35905",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-d8d65ff3-035f-454a-b37b-588595e35905"
+            },
+            {
+              "id": "abe761e4-0126-4995-a2e9-8d451dfd9877",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-abe761e4-0126-4995-a2e9-8d451dfd9877"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-0b60e412-8969-4e16-acd3-3fd11abcd2df"
+        }
+      ],
+      "id": "83b70198-bf5a-4d71-88a6-f84388ea18b1",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-83b70198-bf5a-4d71-88a6-f84388ea18b1"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.getClient",
+      "item": [
+        {
+          "name": "OAuth2 get client",
+          "id": "69ff7a73-e7c0-45b3-9884-039f81c463ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.getClient&format=xml&clientId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.getClient"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) 32-character hexadecimal client identifier.",
+                  "key": "clientId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns one OAuth2 client configured in Matomo (super users only)."
+          },
+          "response": [
+            {
+              "id": "b7e3adae-e404-49cd-abf5-f208117d3c0b",
+              "name": "Sanitized OAuth2 client details for the requested client.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-b7e3adae-e404-49cd-abf5-f208117d3c0b"
+            },
+            {
+              "id": "38861629-0b93-4a11-b409-02005863aca0",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-38861629-0b93-4a11-b409-02005863aca0"
+            },
+            {
+              "id": "e4de94ac-71b3-4b74-ad48-c092cc180e1b",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-e4de94ac-71b3-4b74-ad48-c092cc180e1b"
+            },
+            {
+              "id": "adf5529c-a31b-4f19-8f7d-0a0a017cefab",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-adf5529c-a31b-4f19-8f7d-0a0a017cefab"
+            },
+            {
+              "id": "8bd4a707-591b-406c-9578-9efefa0696fc",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-8bd4a707-591b-406c-9578-9efefa0696fc"
+            },
+            {
+              "id": "ff242a7b-77a0-488e-89e5-5fbda46cf972",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-ff242a7b-77a0-488e-89e5-5fbda46cf972"
+            },
+            {
+              "id": "cdba638e-d078-46ec-90bb-f207947ebe16",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-cdba638e-d078-46ec-90bb-f207947ebe16"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-69ff7a73-e7c0-45b3-9884-039f81c463ae"
+        }
+      ],
+      "id": "d451f208-a36f-4b51-94c5-95a733827a48",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-d451f208-a36f-4b51-94c5-95a733827a48"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.getScopes",
+      "item": [
+        {
+          "name": "OAuth2 get scopes",
+          "id": "4dcf7704-7b8f-427c-8f61-b26cb0bb0299",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.getScopes&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.getScopes"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Returns the OAuth2 scopes enabled for client configuration (super users only)."
+          },
+          "response": [
+            {
+              "id": "110fd65a-70e0-441d-938a-3fe73d24f33a",
+              "name": "Enabled scope identifiers mapped to their translated descriptions.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-110fd65a-70e0-441d-938a-3fe73d24f33a"
+            },
+            {
+              "id": "3c1ec825-9481-4795-89ed-3d43a29eb9b2",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-3c1ec825-9481-4795-89ed-3d43a29eb9b2"
+            },
+            {
+              "id": "61ac93c9-638c-47aa-85b4-796d29de8e46",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-61ac93c9-638c-47aa-85b4-796d29de8e46"
+            },
+            {
+              "id": "6eb1911a-6ab7-42ed-b67c-39a0ff9d18f8",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-6eb1911a-6ab7-42ed-b67c-39a0ff9d18f8"
+            },
+            {
+              "id": "4fbb5cc2-fdcc-4e22-a585-6442a34f3b82",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-4fbb5cc2-fdcc-4e22-a585-6442a34f3b82"
+            },
+            {
+              "id": "08a168f6-81ce-4ef1-a1a5-ff58ef4ba779",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-08a168f6-81ce-4ef1-a1a5-ff58ef4ba779"
+            },
+            {
+              "id": "6cffe7a7-5602-4d67-8075-94eb5108a64a",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-6cffe7a7-5602-4d67-8075-94eb5108a64a"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-4dcf7704-7b8f-427c-8f61-b26cb0bb0299"
+        }
+      ],
+      "id": "94b348dc-7364-4c24-943a-973fd9c495f1",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-94b348dc-7364-4c24-943a-973fd9c495f1"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.createClient",
+      "item": [
+        {
+          "name": "OAuth2 create client",
+          "id": "bf3b3afd-4759-4dd4-a5d5-8ab0d00cda2a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.createClient&format=xml&name=<string>&grantTypes=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.createClient"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Display name shown in the Matomo UI.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                  "key": "grantTypes",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                  "key": "grantTypes",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                  "key": "scope",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Allowed redirect URIs (array or newline-separated string).",
+                  "key": "redirectUris",
+                  "value": "[]"
+                },
+                {
+                  "description": "Optional description for administrators.",
+                  "key": "description",
+                  "value": ""
+                },
+                {
+                  "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                  "key": "type",
+                  "value": "confidential"
+                },
+                {
+                  "description": "`'1'` to enable the client or `'0'` to disable it.",
+                  "key": "active",
+                  "value": "1"
+                },
+                {
+                  "description": "Current user's password confirmation.",
+                  "key": "passwordConfirmation",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates a new OAuth2 client and optionally returns the generated secret."
+          },
+          "response": [
+            {
+              "id": "6f536fb6-e6f3-4e7b-b5a9-e160be6ad1ae",
+              "name": "The sanitized client record and the generated plaintext secret when the created client is confidential.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-6f536fb6-e6f3-4e7b-b5a9-e160be6ad1ae"
+            },
+            {
+              "id": "de9fa7d7-6777-4999-ad38-e1c804259a8d",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-de9fa7d7-6777-4999-ad38-e1c804259a8d"
+            },
+            {
+              "id": "bdecf15d-95d6-4477-a6c0-94b21c372303",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-bdecf15d-95d6-4477-a6c0-94b21c372303"
+            },
+            {
+              "id": "afa9f011-d59a-4eec-9683-137a72554a6e",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-afa9f011-d59a-4eec-9683-137a72554a6e"
+            },
+            {
+              "id": "d6b9bd8d-c792-4bd9-a4de-e9491eb6682e",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-d6b9bd8d-c792-4bd9-a4de-e9491eb6682e"
+            },
+            {
+              "id": "43997a22-fe39-4c28-a9b0-f150327d45f3",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-43997a22-fe39-4c28-a9b0-f150327d45f3"
+            },
+            {
+              "id": "cbbd4197-15cd-412b-990e-55fe1cfd910e",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-cbbd4197-15cd-412b-990e-55fe1cfd910e"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-bf3b3afd-4759-4dd4-a5d5-8ab0d00cda2a"
+        }
+      ],
+      "id": "8cb3083d-7f92-4675-9c45-94b1f9842f07",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-8cb3083d-7f92-4675-9c45-94b1f9842f07"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.updateClient",
+      "item": [
+        {
+          "name": "OAuth2 update client",
+          "id": "07983c49-74e3-4be7-9d26-f0c322ac888b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.updateClient&format=xml&clientId=<string>&name=<string>&grantTypes=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.updateClient"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) 32-character hexadecimal client identifier.",
+                  "key": "clientId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Display name shown in the Matomo UI.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                  "key": "grantTypes",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                  "key": "grantTypes",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                  "key": "scope",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Allowed redirect URIs (array or newline-separated string).",
+                  "key": "redirectUris",
+                  "value": "[]"
+                },
+                {
+                  "description": "Optional description for administrators.",
+                  "key": "description",
+                  "value": ""
+                },
+                {
+                  "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                  "key": "type",
+                  "value": "confidential"
+                },
+                {
+                  "description": "`'1'` to enable the client or `'0'` to disable it.",
+                  "key": "active",
+                  "value": "1"
+                },
+                {
+                  "description": "Current user's password confirmation.",
+                  "key": "passwordConfirmation",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Updates an OAuth2 client and optionally returns a newly generated secret."
+          },
+          "response": [
+            {
+              "id": "dd9e5e46-35b2-4871-b2aa-bd3d8c4eb150",
+              "name": "The sanitized updated client record and a newly generated plaintext secret when the client becomes confidential.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-dd9e5e46-35b2-4871-b2aa-bd3d8c4eb150"
+            },
+            {
+              "id": "d7299846-dc0e-4c78-abe7-c5791aa352a0",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-d7299846-dc0e-4c78-abe7-c5791aa352a0"
+            },
+            {
+              "id": "67874cba-a8dc-49ce-a698-a3b650a52093",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-67874cba-a8dc-49ce-a698-a3b650a52093"
+            },
+            {
+              "id": "8a7f21ae-6c53-4117-b7f7-15273bda3e09",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-8a7f21ae-6c53-4117-b7f7-15273bda3e09"
+            },
+            {
+              "id": "9ae3915e-dc79-425b-98be-7403fe27cae1",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-9ae3915e-dc79-425b-98be-7403fe27cae1"
+            },
+            {
+              "id": "305a8a48-6efe-4e49-bbf5-563981a232a5",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-305a8a48-6efe-4e49-bbf5-563981a232a5"
+            },
+            {
+              "id": "d026855e-54ed-4580-85c5-567cd6f4a0e0",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&name=<string>&grantTypes=<string>&scope=<string>&redirectUris=[]&description=&type=confidential&active=1&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Display name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Grant types to enable (`authorization_code`, `client_credentials`, `refresh_token`).",
+                      "key": "grantTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Single scope identifier to allow for the client. Must match one of the enabled OAuth2 scopes.",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Allowed redirect URIs (array or newline-separated string).",
+                      "key": "redirectUris",
+                      "value": "[]"
+                    },
+                    {
+                      "description": "Optional description for administrators.",
+                      "key": "description",
+                      "value": ""
+                    },
+                    {
+                      "description": "`confidential` (default, requires secret) or `public` (no client secret).",
+                      "key": "type",
+                      "value": "confidential"
+                    },
+                    {
+                      "description": "`'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-d026855e-54ed-4580-85c5-567cd6f4a0e0"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-07983c49-74e3-4be7-9d26-f0c322ac888b"
+        }
+      ],
+      "id": "4fc68e20-da76-4483-943e-6e47177e4418",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-4fc68e20-da76-4483-943e-6e47177e4418"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.rotateSecret",
+      "item": [
+        {
+          "name": "OAuth2 rotate secret",
+          "id": "6c57a7e6-a094-40b6-b40e-88221bbbe03c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.rotateSecret&format=xml&clientId=<string>&passwordConfirmation=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.rotateSecret"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) 32-character hexadecimal client identifier.",
+                  "key": "clientId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Current user's password confirmation.",
+                  "key": "passwordConfirmation",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Generates and persists a new secret for the given OAuth2 client (super users only)."
+          },
+          "response": [
+            {
+              "id": "4eba8810-0fa7-4052-89b6-53d885463b1f",
+              "name": "The client ID and the newly generated plaintext secret.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-4eba8810-0fa7-4052-89b6-53d885463b1f"
+            },
+            {
+              "id": "c3fe644a-1516-4183-82ef-d0004e60f8f3",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-c3fe644a-1516-4183-82ef-d0004e60f8f3"
+            },
+            {
+              "id": "c5b67c7e-3b21-4c43-b0e7-f3b97398cb71",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-c5b67c7e-3b21-4c43-b0e7-f3b97398cb71"
+            },
+            {
+              "id": "679e0b43-2a19-4cef-977f-cda66747db74",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-679e0b43-2a19-4cef-977f-cda66747db74"
+            },
+            {
+              "id": "4789ddf6-d2e4-4eca-a639-6da7398f3849",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-4789ddf6-d2e4-4eca-a639-6da7398f3849"
+            },
+            {
+              "id": "24c33f5b-258a-4b1b-acd0-7d0051fe76f9",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-24c33f5b-258a-4b1b-acd0-7d0051fe76f9"
+            },
+            {
+              "id": "c4e10e4c-8c9e-4a52-be14-570dc1c1faa1",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-c4e10e4c-8c9e-4a52-be14-570dc1c1faa1"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-6c57a7e6-a094-40b6-b40e-88221bbbe03c"
+        }
+      ],
+      "id": "d679f66f-24bd-4889-b676-4e2ae61d50a1",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-d679f66f-24bd-4889-b676-4e2ae61d50a1"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.setClientActive",
+      "item": [
+        {
+          "name": "OAuth2 set client active",
+          "id": "6dab93b6-8213-4768-b04b-6399c0b3bc25",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.setClientActive&format=xml&clientId=<string>&active=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.setClientActive"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) 32-character hexadecimal client identifier.",
+                  "key": "clientId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                  "key": "active",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Updates whether an OAuth2 client is active (super users only)."
+          },
+          "response": [
+            {
+              "id": "b6afba32-7c41-4a56-ae81-a2f59c1cbf05",
+              "name": "The sanitized client record after the active flag is updated.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-b6afba32-7c41-4a56-ae81-a2f59c1cbf05"
+            },
+            {
+              "id": "648bc124-9770-4c08-b494-9bc1c2d00186",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-648bc124-9770-4c08-b494-9bc1c2d00186"
+            },
+            {
+              "id": "b1825e30-7246-4531-aabc-8c70e8108839",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-b1825e30-7246-4531-aabc-8c70e8108839"
+            },
+            {
+              "id": "ebf8a485-4b98-4dd9-a5d8-aeb27c14cac1",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-ebf8a485-4b98-4dd9-a5d8-aeb27c14cac1"
+            },
+            {
+              "id": "dab42ff3-8eba-46ce-a734-b08e0f23876a",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-dab42ff3-8eba-46ce-a734-b08e0f23876a"
+            },
+            {
+              "id": "e1c02ad0-56bb-43bc-92a5-33057e1b65a7",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-e1c02ad0-56bb-43bc-92a5-33057e1b65a7"
+            },
+            {
+              "id": "07419e61-c8dc-4e60-849c-f2cd9ca694a9",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&active=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) `'1'` to enable the client or `'0'` to disable it.",
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-07419e61-c8dc-4e60-849c-f2cd9ca694a9"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-6dab93b6-8213-4768-b04b-6399c0b3bc25"
+        }
+      ],
+      "id": "e5475d6b-7338-4f4c-a08e-18f2cf962bb5",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-e5475d6b-7338-4f4c-a08e-18f2cf962bb5"
+    },
+    {
+      "name": "index.php?module=API&method=OAuth2.deleteClient",
+      "item": [
+        {
+          "name": "OAuth2 delete client",
+          "id": "589d49c4-257a-4ffa-bfa6-1c8960fd543f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=OAuth2.deleteClient&format=xml&clientId=<string>&passwordConfirmation=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "OAuth2.deleteClient"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) 32-character hexadecimal client identifier.",
+                  "key": "clientId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Current user's password confirmation.",
+                  "key": "passwordConfirmation",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Deletes an OAuth2 client and its related access tokens, refresh tokens, and auth codes (super users only)."
+          },
+          "response": [
+            {
+              "id": "1528b8dc-8cfb-4173-9a3b-ae5bef8bba4f",
+              "name": "Confirmation that the client and its related OAuth2 records were deleted.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-1528b8dc-8cfb-4173-9a3b-ae5bef8bba4f"
+            },
+            {
+              "id": "894b81a4-b5eb-4f24-85d9-d94a4a6357b9",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-894b81a4-b5eb-4f24-85d9-d94a4a6357b9"
+            },
+            {
+              "id": "e8a8482e-403e-4a63-a18b-166051a2401c",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-e8a8482e-403e-4a63-a18b-166051a2401c"
+            },
+            {
+              "id": "ce0d1b0f-1f31-4f4e-96af-5bafde268013",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-ce0d1b0f-1f31-4f4e-96af-5bafde268013"
+            },
+            {
+              "id": "637bd512-58dc-4250-ac93-af13f784504d",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-637bd512-58dc-4250-ac93-af13f784504d"
+            },
+            {
+              "id": "34d9d23e-24cd-4a70-9ee5-a5a8c813d884",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-34d9d23e-24cd-4a70-9ee5-a5a8c813d884"
+            },
+            {
+              "id": "abc9f005-4c68-4d58-9d9a-b69e0aa0f606",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&clientId=<string>&passwordConfirmation=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) 32-character hexadecimal client identifier.",
+                      "key": "clientId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Current user's password confirmation.",
+                      "key": "passwordConfirmation",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:35:59.000Z",
+              "updatedAt": "2026-10-22T01:35:59.000Z",
+              "uid": "35240-abc9f005-4c68-4d58-9d9a-b69e0aa0f606"
+            }
+          ],
+          "createdAt": "2026-10-22T01:35:59.000Z",
+          "updatedAt": "2026-10-22T01:35:59.000Z",
+          "uid": "35240-589d49c4-257a-4ffa-bfa6-1c8960fd543f"
+        }
+      ],
+      "id": "bae7da71-31d9-4417-b0b0-703376977f4e",
+      "createdAt": "2026-10-22T01:35:59.000Z",
+      "updatedAt": "2026-10-22T01:35:59.000Z",
+      "uid": "35240-bae7da71-31d9-4417-b0b0-703376977f4e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

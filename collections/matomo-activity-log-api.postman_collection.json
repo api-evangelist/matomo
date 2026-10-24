@@ -1,0 +1,1637 @@
+{
+  "info": {
+    "_postman_id": "986f29b5-e476-44d2-b5e4-c21cec7ecb71",
+    "name": "Matomo Reporting API for plugin Activity Log API",
+    "description": "Exposes Activity Log API endpoints for listing activity entries, counting matches, and resolving the permitted date range for the current caller.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:36:06.000Z",
+    "updatedAt": "2026-10-22T01:36:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-986f29b5-e476-44d2-b5e4-c21cec7ecb71"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=ActivityLog.getEntries",
+      "item": [
+        {
+          "name": "Activity log get entries",
+          "id": "2f27e0d7-0f96-49a1-9fa7-6c076eb9141d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ActivityLog.getEntries&format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ActivityLog.getEntries"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "The zero-based offset to start returning entries from.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                  "key": "filterByUserLogin",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The activity type identifier to filter by.",
+                  "key": "filterByActivityType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The reporting period to filter by.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                  "key": "date",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns Activity Log entries visible to the current caller."
+          },
+          "response": [
+            {
+              "id": "2f09af5f-b99d-4f55-8be6-7ddc36910662",
+              "name": "The matching activity entries with formatted metadata, descriptions, timestamps, and avatar details.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-2f09af5f-b99d-4f55-8be6-7ddc36910662"
+            },
+            {
+              "id": "4d1cb688-47d8-4211-ac5e-5401d8b2ab08",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-4d1cb688-47d8-4211-ac5e-5401d8b2ab08"
+            },
+            {
+              "id": "878e6a08-d7df-4167-8f3c-4ec8ef1c43ad",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-878e6a08-d7df-4167-8f3c-4ec8ef1c43ad"
+            },
+            {
+              "id": "568401f1-12c0-411c-9784-d21e28b8a965",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-568401f1-12c0-411c-9784-d21e28b8a965"
+            },
+            {
+              "id": "9084a3c5-0836-49b0-99dc-17260a6ad219",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-9084a3c5-0836-49b0-99dc-17260a6ad219"
+            },
+            {
+              "id": "ae5034db-5880-4732-8d23-6a981f8396ee",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-ae5034db-5880-4732-8d23-6a981f8396ee"
+            },
+            {
+              "id": "1bbb9ac4-ef6a-4cfe-8e5d-925370dcbff5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&offset=0&limit=25&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The zero-based offset to start returning entries from.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The maximum number of entries to return. Use `-1` to return all matching entries.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-1bbb9ac4-ef6a-4cfe-8e5d-925370dcbff5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:07.000Z",
+          "updatedAt": "2026-10-22T01:36:07.000Z",
+          "uid": "35240-2f27e0d7-0f96-49a1-9fa7-6c076eb9141d"
+        }
+      ],
+      "id": "0308f1f0-cc77-46a4-b57d-1bd6291cde8b",
+      "createdAt": "2026-10-22T01:36:07.000Z",
+      "updatedAt": "2026-10-22T01:36:07.000Z",
+      "uid": "35240-0308f1f0-cc77-46a4-b57d-1bd6291cde8b"
+    },
+    {
+      "name": "index.php?module=API&method=ActivityLog.getEntryCount",
+      "item": [
+        {
+          "name": "Activity log get entry count",
+          "id": "62602f0c-2af1-4749-a3e6-c725b4e7ac65",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ActivityLog.getEntryCount&format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ActivityLog.getEntryCount"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                  "key": "filterByUserLogin",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The activity type identifier to filter by.",
+                  "key": "filterByActivityType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The reporting period to filter by.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                  "key": "date",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the number of Activity Log entries visible to the current caller."
+          },
+          "response": [
+            {
+              "id": "c944a08e-c9e7-4665-998c-ea2b82758d2f",
+              "name": "The number of matching activity entries.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-c944a08e-c9e7-4665-998c-ea2b82758d2f"
+            },
+            {
+              "id": "3f698745-976d-4e63-9d38-daaf25f50004",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-3f698745-976d-4e63-9d38-daaf25f50004"
+            },
+            {
+              "id": "7f3d59ac-bc20-4cec-b384-80a4f4df8455",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-7f3d59ac-bc20-4cec-b384-80a4f4df8455"
+            },
+            {
+              "id": "df597e77-b668-472c-9a6c-67e373462e06",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-df597e77-b668-472c-9a6c-67e373462e06"
+            },
+            {
+              "id": "b0c8ea82-336a-4851-9722-ab833f56c202",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-b0c8ea82-336a-4851-9722-ab833f56c202"
+            },
+            {
+              "id": "6770077e-3967-49b1-800c-f27b1807e851",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-6770077e-3967-49b1-800c-f27b1807e851"
+            },
+            {
+              "id": "4b8db880-87a7-4534-9130-b0c76df11e0d",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterByUserLogin=<string>&filterByActivityType=<string>&period=<string>&date=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The user login to filter by, or `null` to use the current user unless the caller is a super user.",
+                      "key": "filterByUserLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The activity type identifier to filter by.",
+                      "key": "filterByActivityType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The reporting period to filter by.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date or date range to process. `YYYY-MM-DD`, magic keywords (`today`, `yesterday`, `lastWeek`, `lastMonth`, `lastYear`), or date range (`YYYY-MM-DD,YYYY-MM-DD`, `lastX`, `previousX`).",
+                      "key": "date",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-4b8db880-87a7-4534-9130-b0c76df11e0d"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:07.000Z",
+          "updatedAt": "2026-10-22T01:36:07.000Z",
+          "uid": "35240-62602f0c-2af1-4749-a3e6-c725b4e7ac65"
+        }
+      ],
+      "id": "bc4a17ee-36b6-4e3c-832a-e46bc44df5f6",
+      "createdAt": "2026-10-22T01:36:07.000Z",
+      "updatedAt": "2026-10-22T01:36:07.000Z",
+      "uid": "35240-bc4a17ee-36b6-4e3c-832a-e46bc44df5f6"
+    },
+    {
+      "name": "index.php?module=API&method=ActivityLog.getAllActivityTypes",
+      "item": [
+        {
+          "name": "Activity log get all activity types",
+          "id": "246eb739-78ee-45bc-9a14-9d3a5f0103f9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ActivityLog.getAllActivityTypes&format=xml&filterLimit=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ActivityLog.getAllActivityTypes"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                  "key": "filterLimit",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns the available activity type metadata grouped by plugin."
+          },
+          "response": [
+            {
+              "id": "d23ab442-e92e-4e84-95af-28edb5e4bedd",
+              "name": "The available activity types grouped by plugin label.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-d23ab442-e92e-4e84-95af-28edb5e4bedd"
+            },
+            {
+              "id": "a193a944-7e66-4881-945f-817293a739e9",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-a193a944-7e66-4881-945f-817293a739e9"
+            },
+            {
+              "id": "0c72fe3a-c626-4140-ad05-4e040cac844d",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-0c72fe3a-c626-4140-ad05-4e040cac844d"
+            },
+            {
+              "id": "84d69c29-8d29-4bc0-8fe1-ec8a0aaaf7b4",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-84d69c29-8d29-4bc0-8fe1-ec8a0aaaf7b4"
+            },
+            {
+              "id": "5ba2c384-3063-4793-b9d8-80589ee44554",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-5ba2c384-3063-4793-b9d8-80589ee44554"
+            },
+            {
+              "id": "b2431ead-881f-4e33-a809-b84b9e21fc47",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-b2431ead-881f-4e33-a809-b84b9e21fc47"
+            },
+            {
+              "id": "da6a7c61-c0f5-4098-9a03-8450c87c447b",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&filterLimit=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The maximum number of activity types to return, or `-1` for no limit.",
+                      "key": "filterLimit",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:36:07.000Z",
+              "updatedAt": "2026-10-22T01:36:07.000Z",
+              "uid": "35240-da6a7c61-c0f5-4098-9a03-8450c87c447b"
+            }
+          ],
+          "createdAt": "2026-10-22T01:36:07.000Z",
+          "updatedAt": "2026-10-22T01:36:07.000Z",
+          "uid": "35240-246eb739-78ee-45bc-9a14-9d3a5f0103f9"
+        }
+      ],
+      "id": "a3bd8142-df68-4687-886b-0ce9cd15c104",
+      "createdAt": "2026-10-22T01:36:07.000Z",
+      "updatedAt": "2026-10-22T01:36:07.000Z",
+      "uid": "35240-a3bd8142-df68-4687-886b-0ce9cd15c104"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

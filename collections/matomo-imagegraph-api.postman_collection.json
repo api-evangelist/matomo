@@ -1,0 +1,1379 @@
+{
+  "info": {
+    "_postman_id": "4dd6da7f-e762-47ae-9c32-7a24fafe5fdc",
+    "name": "Matomo Reporting API for plugin Image Graph API",
+    "description": "The ImageGraph.get API call lets you generate beautiful static PNG Graphs for any existing Matomo report.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:33:58.000Z",
+    "updatedAt": "2026-10-22T01:33:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4dd6da7f-e762-47ae-9c32-7a24fafe5fdc"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=ImageGraph.get",
+      "item": [
+        {
+          "name": "Image graph get",
+          "id": "5893a30c-21af-4edf-ae62-ffe61c2b40fc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=ImageGraph.get&format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "ImageGraph.get"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "year"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) API module name of the source report.",
+                  "key": "apiModule",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) API method name of the source report.",
+                  "key": "apiAction",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional graph type.",
+                  "key": "graphType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                  "key": "outputType",
+                  "value": "0"
+                },
+                {
+                  "description": "Optional comma-separated metric names to plot.",
+                  "key": "columns",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional comma-separated row labels to include for evolution graphs.",
+                  "key": "labels",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether the graph legend should be displayed.",
+                  "key": "showLegend",
+                  "value": "true"
+                },
+                {
+                  "description": "Optional graph width in pixels.",
+                  "key": "width",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional graph height in pixels.",
+                  "key": "height",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Base font size used in the graph.",
+                  "key": "fontSize",
+                  "value": "9"
+                },
+                {
+                  "description": "Optional legend font size.",
+                  "key": "legendFontSize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether anti-aliasing should be enabled.",
+                  "key": "aliasedGraph",
+                  "value": "true"
+                },
+                {
+                  "description": "Optional goal ID for report methods that support goals.",
+                  "key": "idGoal",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Optional comma-separated list of hex colors to use in the graph.",
+                  "key": "colors",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Hex color used for text.",
+                  "key": "textColor",
+                  "value": "222222"
+                },
+                {
+                  "description": "Hex color used for the background.",
+                  "key": "backgroundColor",
+                  "value": "FFFFFF"
+                },
+                {
+                  "description": "Hex color used for grid lines.",
+                  "key": "gridColor",
+                  "value": "CCCCCC"
+                },
+                {
+                  "description": "Optional subtable ID for source reports that use subtables.",
+                  "key": "idSubtable",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether the metric name should be appended to legend labels.",
+                  "key": "legendAppendMetric",
+                  "value": "true"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional dimension ID for reports that support dimensions.",
+                  "key": "idDimension",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Generates a static graph image for a Matomo report."
+          },
+          "response": [
+            {
+              "id": "e45b3908-98ff-4ef6-9073-9bc92c2b938c",
+              "name": "Generated graph output, depending on the selected output type.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-e45b3908-98ff-4ef6-9073-9bc92c2b938c"
+            },
+            {
+              "id": "7dbdb764-4d7b-4640-9b25-9117a744c2f2",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-7dbdb764-4d7b-4640-9b25-9117a744c2f2"
+            },
+            {
+              "id": "b621bb58-f193-4055-841a-b6b20eef36ca",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-b621bb58-f193-4055-841a-b6b20eef36ca"
+            },
+            {
+              "id": "5dc945cb-157a-4300-970a-9431b43dbb84",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-5dc945cb-157a-4300-970a-9431b43dbb84"
+            },
+            {
+              "id": "e49eda4f-141e-4be8-9109-f8c2d5b14f63",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-e49eda4f-141e-4be8-9109-f8c2d5b14f63"
+            },
+            {
+              "id": "badb42e3-8718-40b9-a2ee-e8e067c510b2",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-badb42e3-8718-40b9-a2ee-e8e067c510b2"
+            },
+            {
+              "id": "5fbcb271-5fa4-4eeb-85ea-7ba746ade71d",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=year&date=<string>&apiModule=<string>&apiAction=<string>&graphType=<string>&outputType=0&columns=<string>&labels=<string>&showLegend=true&width=<integer>&height=<integer>&fontSize=9&legendFontSize=<integer>&aliasedGraph=true&idGoal=<integer>&colors=<string>&textColor=222222&backgroundColor=FFFFFF&gridColor=CCCCCC&idSubtable=<integer>&legendAppendMetric=true&segment=<string>&idDimension=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "year"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API module name of the source report.",
+                      "key": "apiModule",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) API method name of the source report.",
+                      "key": "apiAction",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional graph type.",
+                      "key": "graphType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output mode: inline image, saved file, or raw PHP graph object.",
+                      "key": "outputType",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Optional comma-separated metric names to plot.",
+                      "key": "columns",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional comma-separated row labels to include for evolution graphs.",
+                      "key": "labels",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the graph legend should be displayed.",
+                      "key": "showLegend",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional graph width in pixels.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional graph height in pixels.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Base font size used in the graph.",
+                      "key": "fontSize",
+                      "value": "9"
+                    },
+                    {
+                      "description": "Optional legend font size.",
+                      "key": "legendFontSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether anti-aliasing should be enabled.",
+                      "key": "aliasedGraph",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Optional goal ID for report methods that support goals.",
+                      "key": "idGoal",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Optional comma-separated list of hex colors to use in the graph.",
+                      "key": "colors",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Hex color used for text.",
+                      "key": "textColor",
+                      "value": "222222"
+                    },
+                    {
+                      "description": "Hex color used for the background.",
+                      "key": "backgroundColor",
+                      "value": "FFFFFF"
+                    },
+                    {
+                      "description": "Hex color used for grid lines.",
+                      "key": "gridColor",
+                      "value": "CCCCCC"
+                    },
+                    {
+                      "description": "Optional subtable ID for source reports that use subtables.",
+                      "key": "idSubtable",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether the metric name should be appended to legend labels.",
+                      "key": "legendAppendMetric",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension ID for reports that support dimensions.",
+                      "key": "idDimension",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:58.000Z",
+              "updatedAt": "2026-10-22T01:33:58.000Z",
+              "uid": "35240-5fbcb271-5fa4-4eeb-85ea-7ba746ade71d"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:58.000Z",
+          "updatedAt": "2026-10-22T01:33:58.000Z",
+          "uid": "35240-5893a30c-21af-4edf-ae62-ffe61c2b40fc"
+        }
+      ],
+      "id": "8d217ac5-d93a-4e58-914a-08dd46d0866f",
+      "createdAt": "2026-10-22T01:33:58.000Z",
+      "updatedAt": "2026-10-22T01:33:58.000Z",
+      "uid": "35240-8d217ac5-d93a-4e58-914a-08dd46d0866f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

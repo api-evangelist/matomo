@@ -1,0 +1,2482 @@
+{
+  "info": {
+    "_postman_id": "32258d4a-239c-407d-aa61-266ff7723e09",
+    "name": "Matomo Reporting API for plugin Dashboard API",
+    "description": "The Dashboard API lets you manage user dashboards and retrieve their widget configurations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:33:02.000Z",
+    "updatedAt": "2026-10-22T01:33:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-32258d4a-239c-407d-aa61-266ff7723e09"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=Dashboard.getDashboards",
+      "item": [
+        {
+          "name": "Dashboard get dashboards",
+          "id": "c9a2c05b-d976-47fd-8d59-38878d05e44a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Dashboard.getDashboards&format=xml&login=&returnDefaultIfEmpty=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Dashboard.getDashboards"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                  "key": "login",
+                  "value": ""
+                },
+                {
+                  "description": "Whether to return the default dashboard when the user has none.",
+                  "key": "returnDefaultIfEmpty",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Returns the dashboards available to a user, including the widgets in each dashboard."
+          },
+          "response": [
+            {
+              "id": "c8a0a5c2-0717-47a2-80f5-aece676d79d6",
+              "name": "List of dashboards, each containing name, id, and widgets keys.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-c8a0a5c2-0717-47a2-80f5-aece676d79d6"
+            },
+            {
+              "id": "9e9c09da-8fe9-45eb-b4a5-6a3e1a729cf4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-9e9c09da-8fe9-45eb-b4a5-6a3e1a729cf4"
+            },
+            {
+              "id": "f9447386-f23d-4b69-af7a-2de03e45e04a",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-f9447386-f23d-4b69-af7a-2de03e45e04a"
+            },
+            {
+              "id": "d305e367-661a-4889-8a04-31e88004b5b1",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-d305e367-661a-4889-8a04-31e88004b5b1"
+            },
+            {
+              "id": "81382922-f54c-4036-b0f2-705e940e54a6",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-81382922-f54c-4036-b0f2-705e940e54a6"
+            },
+            {
+              "id": "39e53bbc-a031-40e2-9ac6-7c099d55d200",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-39e53bbc-a031-40e2-9ac6-7c099d55d200"
+            },
+            {
+              "id": "a00d2298-bd47-4f56-9cf2-209d114fdcd5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=&returnDefaultIfEmpty=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Login of the user to load dashboards for. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to return the default dashboard when the user has none.",
+                      "key": "returnDefaultIfEmpty",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-a00d2298-bd47-4f56-9cf2-209d114fdcd5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:03.000Z",
+          "updatedAt": "2026-10-22T01:33:03.000Z",
+          "uid": "35240-c9a2c05b-d976-47fd-8d59-38878d05e44a"
+        }
+      ],
+      "id": "ce78137e-cb5b-4a1f-82ce-e030b469b91e",
+      "createdAt": "2026-10-22T01:33:03.000Z",
+      "updatedAt": "2026-10-22T01:33:03.000Z",
+      "uid": "35240-ce78137e-cb5b-4a1f-82ce-e030b469b91e"
+    },
+    {
+      "name": "index.php?module=API&method=Dashboard.createNewDashboardForUser",
+      "item": [
+        {
+          "name": "Dashboard create new dashboard for user",
+          "id": "a758a514-f851-4dd0-afd3-8bfb04c3230c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Dashboard.createNewDashboardForUser&format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Dashboard.createNewDashboardForUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Login of the user the dashboard should be created for.",
+                  "key": "login",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Name of the new dashboard.",
+                  "key": "dashboardName",
+                  "value": ""
+                },
+                {
+                  "description": "Whether to populate the dashboard with the default widget layout.",
+                  "key": "addDefaultWidgets",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Creates a new dashboard for a user."
+          },
+          "response": [
+            {
+              "id": "6c6731ed-15af-4f3f-8c73-225341046cfe",
+              "name": "ID of the newly created dashboard.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-6c6731ed-15af-4f3f-8c73-225341046cfe"
+            },
+            {
+              "id": "c2dccc75-f6d4-4293-8e5c-50cfa729ee5a",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-c2dccc75-f6d4-4293-8e5c-50cfa729ee5a"
+            },
+            {
+              "id": "2b2028cb-6a13-4422-9407-061312364983",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-2b2028cb-6a13-4422-9407-061312364983"
+            },
+            {
+              "id": "f4841ca3-e841-4bff-bf6e-b728983605a2",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-f4841ca3-e841-4bff-bf6e-b728983605a2"
+            },
+            {
+              "id": "3deb94ce-1e1b-4160-92aa-16bc6b01b4e5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-3deb94ce-1e1b-4160-92aa-16bc6b01b4e5"
+            },
+            {
+              "id": "4e4504ee-4b20-4a83-9bd8-10e689d8da07",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-4e4504ee-4b20-4a83-9bd8-10e689d8da07"
+            },
+            {
+              "id": "64cdc789-76fa-4e58-8ccd-2d0c9fa5e7d1",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&dashboardName=&addDefaultWidgets=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Login of the user the dashboard should be created for.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name of the new dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    },
+                    {
+                      "description": "Whether to populate the dashboard with the default widget layout.",
+                      "key": "addDefaultWidgets",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-64cdc789-76fa-4e58-8ccd-2d0c9fa5e7d1"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:03.000Z",
+          "updatedAt": "2026-10-22T01:33:03.000Z",
+          "uid": "35240-a758a514-f851-4dd0-afd3-8bfb04c3230c"
+        }
+      ],
+      "id": "a4e3f4d0-7231-42e0-99c0-2dfcb18968a2",
+      "createdAt": "2026-10-22T01:33:03.000Z",
+      "updatedAt": "2026-10-22T01:33:03.000Z",
+      "uid": "35240-a4e3f4d0-7231-42e0-99c0-2dfcb18968a2"
+    },
+    {
+      "name": "index.php?module=API&method=Dashboard.removeDashboard",
+      "item": [
+        {
+          "name": "Dashboard remove dashboard",
+          "id": "ddeabedc-a1f6-4803-b342-03aaa0ddc4b1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Dashboard.removeDashboard&format=xml&idDashboard=<integer>&login=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Dashboard.removeDashboard"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) ID of the dashboard to remove.",
+                  "key": "idDashboard",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Login of the dashboard owner. Defaults to the current user.",
+                  "key": "login",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Removes a dashboard for a user."
+          },
+          "response": [
+            {
+              "id": "293c83b1-798d-4a24-8902-56931836836a",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-293c83b1-798d-4a24-8902-56931836836a"
+            },
+            {
+              "id": "91feb477-9674-4173-867f-ace3296f8a9d",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-91feb477-9674-4173-867f-ace3296f8a9d"
+            },
+            {
+              "id": "adcbaad6-0ea9-402b-b6f7-fc4df016f29c",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-adcbaad6-0ea9-402b-b6f7-fc4df016f29c"
+            },
+            {
+              "id": "acbed51a-89b1-40ed-a3ef-8ca6588e2403",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-acbed51a-89b1-40ed-a3ef-8ca6588e2403"
+            },
+            {
+              "id": "4b553fc6-df99-4f18-a9be-b4391b1a9d08",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-4b553fc6-df99-4f18-a9be-b4391b1a9d08"
+            },
+            {
+              "id": "5a7eff45-96fa-4dda-8df2-e06f02623296",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-5a7eff45-96fa-4dda-8df2-e06f02623296"
+            },
+            {
+              "id": "93223c97-88ac-4b57-ac3b-66f7489eec1c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to remove.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-93223c97-88ac-4b57-ac3b-66f7489eec1c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:03.000Z",
+          "updatedAt": "2026-10-22T01:33:03.000Z",
+          "uid": "35240-ddeabedc-a1f6-4803-b342-03aaa0ddc4b1"
+        }
+      ],
+      "id": "53f1d83e-5a1c-4527-a142-7e12a5aa506a",
+      "createdAt": "2026-10-22T01:33:03.000Z",
+      "updatedAt": "2026-10-22T01:33:03.000Z",
+      "uid": "35240-53f1d83e-5a1c-4527-a142-7e12a5aa506a"
+    },
+    {
+      "name": "index.php?module=API&method=Dashboard.copyDashboardToUser",
+      "item": [
+        {
+          "name": "Dashboard copy dashboard to user",
+          "id": "9cd3fb02-adfd-4a51-8c7c-ebd7317725e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Dashboard.copyDashboardToUser&format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Dashboard.copyDashboardToUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) ID of the dashboard to copy.",
+                  "key": "idDashboard",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Login of the user that should receive the dashboard copy.",
+                  "key": "copyToUser",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Name for the copied dashboard.",
+                  "key": "dashboardName",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Copies one of the current user's dashboards to another user. Requires admin access."
+          },
+          "response": [
+            {
+              "id": "979a1986-94bf-4ade-8c61-82a87b022431",
+              "name": "ID of the newly created dashboard copy.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-979a1986-94bf-4ade-8c61-82a87b022431"
+            },
+            {
+              "id": "202cc4b2-af70-4575-8d7b-3219eb26be6c",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-202cc4b2-af70-4575-8d7b-3219eb26be6c"
+            },
+            {
+              "id": "79c642de-b58c-4775-9797-0ca289b48d7c",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-79c642de-b58c-4775-9797-0ca289b48d7c"
+            },
+            {
+              "id": "b48eec53-9c00-4a14-abc4-e6ff9a90bbe5",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-b48eec53-9c00-4a14-abc4-e6ff9a90bbe5"
+            },
+            {
+              "id": "2748eaba-004c-455d-a4b7-bb71a6391934",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-2748eaba-004c-455d-a4b7-bb71a6391934"
+            },
+            {
+              "id": "0bffd3a4-1d26-4df0-a0b8-62d0f0be285b",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-0bffd3a4-1d26-4df0-a0b8-62d0f0be285b"
+            },
+            {
+              "id": "ce9bbb7c-beb9-4bc4-988b-3b53fb210c30",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&copyToUser=<string>&dashboardName=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to copy.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Login of the user that should receive the dashboard copy.",
+                      "key": "copyToUser",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Name for the copied dashboard.",
+                      "key": "dashboardName",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-ce9bbb7c-beb9-4bc4-988b-3b53fb210c30"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:03.000Z",
+          "updatedAt": "2026-10-22T01:33:03.000Z",
+          "uid": "35240-9cd3fb02-adfd-4a51-8c7c-ebd7317725e1"
+        }
+      ],
+      "id": "8d970a4e-bf44-49ff-b82d-44714c5c8298",
+      "createdAt": "2026-10-22T01:33:03.000Z",
+      "updatedAt": "2026-10-22T01:33:03.000Z",
+      "uid": "35240-8d970a4e-bf44-49ff-b82d-44714c5c8298"
+    },
+    {
+      "name": "index.php?module=API&method=Dashboard.resetDashboardLayout",
+      "item": [
+        {
+          "name": "Dashboard reset dashboard layout",
+          "id": "f4d8f5e9-b9d7-45c1-b6d3-9f5efdd0cfdc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Dashboard.resetDashboardLayout&format=xml&idDashboard=<integer>&login=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Dashboard.resetDashboardLayout"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) ID of the dashboard to reset.",
+                  "key": "idDashboard",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Login of the dashboard owner. Defaults to the current user.",
+                  "key": "login",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Resets a dashboard to the default widget layout."
+          },
+          "response": [
+            {
+              "id": "8d3c54d4-ddb7-42a2-92b8-477dc6a4368c",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-8d3c54d4-ddb7-42a2-92b8-477dc6a4368c"
+            },
+            {
+              "id": "b8aa3795-9784-4957-992c-061edfaaf39c",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-b8aa3795-9784-4957-992c-061edfaaf39c"
+            },
+            {
+              "id": "01fda0c7-b94b-44df-a335-619efbbf40d2",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-01fda0c7-b94b-44df-a335-619efbbf40d2"
+            },
+            {
+              "id": "5df4fe7b-64d7-4d8f-8eeb-faa3203f7613",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-5df4fe7b-64d7-4d8f-8eeb-faa3203f7613"
+            },
+            {
+              "id": "89a20f38-0088-4664-b077-7755fca45a99",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-89a20f38-0088-4664-b077-7755fca45a99"
+            },
+            {
+              "id": "c801cf78-dc82-4a84-93f0-a1b07cc43ee3",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-c801cf78-dc82-4a84-93f0-a1b07cc43ee3"
+            },
+            {
+              "id": "dceaa802-7949-48f4-bfb1-b1e96fff881f",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idDashboard=<integer>&login=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) ID of the dashboard to reset.",
+                      "key": "idDashboard",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Login of the dashboard owner. Defaults to the current user.",
+                      "key": "login",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:33:03.000Z",
+              "updatedAt": "2026-10-22T01:33:03.000Z",
+              "uid": "35240-dceaa802-7949-48f4-bfb1-b1e96fff881f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:33:03.000Z",
+          "updatedAt": "2026-10-22T01:33:03.000Z",
+          "uid": "35240-f4d8f5e9-b9d7-45c1-b6d3-9f5efdd0cfdc"
+        }
+      ],
+      "id": "04e7e2ac-498d-43f6-a030-193fe684b3ce",
+      "createdAt": "2026-10-22T01:33:03.000Z",
+      "updatedAt": "2026-10-22T01:33:03.000Z",
+      "uid": "35240-04e7e2ac-498d-43f6-a030-193fe684b3ce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

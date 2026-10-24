@@ -1,0 +1,3736 @@
+{
+  "info": {
+    "_postman_id": "74a0dea1-80ba-4fef-b533-ce98aefd6407",
+    "name": "Matomo Reporting API for plugin Annotations API",
+    "description": "Provides API methods to create, update, delete, and query annotations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:32:01.000Z",
+    "updatedAt": "2026-10-22T01:32:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74a0dea1-80ba-4fef-b533-ce98aefd6407"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=Annotations.add",
+      "item": [
+        {
+          "name": "Annotations add",
+          "id": "77c72f6e-34d0-4e1a-b1fe-78033dc7799d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.add&format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.add"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The site ID to add the annotation to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The date the annotation is attached to.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The text of the annotation (max 255 chars).",
+                  "key": "note",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether the annotation should be starred.",
+                  "key": "starred",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Creates a new annotation for a site."
+          },
+          "response": [
+            {
+              "id": "83f26362-5a45-4988-8988-9a08e42e6232",
+              "name": "Generic 200 response with array body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[]",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-83f26362-5a45-4988-8988-9a08e42e6232"
+            },
+            {
+              "id": "8c6b2723-abac-4bd6-ab8c-6392f00b6aa0",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-8c6b2723-abac-4bd6-ab8c-6392f00b6aa0"
+            },
+            {
+              "id": "a183dbe2-b4cc-4dc6-9462-60843021c399",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-a183dbe2-b4cc-4dc6-9462-60843021c399"
+            },
+            {
+              "id": "d282ce9e-9b76-4930-b053-dbe686de2259",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-d282ce9e-9b76-4930-b053-dbe686de2259"
+            },
+            {
+              "id": "87284322-44cf-4088-a858-ae4d926d5a07",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-87284322-44cf-4088-a858-ae4d926d5a07"
+            },
+            {
+              "id": "76e04dde-664b-4147-9dcc-ac3b93c2962c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-76e04dde-664b-4147-9dcc-ac3b93c2962c"
+            },
+            {
+              "id": "0f8eab36-db96-41da-90db-2d30daa0ad1a",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&date=<string>&note=<string>&starred=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The date the annotation is attached to.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The text of the annotation (max 255 chars).",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred.",
+                      "key": "starred",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-0f8eab36-db96-41da-90db-2d30daa0ad1a"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-77c72f6e-34d0-4e1a-b1fe-78033dc7799d"
+        }
+      ],
+      "id": "016beef6-8a4e-407a-a801-26ab3af6c1e5",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-016beef6-8a4e-407a-a801-26ab3af6c1e5"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.save",
+      "item": [
+        {
+          "name": "Annotations save",
+          "id": "7e2d344b-b4c7-4400-a299-0657c44594f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.save&format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.save"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The site ID to add the annotation to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The ID of the note.",
+                  "key": "idNote",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                  "key": "note",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                  "key": "starred",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Updates an annotation for a site and returns the updated annotation."
+          },
+          "response": [
+            {
+              "id": "76c5ad3b-b23a-4224-9e85-be17a10ae9bd",
+              "name": "Generic 200 response with array body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[]",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-76c5ad3b-b23a-4224-9e85-be17a10ae9bd"
+            },
+            {
+              "id": "14435e1c-704f-42ad-8eff-f351a7b0e265",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-14435e1c-704f-42ad-8eff-f351a7b0e265"
+            },
+            {
+              "id": "206ff686-8dfd-4274-9600-ce960a3af49e",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-206ff686-8dfd-4274-9600-ce960a3af49e"
+            },
+            {
+              "id": "a9a32b9a-af6a-447a-bfe2-d32e4307ec74",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-a9a32b9a-af6a-447a-bfe2-d32e4307ec74"
+            },
+            {
+              "id": "a0546fd7-c1b4-4473-876f-56e2dc1cede9",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-a0546fd7-c1b4-4473-876f-56e2dc1cede9"
+            },
+            {
+              "id": "c8447cc2-ca23-48d2-bde5-d172062e95e7",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-c8447cc2-ca23-48d2-bde5-d172062e95e7"
+            },
+            {
+              "id": "b6d6bf23-4440-477b-84b1-f67fa3fc1b07",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>&date=<string>&note=<string>&starred=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The date the annotation is attached to. If null, the annotation's date is not modified.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The text of the annotation (max 255 chars). If null, the annotation's text is not modified.",
+                      "key": "note",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether the annotation should be starred. If null, the annotation is not starred/un-starred, so the current state won't change.",
+                      "key": "starred",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-b6d6bf23-4440-477b-84b1-f67fa3fc1b07"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-7e2d344b-b4c7-4400-a299-0657c44594f5"
+        }
+      ],
+      "id": "bb330c5c-8478-4561-b031-e82a0aa1f37c",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-bb330c5c-8478-4561-b031-e82a0aa1f37c"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.delete",
+      "item": [
+        {
+          "name": "Annotations delete",
+          "id": "2faf2830-d9ee-4bf7-949c-1e23fe3e9aa7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.delete&format=xml&idSite=<integer>&idNote=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.delete"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The site ID to add the annotation to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The ID of the note to delete.",
+                  "key": "idNote",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Removes an annotation from a site's list of annotations."
+          },
+          "response": [
+            {
+              "id": "3232cf97-b62f-4369-993c-b83d57368ded",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-3232cf97-b62f-4369-993c-b83d57368ded"
+            },
+            {
+              "id": "2aba5474-ca66-45c5-8ba0-500b19e38551",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-2aba5474-ca66-45c5-8ba0-500b19e38551"
+            },
+            {
+              "id": "222a61b9-4437-4a14-8993-339ad2865282",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-222a61b9-4437-4a14-8993-339ad2865282"
+            },
+            {
+              "id": "2dbb3d17-5432-423b-94ea-35cb8f228990",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-2dbb3d17-5432-423b-94ea-35cb8f228990"
+            },
+            {
+              "id": "47608820-6144-4cc0-8f07-3c0168f4b0bd",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-47608820-6144-4cc0-8f07-3c0168f4b0bd"
+            },
+            {
+              "id": "c87a9c5a-be31-405e-aecb-7e48d9a4052e",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-c87a9c5a-be31-405e-aecb-7e48d9a4052e"
+            },
+            {
+              "id": "94dbda3f-42bf-4338-9557-e51b4a0a8084",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID to add the annotation to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the note to delete.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-94dbda3f-42bf-4338-9557-e51b4a0a8084"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-2faf2830-d9ee-4bf7-949c-1e23fe3e9aa7"
+        }
+      ],
+      "id": "59bf17bb-22b9-46fc-aaa4-ab63201bcca4",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-59bf17bb-22b9-46fc-aaa4-ab63201bcca4"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.deleteAll",
+      "item": [
+        {
+          "name": "Annotations delete all",
+          "id": "b902b577-fe94-46b1-8402-43265395d586",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.deleteAll&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.deleteAll"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ID of the site to remove annotations for.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Removes all annotations for a single site. Only superusers can use this method."
+          },
+          "response": [
+            {
+              "id": "45466e1d-3e58-4eeb-a5c8-9d25c1b3dbaf",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-45466e1d-3e58-4eeb-a5c8-9d25c1b3dbaf"
+            },
+            {
+              "id": "f339f75c-7639-4f2f-a27e-b434d5e8d8cc",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-f339f75c-7639-4f2f-a27e-b434d5e8d8cc"
+            },
+            {
+              "id": "7d6062f6-c8ef-48ca-a7e9-22efedb59ad9",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-7d6062f6-c8ef-48ca-a7e9-22efedb59ad9"
+            },
+            {
+              "id": "881a6e10-bd95-435a-9ba4-ddddd1df4b39",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-881a6e10-bd95-435a-9ba4-ddddd1df4b39"
+            },
+            {
+              "id": "2915b80f-477b-4baf-9d6e-c8a6b9547b7a",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-2915b80f-477b-4baf-9d6e-c8a6b9547b7a"
+            },
+            {
+              "id": "4bbff015-accf-4832-a98a-458e4861cc3f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-4bbff015-accf-4832-a98a-458e4861cc3f"
+            },
+            {
+              "id": "9f740b00-49f3-4833-b47c-0478098d1ff4",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ID of the site to remove annotations for.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-9f740b00-49f3-4833-b47c-0478098d1ff4"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-b902b577-fe94-46b1-8402-43265395d586"
+        }
+      ],
+      "id": "8db3275b-3b6a-4853-84a7-5c9d9f31fd5f",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-8db3275b-3b6a-4853-84a7-5c9d9f31fd5f"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.get",
+      "item": [
+        {
+          "name": "Annotations get",
+          "id": "c461afbd-4a27-42e4-92c2-b2d2107a5cf4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.get&format=xml&idSite=<integer>&idNote=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.get"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The site ID the annotation is linked to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The ID of the annotation to get.",
+                  "key": "idNote",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a single annotation for one site."
+          },
+          "response": [
+            {
+              "id": "6c035687-a7ba-404e-946b-1cec259547e4",
+              "name": "Generic 200 response with array body",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[]",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-6c035687-a7ba-404e-946b-1cec259547e4"
+            },
+            {
+              "id": "262e3e2f-7fea-4ff3-a09d-2c430f51f810",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-262e3e2f-7fea-4ff3-a09d-2c430f51f810"
+            },
+            {
+              "id": "514e893e-f031-457f-bcdb-8cefb490be18",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-514e893e-f031-457f-bcdb-8cefb490be18"
+            },
+            {
+              "id": "29bb5b2b-a422-481c-a86a-725da8399a7c",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-29bb5b2b-a422-481c-a86a-725da8399a7c"
+            },
+            {
+              "id": "df6e3db5-ab8f-486e-8dfa-7d3173fd63d8",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-df6e3db5-ab8f-486e-8dfa-7d3173fd63d8"
+            },
+            {
+              "id": "a079d731-f988-41f0-9a3d-861b75068b2f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-a079d731-f988-41f0-9a3d-861b75068b2f"
+            },
+            {
+              "id": "08e2fa69-31a9-4634-b624-70a5553e2221",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&idNote=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID the annotation is linked to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The ID of the annotation to get.",
+                      "key": "idNote",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-08e2fa69-31a9-4634-b624-70a5553e2221"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-c461afbd-4a27-42e4-92c2-b2d2107a5cf4"
+        }
+      ],
+      "id": "5ba9454f-92fa-4209-bf4e-bb6e0bf159f9",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-5ba9454f-92fa-4209-bf4e-bb6e0bf159f9"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.getAll",
+      "item": [
+        {
+          "name": "Annotations get all",
+          "id": "ac2422c3-b292-4012-94ed-bb446e2ab85f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.getAll&format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.getAll"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                  "key": "idSite",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The date of the period.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The period type.",
+                  "key": "period",
+                  "value": "day"
+                },
+                {
+                  "description": "Whether to include the last N periods in the date range.",
+                  "key": "lastN",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns every annotation for a specific site within a date range."
+          },
+          "response": [
+            {
+              "id": "97b0ea83-bee2-441b-8a43-5f4fa4031579",
+              "name": "OK\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-97b0ea83-bee2-441b-8a43-5f4fa4031579"
+            },
+            {
+              "id": "c64a0ff9-c86d-495c-9a86-6561e3a56147",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-c64a0ff9-c86d-495c-9a86-6561e3a56147"
+            },
+            {
+              "id": "b0eca1c8-fb4e-47b4-8675-85406c3a4afc",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-b0eca1c8-fb4e-47b4-8675-85406c3a4afc"
+            },
+            {
+              "id": "015d9737-e1cb-4904-8553-44b2660900a3",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-015d9737-e1cb-4904-8553-44b2660900a3"
+            },
+            {
+              "id": "566a4eed-f98a-47bf-a989-178c2a6240d2",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-566a4eed-f98a-47bf-a989-178c2a6240d2"
+            },
+            {
+              "id": "599ece6f-2458-4270-a3c4-fc8c776b33e5",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-599ece6f-2458-4270-a3c4-fc8c776b33e5"
+            },
+            {
+              "id": "800ea663-1dc2-4610-9fa2-b3765e2f75e8",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=day&lastN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) One site ID or a comma-separated list of site IDs.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The period type.",
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "description": "Whether to include the last N periods in the date range.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-800ea663-1dc2-4610-9fa2-b3765e2f75e8"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-ac2422c3-b292-4012-94ed-bb446e2ab85f"
+        }
+      ],
+      "id": "c1837e38-06bb-492a-ba0f-b10f0d194080",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-c1837e38-06bb-492a-ba0f-b10f0d194080"
+    },
+    {
+      "name": "index.php?module=API&method=Annotations.getAnnotationCountForDates",
+      "item": [
+        {
+          "name": "Annotations get annotation count for dates",
+          "id": "1ea75b35-1611-46b0-b486-70ab11ea42e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=Annotations.getAnnotationCountForDates&format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "Annotations.getAnnotationCountForDates"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The site ID(s) to get the annotation count for.",
+                  "key": "idSite",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The date of the period.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The period type.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "Whether to get counts for the last N number of periods or not.",
+                  "key": "lastN",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                  "key": "getAnnotationText",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the count of annotations for a list of periods, including the count of starred annotations."
+          },
+          "response": [
+            {
+              "id": "2b887806-9cd0-4155-bb76-6e97af6a30ee",
+              "name": "OK\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-2b887806-9cd0-4155-bb76-6e97af6a30ee"
+            },
+            {
+              "id": "b2618a32-79fa-4ea1-bcb4-5a98be10c704",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-b2618a32-79fa-4ea1-bcb4-5a98be10c704"
+            },
+            {
+              "id": "6805c647-88c1-4461-b1fd-223ab0f584fc",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-6805c647-88c1-4461-b1fd-223ab0f584fc"
+            },
+            {
+              "id": "60a731c7-7422-455a-b8ad-08938ed8f422",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-60a731c7-7422-455a-b8ad-08938ed8f422"
+            },
+            {
+              "id": "a2eccbd1-6b2d-431d-8ba3-89bf3c8fcc01",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-a2eccbd1-6b2d-431d-8ba3-89bf3c8fcc01"
+            },
+            {
+              "id": "40861c8b-c77f-4020-82e7-c940bb6bdb06",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-40861c8b-c77f-4020-82e7-c940bb6bdb06"
+            },
+            {
+              "id": "6fdc078e-2965-469f-a70d-082f5e1bca55",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<string>&date=<string>&period=month&lastN=<integer>&getAnnotationText=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The site ID(s) to get the annotation count for.",
+                      "key": "idSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The date of the period.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The period type.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "Whether to get counts for the last N number of periods or not.",
+                      "key": "lastN",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Whether to include the note text when exactly one annotation exists for a date.",
+                      "key": "getAnnotationText",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:01.000Z",
+              "updatedAt": "2026-10-22T01:32:01.000Z",
+              "uid": "35240-6fdc078e-2965-469f-a70d-082f5e1bca55"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:01.000Z",
+          "updatedAt": "2026-10-22T01:32:01.000Z",
+          "uid": "35240-1ea75b35-1611-46b0-b486-70ab11ea42e1"
+        }
+      ],
+      "id": "80204346-6e4b-495b-a3e7-0fdf96a74177",
+      "createdAt": "2026-10-22T01:32:01.000Z",
+      "updatedAt": "2026-10-22T01:32:01.000Z",
+      "uid": "35240-80204346-6e4b-495b-a3e7-0fdf96a74177"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

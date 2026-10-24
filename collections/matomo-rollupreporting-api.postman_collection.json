@@ -1,0 +1,1566 @@
+{
+  "info": {
+    "_postman_id": "f0e1aee9-d8ff-4b32-bd80-c16b0966680a",
+    "name": "Matomo Reporting API for plugin Roll Up Reporting API",
+    "description": "Provides API endpoints for managing roll-up websites and their source site assignments. Use these methods to create roll-ups, update their configuration, and list the configured roll-up sites with their assigned source websites.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:34:57.000Z",
+    "updatedAt": "2026-10-22T01:34:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f0e1aee9-d8ff-4b32-bd80-c16b0966680a"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=RollUpReporting.addRollUp",
+      "item": [
+        {
+          "name": "Roll up reporting add roll up",
+          "id": "dbf73e67-5eb8-4a5f-91d0-81735203946a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=RollUpReporting.addRollUp&format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "RollUpReporting.addRollUp"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The name of the roll-up website.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                  "key": "sourceIdSites",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The timezone to apply to the roll-up website.",
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The currency code to apply to the roll-up website.",
+                  "key": "currency",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Creates a new roll-up website."
+          },
+          "response": [
+            {
+              "id": "86a3ae98-930f-480c-af5f-29be0f0c75e1",
+              "name": "The numeric ID of the created roll-up website.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-86a3ae98-930f-480c-af5f-29be0f0c75e1"
+            },
+            {
+              "id": "2f2ef23c-9591-472f-a872-a2eecfb319ad",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-2f2ef23c-9591-472f-a872-a2eecfb319ad"
+            },
+            {
+              "id": "1994b8fe-cd92-468e-99c9-b021ac65f6d5",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-1994b8fe-cd92-468e-99c9-b021ac65f6d5"
+            },
+            {
+              "id": "16a72dd0-3aae-4788-bcf7-c99d7200caf4",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-16a72dd0-3aae-4788-bcf7-c99d7200caf4"
+            },
+            {
+              "id": "747fffea-38c7-4d29-bef9-417866acee68",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-747fffea-38c7-4d29-bef9-417866acee68"
+            },
+            {
+              "id": "deedfa76-bb74-4214-ae76-a314854c2c87",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-deedfa76-bb74-4214-ae76-a314854c2c87"
+            },
+            {
+              "id": "ce75182e-e60d-4f81-9c26-1ed1073c3a29",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The name of the roll-up website.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The timezone to apply to the roll-up website.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The currency code to apply to the roll-up website.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-ce75182e-e60d-4f81-9c26-1ed1073c3a29"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:58.000Z",
+          "updatedAt": "2026-10-22T01:34:58.000Z",
+          "uid": "35240-dbf73e67-5eb8-4a5f-91d0-81735203946a"
+        }
+      ],
+      "id": "c221b607-7933-46b1-9caa-d46f9fe86d41",
+      "createdAt": "2026-10-22T01:34:58.000Z",
+      "updatedAt": "2026-10-22T01:34:58.000Z",
+      "uid": "35240-c221b607-7933-46b1-9caa-d46f9fe86d41"
+    },
+    {
+      "name": "index.php?module=API&method=RollUpReporting.updateRollUp",
+      "item": [
+        {
+          "name": "Roll up reporting update roll up",
+          "id": "a12b7ea0-3496-4ee0-972e-8b74403be1b5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=RollUpReporting.updateRollUp&format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "RollUpReporting.updateRollUp"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the roll-up website to update.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The new roll-up website name. Omit to keep the current name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                  "key": "sourceIdSites",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                  "key": "currency",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Updates the configuration of an existing roll-up website."
+          },
+          "response": [
+            {
+              "id": "a19fdc12-3ac9-4b51-a944-e894df9157f9",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-a19fdc12-3ac9-4b51-a944-e894df9157f9"
+            },
+            {
+              "id": "55450378-d96f-4498-a682-aa5d3041ac96",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-55450378-d96f-4498-a682-aa5d3041ac96"
+            },
+            {
+              "id": "98f8e815-1346-4106-bf42-ecb21f0b7f2f",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-98f8e815-1346-4106-bf42-ecb21f0b7f2f"
+            },
+            {
+              "id": "0d5abfe3-045f-4b48-9ca9-9c02692115ed",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-0d5abfe3-045f-4b48-9ca9-9c02692115ed"
+            },
+            {
+              "id": "0e2a607b-fca8-4cde-901d-8e941ee0e3fc",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-0e2a607b-fca8-4cde-901d-8e941ee0e3fc"
+            },
+            {
+              "id": "82531750-74c2-4683-a96c-db508c40bd90",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-82531750-74c2-4683-a96c-db508c40bd90"
+            },
+            {
+              "id": "90da2f30-4c50-4cc6-9413-6d398ddab3eb",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&sourceIdSites=<integer>&timezone=<string>&currency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the roll-up website to update.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new roll-up website name. Omit to keep the current name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Source website IDs to assign to the roll-up. Accepts numeric site IDs and the special value 'all' to assign all websites. Omit to keep the current source site assignment.",
+                      "key": "sourceIdSites",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The new timezone for the roll-up website. Omit to keep the current timezone.",
+                      "key": "timezone",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The new currency code for the roll-up website. Omit to keep the current currency.",
+                      "key": "currency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-90da2f30-4c50-4cc6-9413-6d398ddab3eb"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:58.000Z",
+          "updatedAt": "2026-10-22T01:34:58.000Z",
+          "uid": "35240-a12b7ea0-3496-4ee0-972e-8b74403be1b5"
+        }
+      ],
+      "id": "7004d85f-46a8-4d60-9cf8-174bc2bf16d4",
+      "createdAt": "2026-10-22T01:34:58.000Z",
+      "updatedAt": "2026-10-22T01:34:58.000Z",
+      "uid": "35240-7004d85f-46a8-4d60-9cf8-174bc2bf16d4"
+    },
+    {
+      "name": "index.php?module=API&method=RollUpReporting.getRollUps",
+      "item": [
+        {
+          "name": "Roll up reporting get roll ups",
+          "id": "5b3afd10-dc83-4dc3-ba3d-53926930caab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=RollUpReporting.getRollUps&format=xml",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "RollUpReporting.getRollUps"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                }
+              ]
+            },
+            "description": "Lists all configured roll-up websites."
+          },
+          "response": [
+            {
+              "id": "5f3d9a68-d501-4d61-937e-82cf60aa7d9d",
+              "name": "Roll-up websites with their site metadata and assigned source website IDs.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-5f3d9a68-d501-4d61-937e-82cf60aa7d9d"
+            },
+            {
+              "id": "eeb95399-c983-48c0-9345-7e1f290465cf",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-eeb95399-c983-48c0-9345-7e1f290465cf"
+            },
+            {
+              "id": "5dd0f895-67a5-43ae-881a-91decab11317",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-5dd0f895-67a5-43ae-881a-91decab11317"
+            },
+            {
+              "id": "3ff39103-9744-4fc8-849d-072933d3eb09",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-3ff39103-9744-4fc8-849d-072933d3eb09"
+            },
+            {
+              "id": "ad193bb3-272b-4270-8bc9-335312804674",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-ad193bb3-272b-4270-8bc9-335312804674"
+            },
+            {
+              "id": "f935915b-1300-46c3-98e2-dbc9f0605813",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-f935915b-1300-46c3-98e2-dbc9f0605813"
+            },
+            {
+              "id": "cf5fc0a4-a061-42c1-a08c-dc2ea68950d5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:58.000Z",
+              "updatedAt": "2026-10-22T01:34:58.000Z",
+              "uid": "35240-cf5fc0a4-a061-42c1-a08c-dc2ea68950d5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:58.000Z",
+          "updatedAt": "2026-10-22T01:34:58.000Z",
+          "uid": "35240-5b3afd10-dc83-4dc3-ba3d-53926930caab"
+        }
+      ],
+      "id": "3e0a9e8c-88b2-445c-a970-38e22fc54e0a",
+      "createdAt": "2026-10-22T01:34:58.000Z",
+      "updatedAt": "2026-10-22T01:34:58.000Z",
+      "uid": "35240-3e0a9e8c-88b2-445c-a970-38e22fc54e0a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

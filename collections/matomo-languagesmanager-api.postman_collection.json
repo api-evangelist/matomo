@@ -1,0 +1,4096 @@
+{
+  "info": {
+    "_postman_id": "43771c72-ff53-4bbe-8cd4-f9b7c349a1eb",
+    "name": "Matomo Reporting API for plugin Languages Manager API",
+    "description": "The LanguagesManager API lets you access existing Matomo translations, and change Users languages preferences.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:34:09.000Z",
+    "updatedAt": "2026-10-22T01:34:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-43771c72-ff53-4bbe-8cd4-f9b7c349a1eb"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=LanguagesManager.isLanguageAvailable",
+      "item": [
+        {
+          "name": "Languages manager is language available",
+          "id": "de05f555-fb39-477f-ab0c-f658c30c8c12",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.isLanguageAvailable&format=xml&languageCode=<string>&_ignoreConfig=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.isLanguageAvailable"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ISO language code to validate.",
+                  "key": "languageCode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether to ignore the configured language allowlist.",
+                  "key": "_ignoreConfig",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns whether a language code can be used in the current Matomo instance."
+          },
+          "response": [
+            {
+              "id": "7fa3a1b4-4bc5-4886-8780-b0d45ac54e76",
+              "name": "True if the language is available, `false` otherwise.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-7fa3a1b4-4bc5-4886-8780-b0d45ac54e76"
+            },
+            {
+              "id": "7256fa73-fece-4a32-a9b9-0a82c9c3ef42",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-7256fa73-fece-4a32-a9b9-0a82c9c3ef42"
+            },
+            {
+              "id": "157a1717-329e-4762-94ab-ce54428c61f5",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-157a1717-329e-4762-94ab-ce54428c61f5"
+            },
+            {
+              "id": "68198cc3-eebf-4915-a1b4-cbbe0be26803",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-68198cc3-eebf-4915-a1b4-cbbe0be26803"
+            },
+            {
+              "id": "52aa4690-3822-47e7-87f9-a05ff9537140",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-52aa4690-3822-47e7-87f9-a05ff9537140"
+            },
+            {
+              "id": "1ed1beda-5353-4b55-b3ee-c41a0de5bd8e",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-1ed1beda-5353-4b55-b3ee-c41a0de5bd8e"
+            },
+            {
+              "id": "32d78a40-85fe-49fa-aa39-4966a0e6a6c8",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to validate.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-32d78a40-85fe-49fa-aa39-4966a0e6a6c8"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-de05f555-fb39-477f-ab0c-f658c30c8c12"
+        }
+      ],
+      "id": "e3bb9466-3931-4bb6-9859-1bc297e5a619",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-e3bb9466-3931-4bb6-9859-1bc297e5a619"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.getAvailableLanguages",
+      "item": [
+        {
+          "name": "Languages manager get available languages",
+          "id": "231f29f1-c86a-43be-a432-b1a122d8c1d8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.getAvailableLanguages&format=xml&_ignoreConfig=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.getAvailableLanguages"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Whether to ignore the configured language allowlist.",
+                  "key": "_ignoreConfig",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the available Matomo language codes."
+          },
+          "response": [
+            {
+              "id": "13362221-e671-4f54-9e16-fdfd196f089e",
+              "name": "Available ISO language codes.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-13362221-e671-4f54-9e16-fdfd196f089e"
+            },
+            {
+              "id": "e8d94dad-a5f8-47f8-b001-977d96538ab0",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-e8d94dad-a5f8-47f8-b001-977d96538ab0"
+            },
+            {
+              "id": "86bff350-9589-4351-89cf-047eef4b5818",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-86bff350-9589-4351-89cf-047eef4b5818"
+            },
+            {
+              "id": "2e8b939e-b339-4b61-afd6-c8bf8c3c735f",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-2e8b939e-b339-4b61-afd6-c8bf8c3c735f"
+            },
+            {
+              "id": "6c8077f5-f552-40a9-bec0-ed03c9c1bda3",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-6c8077f5-f552-40a9-bec0-ed03c9c1bda3"
+            },
+            {
+              "id": "72379709-84b6-4f14-bdb1-55a53decaeb5",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-72379709-84b6-4f14-bdb1-55a53decaeb5"
+            },
+            {
+              "id": "5d644f77-9693-45a7-acdf-f8a94edfbce9",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-5d644f77-9693-45a7-acdf-f8a94edfbce9"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-231f29f1-c86a-43be-a432-b1a122d8c1d8"
+        }
+      ],
+      "id": "23cf9575-3e55-4bb6-8d88-bc19f1d0d595",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-23cf9575-3e55-4bb6-8d88-bc19f1d0d595"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.getAvailableLanguagesInfo",
+      "item": [
+        {
+          "name": "Languages manager get available languages info",
+          "id": "ac8bf68a-56d1-49f0-a3e4-d3037ecaa501",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.getAvailableLanguagesInfo&format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.getAvailableLanguagesInfo"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                  "key": "excludeNonCorePlugins",
+                  "value": "true"
+                },
+                {
+                  "description": "Whether to ignore the configured language allowlist.",
+                  "key": "_ignoreConfig",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns translation coverage information for each available language."
+          },
+          "response": [
+            {
+              "id": "7c33d851-fe83-48b0-97d1-f4895bf57ad8",
+              "name": "Translation metadata for each available language, including code, names, translators, and completion percentage.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-7c33d851-fe83-48b0-97d1-f4895bf57ad8"
+            },
+            {
+              "id": "c2eca408-2b14-46f7-ae48-422b9cab702a",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-c2eca408-2b14-46f7-ae48-422b9cab702a"
+            },
+            {
+              "id": "8b833051-8597-4428-a2fd-47d2ac04f97d",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-8b833051-8597-4428-a2fd-47d2ac04f97d"
+            },
+            {
+              "id": "86626b50-3526-42df-889a-16329318b473",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-86626b50-3526-42df-889a-16329318b473"
+            },
+            {
+              "id": "9fcb7c84-052b-4c48-b746-a391f7eb2719",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-9fcb7c84-052b-4c48-b746-a391f7eb2719"
+            },
+            {
+              "id": "8ba2d5d3-65a5-4ae9-b558-1305444df921",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-8ba2d5d3-65a5-4ae9-b558-1305444df921"
+            },
+            {
+              "id": "ec06ff83-a4a8-4027-bec7-cdd9a251531c",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&excludeNonCorePlugins=true&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to exclude non-core plugins from the translation percentage calculation.",
+                      "key": "excludeNonCorePlugins",
+                      "value": "true"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-ec06ff83-a4a8-4027-bec7-cdd9a251531c"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-ac8bf68a-56d1-49f0-a3e4-d3037ecaa501"
+        }
+      ],
+      "id": "01431154-7ec9-4552-9454-373256425b21",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-01431154-7ec9-4552-9454-373256425b21"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.getAvailableLanguageNames",
+      "item": [
+        {
+          "name": "Languages manager get available language names",
+          "id": "60c93d94-8770-44fc-9a5e-c817271c40b4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.getAvailableLanguageNames&format=xml&_ignoreConfig=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.getAvailableLanguageNames"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Whether to ignore the configured language allowlist.",
+                  "key": "_ignoreConfig",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the available languages with their localized and English names."
+          },
+          "response": [
+            {
+              "id": "fe7aed84-7f34-4799-aee4-65c409333e46",
+              "name": "Available languages with `code`, `name`, and `english_name` fields.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-fe7aed84-7f34-4799-aee4-65c409333e46"
+            },
+            {
+              "id": "cdf243c2-82c1-4596-8cf8-3203f0716a7f",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-cdf243c2-82c1-4596-8cf8-3203f0716a7f"
+            },
+            {
+              "id": "b86b8341-5b2e-4508-8882-ccab97a3f1bd",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-b86b8341-5b2e-4508-8882-ccab97a3f1bd"
+            },
+            {
+              "id": "a5c0abaf-1196-4817-8f11-6597738aff91",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-a5c0abaf-1196-4817-8f11-6597738aff91"
+            },
+            {
+              "id": "8009d4e5-3ade-45b8-be24-71d80cf5b8a1",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-8009d4e5-3ade-45b8-be24-71d80cf5b8a1"
+            },
+            {
+              "id": "d09d064a-d191-4475-86dc-ff0649d87334",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-d09d064a-d191-4475-86dc-ff0649d87334"
+            },
+            {
+              "id": "32bf9bdf-f204-4e20-bb51-3be5563e8ac5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&_ignoreConfig=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Whether to ignore the configured language allowlist.",
+                      "key": "_ignoreConfig",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-32bf9bdf-f204-4e20-bb51-3be5563e8ac5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-60c93d94-8770-44fc-9a5e-c817271c40b4"
+        }
+      ],
+      "id": "711b77dd-aec4-497b-9f51-e0bd2745ccf2",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-711b77dd-aec4-497b-9f51-e0bd2745ccf2"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.getTranslationsForLanguage",
+      "item": [
+        {
+          "name": "Languages manager get translations for language",
+          "id": "70d70a77-a42c-489a-84f1-6940dad471f2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.getTranslationsForLanguage&format=xml&languageCode=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.getTranslationsForLanguage"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The ISO language code to load.",
+                  "key": "languageCode",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns translation strings for a specific language across core and loaded plugins."
+          },
+          "response": [
+            {
+              "id": "b8473e9c-48c1-470a-841a-61df176a8935",
+              "name": "Translation entries with `label` and `value` keys, or `false` if the language is unavailable.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-b8473e9c-48c1-470a-841a-61df176a8935"
+            },
+            {
+              "id": "ed887f4f-6432-4a1e-8b9b-ec3a2834923a",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-ed887f4f-6432-4a1e-8b9b-ec3a2834923a"
+            },
+            {
+              "id": "3804bbc1-6a6b-4c6d-bdc6-9730c23b9313",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-3804bbc1-6a6b-4c6d-bdc6-9730c23b9313"
+            },
+            {
+              "id": "7869f2c4-706d-4091-9f32-4e92a495a1d5",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-7869f2c4-706d-4091-9f32-4e92a495a1d5"
+            },
+            {
+              "id": "20c0d017-e849-44d7-bb7f-d665ac6e1436",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-20c0d017-e849-44d7-bb7f-d665ac6e1436"
+            },
+            {
+              "id": "64aea7f7-ab69-453e-8196-2f7804b520dc",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-64aea7f7-ab69-453e-8196-2f7804b520dc"
+            },
+            {
+              "id": "a7b25b65-10f0-4393-bfc8-7cd9342041b2",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to load.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-a7b25b65-10f0-4393-bfc8-7cd9342041b2"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-70d70a77-a42c-489a-84f1-6940dad471f2"
+        }
+      ],
+      "id": "6af47f34-0cee-4ee7-8054-a0c175584e2d",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-6af47f34-0cee-4ee7-8054-a0c175584e2d"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.getLanguageForUser",
+      "item": [
+        {
+          "name": "Languages manager get language for user",
+          "id": "620627df-ec98-4bba-9236-2dfbbc592882",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.getLanguageForUser&format=xml&login=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.getLanguageForUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The user login to read the language for.",
+                  "key": "login",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the saved language preference for a user."
+          },
+          "response": [
+            {
+              "id": "15b3f144-fb05-4771-8ae1-b335f8a8fc03",
+              "name": "The saved language code, or `false` for the anonymous user.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-15b3f144-fb05-4771-8ae1-b335f8a8fc03"
+            },
+            {
+              "id": "ed80828f-baaa-4c7a-9522-27ba23f06e29",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-ed80828f-baaa-4c7a-9522-27ba23f06e29"
+            },
+            {
+              "id": "5d265b71-bcf2-43bf-861c-433458a0eb1e",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-5d265b71-bcf2-43bf-861c-433458a0eb1e"
+            },
+            {
+              "id": "c716ed30-aaa1-4ebc-95b8-2a7c66dcfffe",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-c716ed30-aaa1-4ebc-95b8-2a7c66dcfffe"
+            },
+            {
+              "id": "62d205bb-1b8a-4bc1-b29b-0d1ceb174ff9",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-62d205bb-1b8a-4bc1-b29b-0d1ceb174ff9"
+            },
+            {
+              "id": "34274f04-22f1-4367-961f-dd3a6c3ac307",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-34274f04-22f1-4367-961f-dd3a6c3ac307"
+            },
+            {
+              "id": "bd559464-2f35-4be0-9e6a-0258b30b9cfb",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to read the language for.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-bd559464-2f35-4be0-9e6a-0258b30b9cfb"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-620627df-ec98-4bba-9236-2dfbbc592882"
+        }
+      ],
+      "id": "a01ac307-fbdd-498b-9101-02b34abc3fa5",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-a01ac307-fbdd-498b-9101-02b34abc3fa5"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.setLanguageForUser",
+      "item": [
+        {
+          "name": "Languages manager set language for user",
+          "id": "c05e09ec-5195-427d-a639-8ea25077de9b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.setLanguageForUser&format=xml&login=<string>&languageCode=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.setLanguageForUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The user login to update.",
+                  "key": "login",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The ISO language code to store.",
+                  "key": "languageCode",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Stores the language preference for a user."
+          },
+          "response": [
+            {
+              "id": "1b64a54a-85c6-4e23-865d-1b52b265b93e",
+              "name": "`true` if the language was stored, `false` if the language code is unavailable.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-1b64a54a-85c6-4e23-865d-1b52b265b93e"
+            },
+            {
+              "id": "6972bfbe-462d-47ad-abf5-438b80fbaef2",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-6972bfbe-462d-47ad-abf5-438b80fbaef2"
+            },
+            {
+              "id": "73d268ed-4da2-4d2e-bd66-ac1a7934a43c",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-73d268ed-4da2-4d2e-bd66-ac1a7934a43c"
+            },
+            {
+              "id": "aca2dfc8-e9da-481a-b385-11f3df356035",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-aca2dfc8-e9da-481a-b385-11f3df356035"
+            },
+            {
+              "id": "6d0655dc-02b1-4a1e-a2fd-c53629ae325f",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-6d0655dc-02b1-4a1e-a2fd-c53629ae325f"
+            },
+            {
+              "id": "8cb54236-11a2-4069-933b-dac502d1865f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-8cb54236-11a2-4069-933b-dac502d1865f"
+            },
+            {
+              "id": "4bad89cb-2eae-40fe-8883-d077c3a64b43",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&languageCode=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ISO language code to store.",
+                      "key": "languageCode",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-4bad89cb-2eae-40fe-8883-d077c3a64b43"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-c05e09ec-5195-427d-a639-8ea25077de9b"
+        }
+      ],
+      "id": "41bca066-11fa-4af4-afc2-d933b260399b",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-41bca066-11fa-4af4-afc2-d933b260399b"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.uses12HourClockForUser",
+      "item": [
+        {
+          "name": "Languages manager uses12 hour clock for user",
+          "id": "0b8e7d1a-0fb3-4564-92bc-8b3354e288f7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.uses12HourClockForUser&format=xml&login=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.uses12HourClockForUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The user login to query.",
+                  "key": "login",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns whether a user prefers 12-hour time formatting."
+          },
+          "response": [
+            {
+              "id": "7623e336-effe-4b81-9d02-4bdcf966a3cf",
+              "name": "`true` if the user uses a 12-hour clock, `false` otherwise or for the anonymous user.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-7623e336-effe-4b81-9d02-4bdcf966a3cf"
+            },
+            {
+              "id": "07ea356b-bb69-41ed-a9cf-eca7693cd70b",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-07ea356b-bb69-41ed-a9cf-eca7693cd70b"
+            },
+            {
+              "id": "55436e68-efd2-4fdc-839c-d6e1370361bb",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-55436e68-efd2-4fdc-839c-d6e1370361bb"
+            },
+            {
+              "id": "915c8091-c090-49d7-a116-5f8d52fe7bce",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-915c8091-c090-49d7-a116-5f8d52fe7bce"
+            },
+            {
+              "id": "fb28b8c0-e653-4513-b2d0-8aff772ef703",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-fb28b8c0-e653-4513-b2d0-8aff772ef703"
+            },
+            {
+              "id": "0cf97b19-17b3-4af2-a5d5-8efd9586b7e0",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-0cf97b19-17b3-4af2-a5d5-8efd9586b7e0"
+            },
+            {
+              "id": "2d73c65d-ec73-4ec2-87fd-197691ef7700",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to query.",
+                      "key": "login",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-2d73c65d-ec73-4ec2-87fd-197691ef7700"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-0b8e7d1a-0fb3-4564-92bc-8b3354e288f7"
+        }
+      ],
+      "id": "ad0b653c-5aa6-479a-a45a-416b0cb6933c",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-ad0b653c-5aa6-479a-a45a-416b0cb6933c"
+    },
+    {
+      "name": "index.php?module=API&method=LanguagesManager.set12HourClockForUser",
+      "item": [
+        {
+          "name": "Languages manager set12 hour clock for user",
+          "id": "888d72a7-7713-4c76-9ef8-17b24c6d6305",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=LanguagesManager.set12HourClockForUser&format=xml&login=<string>&use12HourClock=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "LanguagesManager.set12HourClockForUser"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The user login to update.",
+                  "key": "login",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Whether to enable 12-hour clock formatting.",
+                  "key": "use12HourClock",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Stores whether a user prefers 12-hour time formatting."
+          },
+          "response": [
+            {
+              "id": "b23d5d6a-f3a8-4711-847f-dbeb64808ae2",
+              "name": "`true` if the preference was stored, `false` for the anonymous user.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-b23d5d6a-f3a8-4711-847f-dbeb64808ae2"
+            },
+            {
+              "id": "b719c2be-d06d-4c66-9876-f8f2dd6bd2e7",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-b719c2be-d06d-4c66-9876-f8f2dd6bd2e7"
+            },
+            {
+              "id": "4056c7c5-1b3b-434c-8f02-7ee82483cce6",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-4056c7c5-1b3b-434c-8f02-7ee82483cce6"
+            },
+            {
+              "id": "a3dd5346-4c9a-4ca1-b014-c6e03b8bc78d",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-a3dd5346-4c9a-4ca1-b014-c6e03b8bc78d"
+            },
+            {
+              "id": "b8d5846b-7e3f-4e19-a99f-e5f56606eb4f",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-b8d5846b-7e3f-4e19-a99f-e5f56606eb4f"
+            },
+            {
+              "id": "15ebf7f4-9df1-4070-91e4-2a594d73e9a0",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-15ebf7f4-9df1-4070-91e4-2a594d73e9a0"
+            },
+            {
+              "id": "fdcded20-7dd3-4a9f-95f4-b617a59828d4",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&login=<string>&use12HourClock=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The user login to update.",
+                      "key": "login",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Whether to enable 12-hour clock formatting.",
+                      "key": "use12HourClock",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:10.000Z",
+              "updatedAt": "2026-10-22T01:34:10.000Z",
+              "uid": "35240-fdcded20-7dd3-4a9f-95f4-b617a59828d4"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:10.000Z",
+          "updatedAt": "2026-10-22T01:34:10.000Z",
+          "uid": "35240-888d72a7-7713-4c76-9ef8-17b24c6d6305"
+        }
+      ],
+      "id": "1e5b5a62-e35a-46dd-a1d9-8777de1d7525",
+      "createdAt": "2026-10-22T01:34:10.000Z",
+      "updatedAt": "2026-10-22T01:34:10.000Z",
+      "uid": "35240-1e5b5a62-e35a-46dd-a1d9-8777de1d7525"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

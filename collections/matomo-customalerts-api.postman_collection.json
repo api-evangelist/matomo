@@ -1,0 +1,4382 @@
+{
+  "info": {
+    "_postman_id": "d448a16b-7d03-494f-9456-b144ebea25e7",
+    "name": "Matomo Reporting API for plugin Custom Alerts API",
+    "description": "Exposes Custom Alerts API endpoints for managing alert definitions and reading triggered alert data. These methods let callers create, update, fetch, delete, and evaluate alerts for one or more sites.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:32:43.000Z",
+    "updatedAt": "2026-10-22T01:32:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d448a16b-7d03-494f-9456-b144ebea25e7"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=CustomAlerts.getValuesForAlertInPast",
+      "item": [
+        {
+          "name": "Custom alerts get values for alert in past",
+          "id": "6a796ae8-ceda-4dee-a66c-99826be2ee7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.getValuesForAlertInPast&format=xml&idAlert=<integer>&subPeriodN=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.getValuesForAlertInPast"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Alert ID to evaluate.",
+                  "key": "idAlert",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                  "key": "subPeriodN",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns the computed alert value for each site linked to an alert for a past or current period."
+          },
+          "response": [
+            {
+              "id": "87a0fb18-0cdf-4eea-98fd-131e4ae73534",
+              "name": "Alert values grouped by site.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-87a0fb18-0cdf-4eea-98fd-131e4ae73534"
+            },
+            {
+              "id": "5fffc834-904d-413f-980b-ffe3b41a6cb9",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-5fffc834-904d-413f-980b-ffe3b41a6cb9"
+            },
+            {
+              "id": "9a9ef2f3-67a7-4136-8a93-bac647945ca6",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-9a9ef2f3-67a7-4136-8a93-bac647945ca6"
+            },
+            {
+              "id": "3efe7b03-d61f-41e7-a675-8219e7ff0db9",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-3efe7b03-d61f-41e7-a675-8219e7ff0db9"
+            },
+            {
+              "id": "ccf8c2dc-2274-4701-8d50-e90f1c997dc3",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-ccf8c2dc-2274-4701-8d50-e90f1c997dc3"
+            },
+            {
+              "id": "80583c5d-880d-448e-88c2-9295d93d36a8",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-80583c5d-880d-448e-88c2-9295d93d36a8"
+            },
+            {
+              "id": "2f4f71bf-df25-4e73-a170-aa99b520f605",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&subPeriodN=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to evaluate.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Number of periods in the past to evaluate. Use 0 for the current day, week, or month.",
+                      "key": "subPeriodN",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-2f4f71bf-df25-4e73-a170-aa99b520f605"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-6a796ae8-ceda-4dee-a66c-99826be2ee7f"
+        }
+      ],
+      "id": "9b31c04f-e840-4e8b-8ee6-6e6e4ddb4185",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-9b31c04f-e840-4e8b-8ee6-6e6e4ddb4185"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.getAlert",
+      "item": [
+        {
+          "name": "Custom alerts get alert",
+          "id": "ad7df36f-0318-4d63-9e21-ca5306aa7ca8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.getAlert&format=xml&idAlert=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.getAlert"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Alert ID to fetch.",
+                  "key": "idAlert",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a single custom alert definition."
+          },
+          "response": [
+            {
+              "id": "d4590a6e-f58b-4b2f-aa2f-e1a7d2d37fd1",
+              "name": "Alert definition including the configured site IDs.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-d4590a6e-f58b-4b2f-aa2f-e1a7d2d37fd1"
+            },
+            {
+              "id": "8ddbba88-5156-47ee-b0f2-dddc419ccb94",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-8ddbba88-5156-47ee-b0f2-dddc419ccb94"
+            },
+            {
+              "id": "26c5c76d-ec97-473a-b302-ea754bdbfb49",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-26c5c76d-ec97-473a-b302-ea754bdbfb49"
+            },
+            {
+              "id": "81ab2fd1-7b54-4b36-b0ad-d8262fbc394d",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-81ab2fd1-7b54-4b36-b0ad-d8262fbc394d"
+            },
+            {
+              "id": "e83b871e-dd84-49e9-9664-e2e8a7480875",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-e83b871e-dd84-49e9-9664-e2e8a7480875"
+            },
+            {
+              "id": "e8f818ca-5f44-4277-914c-34dc05a01b63",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-e8f818ca-5f44-4277-914c-34dc05a01b63"
+            },
+            {
+              "id": "db35739d-f038-4d2f-b4d0-f39d1bbae0c0",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to fetch.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-db35739d-f038-4d2f-b4d0-f39d1bbae0c0"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-ad7df36f-0318-4d63-9e21-ca5306aa7ca8"
+        }
+      ],
+      "id": "f0ca07ca-88c9-4a2e-b21d-62bc4cc89af2",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-f0ca07ca-88c9-4a2e-b21d-62bc4cc89af2"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.getAlerts",
+      "item": [
+        {
+          "name": "Custom alerts get alerts",
+          "id": "ee8a0be2-beb8-4a38-86bf-cc77da827def",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.getAlerts&format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.getAlerts"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                  "key": "idSites",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Whether a super user should receive alerts created by all users.",
+                  "key": "ifSuperUserReturnAllAlerts",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the custom alerts configured for the requested sites."
+          },
+          "response": [
+            {
+              "id": "d8ea903b-d5d4-402c-bfff-10fb556efa67",
+              "name": "Alert definitions accessible to the current user for the requested sites.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-d8ea903b-d5d4-402c-bfff-10fb556efa67"
+            },
+            {
+              "id": "8b2eed80-5ce3-4675-8238-f9c59dc7dcef",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-8b2eed80-5ce3-4675-8238-f9c59dc7dcef"
+            },
+            {
+              "id": "dc729caf-39d4-4225-9a16-2c4c3bfb0aad",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-dc729caf-39d4-4225-9a16-2c4c3bfb0aad"
+            },
+            {
+              "id": "fb1e917f-eeff-44d4-b879-8d1052f0a0e8",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-fb1e917f-eeff-44d4-b879-8d1052f0a0e8"
+            },
+            {
+              "id": "3330937c-a370-4610-afb9-08e948c07912",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-3330937c-a370-4610-afb9-08e948c07912"
+            },
+            {
+              "id": "b5c55865-a446-415c-95cb-9d608c7aa32f",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-b5c55865-a446-415c-95cb-9d608c7aa32f"
+            },
+            {
+              "id": "85b20539-36c5-4259-9689-255a5d4584c0",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>&ifSuperUserReturnAllAlerts=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether a super user should receive alerts created by all users.",
+                      "key": "ifSuperUserReturnAllAlerts",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-85b20539-36c5-4259-9689-255a5d4584c0"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-ee8a0be2-beb8-4a38-86bf-cc77da827def"
+        }
+      ],
+      "id": "84c88759-464e-4bcf-81be-b389d97acddd",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-84c88759-464e-4bcf-81be-b389d97acddd"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.addAlert",
+      "item": [
+        {
+          "name": "Custom alerts add alert",
+          "id": "eee0424e-4b4e-44a1-9928-bfebc8a6eaec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.addAlert&format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&additionalEmails=<string>&phoneNumbers=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.addAlert"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Alert name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                  "key": "idSites",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Alert period. Allowed values: day, week, month.",
+                  "key": "period",
+                  "value": "week"
+                },
+                {
+                  "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                  "key": "emailMe",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "(Required) Additional email recipients for email notifications.",
+                  "key": "additionalEmails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Additional email recipients for email notifications.",
+                  "key": "additionalEmails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                  "key": "phoneNumbers",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                  "key": "phoneNumbers",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                  "key": "metric",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                  "key": "metricCondition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Threshold value to compare the selected metric against.",
+                  "key": "metricValue",
+                  "value": "<number>"
+                },
+                {
+                  "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                  "key": "comparedTo",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Report unique ID in module_action format.",
+                  "key": "reportUniqueId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                  "key": "reportCondition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Value to match when $reportCondition is provided.",
+                  "key": "reportValue",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Slack channel ID when the slack channel is enabled.",
+                  "key": "slackChannelID",
+                  "value": ""
+                },
+                {
+                  "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                  "key": "msTeamsWebhookUrl",
+                  "value": ""
+                },
+                {
+                  "description": "Optional alert description (max 255 characters).",
+                  "key": "description",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates a custom alert for one or more sites."
+          },
+          "response": [
+            {
+              "id": "584ce169-e016-4f58-998c-c3163b32d84d",
+              "name": "ID of the newly created alert.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-584ce169-e016-4f58-998c-c3163b32d84d"
+            },
+            {
+              "id": "84b686a8-367f-4945-af7e-2adcd207fbb6",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-84b686a8-367f-4945-af7e-2adcd207fbb6"
+            },
+            {
+              "id": "3af5f880-e825-4515-be2b-dd13e2372dde",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-3af5f880-e825-4515-be2b-dd13e2372dde"
+            },
+            {
+              "id": "33b8c7e8-a9ab-48fc-a859-b8aa7df222d5",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-33b8c7e8-a9ab-48fc-a859-b8aa7df222d5"
+            },
+            {
+              "id": "7a400c53-d670-4c49-98e7-93332d52a410",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-7a400c53-d670-4c49-98e7-93332d52a410"
+            },
+            {
+              "id": "a6c786bc-8c6c-4507-b314-d08af3343855",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-a6c786bc-8c6c-4507-b314-d08af3343855"
+            },
+            {
+              "id": "918c4b8a-0cb7-4997-b103-ce992a31d6f6",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-918c4b8a-0cb7-4997-b103-ce992a31d6f6"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-eee0424e-4b4e-44a1-9928-bfebc8a6eaec"
+        }
+      ],
+      "id": "c6852dce-e04c-4358-9b78-4b5d6974799e",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-c6852dce-e04c-4358-9b78-4b5d6974799e"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.editAlert",
+      "item": [
+        {
+          "name": "Custom alerts edit alert",
+          "id": "419778ba-aaee-4958-bc63-e751a2a52d8f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.editAlert&format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&additionalEmails=<string>&phoneNumbers=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.editAlert"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Alert ID to update.",
+                  "key": "idAlert",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Alert name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                  "key": "idSites",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Alert period. Allowed values: day, week, month.",
+                  "key": "period",
+                  "value": "week"
+                },
+                {
+                  "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                  "key": "emailMe",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "(Required) Additional email recipients for email notifications.",
+                  "key": "additionalEmails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Additional email recipients for email notifications.",
+                  "key": "additionalEmails",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                  "key": "phoneNumbers",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                  "key": "phoneNumbers",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                  "key": "metric",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                  "key": "metricCondition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Threshold value to compare the selected metric against.",
+                  "key": "metricValue",
+                  "value": "<number>"
+                },
+                {
+                  "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                  "key": "comparedTo",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) Report unique ID in module_action format.",
+                  "key": "reportUniqueId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                  "key": "reportCondition",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Value to match when $reportCondition is provided.",
+                  "key": "reportValue",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Slack channel ID when the slack channel is enabled.",
+                  "key": "slackChannelID",
+                  "value": ""
+                },
+                {
+                  "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                  "key": "msTeamsWebhookUrl",
+                  "value": ""
+                },
+                {
+                  "description": "Optional alert description (max 255 characters).",
+                  "key": "description",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Updates an existing custom alert."
+          },
+          "response": [
+            {
+              "id": "3185704d-7ce5-4b3b-a850-951a75a50fca",
+              "name": "Updated alert ID.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-3185704d-7ce5-4b3b-a850-951a75a50fca"
+            },
+            {
+              "id": "eeecafa9-66b3-4d4e-ade2-5f209e3c7d60",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-eeecafa9-66b3-4d4e-ade2-5f209e3c7d60"
+            },
+            {
+              "id": "fefd098c-6ad6-41ea-8134-75393bda1be2",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-fefd098c-6ad6-41ea-8134-75393bda1be2"
+            },
+            {
+              "id": "4944b772-bf2d-4b51-81b3-f54576fbf34e",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-4944b772-bf2d-4b51-81b3-f54576fbf34e"
+            },
+            {
+              "id": "d261459c-461b-4025-828a-b5e387cbe7bb",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-d261459c-461b-4025-828a-b5e387cbe7bb"
+            },
+            {
+              "id": "b9d75cc0-f00d-4b88-8d1b-43d3679a76a2",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-b9d75cc0-f00d-4b88-8d1b-43d3679a76a2"
+            },
+            {
+              "id": "87510e4d-ab69-4080-959c-c0b1838c9bd6",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>&name=<string>&idSites=<string>&period=week&emailMe=<boolean>&additionalEmails=<string>&phoneNumbers=<string>&metric=<string>&metricCondition=<string>&metricValue=<number>&comparedTo=<integer>&reportUniqueId=<string>&reportCondition=<string>&reportValue=<string>&slackChannelID=&msTeamsWebhookUrl=&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to update.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Alert name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Alert period. Allowed values: day, week, month.",
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "description": "(Required) Whether to notify the current user by email when the alert triggers.",
+                      "key": "emailMe",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "(Required) Additional email recipients for email notifications.",
+                      "key": "additionalEmails",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Mobile Messaging recipients when the mobile channel is enabled.",
+                      "key": "phoneNumbers",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Metric unique ID to evaluate, for example nb_uniq_visits or sum_visit_length.",
+                      "key": "metric",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Comparison rule to apply to the metric. Allowed values: less_than, greater_than, decrease_more_than, increase_more_than, percentage_decrease_more_than, percentage_increase_more_than.",
+                      "key": "metricCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Threshold value to compare the selected metric against.",
+                      "key": "metricValue",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Number of prior periods to compare against. Allowed values by period: day => 1, 7, 365; week => 1; month => 1, 12.",
+                      "key": "comparedTo",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Report unique ID in module_action format.",
+                      "key": "reportUniqueId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Optional dimension filter condition for report rows. Allowed values: matches_any, matches_exactly, does_not_match_exactly, matches_regex, does_not_match_regex, contains, does_not_contain, starts_with, does_not_start_with, ends_with, does_not_end_with.",
+                      "key": "reportCondition",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Value to match when $reportCondition is provided.",
+                      "key": "reportValue",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Slack channel ID when the slack channel is enabled.",
+                      "key": "slackChannelID",
+                      "value": ""
+                    },
+                    {
+                      "description": "Microsoft Teams webhook URL when the teams channel is enabled.",
+                      "key": "msTeamsWebhookUrl",
+                      "value": ""
+                    },
+                    {
+                      "description": "Optional alert description (max 255 characters).",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-87510e4d-ab69-4080-959c-c0b1838c9bd6"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-419778ba-aaee-4958-bc63-e751a2a52d8f"
+        }
+      ],
+      "id": "b992157e-cc94-4708-b9d3-c117edfbc01c",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-b992157e-cc94-4708-b9d3-c117edfbc01c"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.deleteAlert",
+      "item": [
+        {
+          "name": "Custom alerts delete alert",
+          "id": "41a82614-ea89-4f1d-b403-c000efdbda47",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.deleteAlert&format=xml&idAlert=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.deleteAlert"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Alert ID to delete.",
+                  "key": "idAlert",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Deletes an existing custom alert."
+          },
+          "response": [
+            {
+              "id": "5ef88482-3df0-4580-a6df-db75ee86d616",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-5ef88482-3df0-4580-a6df-db75ee86d616"
+            },
+            {
+              "id": "9ddc5a48-ae1b-458b-bcbb-b24958f906c2",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-9ddc5a48-ae1b-458b-bcbb-b24958f906c2"
+            },
+            {
+              "id": "a0491da6-3eee-4fa2-8963-be86b4e3d29f",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-a0491da6-3eee-4fa2-8963-be86b4e3d29f"
+            },
+            {
+              "id": "5d4e0b68-adf0-43c5-b02a-c5c53706dbf9",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-5d4e0b68-adf0-43c5-b02a-c5c53706dbf9"
+            },
+            {
+              "id": "00cc7881-8c76-411b-b769-57bdf8cac88f",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-00cc7881-8c76-411b-b769-57bdf8cac88f"
+            },
+            {
+              "id": "6f80d60b-f0a0-4a25-8d5a-3db6af34a393",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-6f80d60b-f0a0-4a25-8d5a-3db6af34a393"
+            },
+            {
+              "id": "309cc94b-1e65-4334-b05d-b1907cab3530",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idAlert=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Alert ID to delete.",
+                      "key": "idAlert",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-309cc94b-1e65-4334-b05d-b1907cab3530"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-41a82614-ea89-4f1d-b403-c000efdbda47"
+        }
+      ],
+      "id": "8a5a9f88-d414-41f1-8b37-78ec92aa3081",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-8a5a9f88-d414-41f1-8b37-78ec92aa3081"
+    },
+    {
+      "name": "index.php?module=API&method=CustomAlerts.getTriggeredAlerts",
+      "item": [
+        {
+          "name": "Custom alerts get triggered alerts",
+          "id": "84064c68-f48e-454c-a088-fdc312ed0a00",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=CustomAlerts.getTriggeredAlerts&format=xml&idSites=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "CustomAlerts.getTriggeredAlerts"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                  "key": "idSites",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns triggered alerts for the current user and requested sites."
+          },
+          "response": [
+            {
+              "id": "2a49616f-8707-4813-b1c7-4abaf766cc00",
+              "name": "Triggered alert entries for the current user and requested sites.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-2a49616f-8707-4813-b1c7-4abaf766cc00"
+            },
+            {
+              "id": "ab21f27b-7916-4941-978a-5a7676990fc1",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-ab21f27b-7916-4941-978a-5a7676990fc1"
+            },
+            {
+              "id": "d6b0642e-453c-433e-afbc-8567322dec01",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-d6b0642e-453c-433e-afbc-8567322dec01"
+            },
+            {
+              "id": "608efc62-0e9e-4303-a7b6-a7ec2da1e1d8",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-608efc62-0e9e-4303-a7b6-a7ec2da1e1d8"
+            },
+            {
+              "id": "8139580f-304c-4828-9500-fc77910bb6b9",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-8139580f-304c-4828-9500-fc77910bb6b9"
+            },
+            {
+              "id": "1ceeec86-e0b6-40fb-901d-eea31138063b",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-1ceeec86-e0b6-40fb-901d-eea31138063b"
+            },
+            {
+              "id": "31a1b0b0-c8f7-407f-9e77-0267e3fc46a8",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSites=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) Website ID(s) to query. Accepts comma-separated IDs, \"all\", numeric IDs as strings, or [\"all\"].",
+                      "key": "idSites",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:32:44.000Z",
+              "updatedAt": "2026-10-22T01:32:44.000Z",
+              "uid": "35240-31a1b0b0-c8f7-407f-9e77-0267e3fc46a8"
+            }
+          ],
+          "createdAt": "2026-10-22T01:32:44.000Z",
+          "updatedAt": "2026-10-22T01:32:44.000Z",
+          "uid": "35240-84064c68-f48e-454c-a088-fdc312ed0a00"
+        }
+      ],
+      "id": "c422e8d4-f461-4175-bfdc-9378186d5c1e",
+      "createdAt": "2026-10-22T01:32:44.000Z",
+      "updatedAt": "2026-10-22T01:32:44.000Z",
+      "uid": "35240-c422e8d4-f461-4175-bfdc-9378186d5c1e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

@@ -1,0 +1,3022 @@
+{
+  "info": {
+    "_postman_id": "f4dd5de0-26a5-435b-ad5f-47f0630e08d3",
+    "name": "Matomo Reporting API for plugin Advertising Conversion\u2026",
+    "description": "Exposes API endpoints for managing advertising conversion export configurations. These methods let users list, inspect, create, update, and delete configured exports and access tokens.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:31:53.000Z",
+    "updatedAt": "2026-10-22T01:31:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f4dd5de0-26a5-435b-ad5f-47f0630e08d3"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.getConversionExports",
+      "item": [
+        {
+          "name": "Advertising conversion export get conversion exports",
+          "id": "1038e32e-5279-406e-a4a2-ef3559c3089f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.getConversionExports&format=xml&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.getConversionExports"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns configured conversion exports for one site or for every site the current user can manage."
+          },
+          "response": [
+            {
+              "id": "ba74985e-46d1-44a5-a9a5-60d4bf9e95c9",
+              "name": "The configured conversion exports keyed by numeric array index.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-ba74985e-46d1-44a5-a9a5-60d4bf9e95c9"
+            },
+            {
+              "id": "4f197cfb-50a2-4459-9f19-3ea27c7d3a5e",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-4f197cfb-50a2-4459-9f19-3ea27c7d3a5e"
+            },
+            {
+              "id": "f8eb3861-bf06-492d-95e6-6ed14d249033",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-f8eb3861-bf06-492d-95e6-6ed14d249033"
+            },
+            {
+              "id": "bfc3d2ec-aec0-4436-91af-4c5f5e5eef3a",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-bfc3d2ec-aec0-4436-91af-4c5f5e5eef3a"
+            },
+            {
+              "id": "84cbc348-41b0-4918-987d-ef3882c60999",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-84cbc348-41b0-4918-987d-ef3882c60999"
+            },
+            {
+              "id": "5ae32eb1-e312-4db0-8949-14ea5519ee51",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-5ae32eb1-e312-4db0-8949-14ea5519ee51"
+            },
+            {
+              "id": "49b190f0-8f77-4ccc-9c04-dff4b0879bb5",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "The numeric ID of the website to query. When omitted, exports for all sites with write access are returned.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-49b190f0-8f77-4ccc-9c04-dff4b0879bb5"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-1038e32e-5279-406e-a4a2-ef3559c3089f"
+        }
+      ],
+      "id": "a7b03936-33d1-474a-aaaf-83da298675a8",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-a7b03936-33d1-474a-aaaf-83da298675a8"
+    },
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.getConversionExport",
+      "item": [
+        {
+          "name": "Advertising conversion export get conversion export",
+          "id": "9e8b5b3e-fced-4236-998e-74fff0f1ad6f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.getConversionExport&format=xml&idExport=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.getConversionExport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the conversion export to load.",
+                  "key": "idExport",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns the stored configuration for a specific conversion export."
+          },
+          "response": [
+            {
+              "id": "6558063f-e14d-4c7e-9c51-2ea0644578da",
+              "name": "The stored conversion export configuration.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-6558063f-e14d-4c7e-9c51-2ea0644578da"
+            },
+            {
+              "id": "b64554af-cb73-4ea0-9897-c08247134b1f",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-b64554af-cb73-4ea0-9897-c08247134b1f"
+            },
+            {
+              "id": "2a259110-423f-494e-bbd8-348faf76bf6a",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-2a259110-423f-494e-bbd8-348faf76bf6a"
+            },
+            {
+              "id": "6e828d62-abde-40cb-b75a-a67c427318d4",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-6e828d62-abde-40cb-b75a-a67c427318d4"
+            },
+            {
+              "id": "2aa2d3ea-7c2e-48ee-8e0b-7be971c34178",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-2aa2d3ea-7c2e-48ee-8e0b-7be971c34178"
+            },
+            {
+              "id": "1a44abf2-b4df-4a3f-8ced-3070c4f42331",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-1a44abf2-b4df-4a3f-8ced-3070c4f42331"
+            },
+            {
+              "id": "d30f034f-1bf7-4c65-a475-435de31ca7ee",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to load.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-d30f034f-1bf7-4c65-a475-435de31ca7ee"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-9e8b5b3e-fced-4236-998e-74fff0f1ad6f"
+        }
+      ],
+      "id": "2ebe694e-0185-4317-b7ea-f426c6045e3d",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-2ebe694e-0185-4317-b7ea-f426c6045e3d"
+    },
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.deleteConversionExport",
+      "item": [
+        {
+          "name": "Advertising conversion export delete conversion export",
+          "id": "4e3c5056-e1ae-4d88-9890-de1b5011d39f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.deleteConversionExport&format=xml&idExport=<integer>&idSite=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.deleteConversionExport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the conversion export to delete.",
+                  "key": "idExport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website that owns the export.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Deletes a configured conversion export and clears its cached output."
+          },
+          "response": [
+            {
+              "id": "a29d15ba-9b37-4b73-be2b-61330958b811",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-a29d15ba-9b37-4b73-be2b-61330958b811"
+            },
+            {
+              "id": "a6dce540-620c-4204-822b-09c09d8502b4",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-a6dce540-620c-4204-822b-09c09d8502b4"
+            },
+            {
+              "id": "bdcf13ab-b904-4774-9a19-bb15dc758920",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-bdcf13ab-b904-4774-9a19-bb15dc758920"
+            },
+            {
+              "id": "81378fc6-f9cc-4883-9635-219003572de6",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-81378fc6-f9cc-4883-9635-219003572de6"
+            },
+            {
+              "id": "40365520-2f85-4acd-81df-94cfe08b961d",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-40365520-2f85-4acd-81df-94cfe08b961d"
+            },
+            {
+              "id": "487cebc1-4838-427a-b5b7-dc164b47d70b",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-487cebc1-4838-427a-b5b7-dc164b47d70b"
+            },
+            {
+              "id": "56b6fcf8-284f-4b7b-a026-f34dd6e2654a",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to delete.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-56b6fcf8-284f-4b7b-a026-f34dd6e2654a"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-4e3c5056-e1ae-4d88-9890-de1b5011d39f"
+        }
+      ],
+      "id": "a8dcf906-d2fd-4d09-85dd-d433f2aac363",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-a8dcf906-d2fd-4d09-85dd-d433f2aac363"
+    },
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.addConversionExport",
+      "item": [
+        {
+          "name": "Advertising conversion export add conversion export",
+          "id": "bdb44b57-ea24-4960-952b-929946780a87",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.addConversionExport&format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.addConversionExport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website the export belongs to.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The export name shown in the Matomo UI.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A free-text description for the export.",
+                  "key": "description",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Creates a new advertising conversion export configuration."
+          },
+          "response": [
+            {
+              "id": "53dcd528-edc7-417a-b048-4331a4fad4d5",
+              "name": "The created export ID and its newly generated access token.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-53dcd528-edc7-417a-b048-4331a4fad4d5"
+            },
+            {
+              "id": "ead98859-2e82-4d2c-8e81-a96a4da98195",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-ead98859-2e82-4d2c-8e81-a96a4da98195"
+            },
+            {
+              "id": "7ef07cca-36ab-46d9-9585-c6450906671b",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-7ef07cca-36ab-46d9-9585-c6450906671b"
+            },
+            {
+              "id": "7369a26a-0c26-4e8c-8da7-2addb9949f47",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-7369a26a-0c26-4e8c-8da7-2addb9949f47"
+            },
+            {
+              "id": "bc34c5ac-6665-49a3-a58a-80e302658287",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-bc34c5ac-6665-49a3-a58a-80e302658287"
+            },
+            {
+              "id": "25f7c3d5-41c3-4747-b3da-f34c14804dac",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-25f7c3d5-41c3-4747-b3da-f34c14804dac"
+            },
+            {
+              "id": "bbf73e59-bb6d-433c-a2c1-ad2f17650e1b",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website the export belongs to.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-bbf73e59-bb6d-433c-a2c1-ad2f17650e1b"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-bdb44b57-ea24-4960-952b-929946780a87"
+        }
+      ],
+      "id": "0a87d9ec-6d64-4738-b5c2-9cd35159efba",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-0a87d9ec-6d64-4738-b5c2-9cd35159efba"
+    },
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.regenerateAccessToken",
+      "item": [
+        {
+          "name": "Advertising conversion export regenerate access token",
+          "id": "213f3b07-de3a-4f51-a6fb-47e7a380afed",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.regenerateAccessToken&format=xml&idExport=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.regenerateAccessToken"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the conversion export to update.",
+                  "key": "idExport",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Regenerates the access token used to download a conversion export."
+          },
+          "response": [
+            {
+              "id": "94472a7e-d74e-4664-8dc5-29433a271c7d",
+              "name": "The newly generated access token.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-94472a7e-d74e-4664-8dc5-29433a271c7d"
+            },
+            {
+              "id": "84b37c56-305b-4d09-992c-8db3b037bdb5",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-84b37c56-305b-4d09-992c-8db3b037bdb5"
+            },
+            {
+              "id": "2c0e7c35-8fe9-484c-8d73-ea0747cba8af",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-2c0e7c35-8fe9-484c-8d73-ea0747cba8af"
+            },
+            {
+              "id": "aade0111-bdb8-4090-a3d8-9629a484a886",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-aade0111-bdb8-4090-a3d8-9629a484a886"
+            },
+            {
+              "id": "dce1f4f4-6303-4e20-bc82-feb494d8a0fb",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-dce1f4f4-6303-4e20-bc82-feb494d8a0fb"
+            },
+            {
+              "id": "13b096b4-d25c-45aa-9d83-21ae5806916d",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-13b096b4-d25c-45aa-9d83-21ae5806916d"
+            },
+            {
+              "id": "b87e28e6-d321-4896-9a6b-b0e66272afa8",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-b87e28e6-d321-4896-9a6b-b0e66272afa8"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-213f3b07-de3a-4f51-a6fb-47e7a380afed"
+        }
+      ],
+      "id": "aed303f8-4e4b-4975-ae47-704473d59854",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-aed303f8-4e4b-4975-ae47-704473d59854"
+    },
+    {
+      "name": "index.php?module=API&method=AdvertisingConversionExport.updateConversionExport",
+      "item": [
+        {
+          "name": "Advertising conversion export update conversion export",
+          "id": "e30ea925-2767-4521-a7c7-e010bfe5c9f6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=AdvertisingConversionExport.updateConversionExport&format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "AdvertisingConversionExport.updateConversionExport"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the conversion export to update.",
+                  "key": "idExport",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website that owns the export.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The updated export name shown in the Matomo UI.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                  "key": "parameters",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The updated free-text description for the export.",
+                  "key": "description",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Updates an existing advertising conversion export configuration."
+          },
+          "response": [
+            {
+              "id": "302cc938-5c25-43a9-b146-89d3da12f1a3",
+              "name": "Generic 200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-302cc938-5c25-43a9-b146-89d3da12f1a3"
+            },
+            {
+              "id": "b98cbcae-9417-4f6d-8872-e97f74c6407e",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-b98cbcae-9417-4f6d-8872-e97f74c6407e"
+            },
+            {
+              "id": "707c5dc0-dce2-4334-94ba-c1b99328db78",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-707c5dc0-dce2-4334-94ba-c1b99328db78"
+            },
+            {
+              "id": "659db493-0e2e-454c-bd5c-a24441c423d7",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-659db493-0e2e-454c-bd5c-a24441c423d7"
+            },
+            {
+              "id": "546d7a9d-35c6-4843-9a14-8b8bca4d46fb",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-546d7a9d-35c6-4843-9a14-8b8bca4d46fb"
+            },
+            {
+              "id": "bb1cb858-c4f2-43c8-bc85-7d55a109ff78",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-bb1cb858-c4f2-43c8-bc85-7d55a109ff78"
+            },
+            {
+              "id": "35cc64f2-dfd0-41d9-b5f2-6aa909a069d6",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idExport=<integer>&idSite=<integer>&name=<string>&type=<string>&parameters=<string>&description=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the conversion export to update.",
+                      "key": "idExport",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website that owns the export.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The updated export name shown in the Matomo UI.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The updated export type ID, for example `GoogleAds`, `MicrosoftAds`, or `YandexAds`.",
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Updated export settings including selected goals, export windows, attribution options, and an optional segment filter.",
+                      "key": "parameters",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The updated free-text description for the export.",
+                      "key": "description",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:31:54.000Z",
+              "updatedAt": "2026-10-22T01:31:54.000Z",
+              "uid": "35240-35cc64f2-dfd0-41d9-b5f2-6aa909a069d6"
+            }
+          ],
+          "createdAt": "2026-10-22T01:31:54.000Z",
+          "updatedAt": "2026-10-22T01:31:54.000Z",
+          "uid": "35240-e30ea925-2767-4521-a7c7-e010bfe5c9f6"
+        }
+      ],
+      "id": "89916199-4c47-40ec-b031-a93c8e4bf3f5",
+      "createdAt": "2026-10-22T01:31:54.000Z",
+      "updatedAt": "2026-10-22T01:31:54.000Z",
+      "uid": "35240-89916199-4c47-40ec-b031-a93c8e4bf3f5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}

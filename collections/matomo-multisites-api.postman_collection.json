@@ -1,0 +1,1944 @@
+{
+  "info": {
+    "_postman_id": "92faa0fc-e42e-4dc6-bd1e-0ae77d0bbf75",
+    "name": "Matomo Reporting API for plugin Multi Sites API",
+    "description": "The MultiSites API lets you request the key metrics (visits, page views, revenue) for all Websites in Matomo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:34:35.000Z",
+    "updatedAt": "2026-10-22T01:34:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-92faa0fc-e42e-4dc6-bd1e-0ae77d0bbf75"
+  },
+  "item": [
+    {
+      "name": "index.php?module=API&method=MultiSites.getAll",
+      "item": [
+        {
+          "name": "Multi sites get all",
+          "id": "6f72aa71-367a-4a81-af0c-65012e4051d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=MultiSites.getAll&format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "MultiSites.getAll"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                  "key": "_restrictSitesToLogin",
+                  "value": "<string>"
+                },
+                {
+                  "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                  "key": "enhanced",
+                  "value": "false"
+                },
+                {
+                  "description": "Site name or site ID pattern used to limit the matched websites.",
+                  "key": "pattern",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                  "key": "showColumns",
+                  "value": "[]"
+                }
+              ]
+            },
+            "description": "Returns a report displaying the total visits, actions and revenue, as well as the evolution of these values, of all existing sites over a specified period of time."
+          },
+          "response": [
+            {
+              "id": "c7b9c8e8-0f35-48eb-9c31-3f9ecdd1ffbc",
+              "name": "Report rows for each matched site, including evolution metrics when available.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-c7b9c8e8-0f35-48eb-9c31-3f9ecdd1ffbc"
+            },
+            {
+              "id": "b00e1fff-0998-4561-b528-80a0fdda050b",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-b00e1fff-0998-4561-b528-80a0fdda050b"
+            },
+            {
+              "id": "023d90a6-dbb1-4636-b554-66a54e3269de",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-023d90a6-dbb1-4636-b554-66a54e3269de"
+            },
+            {
+              "id": "564cf213-d76c-4a9c-8c4c-523eebdd9ea0",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-564cf213-d76c-4a9c-8c4c-523eebdd9ea0"
+            },
+            {
+              "id": "8f717cf0-bea2-48aa-906a-1094af400810",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-8f717cf0-bea2-48aa-906a-1094af400810"
+            },
+            {
+              "id": "a111ff24-d145-4112-baeb-345a01142206",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-a111ff24-d145-4112-baeb-345a01142206"
+            },
+            {
+              "id": "8d6913cb-073a-4e8a-ab42-854df35f6003",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false&pattern=<string>&showColumns=[]",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    },
+                    {
+                      "description": "Site name or site ID pattern used to limit the matched websites.",
+                      "key": "pattern",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Metric columns to include, either as a comma-separated list or an array of metric names.",
+                      "key": "showColumns",
+                      "value": "[]"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-8d6913cb-073a-4e8a-ab42-854df35f6003"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:36.000Z",
+          "updatedAt": "2026-10-22T01:34:36.000Z",
+          "uid": "35240-6f72aa71-367a-4a81-af0c-65012e4051d4"
+        }
+      ],
+      "id": "2a7a9b4a-5b15-439e-a36d-2775ecfb045f",
+      "createdAt": "2026-10-22T01:34:36.000Z",
+      "updatedAt": "2026-10-22T01:34:36.000Z",
+      "uid": "35240-2a7a9b4a-5b15-439e-a36d-2775ecfb045f"
+    },
+    {
+      "name": "index.php?module=API&method=MultiSites.getOne",
+      "item": [
+        {
+          "name": "Multi sites get one",
+          "id": "82778136-83f6-4903-ac7f-c14cfb0c4937",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=MultiSites.getOne&format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "MultiSites.getOne"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "(Required) The numeric ID of the website to query.",
+                  "key": "idSite",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                  "key": "period",
+                  "value": "month"
+                },
+                {
+                  "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                  "key": "_restrictSitesToLogin",
+                  "value": "<string>"
+                },
+                {
+                  "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                  "key": "enhanced",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns the MultiSites metrics for a single website."
+          },
+          "response": [
+            {
+              "id": "0125c0dd-0634-4959-b4e0-2260b0c537d3",
+              "name": "Metrics for the requested website.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-0125c0dd-0634-4959-b4e0-2260b0c537d3"
+            },
+            {
+              "id": "dae1e5d2-a2f8-4d5f-ba07-d4da3c5fe253",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-dae1e5d2-a2f8-4d5f-ba07-d4da3c5fe253"
+            },
+            {
+              "id": "2a5e4bbf-2a97-4254-a5dc-c37f59295edb",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-2a5e4bbf-2a97-4254-a5dc-c37f59295edb"
+            },
+            {
+              "id": "53085036-ca36-42ad-9369-11129cdbaf29",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-53085036-ca36-42ad-9369-11129cdbaf29"
+            },
+            {
+              "id": "46d63789-f307-4165-b46e-98cb121af6f4",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-46d63789-f307-4165-b46e-98cb121af6f4"
+            },
+            {
+              "id": "4d5f8ae2-5e09-457c-abd1-df1975dae94c",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-4d5f8ae2-5e09-457c-abd1-df1975dae94c"
+            },
+            {
+              "id": "94592f0b-3836-47b4-aca2-0f2f18ff8579",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&idSite=<integer>&period=month&date=<string>&segment=<string>&_restrictSitesToLogin=<string>&enhanced=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "(Required) The numeric ID of the website to query.",
+                      "key": "idSite",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The period to process, processes data for the period containing the specified date.",
+                      "key": "period",
+                      "value": "month"
+                    },
+                    {
+                      "description": "(Required) The date or date range to process. 'YYYY-MM-DD', magic keywords (today, yesterday, lastWeek, lastMonth, lastYear), or date range (ie, 'YYYY-MM-DD,YYYY-MM-DD', lastX, previousX).",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Username used internally to restrict the visible sites while a scheduled task is running.",
+                      "key": "_restrictSitesToLogin",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "`true` to include additional goal and ecommerce metrics, `false` to return the default metric set.",
+                      "key": "enhanced",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-94592f0b-3836-47b4-aca2-0f2f18ff8579"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:36.000Z",
+          "updatedAt": "2026-10-22T01:34:36.000Z",
+          "uid": "35240-82778136-83f6-4903-ac7f-c14cfb0c4937"
+        }
+      ],
+      "id": "6132231f-eadf-4c8a-a939-0fc0b9816bca",
+      "createdAt": "2026-10-22T01:34:36.000Z",
+      "updatedAt": "2026-10-22T01:34:36.000Z",
+      "uid": "35240-6132231f-eadf-4c8a-a939-0fc0b9816bca"
+    },
+    {
+      "name": "index.php?module=API&method=MultiSites.getAllWithGroups",
+      "item": [
+        {
+          "name": "Multi sites get all with groups",
+          "id": "f6497638-152b-49fb-bbc6-2ca3d2366ab4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/index.php?module=API&method=MultiSites.getAllWithGroups&format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "index.php"
+              ],
+              "query": [
+                {
+                  "key": "module",
+                  "value": "API"
+                },
+                {
+                  "key": "method",
+                  "value": "MultiSites.getAllWithGroups"
+                },
+                {
+                  "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                  "key": "format",
+                  "value": "xml"
+                },
+                {
+                  "description": "Period type to query, or `null` to use the request default.",
+                  "key": "period",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Date or date range to query, or `null` to use the request default.",
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                  "key": "segment",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search term used to filter the listed websites by name.",
+                  "key": "pattern",
+                  "value": ""
+                },
+                {
+                  "description": "Maximum number of sites to include in the grouped response.",
+                  "key": "filter_limit",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Returns the MultiSites dashboard response grouped for the widget UI."
+          },
+          "response": [
+            {
+              "id": "57942450-de42-41cd-80ef-749000f5bca5",
+              "name": "Dashboard totals, last date, and grouped site rows for the MultiSites widget.\n\nExample responses require Super User access. Use Try it out to see a live response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/xml"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-57942450-de42-41cd-80ef-749000f5bca5"
+            },
+            {
+              "id": "c168cfd5-d855-4038-b749-d5337bdd36f3",
+              "name": "Bad request (validation or missing parameters).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-c168cfd5-d855-4038-b749-d5337bdd36f3"
+            },
+            {
+              "id": "7d657a5c-bec4-4d63-948a-de63620c280f",
+              "name": "Authentication failed or missing token.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-7d657a5c-bec4-4d63-948a-de63620c280f"
+            },
+            {
+              "id": "f78c30b0-0f09-412e-8936-ae701844e8d7",
+              "name": "Authenticated but not allowed to access the resource.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-f78c30b0-0f09-412e-8936-ae701844e8d7"
+            },
+            {
+              "id": "f0883dc4-c167-4dbc-8f44-362340a26093",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-f0883dc4-c167-4dbc-8f44-362340a26093"
+            },
+            {
+              "id": "1fddce59-e9aa-4983-adce-4a694655da89",
+              "name": "Unexpected server error.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-1fddce59-e9aa-4983-adce-4a694655da89"
+            },
+            {
+              "id": "dd07cf0d-cb1a-4d6c-8911-88b8efa28070",
+              "name": "Default error response (any non-2xx).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/index.php?format=xml&period=<string>&date=<string>&segment=<string>&pattern=&filter_limit=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "index.php"
+                  ],
+                  "query": [
+                    {
+                      "description": "Response format. Defaults to `xml`. Use `original` to get the original PHP data structure.",
+                      "key": "format",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Period type to query, or `null` to use the request default.",
+                      "key": "period",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Date or date range to query, or `null` to use the request default.",
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Custom segment to filter the report. Example: \"referrerName==example.com\" Supports AND (;) and OR (,) operators.",
+                      "key": "segment",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search term used to filter the listed websites by name.",
+                      "key": "pattern",
+                      "value": ""
+                    },
+                    {
+                      "description": "Maximum number of sites to include in the grouped response.",
+                      "key": "filter_limit",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"result\": \"<string>\",\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-22T01:34:36.000Z",
+              "updatedAt": "2026-10-22T01:34:36.000Z",
+              "uid": "35240-dd07cf0d-cb1a-4d6c-8911-88b8efa28070"
+            }
+          ],
+          "createdAt": "2026-10-22T01:34:36.000Z",
+          "updatedAt": "2026-10-22T01:34:36.000Z",
+          "uid": "35240-f6497638-152b-49fb-bbc6-2ca3d2366ab4"
+        }
+      ],
+      "id": "0cd648b9-3180-4687-9597-b8446f847146",
+      "createdAt": "2026-10-22T01:34:36.000Z",
+      "updatedAt": "2026-10-22T01:34:36.000Z",
+      "uid": "35240-0cd648b9-3180-4687-9597-b8446f847146"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://demo-proxy.innocraft.cloud/"
+    }
+  ]
+}
