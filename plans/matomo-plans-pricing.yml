@@ -1,0 +1,164 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://matomo.org/pricing/
+sources:
+- https://matomo.org/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T120612
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: open-core
+  method: page
+  read: '2026-10-28'
+  evidence: Community Launch personal projects with essential analytics to understand your audience and
+    gain total control over your data. Free forever
+  free_edition: Community
+  managed_tier: Business
+published: true
+note: Cloud slider pricing shows 29 per month for base tier; currency symbol not shown for Cloud price.
+  On-Premise bundles priced in EUR with monthly/annual (-17%) toggle; free Community self-hosted edition
+  alongside paid bundles.
+plan_count: 10
+plans:
+- name: Cloud Business
+  price_text: '29'
+  price: 29
+  currency: USD
+  period: month
+  unit: per month (excl. tax)
+  included_quota: 50,000 hits per month tier; Websites 30, Team members 30, Segments 100, Goals 150, Raw
+    data retention 24 months
+  overage: 'Cost of additional hits per month: per year: for (excl. tax)'
+- name: Cloud Enterprise
+  price_text: Contact us
+  period: none
+  included_quota: Custom allowances
+- name: On-Premise Community
+  price_text: Free forever
+  period: none
+  included_quota: Unlimited users and hits; Community plugins; All base features; Forum support
+- name: On-Premise Team
+  price_text: 275 €
+  price: 275
+  currency: EUR
+  period: month
+  included_quota: Up to 4 users and up to 5M hits/month
+- name: On-Premise Business
+  price_text: 1 450 €
+  price: 1450
+  currency: EUR
+  period: month
+  included_quota: Up to 20 users and up to 30M hits/month
+- name: On-Premise Enterprise
+  price_text: 3 400 €
+  price: 3400
+  currency: EUR
+  period: month
+  included_quota: Up to 50 users and up to 100M hits/month
+- name: On-Premise VIP
+  price_text: Custom pricing
+  period: none
+  included_quota: Custom limits for users and hits/month
+- name: Team (annual billing comparison)
+  price_text: From €230/mo
+  price: 230
+  currency: EUR
+  period: month
+  included_quota: Up to 4 users, up to 5M hits
+- name: Business (annual billing comparison)
+  price_text: From €1209/mo
+  price: 1209
+  currency: EUR
+  period: month
+  included_quota: Up to 20 users, up to 30M hits
+- name: Enterprise (annual billing comparison)
+  price_text: From €2834/mo
+  price: 2834
+  currency: EUR
+  period: month
+  included_quota: Up to 50 users, up to 100M hits
+rate_limit_statements:
+- Contact us for tracking more than 10 million hits per month.
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - subscription
+  units: []
+  plans:
+  - name: Cloud Business
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Cloud Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: On-Premise Community
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: On-Premise Team
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: On-Premise Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: On-Premise Enterprise
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: On-Premise VIP
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Team (annual billing comparison)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Business (annual billing comparison)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Enterprise (annual billing comparison)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
