@@ -1600,6 +1600,14 @@ common:
     url: https://www.linkedin.com/company/matomo
   - type: Integrations
     url: https://matomo.org/guide/tracking-data/integrations/
+  - type: UsageTerms
+    url: terms/matomo-terms-of-service.yml
+  - type: DataProcessing
+    url: privacy/matomo-privacy-policy.yml
+  - type: Attestations
+    url: compliance/matomo-compliance.yml
+  - type: DataLicense
+    url: data-license/matomo-data-license.yml
 integrations:
   - name: Analytics Platform - Matomo
 maintainers:
